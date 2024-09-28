@@ -28,7 +28,7 @@
   \hline
 \end{tabular}
 \caption{Antriebe}
-\label{table:lang-compare}
+\label{table:motor1-compare}
 \end{table}
 
 
@@ -49,7 +49,7 @@
   \hline
 \end{tabular}
 \caption{Antriebe}
-\label{table:lang-compare}
+\label{table:motor2-compare}
 \end{table}
 
 \subsubsection{Objekterkennung}
@@ -71,7 +71,7 @@
   \hline
 \end{tabular}
 \caption{Objekterkennung}
-\label{table:lang-compare}
+\label{table:et-object-detection-compare}
 \end{table}
 
 
@@ -154,29 +154,30 @@ Links:
 \hline
 \textbf{} & \textbf{Tensorflow} & \textbf{LiteRT} \\
   \hline
-  \textbf{Beschreibung}  & Interpretierte Programmiersprache & Ehemals TensorFlow Lite und optimiert für On-Device ML \\
+  \textbf{Beschreibung}  & TensorFlow ist ein von Google entwickeltes Open-Source-Framework für maschinelles Lernen, das sich durch seine Skalierbarkeit und umfangreichen Bibliotheken auszeichnet. & TensorFlow Lite (LiteRT) ist die abgespeckte Version von TensorFlow, optimiert für die Ausführung auf mobilen und eingebetteten Geräten mit begrenzten Ressourcen. \\
   \hline
-  \textbf{Vorteile}  & \makecell{-Gut Dokumentiert\\-Grosse Community\\-Gute Performance dank Hardware \\Beschleunigung} & \makecell{-Schnell \\-Möglichkeit für Threading} \\
+  \textbf{Vorteile}  & \makecell{-Gut Dokumentiert\\-Grosse Community} & \makecell{-Optimiert für On-Device ML \\ -Gut Dokumentiert \\ -Gute Performance \\ -Kein Internetzugang nötig} \\
   \hline
-  \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight} \\
+  \textbf{Nachteile} & \makecell{-Internetzugang nötig \\ -Steile Lernkurve \\ } & \makecell{-Steile Lernkurve} \\
   \hline
   \textbf{Links} & https://www.tensorflow.org & https://ai.google.dev/edge/litert \\
   \hline
-  & & \\
+\end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
 \textbf{} & \textbf{PyTorch} & \textbf{OpenCV}\\
   \hline
-  \textbf{Beschreibung} & & \\
+  \textbf{Beschreibung} & PyTorch ist ein von Facebook entwickeltes Open-Source-Framework für maschinelles Lernen, das für seine dynamischen Berechnungsgraphen und einfache Handhabung bekannt ist. & OpenCV ist eine Open-Source-Bibliothek für Computer Vision, die effiziente Algorithmen für Bild- und Videoverarbeitung bereitstellt. \\
   \hline
-  \textbf{Vorteile} & & \\
+  \textbf{Vorteile} & & \makecell{-Kein Internetzugang nötig \\ -Flache Lernkurve \\ -Grosse Community} \\
   \hline
-  \textbf{Nachteile} & & \\
+  \textbf{Nachteile} & & \makecell{-Rechenintensiv \\ -schlechte Performance \\ -Nicht die beste Wahl für Deep-Learn-\\ing-Fähigkeiten} \\
   \hline
-  \textbf{Links} & & \\
+  \textbf{Links} & https://pytorch.org/ & https://opencv.org/ \\
   \hline
 \end{tabularx}
-\caption{Objekterkennung Vergleich}
-\label{table:object-detection-compare}
+\caption{Vision Objekterkennung Vergleich}
+\label{table:vision-object-detection-compare}
 \end{table}
 
 \textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten.
@@ -217,12 +218,12 @@ Vorteile:
     \item Gut Dokumentiert
     \item Grosse Community
     \item Gute Performance dank Hardware Beschleunigung
+    \item Kein internetzugang nötig
 \end{itemize}
 
 
 Nachteile:
 \begin{itemize}
-    \item Kein internetzugang nötig
     \item Steile Lernkurve
     \item Überdimensioniert für einfacher Aufgaben
 \end{itemize}
