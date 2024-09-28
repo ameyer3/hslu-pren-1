@@ -86,24 +86,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
-\hline
-  \textbf{} & \textbf{Python} & \textbf{Java}\\
-  \hline
-  \textbf{Beschreibung}  & Interpretierte Programmiersprache & Kompilierte Programmiersprache\\
-  \hline
-  \textbf{Vorteile}  & \makecell{-Lightweight\\-Beliebt für ML\\-Umfangreiche Bibliotheken\\-Grosser Community Support} & \makecell{-Schnell \\-Möglichkeit für Threading}\\
-  \hline
-  \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight}\\
-  \hline
-  \textbf{Links} & https://www.python.org/ & https://www.java.com/en/ \\
-  \hline
-\end{tabular}
-\caption{Programmiersprachen Vergleich}
-\label{table:lang-compare}
-\end{table}
-
-\begin{tabularx}{\textwidth}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
 \textbf{} & \textbf{Python} & \textbf{Java}\\
   \hline
@@ -116,15 +99,9 @@
   \textbf{Links} & https://www.python.org/ & https://www.java.com/en/ \\
   \hline
 \end{tabularx}
-
-\begin{tabularx}{\textwidth}{|X|X|X|X|}
-\hline
-In dieser Tabelle & hat jede Zelle genau die & gleich Breite & nämlich gerade 2cm \\
-\hline
-Und wie man & dabei leicht erkennen kann & reicht diese Breite nicht bei allen
-& Spalten aus um den gesamten Text darzustellen. Es wird darum selbständig einfach zeilenumbruch getätigt \\
-\hline
-\end{tabularx}
+\caption{Programmiersprachen Vergleich}
+\label{table:lang-compare}
+\end{table}
 
 \subsubsection{Wegfindung Algorithmus}
 
@@ -169,6 +146,26 @@ Links:
 
 
 \subsubsection{Bilderkennung}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
+\hline
+\textbf{} & \textbf{Tensorflow} & \textbf{LiteRT} & \textbf{PyTorch} & \textbf{OpenCV}\\
+  \hline
+  \textbf{Beschreibung}  & Interpretierte Programmiersprache & Ehemals TensorFlow Lite und optimiert für On-Device ML & & \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-Gut Dokumentiert\\-Grosse Community\\-Gute Performance dank Hardware Beschleunigung} & \makecell{-Schnell \\-Möglichkeit für Threading} & & \\
+  \hline
+  \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight} & & \\
+  \hline
+  \textbf{Links} & https://www.python.org/ & https://www.java.com/en/  & & \\
+  \hline
+\end{tabularx}
+\caption{Programmiersprachen Vergleich}
+\label{table:lang-compare}
+\end{table}
 
 \textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten.
 
