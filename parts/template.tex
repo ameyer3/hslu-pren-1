@@ -1,0 +1,73 @@
+
+
+\section{Template}
+\subsection{Some subsection}
+Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+
+\subsection{Another subsection: Liste}
+How to make a bullet-point list.
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+
+ And another one:
+ 
+\begin{itemize}
+    \item First item
+    \item Second item
+\end{itemize}
+\subsection{Third subsection: Nummerierte Liste}
+How to make a numbered list:
+\begin{enumerate}
+    \item First enum
+    \item Second enum
+    \item Third enum
+\end{enumerate}
+\subsubsection{Some sub-subsection}
+Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+
+
+\subsection{Some subsection: Bild einfuegen}
+Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{img/HSLU_Logo.png}
+\caption{Sample caption}
+\label{fig:hslu-logo}
+\end{figure}
+
+Here we can reference image \ref{fig:hslu-logo} if a label has been defined when inserting the image. If you do this it will be uniform.
+
+\subsubsection{Some sub-subsection: Tabelle}
+
+This is how you make a table and reference it like this: \ref{table:template}:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |l| l| l|} % Dimension breite
+  \textbf{Column Header 1} & \textbf{Column Header 2} &  \textbf{Column Header 3}\\
+  \hline
+  
+  Row 1, Col1 & Row 1, Col 2 & Row 1, Col 3\\
+
+  Row 2 &Row 2 & Row 2 \\
+  
+  Row 3 & Row 3 & Row 3 \\
+  
+  
+  Only fill first Col && and the last\\
+\end{tabular}
+\caption{Table to show how to use tables}
+\label{table:template}
+\end{table}
+
+\subsection{Subsection: Akronyme und Quellen}
+
+For acronym entries, add them to the "glossary.tex" file and reference them like this: \acrfull{pren1} when you use them for the first time.
+
+When you wanna use the short form do this \acrshort{pren1}.
+
+How to use a source\cite{wikipedia-scrum}.
