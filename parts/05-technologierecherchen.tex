@@ -11,7 +11,69 @@
 
 \subsubsection{Antriebe}
 
-\subsubsection{Weg- und Distanzerkennung}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+  \textbf{} & \textbf{Bürstenbehafteter Motor} & \textbf{Bürstenloser Motor (BLDC)}\\
+  \hline
+  \textbf{Beschreibung}  & \makecell{Einfach und gutes Preis-Leistungsverhältnis} & \makecell{Leichter Motor benötigt jedoch \\zusätzliche Schaltung}\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-aufgrund linearer Strom-Drehmoment \\Charakteristik gutes Regelverhalten\\-Drehzahleinstellbereich gross} & \makecell{-Belastbar\\-wartungsfrei\\-niedriges Gewicht}\\
+  \hline
+  \textbf{Nachteile} & \makecell{-schlechte Wärmeableitung\\-Warten von Kommutator und Bürsten}& \makecell{-Sensorsystem notwendig\\-zusätzliche Systemkosten}\\
+  \hline
+  \textbf{Links} & https://doi.org/10.1007/978-3-658-37423-5& https://doi.org/10.1007/978-3-658-37423-5\\
+  \hline
+\end{tabular}
+\caption{Antriebe}
+\label{table:lang-compare}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+  \textbf{} & \textbf{Asynchron Motor} & \textbf{Schrittmotoren}\\
+  \hline
+  \textbf{Beschreibung}  & \makecell{effizienter Motor} & \makecell{Präziser Motor ohne zusätzliche Steuerung}\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-robust, wartungsfrei \\-tiefe Herstellungskosten} & \makecell{-wartungsfrei\\-kostengünstig\\-Betrieb ohne weiteren Sensoren}\\
+  \hline
+  \textbf{Nachteile} & \makecell{-zusätzliche Komponenten nötig für \\Drehzahlverstellung\\-unpräzise ohne Steuerelektronik}& \makecell{-Leistungen müssen bekannt sein\\-niedrige Leistungsdichte}\\
+  \hline
+  \textbf{Links} & https://doi.org/10.1007/978-3-658-37423-5& https://doi.org/10.1007/978-3-658-37423-5\\
+  \hline
+\end{tabular}
+\caption{Antriebe}
+\label{table:lang-compare}
+\end{table}
+
+\subsubsection{Objekterkennung}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+  \textbf{} & \textbf{Ultraschall} & \textbf{Optoelektrisch}\\
+  \hline
+  \textbf{Beschreibung}  & \makecell{Senden und Empfangen von Ultraschall} & \makecell{Senden und Emfpangen von Licht}\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-geringe Störeinflüsse von Material und Umwelt\\-grosse Reichweite} & \makecell{-Präzise Messungen möglich}\\
+  \hline
+  \textbf{Nachteile} & \makecell{-Blindzone (min. Reichweite)} & \makecell{-Störeinflüsse von Licht\\-Materialbeschaffenheit}\\
+  \hline
+  \textbf{Links} & https://doi.org/10.1007/978-3-658-12562-2& doi.org/10.1007/978-3-658-12562-2\\
+  \hline
+\end{tabular}
+\caption{Objekterkennung}
+\label{table:lang-compare}
+\end{table}
+
 
 
 
@@ -28,9 +90,9 @@
 \hline
   \textbf{} & \textbf{Python} & \textbf{Java}\\
   \hline
-  \textbf{Beschreibung}  & \makecell{} & \makecell{}\\
+  \textbf{Beschreibung}  & Interpretierte Programmiersprache & Kompilierte Programmiersprache\\
   \hline
-  \textbf{Vorteile}  & \makecell{-Lightweight\\-Beliebt für ML} & \makecell{-Schnell \\-Möglichkeit für Threading}\\
+  \textbf{Vorteile}  & \makecell{-Lightweight\\-Beliebt für ML\\-Umfangreiche Bibliotheken\\-Grosser Community Support} & \makecell{-Schnell \\-Möglichkeit für Threading}\\
   \hline
   \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight}\\
   \hline
@@ -41,10 +103,32 @@
 \label{table:lang-compare}
 \end{table}
 
+\begin{tabularx}{\textwidth}{|l|l|l|}
+\hline
+\textbf{} & \textbf{Python} & \textbf{Java}\\
+  \hline
+  \textbf{Beschreibung}  & Interpretierte Programmiersprache & Kompilierte Programmiersprache\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-Lightweight\\-Beliebt für ML\\-Umfangreiche Bibliotheken\\-Grosser Community Support} & \makecell{-Schnell \\-Möglichkeit für Threading}\\
+  \hline
+  \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight}\\
+  \hline
+  \textbf{Links} & https://www.python.org/ & https://www.java.com/en/ \\
+  \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+In dieser Tabelle & hat jede Zelle genau die & gleich Breite & nämlich gerade 2cm \\
+\hline
+Und wie man & dabei leicht erkennen kann & reicht diese Breite nicht bei allen
+& Spalten aus um den gesamten Text darzustellen. Es wird darum selbständig einfach zeilenumbruch getätigt \\
+\hline
+\end{tabularx}
 
 \subsubsection{Wegfindung Algorithmus}
 
-Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden werden können. Nachfolgend werden eingie miteinander vergliechen.
+Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden werden können. Nachfolgend werden einige miteinander verglichen.
 
 \vspace{10pt}
 \hrule
@@ -95,10 +179,43 @@ Links:
 Beschreibung:
 
 Vorteile:
+\begin{itemize}
+    \item Gut Dokumentiert
+    \item Grosse Community
+    \item Gute Performance dank Hardware Beschleunigung
+\end{itemize}
+
 
 Nachteile:
 \begin{itemize}
     \item Internetzugang nötig
+    \item Steile Lernkurve
+    \item Überdimensioniert für einfacher Aufgaben
+\end{itemize}
+
+Links: https://www.tensorflow.org/
+
+\vspace{5pt}
+\hrule
+
+\textbf{Variante 1: LiteRT (ehemals: TensorFlow Lite}
+
+Beschreibung:
+
+Vorteile:
+\begin{itemize}
+    \item Optimiert für On-Device ML Applikationen
+    \item Gut Dokumentiert
+    \item Grosse Community
+    \item Gute Performance dank Hardware Beschleunigung
+\end{itemize}
+
+
+Nachteile:
+\begin{itemize}
+    \item Kein internetzugang nötig
+    \item Steile Lernkurve
+    \item Überdimensioniert für einfacher Aufgaben
 \end{itemize}
 
 Links: https://www.tensorflow.org/
@@ -113,10 +230,15 @@ Beschreibung:
 Vorteile:
 \begin{itemize}
     \item kein Internetzugang nötig
+    \item Leicht zu erlenen und zu implementieren
+    \item Grosse Community, viele Tutorials und Beispiele verfügbar.
 \end{itemize}
 
 Nachteile:
-
+\begin{itemize}
+    \item Rechenintensiv, schlechte performance (jeh nach Aufgabe)
+    \item Nicht die beste Wahl für Deep-Learning-Fähigkeiten
+\end{itemize}
 Links: https://opencv.org/
 
 \vspace{5pt}
