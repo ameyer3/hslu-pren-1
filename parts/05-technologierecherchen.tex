@@ -128,10 +128,12 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 \label{table:path-algo-compare}
 \end{table}
 
-
+\newpage
 
 
 \subsubsection{Bilderkennung}
+
+\textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten.
 
 \begin{table}[H]
 \centering
@@ -146,7 +148,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
   \hline
   \textbf{Nachteile} & \makecell{-Steile Lernkurve \\-Überdimensioniert für einfachere\\ Aufgaben } & \makecell{-Steile Lernkurve} \\
   \hline
-  \textbf{Links} & https://www.tensorflow.org & https://ai.google.dev/edge/litert \\
+  \textbf{Links} & \url{https://www.tensorflow.org} & \url{https://ai.google.dev/edge/litert} \\
   \hline
 \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
@@ -159,14 +161,14 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
   \hline
   \textbf{Nachteile} & \makecell{-Weniger ausgereift für die Produktion \\ im Vergleich zu TensorFlow \\ -Hoher Speicherbedarf} & \makecell{-Rechenintensiv \\ -Schlechte Performance \\ -Nicht die beste Wahl für Deep-Learn-\\ing-Fähigkeiten} \\
   \hline
-  \textbf{Links} & https://pytorch.org/ & https://opencv.org/ \\
+  \textbf{Links} & \url{https://pytorch.org/} & \url{https://opencv.org/} \\
   \hline
 \end{tabularx}
 \caption{Vision Objekterkennung Vergleich}
 \label{table:vision-object-detection-compare}
 \end{table}
 
-\textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten.
+
 
 \vspace{10pt}
 \hrule
@@ -250,26 +252,26 @@ Muss-Kriterium: Platz auf Raspi
 \hline
 \textbf{} & \textbf{Raspberry Camera Modul} & \textbf{USB Webcam}\\
   \hline
-  \textbf{Beschreibung} &  & \\
+  \textbf{Beschreibung} & Kamera Module die speziell für den Einsatz mit dem Raspberry Pi entwickelt sind. Mit einer eigenen CSI Schnittstelle für den Anschluss an einen Single Board Computer & Handelsübliche Webcam wie Sie für Video Meetings eingesetzt wird. \\
   \hline
   \textbf{Vorteile}  & \makecell{-Kompatibilität mit Raspberry Pi \\ -CSI Konnektor} & \makecell{-Grössere Auswahl an Möglichkeiten \\ -Halterung meist inklusive \\ -Schwenkbar und Drehbar} \\
   \hline
   \textbf{Nachteile} & \makecell{-Kein Gehäuse \\ -Keine Halterung} & \makecell{} \\
   \hline
-  \textbf{Links} & https://www.raspberrypi.com/documentation/accessories/camera.html & \\
+  \textbf{Links} & \url{https://www.raspberrypi.com/documentation/accessories/camera.html} & \url{https://www.logitech.com/de-ch/shop/c/webcams} \\
   \hline
 \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{GigE USB Kamera} & \textbf{} \\
+\textbf{} & \textbf{Industriekamera} & \textbf{} \\
   \hline
-  \textbf{Beschreibung}  & & \\
+  \textbf{Beschreibung} & Eine Industriekamera wird oft für Vision Anwendungen im Industriebereich eingesetzt. Sie wird in den meisten Fällen via Ethernet Gygabyte Anbindung angeschlossen. In einigen Konfigurationen auch mit USB 3.0 verfügbar. & \\
   \hline
-  \textbf{Vorteile}  & \makecell{} & \makecell{} \\
+  \textbf{Vorteile}  & \makecell{-Sehr gute Qualität \\ -Objektiv frei wählbar \\ -Konfigurierbar} & \makecell{} \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-Kostspielig \\ -Schlechte Kompatibilität \\ -Keine Halterung inklusive} & \makecell{} \\
   \hline
-  \textbf{Links} & & \\
+  \textbf{Links} & \url{https://machinevisionkamera.de/Industriekamera-USB3-Vision} & \\
   \hline
 \end{tabularx}
 \caption{Kamera Vergleich}
