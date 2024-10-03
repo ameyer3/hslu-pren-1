@@ -7,7 +7,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Aluminium} & \textbf{Stahl} \\
   \hline
@@ -15,7 +15,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-Preis \\ -aufwendige Verarbeitung \\} & \makecell{-Preis\\-aufwendige Verarbeitung \\ -Gewicht}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Metalle}
 \label{table:metals-comparison}
 \end{table}
@@ -24,7 +24,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{ABS} & \textbf{PLA} \\
   \hline
@@ -32,7 +32,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-schwer druckbar \\ -VOC's  \\} & \makecell{-spröde\\-schlechte Wärmebeständigkeit}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{3D-Druck Thermoplaste}
 \label{table:fdm-thermoplasts-comparison}
 \end{table}
@@ -41,7 +41,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Holz} & \textbf{Mitteldichte Faserplatte (MDF)} \\
   \hline
@@ -49,7 +49,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-brennbar \\ -Variationen in Festigkeit} & \makecell{-brennbar\\-nimmt Feuchtigkeit auf\\-nicht recyclebar}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Holzwerkstoffe}
 \label{table:woods-comparison}
 \end{table}
@@ -107,11 +107,11 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Schalter} & \textbf{Touchscreen} \\
   \hline
-  \textbf{Beschreibung}  & \makecell{Physische Eingabeoptionen wie Ein-/Aus- oder Stellschalter} & \makecell{Eingabe über ein Touchscreen}\\
+  \textbf{Beschreibung}  & Physische Eingabeoptionen wie Ein-/Aus- oder Stellschalter & Eingabe über ein Touchscreen\\
   \hline
   \textbf{Vorteile}  & \makecell{-keine Software benötigt\\-einfache Implementation} & \makecell{-sieht Modern aus \\ -Gewicht \\-Teuer}\\
   \hline
@@ -119,7 +119,7 @@
   \hline
   \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Schalter_(Elektrotechnik)} & \url{https://www.pi-shop.ch/display}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Eingabeoptionen}
 \label{table:et-object-detection-compare}
 \end{table}
@@ -129,7 +129,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Horn} & \textbf{Leuchte} \\
   \hline
@@ -141,7 +141,7 @@
   \hline
   \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Summer_(Elektrik)} & \url{https://de.wikipedia.org/wiki/Leuchtdiode}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Ausgabeoptionen}
 \label{table:et-object-detection-compare}
 \end{table}
@@ -152,11 +152,11 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Akkumulator} & \textbf{Batterie} \\
   \hline
-  \textbf{Beschreibung}  & \makecell{Spannungsstabilisierte Spannungsversorgung} & \makecell{Leicht wechselbare Spannungsversorgung}\\
+  \textbf{Beschreibung}  & Spannungsstabilisierte Spannungsversorgung & Leicht wechselbare Spannungsversorgung\\
   \hline
   \textbf{Vorteile}  & \makecell{-geeignet für hoher Stromverbrauch\\-Ausgangsspannungsstabilität} & \makecell{-Billig \\-einfach einbaubar\\-Gewicht}\\
   \hline
@@ -164,7 +164,7 @@
   \hline
   \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Akkumulator} & \url{https://de.wikipedia.org/wiki/Batterie_(Elektrotechnik)}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Steuerung}
 \label{table:et-object-detection-compare}
 \end{table}
@@ -175,11 +175,11 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Bürstenbehafteter Motor} & \textbf{Bürstenloser Motor (BLDC)}\\
   \hline
-  \textbf{Beschreibung}  & \makecell{Einfach und gutes Preis-Leistungsverhältnis} & \makecell{Leichter Motor benötigt jedoch \\zusätzliche Schaltung}\\
+  \textbf{Beschreibung}  & Einfach und gutes Preis-Leistungsverhältnis & Leichter Motor benötigt jedoch zusätzliche Schaltung\\
   \hline
   \textbf{Vorteile}  & \makecell{-aufgrund linearer Strom-Drehmoment \\Charakteristik gutes Regelverhalten\\-Drehzahleinstellbereich gross} & \makecell{-Belastbar\\-wartungsfrei\\-niedriges Gewicht}\\
   \hline
@@ -187,7 +187,7 @@
   \hline
   \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-37423-5} & \url{https://doi.org/10.1007/978-3-658-37423-5}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Antriebe}
 \label{table:motor1-compare}
 \end{table}
@@ -196,11 +196,11 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Asynchron Motor} & \textbf{Schrittmotoren}\\
   \hline
-  \textbf{Beschreibung}  & \makecell{effizienter Motor} & \makecell{Präziser Motor ohne zusätzliche Steuerung}\\
+  \textbf{Beschreibung}  & \makecell{effizienter Motor} & Präziser Motor ohne zusätzliche Steuerung\\
   \hline
   \textbf{Vorteile}  & \makecell{-robust, wartungsfrei \\-tiefe Herstellungskosten} & \makecell{-wartungsfrei\\-kostengünstig\\-Betrieb ohne weiteren Sensoren}\\
   \hline
@@ -208,7 +208,7 @@
   \hline
   \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-37423-5} & \url{https://doi.org/10.1007/978-3-658-37423-5}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Antriebe}
 \label{table:motor2-compare}
 \end{table}
@@ -218,17 +218,17 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabularx}{|l|X|X|}
+\begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Ultraschall} & \textbf{Optoelektrisch}\\
   \hline
   \textbf{Beschreibung}  & \makecell{Senden und Empfangen von Ultraschall} & \makecell{Senden und Emfpangen von Licht}\\
   \hline
-  \textbf{Vorteile}  & \makecell{-geringe Störeinflüsse von Material und Umwelt\\-grosse Reichweite} & \makecell{-Präzise Messungen möglich}\\
+  \textbf{Vorteile}  & \makecell{-geringe Störeinflüsse von Material und \\Umwelt\\-grosse Reichweite} & \makecell{-Präzise Messungen möglich}\\
   \hline
   \textbf{Nachteile} & \makecell{-Blindzone (min. Reichweite)} & \makecell{-Störeinflüsse von Licht\\-Materialbeschaffenheit}\\
   \hline
-  \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-12562-2} & \url{doi.org/10.1007/978-3-658-12562-2}\\
+  \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-12562-2} & \url{https://doi.org/10.1007/978-3-658-12562-2}\\
   \hline
 \end{tabularx}
 \caption{Objekterkennung}
