@@ -56,7 +56,7 @@
 
 \newpage
 
-\subsubsection{Fahrwerk/Getriebe}
+\subsubsection{Fahrwerk/Getriebe/Lenkung}
 
 \begin{table}[H]
 \centering
@@ -68,14 +68,25 @@
   \hline
   
   \makecell{\textbf{Differential Wheel Drive}\\2 einzeln Angetriebene Räder,\\ 1 Schwenkrad } 
-  & \makecell{-keine Lenkung\\-leicht\\-Punktwendung möglich} & \makecell{-instabil} 
+  & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich} & \makecell{-instabil\\-2 Antriebsmotoren} 
   & \makecell{\url{https://en.wikipedia.org/wiki/Differential_wheeled_robot}}\\
 
 \hline
 
-\makecell{\textbf{Überlagerungslenkgetriebe}\\"Panzerlenkung"\\1 Motor mit 2 Ausgangswellen,\\ Drehzahl/Richtung unabhängig einstellbaer}
-& \makecell{-nur 1 Motor\\-keine }
-  
+\makecell{\textbf{Überlagerungslenkgetriebe}\\"Panzerlenkung"\\1 Motor mit 2 Ausgangswellen,\\ Drehzahl/Richtung unabhängig einstellbar}
+& \makecell{-1 Antriebsmotor\\-1Lenkmotor\\-kein Lenkgestänge}
+& \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau}
+& \url{https://de.wikipedia.org/wiki/%C3%9Cberlagerungslenkgetriebe}\\
+
+\hline
+
+\makecell{\textbf{Lenkgetriebe}\\zur Umwandlung Rotation\\in unterschiedliche Einschlagwinkel}
+& \makecell{-simpler Aufbau\\-1 Aktuator}
+& \makecell{-begrenzter Einschlag}
+&\url{https://de.wikipedia.org/wiki/Lenkgetriebe}\\
+
+\hline
+
 \end{tabular}
 \caption{Fahrwerkstypen}
 \label{table:chassis/transmission-types}
@@ -106,7 +117,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-Gewicht \\-Platzausnutzung} & \makecell{-Software\\-Reaktionsgeschwindigkeit}\\
   \hline
-  \textbf{Links} &  https://de.wikipedia.org/wiki/Schalter_(Elektrotechnik) & https://www.pi-shop.ch/display\\
+  \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Schalter_(Elektrotechnik)} & \url{https://www.pi-shop.ch/display}\\
   \hline
 \end{tabular}
 \caption{Eingabeoptionen}
@@ -128,7 +139,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-Stromversorgung \\-unterschiede schwer erkennbar} & \makecell{-Stromverbrauch kann hoch sein}\\
   \hline
-  \textbf{Links} &  https://de.wikipedia.org/wiki/Summer_(Elektrik) & https://de.wikipedia.org/wiki/Leuchtdiode\\
+  \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Summer_(Elektrik)} & \url{https://de.wikipedia.org/wiki/Leuchtdiode}\\
   \hline
 \end{tabular}
 \caption{Ausgabeoptionen}
@@ -151,7 +162,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-Gewicht} & \makecell{-keine Spannungsstabilität\\-keine grosse Ströme möglich}\\
   \hline
-  \textbf{Links} &  https://de.wikipedia.org/wiki/Akkumulator & https://de.wikipedia.org/wiki/Batterie_(Elektrotechnik)\\
+  \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Akkumulator} & \url{https://de.wikipedia.org/wiki/Batterie_(Elektrotechnik)}\\
   \hline
 \end{tabular}
 \caption{Steuerung}
@@ -174,7 +185,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-schlechte Wärmeableitung\\-Warten von Kommutator und Bürsten}& \makecell{-Sensorsystem notwendig\\-zusätzliche Systemkosten}\\
   \hline
-  \textbf{Links} & https://doi.org/10.1007/978-3-658-37423-5& https://doi.org/10.1007/978-3-658-37423-5\\
+  \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-37423-5} & \url{https://doi.org/10.1007/978-3-658-37423-5}\\
   \hline
 \end{tabular}
 \caption{Antriebe}
@@ -195,7 +206,7 @@
   \hline
   \textbf{Nachteile} & \makecell{-zusätzliche Komponenten nötig für \\Drehzahlverstellung\\-unpräzise ohne Steuerelektronik}& \makecell{-Leistungen müssen bekannt sein\\-niedrige Leistungsdichte}\\
   \hline
-  \textbf{Links} & https://doi.org/10.1007/978-3-658-37423-5& https://doi.org/10.1007/978-3-658-37423-5\\
+  \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-37423-5} & \url{https://doi.org/10.1007/978-3-658-37423-5}\\
   \hline
 \end{tabular}
 \caption{Antriebe}
@@ -207,7 +218,7 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Ultraschall} & \textbf{Optoelektrisch}\\
   \hline
@@ -217,9 +228,9 @@
   \hline
   \textbf{Nachteile} & \makecell{-Blindzone (min. Reichweite)} & \makecell{-Störeinflüsse von Licht\\-Materialbeschaffenheit}\\
   \hline
-  \textbf{Links} & https://doi.org/10.1007/978-3-658-12562-2& doi.org/10.1007/978-3-658-12562-2\\
+  \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-12562-2} & \url{doi.org/10.1007/978-3-658-12562-2}\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Objekterkennung}
 \label{table:et-object-detection-compare}
 \end{table}
