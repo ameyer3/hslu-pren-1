@@ -72,12 +72,14 @@
   \setglossarystyle{long}
 
   % glossary group skipp
-  \renewcommand*{\glsgroupskip}{\vspace{3mm}}
+  % This one made it ugly
+  % \renewcommand*{\glsgroupskip}{\vspace{3mm}}
   \renewenvironment{theglossary}
   {
     % bold name
-    % \renewcommand{\glsnamefont}[1]{\textbf{#1}}
-    \begin{longtable}[l]{@{}p{\dimexpr 1.6cm-\tabcolsep}p{0.8\hsize}}
+    \renewcommand{\glsnamefont}[1]{\textbf{#1}}
+    % No new line when 1.8cm- but then the vspace isnt right anumore for last ones
+    \begin{longtable}[l]{@{}p{\dimexpr 1.6cm-\tabcolsep}p{0.6\hsize}}
   }
   {
     \end{longtable}
@@ -158,7 +160,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-    % TODO Glossary doesn't work yet
+    % TODO Glossary is ugly
     \newpage
     \addglossary
 
