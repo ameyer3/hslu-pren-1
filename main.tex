@@ -15,6 +15,7 @@
 
 
 
+
 % my cheaty way of making linebreaks in tables
 \usepackage{makecell}
 \renewcommand{\cellalign}{tl}
@@ -55,8 +56,10 @@
 }
 
 % Glossary
-\RequirePackage[section, acronym]{glossaries}
-    \makeglossaries
+\usepackage[section, acronym]{glossaries}
+\makeglossaries
+
+
     % Override the mark (because the glossary is only a section use the chapter mark)
 % else, the \leftmark whould not be the chapter name
 \makeatletter
@@ -85,22 +88,18 @@
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
 
 \newcommand\addglossary{
-
   \printnomenclature[2cm]
   % Akronyme
   \addcontentsline{toc}
     {section}
     {Akronyme}
 
-
   \printglossary[
     title=Akronyme,
     style=acronymindent,
     type=\acronymtype
   ]
-
   \newpage
-
 }
 
 % Actual document
@@ -136,7 +135,7 @@
     \newpage
     \listoftables
     \newpage
-      \subfile{glossary.tex}
+    \subfile{glossary.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% Add your file here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
