@@ -56,7 +56,7 @@
 
 \newpage
 
-\subsubsection{Antriebsstrang}
+\subsubsection{Mechanische Komponenten}
 
 
 
@@ -92,20 +92,19 @@
   \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Raupenantrieb} & \textbf{NAME}\\
+\textbf{} & \textbf{Raupenfahrzeug} & \textbf{Bionischer Greifer}\\
   \hline
-  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &           \\
+  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &      Bionischer Greifer zum Aufheben des Hindernis     \\
   \hline
-  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} &           \\
+  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} &        \\
   \hline
   \textbf{Nachteile}&\makecell{-komplex\\-Gewicht\\-tiefe Vmax} &           \\
   \hline
-  \textbf{Links}& \url{https://de.wikipedia.org/wiki/Kettenfahrzeug}          &               \\
-  \hline
+  \textbf{Links}& \url{https://de.wikipedia.org/wiki/Kettenfahrzeug}          &               \\ \hline
   \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Schutzklassen} & \textbf{NAME}\\
+\textbf{} & \textbf{Schutzklassen} & \textbf{}\\
   \hline
   \textbf{Beschreibung}&     DIN-Norm DIN EN 60529       &           \\
   \hline
@@ -114,8 +113,8 @@
   \textbf{Links}&    https://www.jungheinrich-profishop.ch/ch-de/profi-guide/ip-schutzarten/       &               \\
   \hline
 \end{tabularx}
-\caption{Antriebsstrang}
-\label{table:Drive-unit}
+\caption{Mechanische Komponenten}
+\label{table:mechanical-components}
 \end{table}
 
 
@@ -420,10 +419,44 @@ Muss-Kriterium: Kompatibilität mit Raspberry Pi
 \subsection{Simulator}
 
 \subsubsection{Programmiersprache}
-siehe oben
+
+Wie bei der Software für den Roboter kommen für den Simulator Java oder Python infrage. Der Vergleich der beiden Programmiersprachen wurde im vorherigen Kapitel durchgeführt.
 
 \subsubsection{Wegenetzwerk einlesen}
 YAML / JSON / Bild
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{YAMLl} & \textbf{JSON}\\
+  \hline
+  \textbf{Beschreibung} & Eine Datenseralisierungssprache die gut vom Mensch gelesen werden kann. &  \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{-Grössere Auswahl an Möglichkeiten \\ -Halterung meist inklusive \\ -Schwenkbar und Drehbar} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-Kein Gehäuse \\ -Keine Halterung} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{https://yaml.org/} & \url{https://www.json.org/json-en.html} \\
+  \hline
+\end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Bild} & \textbf{} \\
+  \hline
+  \textbf{Beschreibung} & Das Wegenetz würde als Graph skizziert werden und vom Simulator einglesen werden. & \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-Realitätsnah} & \makecell{} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-viel Aufwand & \makecell{} \\
+  \hline
+  \textbf{Links} & & \\
+  \hline
+\end{tabularx}
+\caption{Wegenetz einlesen Vergleich}
+\label{table:camera-compare}
+\end{table}
 
 \subsubsection{Wegenetz intern speichern}
 Graph mit Library / 2D Liste
