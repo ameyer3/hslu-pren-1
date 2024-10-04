@@ -62,9 +62,7 @@ Nachfolgend werden Aluminium, Stahl und wichtige Prototyping Materialien verglic
 
 \subsubsection{Mechanische Komponenten}
 
-Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu realisieren. 
-
-
+Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu realisieren. Nachfolgend werden verschiedene Ansätze mit Vor- und Nachteilen bewertet.
 
 \begin{table}[H]
 \centering
@@ -120,15 +118,15 @@ Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu re
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Bionischer Greifer}&\textbf{Parallel Greifer}&\\
+\textbf{} & \textbf{Bionischer Greifer}&\textbf{Parallel Greifer}\\
   \hline
-  \textbf{Beschreibung} &      Bionischer Greifer zum Aufheben des Hindernis&     \\
+  \textbf{Beschreibung} & Bionischer Greifer zum Aufheben des Hindernis&   Parallelgreifer zu Anheben des Hindernis  \\
   \hline
-  \textbf{Vorteile} & \makecell{-gute Haftung durch flexible Kontur \\ -Greifkräfte können geregelt werden}&\\
+  \textbf{Vorteile} & \makecell{-gute Haftung durch flexible Kontur \\-Greifkräfte können geregelt werden}&\makecell{-Einfache Bauweise\\ -Erlaubt ungenaue Vorpositionierung}  \\
   \hline
-  \textbf{Nachteile}& \makecell{-aufwändige Ansteuerung \\ -teuer in der Anschaffung}&     \\
+  \textbf{Nachteile}& \makecell{-aufwändige Ansteuerung \\ -teuer in der Anschaffung} &\makecell{-Greifkräfte sind aufwändiger zu Regeln \\ -}     \\
   \hline
-  \textbf{Links}  &   \url{https://www.festo.com/ch/de/e/ueber-festo/forschung-und-entwicklung/bionic-learning-network/highlights-2010-2012/bionischer-handling-assistent-id_33759/}       &   \\
+  \textbf{Links}  &   \url{https://www.festo.com/ch/de/e/ueber-festo/forschung-und-entwicklung/bionic-learning-network/highlights-2010-2012/bionischer-handling-assistent-id_33759/}       &  \url{https://schunk.com/ch/de/greiftechnik/parallelgreifer/c/PUB_8295} \\
   \hline
 \end{tabularx}
 \caption{Hebevorrichtung}
@@ -138,7 +136,7 @@ Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu re
 
 \subsubsection{Normen}
 
-
+Nachfolgend sind relevante Normen aufgeführt.
 
 \begin{table}[H]
 \centering
@@ -157,11 +155,6 @@ Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu re
 \caption{Normen}
 \label{table:norms}
 \end{table}
-
-
-
-
-
 
 
 
@@ -240,7 +233,7 @@ Damit die elektronischen Komponente mit Strom versorgt werden können, wird der 
   \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Akkumulator} & \url{https://de.wikipedia.org/wiki/Batterie_(Elektrotechnik)}\\
   \hline
 \end{tabularx}
-\caption{Steuerung}
+\caption{Stromversorgung}
 \label{table:power-supply-compare}
 \end{table}
 
@@ -310,7 +303,7 @@ Um die Objekte zu erkennen, werden zwei verschiedene Technologien verglichen.
 
 \subsubsection{Steuerung}
 
-Zur befahren vom System und Steuerung von Gerät wird eine logic benötig.
+Zum Befahren vom System und Steuerung von Gerät wird eine Logik benötig.
 
 \begin{table}[H]
 \centering
@@ -483,6 +476,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 \subsubsection{Wegenetzwerk einlesen}
 
+Damit im Simulator das Wegenetzwerk eingelesen werden kann, wurden die folgenden Möglichkeiten in Betracht gezogen.
+
 \begin{table}[H]
 \centering
 \small
@@ -520,6 +515,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 \subsubsection{Wegenetz intern speichern}
 
+Das Wegenetzwerk könnte auf folgende Arten gespeichert werden.
+
 \begin{table}[H]
 \centering
 \small
@@ -556,6 +553,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 \subsubsection{Bewegliche Hindernisse erfassen}
 
+Damit die beweglichen Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, haben wir folgende Methoden bewertet.
+
 \begin{table}[H]
 \centering
 \small
@@ -579,6 +578,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 
 \subsubsection{Blockierte Knoten erfassen}
+
+Damit die blockierenden Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, haben wir folgende Methoden bewertet.
 
 \begin{table}[H]
 \centering
@@ -604,6 +605,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 \subsubsection{Wegfindung}
 
+Die Implementation der Wegfindung kann auf folgende Arten umgesetzt werden. Die eigentlichen Algorithmen wurden in einem vorherigen Kapitel verglichen.
+
 \begin{table}[H]
 \centering
 \small
@@ -627,34 +630,22 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 \subsubsection{Zielauswahl}
 
+Hier wurden Möglichkeiten verglichen, wie das Ziel ausgewählt werden kann im Simulator.
+
 \begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Human Input} & \textbf{Roboter berechnet}\\
+\textbf{} & \textbf{Human Input} & \textbf{Random}\\
   \hline
-  \textbf{Beschreibung} & Durch Input einer Person wird das Ziel gewählt. &  Der Roboter berechnet den kürzeste Weg zu allen Zielen und wählt das nahste Ziel aus.\\
+  \textbf{Beschreibung} & Durch Input einer Person wird das Ziel gewählt. & Der Roboter wählt zufällig eines der Ziele aus.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-simpel\\-schnelle Zielauswahl} & \makecell{-schnellste Router gewählt} \\
+  \textbf{Vorteile}  & \makecell{-Simpel} & \makecell{-Schnell} \\
   \hline
-  \textbf{Nachteile} & \makecell{-nicht immer das optimal Ziel wird gewählt} & \makecell{-aufwändig\\-möglicherweise langsam} \\
+  \textbf{Nachteile} & \makecell{} & \makecell{} \\
   \hline
   \textbf{Links} &&\\
-  \hline
-\end{tabularx}
-
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Random} & \textbf{}\\
-  \hline
-  \textbf{Beschreibung} & Der Roboter wählt zufällig eines der Ziele aus.  &   \\
-  \hline
-  \textbf{Vorteile}  & \makecell{-schnell} \\
-  \hline
-  \textbf{Nachteile} & \makecell{-ungenau} \\
-  \hline
-  \textbf{Links} & \url{} &  \\
   \hline
 \end{tabularx}
 \caption{Zielauswahl Vergleich}
@@ -662,6 +653,8 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 \end{table}
 
 \subsubsection{Clientseitige Kommunikation (I/O)}
+
+Die Varianten eines Clientinterfaces wurden hier verglichen.
 
 \begin{table}[H]
 \centering
@@ -686,9 +679,9 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
   \hline
   \textbf{Beschreibung} & Der Mensch kommuniziert nicht mit dem Roboter. Falls der Roboter das Ziel nicht erreicht gibt es eine Fehlermeldung. &   \\
   \hline
-  \textbf{Vorteile}  & \makecell{-einfach} \\
+  \textbf{Vorteile}  & \makecell{-Einfach} & \\
   \hline
-  \textbf{Nachteile} & \makecell{-sehr intransparent} \\
+  \textbf{Nachteile} & \makecell{-Sehr intransparent} & \\
   \hline
   \textbf{Links} & \url{} &  \\
   \hline
