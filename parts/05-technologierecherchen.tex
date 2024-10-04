@@ -56,38 +56,9 @@
 
 \newpage
 
-\subsubsection{Fahrwerk/Getriebe/Lenkung}
+\subsubsection{Antriebsstrang}
 
-\begin{huge}
-\color{red}
-    Eine der Nachfolgenden "Fahrwerkstypen" Tabellen auswählen, die andere löschen!!
-\end{huge}
 
-\begin{table}[H]
-\centering
-\small
-\begin{tabularx}{\textwidth}{|p{48mm}|l|l|X|}
-\hline
-    \textbf{Typ} & \textbf{Vorteile} & \textbf{Nachteile} & \textbf{Quelle} \\
-\hline
-    \textbf{Differential Wheel Drive} \newline 2 einzeln Angetriebene Räder, 1 Schwenkrad 
-    & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich} & \makecell{-instabil\\-2 Antriebsmotoren} 
-    & \url{https://en.wikipedia.org/wiki/Differential_wheeled_robot}\\
-\hline
-    \textbf{Überlagerungslenkgetriebe} \newline "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar
-    & \makecell{-1 Antriebsmotor\\-1Lenkmotor\\-kein Lenkgestänge}
-    & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau}
-    & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
-\hline
-    \textbf{Lenkgetriebe} \newline zur Umwandlung Rotation in unterschiedliche Einschlagwinkel
-    & \makecell{-simpler Aufbau\\-1 Aktuator}
-    & \makecell{-begrenzter Einschlag}
-    & \url{https://de.wikipedia.org/wiki/Lenkgetriebe}\\
-\hline
-\end{tabularx}
-\caption{Fahrwerkstypen}
-\label{table:chassis/transmission-types}
-\end{table}
 
 
 \begin{table}[H]
@@ -110,18 +81,50 @@
 \hline
 \textbf{} & \textbf{Lenkgetriebe} & \textbf{Omniwheel}\\
   \hline
-  \textbf{Beschreibung} & zur Umwandlung Rotation in unterschiedliche Einschlagwinkel & Rad, welches sich zusätzlich zum \\
+  \textbf{Beschreibung} & zur Umwandlung Rotation in unterschiedliche Einschlagwinkel & Rad, welches sich in der Ebene in alle Richtungen bewegen kann\\
   \hline
-  \textbf{Vorteile} & \makecell{-simpler Aufbau\\-1 Aktuator} & \\
+  \textbf{Vorteile} & \makecell{-simpler Aufbau\\-1 Aktuator} & \makecell{-keine Lenkung nötig\\-scharfe kurven möglich}\\
   \hline
-  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \\
+  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-komplexer Aufbau}\\
   \hline
-  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \\
+  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \url{https://en.wikipedia.org/wiki/Mecanum_wheel}\\
+  \hline
+  \end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Raupenantrieb} & \textbf{NAME}\\
+  \hline
+  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &           \\
+  \hline
+  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} &           \\
+  \hline
+  \textbf{Nachteile}&\makecell{-komplex\\-Gewicht\\-tiefe Vmax} &           \\
+  \hline
+  \textbf{Links}& \url{https://de.wikipedia.org/wiki/Kettenfahrzeug}          &               \\
+  \hline
+  \end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Schutzklassen} & \textbf{NAME}\\
+  \hline
+  \textbf{Beschreibung}&     DIN-Norm DIN EN 60529       &           \\
+  \hline
+  \textbf{Definition}&       Anfroderungen für IP44 und IP00      &           \\
+  \hline
+  \textbf{Links}&    https://www.jungheinrich-profishop.ch/ch-de/profi-guide/ip-schutzarten/       &               \\
   \hline
 \end{tabularx}
-\caption{Fahrwerkstypen}
-\label{table:chassis/transmission-types}
+\caption{Antriebsstrang}
+\label{table:Drive-unit}
 \end{table}
+
+
+
+
+
+
+
+
 
 
 \newpage
