@@ -414,6 +414,32 @@ Muss-Kriterium: Kompatibilität mit Raspberry Pi
 \end{table}
 
 
+\subsection{Simulator}
+
+\subsubsection{Programmiersprache}
+siehe oben
+
+\subsubsection{Wegenetzwerk einlesen}
+YAML / JSON / Bild
+
+\subsubsection{Wegenetz intern speichern}
+Graph mit Library / 2D Liste
+
+\subsubsection{Bewegliche Hindernisse erfassen}
+mittels Gewichtung (kein Hindernis=1, Hindernis=2) / ...
+
+\subsubsection{Blockierte Knoten erfassen}
+Markieren / Aus intern gespeichertem Netz entfernen
+
+\subsubsection{Wegfindung} selber implementieren / Library verwenden (https://networkx.org/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.astar.astar_path.html , https://pypi.org/project/astar/)
+
+\subsubsection{Zielauswahl}
+Human input / Random / nach Berechnung Roboter waehlt selber
+
+\subsubsection{Clientseitige Kommunikation (I/O)}
+GUI, CLI, keine (Fehlermeldung wenn Ziel nicht erreicht)
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%  Notes START (To be deleted afterwards)

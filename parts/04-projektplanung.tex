@@ -124,7 +124,7 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
   \hline
   2.1 & Entwicklungsumgebung & Entwicklungsumgebung erstellen. & S \\
   \hline
-  2.2 & Konzept erarbeiten & Konzept des Simulators definieren. & M \\
+  2.2 & Konzept erarbeiten & Konzept des Simulators definieren analog zu der Evaluation der anderen Lösungsvarianten. & M \\
   \hline
   2.3 & Wegfindung implementieren & Wegfindung in einem Graphen implementieren. & M \\
   \hline
@@ -224,18 +224,3 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
 \label{table:sprint4-backlog}
 \end{table}
 
-Simulator Notizen:
-
-Wegenetzwerk einlesen: YAML / JSON / Bild
-
-Wegenetz intern speicher: Graph mit Library / 2D Liste
-
-Bewegliche Hindernisse markieren: mittels Gewichtung (kein Hindernis=1, Hindernis=2) / ...
-
-Blockeirte Knoten: Markieren / Aus intern gespeichertem Netz entfernen
-
-Wegfindung: selber implementieren / Library verwenden (https://networkx.org/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.astar.astar_path.html , https://pypi.org/project/astar/)
-
-Zielauswahl: Human input / Random / nach Berechnung Roboter waehlt
-
-Clientseitig: GUI, CLI, keine
