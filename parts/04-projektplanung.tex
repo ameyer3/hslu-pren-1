@@ -122,13 +122,11 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
   \hline
   2 & \textbf{Simulator} && \\
   \hline
-  2.1 & Entwicklungsumgebung & Entwicklungsumgebung erstellen & S \\
+  2.1 & Entwicklungsumgebung & Entwicklungsumgebung erstellen. & S \\
   \hline
-  2.2 & Konzept erarbeiteun & Konzept des Simulators definieren & M \\
+  2.2 & Konzept erarbeiten & Konzept des Simulators definieren. & M \\
   \hline
   2.3 & Wegfindung implementieren & Wegfindung in einem Graphen implementieren. & M \\
-  \hline
-  2.4 & Hinderniserkennung & Implementieren, dass Hindernisse erkannt und unterschieden werden. Die Reaktion ist je nach Hindernis anders.& M \\
   \hline
 
 \end{tabularx}
@@ -183,7 +181,9 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
   \hline 
   2  & \textbf{Simulator} &&\\
   \hline
-  2.1  & Simulator wird fertiggestellt &  Die Entwicklung des Simulators wird abgeschlossen. & M\\
+    2.1 & Hinderniserkennung & Implementieren, dass Hindernisse erkannt und unterschieden werden. Die Reaktion ist je nach Hindernis anders.& M \\
+    \hline
+  2.2 & Simulator wird fertiggestellt &  Die Entwicklung des Simulators wird abgeschlossen. & M\\
   \hline
   
 \end{tabularx}
@@ -223,3 +223,19 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
 \caption{Sprint 4 Backlog}
 \label{table:sprint4-backlog}
 \end{table}
+
+Simulator Notizen:
+
+Wegenetzwerk einlesen: YAML / JSON / Bild
+
+Wegenetz intern speicher: Graph mit Library / 2D Liste
+
+Bewegliche Hindernisse markieren: mittels Gewichtung (kein Hindernis=1, Hindernis=2) / ...
+
+Blockeirte Knoten: Markieren / Aus intern gespeichertem Netz entfernen
+
+Wegfindung: selber implementieren / Library verwenden (https://networkx.org/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.astar.astar_path.html , https://pypi.org/project/astar/)
+
+Zielauswahl: Human input / Random / nach Berechnung Roboter waehlt
+
+Clientseitig: GUI, CLI, keine
