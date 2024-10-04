@@ -423,43 +423,77 @@ Muss-Kriterium: Kompatibilität mit Raspberry Pi
 Wie bei der Software für den Roboter kommen für den Simulator Java oder Python infrage. Der Vergleich der beiden Programmiersprachen wurde im vorherigen Kapitel durchgeführt.
 
 \subsubsection{Wegenetzwerk einlesen}
-YAML / JSON / Bild
 
 \begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{YAMLl} & \textbf{JSON}\\
+\textbf{} & \textbf{YAML} & \textbf{JSON}\\
   \hline
-  \textbf{Beschreibung} & Eine Datenseralisierungssprache die gut vom Mensch gelesen werden kann. &  \\
+  \textbf{Beschreibung} & Eine Datenseralisierungssprache die gut vom Mensch gelesen werden kann. &  Eine Sprache für den Datenaustausch. Steht für JavaScript Object Notation. \\
   \hline
-  \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{-Grössere Auswahl an Möglichkeiten \\ -Halterung meist inklusive \\ -Schwenkbar und Drehbar} \\
+  \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{} \\
   \hline
-  \textbf{Nachteile} & \makecell{-Kein Gehäuse \\ -Keine Halterung} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{} & \makecell{} \\
   \hline
   \textbf{Links} & \url{https://yaml.org/} & \url{https://www.json.org/json-en.html} \\
   \hline
 \end{tabularx}
+
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Bild} & \textbf{} \\
+\textbf{} & \textbf{Bild} & \textbf{}\\
   \hline
-  \textbf{Beschreibung} & Das Wegenetz würde als Graph skizziert werden und vom Simulator einglesen werden. & \\
+  \textbf{Beschreibung} & Das Wegenetz würde als Graph skizziert werden und vom Simulator einglesen werden. &   \\
   \hline
   \textbf{Vorteile}  & \makecell{-Realitätsnah} & \makecell{} \\
   \hline
-  \textbf{Nachteile} & \makecell{-viel Aufwand & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-sehr viel Aufwand} & \makecell{} \\
   \hline
-  \textbf{Links} & & \\
+  \textbf{Links} & \url{} &  \\
   \hline
 \end{tabularx}
 \caption{Wegenetz einlesen Vergleich}
-\label{table:camera-compare}
+\label{table:read-path-compare}
 \end{table}
 
+
 \subsubsection{Wegenetz intern speichern}
-Graph mit Library / 2D Liste
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Key-Value Pairs} & \textbf{2D Array}\\
+  \hline
+  \textbf{Beschreibung} & Jeder Knoten ist ein Key und hat als Value eine Liste der Konten, mit denen er verbunden ist. &  Es wird eine Adjazenzmatrix erstellt in einem zweidimensionalen Array.\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-lightweight} & \makecell{-Gewichtung moeglich} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-kann die Kanten nicht gewichten} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix}\\
+  \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Externe Library} & \textbf{}\\
+  \hline
+  \textbf{Beschreibung} & Es wird eine externe Library verwendet, die einen Graph Datentyp anbietet.  &   \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-hat oft andere nuetzliche Funktionen\\-Gewichtung moeglich} & \makecell{} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-externe Abhaengigkeit\\-eventuell unnuetze andere Funktionen} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{https://networkx.org/} &  \\
+  \hline
+\end{tabularx}
+\caption{Wegenetz erfassen Vergleich}
+\label{table:read-path-compare}
+\end{table}
 
 \subsubsection{Bewegliche Hindernisse erfassen}
 mittels Gewichtung (kein Hindernis=1, Hindernis=2) / ...
