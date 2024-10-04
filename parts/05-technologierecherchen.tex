@@ -96,7 +96,7 @@
   \hline
   \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &      Bionischer Greifer zum Aufheben des Hindernis     \\
   \hline
-  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} &        \\
+  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} & {-gute Haftung durch flexible Kontur \\   -Greifkräfte können geregelt werden    }\\
   \hline
   \textbf{Nachteile}&\makecell{-komplex\\-Gewicht\\-tiefe Vmax} &           \\
   \hline
@@ -552,11 +552,11 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 \hline
 \textbf{} & \textbf{Selber implementieren} & \textbf{Externe Library verwenden}\\
   \hline
-  \textbf{Beschreibung} & Der Algorithmus zur Wegfindung wird manuell implementiert.  & Es wird eine externe Library verwendet, um den Algorithmus auszufuehren.  \\
+  \textbf{Beschreibung} & Der Algorithmus zur Wegfindung wird manuell implementiert.  & Es wird eine externe Library verwendet, um den Algorithmus auszuführen.  \\
   \hline
-  \textbf{Vorteile}  & \makecell{-keine externen Abhaengigkeiten\\-keine unnoetigen Zusatzfunktionen} & \makecell{-simpel\\-wahrschieilich effizienter\\-weniger Fehleranfaellig} \\
+  \textbf{Vorteile}  & \makecell{-keine externen Abhängigkeiten\\-keine unnötigen Zusatzfunktionen} & \makecell{-simpel\\-wahrscheinlich effizienter\\-weniger Fehleranfaellig} \\
   \hline
-  \textbf{Nachteile} & \makecell{-komplex} & \makecell{-externe Abhaengigkeit} \\
+  \textbf{Nachteile} & \makecell{-komplex} & \makecell{-externe Abhängigkeit} \\
   \hline
   \textbf{Links} & &\url{https://networkx.org/}  \url{https://pypi.org/project/astar/}  \\
   \hline
@@ -567,7 +567,6 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
 
 
 \subsubsection{Zielauswahl}
-Human input / Random / nach Berechnung Roboter waehlt selber
 
 \begin{table}[H]
 \centering
@@ -576,36 +575,68 @@ Human input / Random / nach Berechnung Roboter waehlt selber
 \hline
 \textbf{} & \textbf{Human Input} & \textbf{Roboter berechnet}\\
   \hline
-  \textbf{Beschreibung} & Jeder Knoten ist ein Key und hat als Value eine Liste der Konten, mit denen er verbunden ist. &  Es wird eine Adjazenzmatrix erstellt in einem zweidimensionalen Array.\\
+  \textbf{Beschreibung} & Durch Input einer Person wird das Ziel gewählt. &  Der Roboter berechnet den kürzeste Weg zu allen Zielen und wählt das nahste Ziel aus.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-lightweight} & \makecell{-Gewichtung moeglich} \\
+  \textbf{Vorteile}  & \makecell{-simpel\\-schnelle Zielauswahl} & \makecell{-schnellste Router gewaehlt} \\
   \hline
-  \textbf{Nachteile} & \makecell{-kann die Kanten nicht gewichten} & \makecell{-aufwaendig\\-moeglicherweise langsam} \\
+  \textbf{Nachteile} & \makecell{-nicht immer das optimal Ziel wird gewhlt} & \makecell{-aufwaendig\\-moeglicherweise langsam} \\
   \hline
-  \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix}\\
+  \textbf{Links} &&\\
   \hline
 \end{tabularx}
 
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Externe Library} & \textbf{}\\
+\textbf{} & \textbf{Random} & \textbf{}\\
   \hline
-  \textbf{Beschreibung} & Es wird eine externe Library verwendet, die einen Graph Datentyp anbietet.  &   \\
+  \textbf{Beschreibung} & Der Roboter wählt zufällig eines der Ziele aus.  &   \\
   \hline
-  \textbf{Vorteile}  & \makecell{-hat oft andere nuetzliche Funktionen\\-Gewichtung moeglich} & \makecell{} \\
+  \textbf{Vorteile}  & \makecell{-schnell} \\
   \hline
-  \textbf{Nachteile} & \makecell{-externe Abhaengigkeit\\-eventuell unnuetze andere Funktionen} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-ungenau} \\
   \hline
-  \textbf{Links} & \url{https://networkx.org/} &  \\
+  \textbf{Links} & \url{} &  \\
   \hline
 \end{tabularx}
-\caption{Wegenetz erfassen Vergleich}
-\label{table:store-path-compare}
+\caption{Zielauswahl Vergleich}
+\label{table:goal-compare}
 \end{table}
 
 \subsubsection{Clientseitige Kommunikation (I/O)}
-GUI, CLI, keine (Fehlermeldung wenn Ziel nicht erreicht)
 
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{GUI} & \textbf{CLI}\\
+  \hline
+  \textbf{Beschreibung} & Es gibt ein graphisches User Interface. &  Inputs und Outputs werden ueber eine Command Line gemacht.\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-schoen\\-benutzerfreundlichl} & \makecell{-simpel} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-mehr Aufwand} & \makecell{-eher unübersichtlich} \\
+  \hline
+  \textbf{Links} &&\\
+  \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Keine Inputs oder Outputs} & \textbf{}\\
+  \hline
+  \textbf{Beschreibung} & Der Mensch kommuniziert nicht mit dem Roboter. Falls der Roboter das Ziel nicht erreicht gibt es eine Fehlermeldung. &   \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-einfach} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-sehr intransparent} \\
+  \hline
+  \textbf{Links} & \url{} &  \\
+  \hline
+\end{tabularx}
+\caption{Kommunikation Vergleich}
+\label{table:communication-compare}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
