@@ -433,9 +433,9 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
   \hline
   \textbf{Beschreibung} & Eine Datenseralisierungssprache die gut vom Mensch gelesen werden kann. &  Eine Sprache für den Datenaustausch. Steht für JavaScript Object Notation. \\
   \hline
-  \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{} \\
+  \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{-Java aehnlicher Syntax} \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-etwas aufwaendiger in Java einzulesen} & \makecell{} \\
   \hline
   \textbf{Links} & \url{https://yaml.org/} & \url{https://www.json.org/json-en.html} \\
   \hline
@@ -492,19 +492,116 @@ Wie bei der Software für den Roboter kommen für den Simulator Java oder Python
   \hline
 \end{tabularx}
 \caption{Wegenetz erfassen Vergleich}
-\label{table:read-path-compare}
+\label{table:store-path-compare}
 \end{table}
 
 \subsubsection{Bewegliche Hindernisse erfassen}
-mittels Gewichtung (kein Hindernis=1, Hindernis=2) / ...
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Gewichtung} & \textbf{Aus Graph entfernen}\\
+  \hline
+  \textbf{Beschreibung} & Die Strecken, auf denen sich ein Hindernis befindet wird hoeher gewichtet.  & Die Kante wird aus dem Gaph entfernt.  \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-Natuerlicher Aspekt der Graphentheorie\\-Diese Strecken werden so vermieden} & \makecell{-simpel} \\
+  \hline
+  \textbf{Nachteile} & \makecell{} & \makecell{-moeglicherweise langer Weg\\-gibt moeglicherweise keine Strecke\\ ohne Hindernisse} \\
+  \hline
+  \textbf{Links} & \url{https://hyperskill.org/learn/step/5645} &  \\
+  \hline
+\end{tabularx}
+\caption{Bewegliche Hindernisse erfassen Vergleich}
+\label{table:analyse-path-compare-1}
+\end{table}
+
+
 
 \subsubsection{Blockierte Knoten erfassen}
-Markieren / Aus intern gespeichertem Netz entfernen
 
-\subsubsection{Wegfindung} selber implementieren / Library verwenden (https://networkx.org/documentation/networkx-1.10/reference/generated/networkx.algorithms.shortest_paths.astar.astar_path.html , https://pypi.org/project/astar/)
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Markieren} & \textbf{Aus gespeichertem Netz entfernen}\\
+  \hline
+  \textbf{Beschreibung} & Die blockierten Knoten werden markiert.  &  Die Knoten inklusive der Verbindungen werden entfernt. \\
+  \hline
+  \textbf{Vorteile}  & \makecell{} & \makecell{-simpel} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-ueberkompliziert} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{} &  \\
+  \hline
+\end{tabularx}
+\caption{Blockierte Knoten erfassen Vergleich}
+\label{table:analyse-path-compare-2}
+\end{table}
+
+
+
+\subsubsection{Wegfindung}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Selber implementieren} & \textbf{Externe Library verwenden}\\
+  \hline
+  \textbf{Beschreibung} & Der Algorithmus zur Wegfindung wird manuell implementiert.  & Es wird eine externe Library verwendet, um den Algorithmus auszufuehren.  \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-keine externen Abhaengigkeiten\\-keine unnoetigen Zusatzfunktionen} & \makecell{-simpel\\-wahrschieilich effizienter\\-weniger Fehleranfaellig} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-komplex} & \makecell{-externe Abhaengigkeit} \\
+  \hline
+  \textbf{Links} & &\url{https://networkx.org/}  \url{https://pypi.org/project/astar/}  \\
+  \hline
+\end{tabularx}
+\caption{Wegfindung implementieren Vergleich}
+\label{table:algorithm-compare}
+\end{table}
+
 
 \subsubsection{Zielauswahl}
 Human input / Random / nach Berechnung Roboter waehlt selber
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Human Input} & \textbf{Roboter berechnet}\\
+  \hline
+  \textbf{Beschreibung} & Jeder Knoten ist ein Key und hat als Value eine Liste der Konten, mit denen er verbunden ist. &  Es wird eine Adjazenzmatrix erstellt in einem zweidimensionalen Array.\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-lightweight} & \makecell{-Gewichtung moeglich} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-kann die Kanten nicht gewichten} & \makecell{-aufwaendig\\-moeglicherweise langsam} \\
+  \hline
+  \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix}\\
+  \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Externe Library} & \textbf{}\\
+  \hline
+  \textbf{Beschreibung} & Es wird eine externe Library verwendet, die einen Graph Datentyp anbietet.  &   \\
+  \hline
+  \textbf{Vorteile}  & \makecell{-hat oft andere nuetzliche Funktionen\\-Gewichtung moeglich} & \makecell{} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-externe Abhaengigkeit\\-eventuell unnuetze andere Funktionen} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{https://networkx.org/} &  \\
+  \hline
+\end{tabularx}
+\caption{Wegenetz erfassen Vergleich}
+\label{table:store-path-compare}
+\end{table}
 
 \subsubsection{Clientseitige Kommunikation (I/O)}
 GUI, CLI, keine (Fehlermeldung wenn Ziel nicht erreicht)
