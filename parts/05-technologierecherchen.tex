@@ -1,8 +1,12 @@
 \section{Technologierecherchen}
 
+
 \subsection{Mechanik}
 
+
 \subsubsection{Materialien}
+
+Nachfolgend werden Aluminium, Stahl und wichtige Prototyping Materialien verglichen.
 
 \begin{table}[H]
 \centering
@@ -58,6 +62,7 @@
 
 \subsubsection{Mechanische Komponenten}
 
+Es gibt verschiedene Möglichkeiten ein Fahrzeug bzw. eine Hebevorrichtung zu realisieren. 
 
 
 
@@ -92,17 +97,52 @@
   \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Raupenfahrzeug} & \textbf{Bionischer Greifer}\\
+\textbf{} & \textbf{Raupenfahrzeug} & \textbf{}\\
   \hline
-  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &      Bionischer Greifer zum Aufheben des Hindernis     \\
+  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &     \\
   \hline
-  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} & \makecell{-gute Haftung durch flexible Kontur \\ -Greifkräfte können geregelt werden}\\
+  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} & \\
   \hline
   \textbf{Nachteile} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} & \\
   \hline
   \textbf{Links} & \url{https://de.wikipedia.org/wiki/Kettenfahrzeug} & \\
   \hline
 \end{tabularx}
+\caption{Fahren/Lenken}
+\label{table:drive/steer-components}
+\end{table}
+
+
+
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Bionischer Greifer}&\textbf{Parallel Greifer}&\\
+  \hline
+  \textbf{Beschreibung} &      Bionischer Greifer zum Aufheben des Hindernis&     \\
+  \hline
+  \textbf{Vorteile} & \makecell{-gute Haftung durch flexible Kontur \\ -Greifkräfte können geregelt werden}&\\
+  \hline
+  \textbf{Nachteile}& \makecell{-aufwändige Ansteuerung \\ -teuer in der Anschaffung}&     \\
+  \hline
+  \textbf{Links}  &   \url{https://www.festo.com/ch/de/e/ueber-festo/forschung-und-entwicklung/bionic-learning-network/highlights-2010-2012/bionischer-handling-assistent-id_33759/}       &   \\
+  \hline
+\end{tabularx}
+\caption{Hebevorrichtung}
+\label{table:lifting-components}
+\end{table}
+
+
+\subsubsection{Normen}
+
+
+
+\begin{table}[H]
+\centering
+\small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
 \textbf{} & \textbf{Schutzklassen} & \textbf{}\\
@@ -114,11 +154,9 @@
   \textbf{Links}&    \url{https://www.jungheinrich-profishop.ch/ch-de/profi-guide/ip-schutzarten/}       &               \\
   \hline
 \end{tabularx}
-\caption{Mechanische Komponenten}
-\label{table:mechanical-components}
+\caption{Normen}
+\label{table:norms}
 \end{table}
-
-
 
 
 
@@ -131,6 +169,8 @@
 \subsection{Elektrotechnik}
 
 \subsubsection{Eingabeoptionen}
+
+Für die Eingabe des Zielpunktes und starten des Gerätes werden Eingabeoptionen benötigt. Unten stehen zwei Optionen.
 
 \begin{table}[H]
 \centering
@@ -154,6 +194,8 @@
 
 \subsubsection{Ausgabeoptionen}
 
+Aus der Zielsetzung kann entnommen werden, dass das Gerät nach der Fahrt sich melden kann.
+
 \begin{table}[H]
 \centering
 \small
@@ -175,7 +217,12 @@
 \end{table}
 
 
+
+\newpage
+
 \subsubsection{Stromversorgung}
+
+Damit die elektronischen Komponente mit Strom versorgt werden können, wird der Akkumulator mit der Batterie aufgezeigt.
 
 \begin{table}[H]
 \centering
@@ -200,6 +247,8 @@
 
 \subsubsection{Antriebe}
 
+Für die Antriebsfunktion benötigt es Antriebe welche unterschiedliche Eigenschaften brauchen, diese wurden in der Tabelle aufgezeigt.
+
 \begin{table}[H]
 \centering
 \small
@@ -216,14 +265,7 @@
   \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-37423-5} & \url{https://doi.org/10.1007/978-3-658-37423-5}\\
   \hline
 \end{tabularx}
-\caption{Antriebe}
-\label{table:motor1-compare}
-\end{table}
 
-
-\begin{table}[H]
-\centering
-\small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Asynchron Motor} & \textbf{Schrittmotoren}\\
@@ -242,6 +284,8 @@
 \end{table}
 
 \subsubsection{Objekterkennung}
+
+Um die Objekte zu erkennen, werden zwei verschiedene Technologien verglichen.
 
 \begin{table}[H]
 \centering
@@ -265,6 +309,8 @@
 
 
 \subsubsection{Steuerung}
+
+Zur befahren vom System und Steuerung von Gerät wird eine logic benötig.
 
 \begin{table}[H]
 \centering
@@ -334,9 +380,23 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
   \textbf{Links} & \url{https://algorithms.discrete.ma.tum.de/}  & \url{https://en.wikipedia.org/wiki/A*_search_algorithm} \\
   \hline
 \end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Brute Force} & \textbf{Iterativ}\\
+  \hline
+  \textbf{Beschreibung} & Durchsucht alle möglichen Wege im Netzwerk, um den kürzesten Pfad zu finden. Ein exhaustiver Ansatz, der keine Optimierungen oder Heuristiken verwendet. & Wiederholender Ansatz, der schrittweise den besten Pfad verbessert. Häufig verwendet in dynamischen oder iterativen Umgebungen, bei denen der Pfad durch inkrementelle Schritte gefunden wird.\\
+  \hline
+  \textbf{Vorteile} & \makecell{-Findet garantiert eine Lösung\\wenn es einen gibt.} & \makecell{-Gut für dynamische Graphen} \\
+  \hline
+  \textbf{Nachteile} & \makecell{-Sehr ineffizient\\-Hoher Rechenaufwand.} & \makecell{-Konstante Berechnung} \\
+  \hline
+  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Brute-Force-Methode} & \url{https://en.wikipedia.org/wiki/Iterative_method} \\
+  \hline
+\end{tabularx}
 \caption{Wegfindung Algorithmus Vergleich}
 \label{table:path-algo-compare}
 \end{table}
+
 
 \newpage
 
