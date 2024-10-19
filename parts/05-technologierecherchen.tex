@@ -18,10 +18,8 @@ TODO: Ueberabeiten nach anpassung der Technologierecherchen
 \begin{itemize}
     \item Werkstoffe
     \item Fortbewegung
-    \item Anordnung Räder
     \item Lenkung
     \item Hebevorrichtung
-    \item Chassis
     \item Eingabeoptionen
     \item Ausgabeoptionen
     \item Stromversorgung
@@ -46,12 +44,13 @@ Der Simulator wurde ebenfalls in Teilfunktionen zerlegt:
 
 \subsection{Mechanik}
 
-Nachfolgend wurden aufgeteilt nach den wichtigsten Teilfunktionen; Werkstoffe, Fortbewegungsart, Anordnung der Räder, Lenkung, Hebevorrichtung und Chassis-Form bestehende Technoligien zusammengetragen und verglichen.
+Nachfolgend wurden aufgeteilt nach den Teilfunktionen; Werkstoffe, Fortbewegungsart, Lenkung, Hebevorrichtung und bestehende Technoligien zusammengetragen und verglichen.
 
 \subsubsection{Prototyping Werkstoffe}
 
 In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototypenbau in PREN leicht zugänglich sind. Der Vergleich dient in erster Linie dazu, einen geeigneten Werkstoff für Einzelteile zu bestimmen und um Abschätzungen bezüglich Nachhaltigkeit zu machen. Die Daten stammen aus dem Werkstoffkunde-Unterricht der Maschinentechnik Studierenden und aus Erfahrungen aus PREN2 des letzten Semesters.
 
+%Tabelle Metalle
 \begin{table}[H]
 \centering
 \small
@@ -69,6 +68,7 @@ In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototy
 \end{table}
 
 
+%Tabelle 3D-Druck Thermoplaste
 \begin{table}[H]
 \centering
 \small
@@ -86,6 +86,7 @@ In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototy
 \end{table}
 
 
+%Tabelle Holzwerkstoffe
 \begin{table}[H]
 \centering
 \small
@@ -104,39 +105,39 @@ In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototy
 
 \newpage
 
+
 \subsubsection{Fortbewegung}
 
+Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der vielen Möglichkeiten wurden bei einem Brainstorming im Team Varianten die zu Komplex oder aufwendig in der Umsetzung sind bereits ausgeschlossen, ohne Recherche zu betreiben. Unten aufgeführt sind die Varianten, welche weiter verfolgt wurden.
 
-\documentclass{article}
-\usepackage{tabularx, makecell, url}
-\usepackage{float}
-\usepackage{hyperref}
-\renewcommand\cellalign{lc}
-
-\begin{document}
-
-% Tabelle 1: Fortbewegung
+% Tabelle Fortbewegung
 \begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Differential Wheel Drive} & \textbf{Raupenfahrzeug} \\
+\textbf{} & \textbf{Raupen} & \textbf{Räder (Platzhalter)} \\
   \hline
-  \textbf{Beschreibung}  & 2 einzeln Angetriebene Räder, 1 Schwenkrad & FZ wird über Ketten/Raupen angetrieben \\
+  \textbf{Beschreibung}  & FZ wird über Ketten/Raupen angetrieben & Räder Platzhalterbeschreibung \\
   \hline
-  \textbf{Vorteile}  & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich} & \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig}  \\
+  \textbf{Vorteile}  & \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion} & \makecell{-Platzhaltervorteil 1\\-Platzhaltervorteil 2}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-instabil\\-2 Antriebsmotoren} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} \\
+  \textbf{Nachteile} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} & \makecell{-Platzhalternachteil 1\\-Platzhalternachteil 2} \\
   \hline
-  \textbf{Links} & \url{https://en.wikipedia.org/wiki/Differential_wheeled_robot} & \url{https://de.wikipedia.org/wiki/Kettenfahrzeug} \\
+  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Kettenfahrzeug} & \url{https://example.com/raeder} \\
   \hline
 \end{tabularx}
 \caption{Fortbewegung}
 \label{table:drive}
 \end{table}
 
-% Tabelle 2: Anordnung der Räder
+
+
+\subsubsection{Lenkung}
+
+Hier wurden diverse Möglichkeiten ein Fahrzeug zu lenken verglichen. 
+
+% Tabelle Lenkung
 \begin{table}[H]
 \centering
 \small
@@ -144,66 +145,57 @@ In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototy
 \hline
 \textbf{} & \textbf{Omniwheel} & \textbf{Überlagerungslenkgetriebe} \\
   \hline
-  \textbf{Beschreibung}  & Rad, welches sich in der Ebene in alle Richtungen bewegen kann & "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar \\
+  \textbf{Beschreibung}  & Rad, welches in der Ebene Bewegungen in alle Richtungen ermöglicht & "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar \\
   \hline
-  \textbf{Vorteile}  & \makecell{-keine Lenkung nötig\\-scharfe Kurven möglich} & \makecell{-1 Antriebsmotor\\-1 Lenkmotor\\-kein Lenkgestänge}  \\
+  \textbf{Vorteile}  & \makecell{-reine Translation möglich\\-Punktwende möglich\\ -kein Lenkgestänge nötig} & \makecell{-1 Antriebsmotor\\-1 Lenkmotor\\-kein Lenkgestänge}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-komplexer Aufbau} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau} \\
+  \textbf{Nachteile} & \makecell{-komplexer Aufbau\\-schlechte tranktion\\-nicht robust} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau} \\
   \hline
   \textbf{Links} & \url{https://en.wikipedia.org/wiki/Mecanum_wheel} & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
   \hline
-\end{tabularx}
-\caption{Anordnung der Räder}
-\label{table:wheel-arrangement}
-\end{table}
-
-% Tabelle 3: Lenkung
-\begin{table}[H]
-\centering
-\small
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Lenkgetriebe} & \textbf{Überlagerungslenkgetriebe} \\
+  
   \hline
-  \textbf{Beschreibung}  & zur Umwandlung Rotation in unterschiedliche Einschlagwinkel & "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar \\
+  \textbf{} & \textbf{Lenkgetriebe} & \textbf{Differential Wheel Drive} \\
   \hline
-  \textbf{Vorteile}  & \makecell{-simpler Aufbau\\-1 Aktuator} & \makecell{-1 Antriebsmotor\\-1 Lenkmotor\\-kein Lenkgestänge}  \\
+  \textbf{Beschreibung}  & Umwandlung Rotation in unterschiedliche Einschlagwinkel am& 2 einzeln Angetriebene Räder, 1 Schwenkrad \\
   \hline
-  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau} \\
+  \textbf{Vorteile}  & \makecell{-simpler Aufbau\\-1 Aktuator} & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich}  \\
   \hline
-  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
+  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-instabil\\-2 Antriebsmotoren} \\
+  \hline
+  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \url{https://en.wikipedia.org/wiki/Differential_wheeled_robot} \\
   \hline
 \end{tabularx}
 \caption{Lenkung}
 \label{table:steering}
 \end{table}
 
-% Tabelle 4: Hebevorrichtung
+
+\subsubsection{Hebevorrichtung}
+
+%Tabelle Hebevorrichtung
 \begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Hebevorrichtung A} & \textbf{Hebevorrichtung B} \\
+\textbf{} & \textbf{Bionischer Greifer}&\textbf{Parallel Greifer}\\
   \hline
-  \textbf{Beschreibung}  & Beschreibung von Hebevorrichtung A & Beschreibung von Hebevorrichtung B \\
+  \textbf{Beschreibung} & Bionischer Greifer zum Aufheben des Hindernis&   Parallelgreifer zu Anheben des Hindernis  \\
   \hline
-  \textbf{Vorteile}  & \makecell{-Vorteil A1\\-Vorteil A2} & \makecell{-Vorteil B1\\-Vorteil B2}  \\
+  \textbf{Vorteile} & \makecell{-gute Haftung durch flexible Kontur \\-Greifkräfte können geregelt werden}&\makecell{-Einfache Bauweise\\ -Erlaubt ungenaue Vorpositionierung}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-Nachteil A1\\-Nachteil A2} & \makecell{-Nachteil B1\\-Nachteil B2} \\
+  \textbf{Nachteile}& \makecell{-aufwändige Ansteuerung \\ -teuer in der Anschaffung} &\makecell{-Greifkräfte sind aufwändiger zu Regeln \\ }     \\
   \hline
-  \textbf{Links} & \url{https://example.com/hebeb-a} & \url{https://example.com/hebeb-b} \\
+  \textbf{Links}  &   \url{https://www.festo.com/ch/de/e/ueber-festo/forschung-und-entwicklung/bionic-learning-network/highlights-2010-2012/bionischer-handling-assistent-id_33759/}       &  \url{https://schunk.com/ch/de/greiftechnik/parallelgreifer/c/PUB_8295} \\
   \hline
 \end{tabularx}
 \caption{Hebevorrichtung}
-\label{table:lift}
+\label{table:lifting-components}
 \end{table}
 
 
-
-
-Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der vielen Möglichkeiten wurden bei einem Brainstorming im Team Varianten die zu Komplex oder aufwendig in der Umsetzung sind bereits ausgeschlossen, ohne Recherche zu betreiben. Unten aufgeführt sind die Varianten, welche weiter verfolgt wurden.
-
+%Tabelle Alles
 \begin{table}[H]
 \centering
 \small
@@ -253,25 +245,7 @@ Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der v
 
 
 
-\begin{table}[H]
-\centering
-\small
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Bionischer Greifer}&\textbf{Parallel Greifer}\\
-  \hline
-  \textbf{Beschreibung} & Bionischer Greifer zum Aufheben des Hindernis&   Parallelgreifer zu Anheben des Hindernis  \\
-  \hline
-  \textbf{Vorteile} & \makecell{-gute Haftung durch flexible Kontur \\-Greifkräfte können geregelt werden}&\makecell{-Einfache Bauweise\\ -Erlaubt ungenaue Vorpositionierung}  \\
-  \hline
-  \textbf{Nachteile}& \makecell{-aufwändige Ansteuerung \\ -teuer in der Anschaffung} &\makecell{-Greifkräfte sind aufwändiger zu Regeln \\ }     \\
-  \hline
-  \textbf{Links}  &   \url{https://www.festo.com/ch/de/e/ueber-festo/forschung-und-entwicklung/bionic-learning-network/highlights-2010-2012/bionischer-handling-assistent-id_33759/}       &  \url{https://schunk.com/ch/de/greiftechnik/parallelgreifer/c/PUB_8295} \\
-  \hline
-\end{tabularx}
-\caption{Hebevorrichtung}
-\label{table:lifting-components}
-\end{table}
+
 
 
 \subsubsection{Normen}
