@@ -15,20 +15,18 @@ Als naechstes wurde der Roboter in Teilfunktionen zerlegt. Verschiedene Moeglich
 
 TODO: Ueberabeiten nach anpassung der Technologierecherchen
 
-\begin{itemize}
-    \item Werkstoffe
-    \item Fortbewegung
-    \item Lenkung
-    \item Hebevorrichtung
-    \item Eingabeoptionen
-    \item Ausgabeoptionen
-    \item Stromversorgung
-    \item Antriebe
-    \item Objekterkennung
-    \item Steuerung
-    \item Wegfindung
-    \item Bilderkennung
-\end{itemize}
+\begin{table}[H]
+\begin{tabularx}\textwidth{X X X }
+    \textbf{Maschinentechnik} & \textbf{Elektrotechnik} & \textbf{Informatik} \\
+    &&\\
+    Werkstoffe  & Eingabeoptionen & Wegfindung\\ 
+    Fortbewegung  & Ausgabeoptionen & Bilderkennung\\ 
+    Lenkung  & Stromversorgung & \\ 
+    Hebevorrichtung  & Antriebe & \\ 
+    & Objekterkennung & \\ 
+    & Steuerung & \\ 
+\end{tabularx}
+\end{table}
 
 Der Simulator wurde ebenfalls in Teilfunktionen zerlegt:
 
@@ -108,7 +106,7 @@ In den Folgenden Tabellen werden Materialien verglichen, welche für den Prototy
 
 \subsubsection{Fortbewegung}
 
-Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der vielen Möglichkeiten wurden bei einem Brainstorming im Team Varianten die zu Komplex oder aufwendig in der Umsetzung sind bereits ausgeschlossen, ohne Recherche zu betreiben. Unten aufgeführt sind die Varianten, welche weiter verfolgt wurden.
+Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der vielen Möglichkeiten wurden bei einem Brainstorming im Team Varianten die zu Komplex oder aufwendig in der Umsetzung sind bereits ausgeschlossen, ohne Recherche zu betreiben. Unten aufgeführt sind die beiden Varianten, welche weiter verfolgt wurden.
 
 % Tabelle Fortbewegung
 \begin{table}[H]
@@ -116,15 +114,15 @@ Es gibt verschiedneste Arten einen Roboter autonom fortzubewegen. Aufgrund der v
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Raupen} & \textbf{Räder (Platzhalter)} \\
+\textbf{} & \textbf{Raupen} & \textbf{Räder} \\
   \hline
-  \textbf{Beschreibung}  & FZ wird über Ketten/Raupen angetrieben & Räder Platzhalterbeschreibung \\
+  \textbf{Beschreibung}  & FZ wird über Ketten/Raupen angetrieben & Fahrzeug wird über Räder bewegt \\
   \hline
-  \textbf{Vorteile}  & \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion} & \makecell{-Platzhaltervorteil 1\\-Platzhaltervorteil 2}  \\
+  \textbf{Vorteile}  & \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion} & \makecell{-simpler Aufbau\\-kostengünstig\\-in vielen Varianten verfügbar\\-selber herstellbar}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} & \makecell{-Platzhalternachteil 1\\-Platzhalternachteil 2} \\
+  \textbf{Nachteile} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} & \makecell{-limitierte Kontaktfläche mit Boden\\-hoher spez. Bodendruck} \\
   \hline
-  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Kettenfahrzeug} & \url{https://example.com/raeder} \\
+  \textbf{Links} & \url{https://spacecraft.ssl.umd.edu/academics/788XF22/788XF22L23.tracks.pdf} & \url{https://gtfrobots.com/introduction-to-types-of-robot-wheels/} \\
   \hline
 \end{tabularx}
 \caption{Fortbewegung}
@@ -143,25 +141,25 @@ Hier wurden diverse Möglichkeiten ein Fahrzeug zu lenken verglichen.
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Omniwheel} & \textbf{Überlagerungslenkgetriebe} \\
+\textbf{} & \textbf{Mecanumwheel} & \textbf{Überlagerungslenkgetriebe} \\
   \hline
   \textbf{Beschreibung}  & Rad, welches in der Ebene Bewegungen in alle Richtungen ermöglicht & "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar \\
   \hline
   \textbf{Vorteile}  & \makecell{-reine Translation möglich\\-Punktwende möglich\\ -kein Lenkgestänge nötig} & \makecell{-1 Antriebsmotor\\-1 Lenkmotor\\-kein Lenkgestänge}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-komplexer Aufbau\\-schlechte tranktion\\-nicht robust} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau} \\
+  \textbf{Nachteile} & \makecell{-komplexer Aufbau\\-schlechte tranktion\\-nicht robust} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau\\-schlupf nötig zum Lenken} \\
   \hline
-  \textbf{Links} & \url{https://en.wikipedia.org/wiki/Mecanum_wheel} & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
+  \textbf{Links} & \url{https://www.generationrobots.com/media/Mecanum-wheel-application.pdf?srsltid=AfmBOorTpuZt7XtV3qQiRZx3OUkmpaGSvG7AvhzuWbz61Fu4mzv7UaZ2} & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
   \hline
   
   \hline
   \textbf{} & \textbf{Lenkgetriebe} & \textbf{Differential Wheel Drive} \\
   \hline
-  \textbf{Beschreibung}  & Umwandlung Rotation in unterschiedliche Einschlagwinkel am& 2 einzeln Angetriebene Räder, 1 Schwenkrad \\
+  \textbf{Beschreibung}  & Umwandlung Rotation in unterschiedliche Einschlagwinkel an den Rädern& 2 einzeln Angetriebene Räder, 1 Schwenkrad \\
   \hline
-  \textbf{Vorteile}  & \makecell{-simpler Aufbau\\-1 Aktuator} & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich}  \\
+  \textbf{Vorteile}  & \makecell{-simpler Aufbau\\-1 Aktuator\\-schlupffreie Kurvenfahrt} & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich}  \\
   \hline
-  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-instabil\\-2 Antriebsmotoren} \\
+  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-schlupf nötig zum Lenken\\-2 Antriebsmotoren} \\
   \hline
   \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \url{https://en.wikipedia.org/wiki/Differential_wheeled_robot} \\
   \hline
@@ -172,6 +170,8 @@ Hier wurden diverse Möglichkeiten ein Fahrzeug zu lenken verglichen.
 
 
 \subsubsection{Hebevorrichtung}
+
+Zum bewegen der Hindernisse ist ein Mechanismus notwendig. Nachfolgend wurden Technologien zum Greifen und Anheben von Objekten verglichen.
 
 %Tabelle Hebevorrichtung
 \begin{table}[H]
@@ -195,63 +195,12 @@ Hier wurden diverse Möglichkeiten ein Fahrzeug zu lenken verglichen.
 \end{table}
 
 
-%Tabelle Alles
-\begin{table}[H]
-\centering
-\small
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Differential Wheel Drive} & \textbf{Überlagerungslenkgetriebe} \\
-  \hline
-  \textbf{Beschreibung}  & 2 einzeln Angetriebene Räder, 1 Schwenkrad & "Panzerlenkung" 1 Motor mit 2 Ausgangswellen, Drehzahl/Richtung unabhängig einstellbar \\
-  \hline
-  \textbf{Vorteile}  & \makecell{-kein Lenkgestänge\\-leicht\\-Punktwendung möglich} & \makecell{-1 Antriebsmotor\\-1Lenkmotor\\-kein Lenkgestänge}  \\
-  \hline
-  \textbf{Nachteile} & \makecell{-instabil\\-2 Antriebsmotoren} & \makecell{-Getriebe mit Verlusten\\-komplexer Aufbau} \\
-  \hline
-  \textbf{Links} & \url{https://en.wikipedia.org/wiki/Differential_wheeled_robot} & \url{https://de.wikipedia.org/wiki/Überlagerungslenkgetriebe} \\
-  \hline
-\end{tabularx}
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Lenkgetriebe} & \textbf{Omniwheel}\\
-  \hline
-  \textbf{Beschreibung} & zur Umwandlung Rotation in unterschiedliche Einschlagwinkel & Rad, welches sich in der Ebene in alle Richtungen bewegen kann\\
-  \hline
-  \textbf{Vorteile} & \makecell{-simpler Aufbau\\-1 Aktuator} & \makecell{-keine Lenkung nötig\\-scharfe kurven möglich}\\
-  \hline
-  \textbf{Nachteile} & \makecell{-begrenzter Einschlag} & \makecell{-komplexer Aufbau}\\
-  \hline
-  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Lenkgetriebe} & \url{https://en.wikipedia.org/wiki/Mecanum_wheel}\\
-  \hline
-  \end{tabularx}
-\begin{tabularx}{\textwidth}{|l|X|X|}
-\hline
-\textbf{} & \textbf{Raupenfahrzeug} & \textbf{}\\
-  \hline
-  \textbf{Beschreibung}& FZ wird über Ketten/Raupen angetrieben  &     \\
-  \hline
-  \textbf{Vorteile}& \makecell{-Punktwenden möglich\\-geringer spez. Bodendruck\\-hohe Traktion\\-keine Lenkung nötig} & \\
-  \hline
-  \textbf{Nachteile} & \makecell{-komplex\\-Gewicht\\-tiefe Vmax} & \\
-  \hline
-  \textbf{Links} & \url{https://de.wikipedia.org/wiki/Kettenfahrzeug} & \\
-  \hline
-\end{tabularx}
-\caption{Fahren/Lenken}
-\label{table:drive/steer-components}
-\end{table}
-
-
-
-
-
-
 
 \subsubsection{Normen}
 
 Nachfolgend sind relevante Normen aufgeführt.
 
+%Tabelle Normen
 \begin{table}[H]
 \centering
 \small
