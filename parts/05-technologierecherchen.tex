@@ -25,9 +25,9 @@ TODO: Ueberabeiten nach anpassung der Technologierecherchen
     Werkstoffe  & Eingabeoptionen & Wegfindung & Wegenetz einlesen\\ 
     Fortbewegung  & Ausgabeoptionen & Bilderkennung & Wegenetz speichern\\ 
     Lenkung  & Stromversorgung & & Hindernisse erfassen\\ 
-    Hebevorrichtung  & Antriebe & & Wegfindunge\\ 
+    Hebevorrichtung  & Antriebe & & Wegfindung\\ 
     & Objekterkennung & & Zielauswahl\\ 
-    & Steuerung &  & Clientseitiges I/O\\ 
+    & Steuerung &  & Client UI\\ 
 \end{tabularx}
 \end{table}
 
@@ -398,7 +398,11 @@ Zum Befahren vom System und Steuerung von Gerät wird eine Logik benötig.
 \newpage
 \subsection{Informatik}
 
+Im folgenden Kapitel werden die einzelnen Teilfunktionen der Informatik verglichen: die Wegfindung und die Bilderkennung. Dabei wurden vor allem die Kriterien 'simpel' und 'Robustheit' berücksichtigt. Ansonsten wurde offen recherchiert.
+
 \subsubsection{Programmiersprache}
+
+Nachfolgend werden zwei verschiedene Programmiersprachen verglichen, die zur Implementation des Informatik Teils verwendet werden könnten. Nur diese beiden Sprachen wurden verglichen aufgrund des Kriteriums der "Robustheit". Beide Entwickler:innen kennen sich zusammen am besten mit diesen beiden Sprachen aus, weswegen die Fehleranfälligkeit kleiner ist.
 
 \begin{table}[H]
 \centering
@@ -413,7 +417,7 @@ Zum Befahren vom System und Steuerung von Gerät wird eine Logik benötig.
   \hline
   \textbf{Nachteile} & \makecell{-Langsam} & \makecell{-Heavyweight}\\
   \hline
-  \textbf{Links} & \url{https://www.python.org/} & \url{https://www.java.com/en/} \\
+  \textbf{Links} & \url{https://www.python.org/} | 5 & \url{https://www.java.com/en/} | 3 \\
   \hline
 \end{tabularx}
 \caption{Programmiersprachen Vergleich}
@@ -422,7 +426,7 @@ Zum Befahren vom System und Steuerung von Gerät wird eine Logik benötig.
 
 \subsubsection{Wegfindung Algorithmus}
 
-Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden werden können. Nachfolgend werden einige miteinander verglichen.
+Es gibt mehrere Algorithmen, mit denen der kürzeste Weg in einem Wegenetzwerk gefunden werden können. Nachfolgend werden einige miteinander verglichen. 
 
 
 \begin{table}[H]
@@ -463,7 +467,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 
 \subsubsection{Bilderkennung}
 
-\textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten.
+\textbf{Bilderkennung Software:} Nachfolgend werden einige Softwarelösungen verglichen mit denen eine Bilderkennung durchgeführt werden könnten. Dies wird benötigt, um Teile des Wegenetzwerks inklusive Pylonen, Hindernisse und fehlende Streckenteile zu erkennen.
 
 \begin{table}[H]
 \centering
@@ -500,7 +504,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 
 \newpage
 
-\textbf{Bilderkennung Kamera:} Nachfolgend werden einige Varianten verglichen, die als Kamera verwendet werden könnten.
+\textbf{Bilderkennung Kamera:} Nachfolgend werden einige Varianten verglichen, die als Kamera verwendet werden könnten, um die Bilder für die Bilderkennung zu schiessen.
 
 \begin{table}[H]
 \centering
@@ -535,7 +539,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 \label{table:camera-compare}
 \end{table}
 
-\textbf{Bilderkennung Rechner:} Nachfolgend werden einige Varianten verglichen, die als Rechner eingesetzt werden könnten. Auf diesem Rechner wird die Bilderkennungssoftware, sowie die Pfandfindung laufen.
+\textbf{Bilderkennung Rechner:} Nachfolgend werden einige Varianten verglichen, die als Rechner eingesetzt werden könnten. Auf diesem Rechner wird die Bilderkennungssoftware, sowie die Berechnung für Pfadfindung laufen.
 
 \begin{table}[H]
 \centering
@@ -573,6 +577,9 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 
 \subsection{Simulator}
 
+Möglichkeiten für die Teilfunktionen des Simulators sind im folgenden Teil aufgelistet und verglichen. Diese Teilfunktionen sind das Wegenetz einlesen und speichern, Hindernisse erfassen, Wegfindung und ein Client User Interface.
+Bei der Recherche des Simulators wurde vor allem auf das festgelegte Kriterium 'simpel' geachtet. Abgesehen davon wurde offen recherchiert.
+
 \subsubsection{Programmiersprache}
 
 Wie bei der Software für den Roboter kommen für den Simulator Java oder Python infrage. Der Vergleich der beiden Programmiersprachen wurde im vorherigen Kapitel durchgeführt.
@@ -592,9 +599,9 @@ Damit im Simulator das Wegenetzwerk eingelesen werden kann, wurden die folgenden
   \hline
   \textbf{Vorteile}  & \makecell{-sehr simpel} & \makecell{-Java ähnlicher Syntax} \\
   \hline
-  \textbf{Nachteile} & \makecell{-etwas aufwändiger in Java einzulesen} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-etwas aufwändiger in Java einzulesen} & \makecell{-weniger gut lesbar als YAML} \\
   \hline
-  \textbf{Links} & \url{https://yaml.org/} & \url{https://www.json.org/json-en.html} \\
+  \textbf{Links} & \url{https://yaml.org/} | 5 & \url{https://www.json.org/json-en.html} | 4 \\
   \hline
 \end{tabularx}
 
@@ -608,7 +615,7 @@ Damit im Simulator das Wegenetzwerk eingelesen werden kann, wurden die folgenden
   \hline
   \textbf{Nachteile} & \makecell{-sehr viel Aufwand} & \makecell{} \\
   \hline
-  \textbf{Links} & \url{} &  \\
+  \textbf{Links} & \url{https://opencv.org/} | 5 &  \\
   \hline
 \end{tabularx}
 \caption{Wegenetz einlesen Vergleich}
@@ -629,11 +636,12 @@ Das Wegenetzwerk könnte auf folgende Arten gespeichert werden.
   \hline
   \textbf{Beschreibung} & Jeder Knoten ist ein Key und hat als Value eine Liste der Konten, mit denen er verbunden ist. &  Es wird eine Adjazenzmatrix erstellt in einem zweidimensionalen Array.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-lightweight} & \makecell{-möglich in allen Sprachen} \\
+  \textbf{Vorteile}  & \makecell{-direkte Liste der Nachbaren} & \makecell{-möglich in allen Sprachen} \\
   \hline
-  \textbf{Nachteile} & \makecell{-je nach Sprache aufwändiger} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-je nach Sprache aufwändiger} & \makecell{-spezifische Markierung von Nicht-\\Verbindungen -> redundante Info} \\
   \hline
-  \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix}\\
+  \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} | 2 & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix} | 3\\
+  &\url{https://campus.datacamp.com/courses/data-structures-and-algorithms-in-python/queues-hash-tables-trees-graphs-and-recursion?ex=9} | 1 &\\
   \hline
 \end{tabularx}
 
@@ -656,7 +664,7 @@ Das Wegenetzwerk könnte auf folgende Arten gespeichert werden.
 
 \subsubsection{Bewegliche Hindernisse erfassen}
 
-Damit die beweglichen Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, haben wir folgende Methoden bewertet.
+Damit die beweglichen Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, wurden folgende Methoden bewertet.
 
 \begin{table}[H]
 \centering
@@ -682,7 +690,7 @@ Damit die beweglichen Hindernisse in unserem gespeicherten Netzwerk erfasst werd
 
 \subsubsection{Blockierte Knoten erfassen}
 
-Damit die blockierenden Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, haben wir folgende Methoden bewertet.
+Damit die blockierenden Hindernisse in unserem gespeicherten Netzwerk erfasst werden können, wurden folgende Methoden bewertet.
 
 \begin{table}[H]
 \centering
@@ -757,7 +765,7 @@ Hier wurden Möglichkeiten verglichen, wie das Ziel ausgewählt werden kann im S
 
 \subsubsection{Clientseitige Kommunikation (I/O)}
 
-Die Varianten eines Clientinterfaces wurden hier verglichen.
+Die Varianten eines Clientinterfaces wurden hier verglichen. Dieses dient dazu, dass die Fahrt des Roboters und dessen Berechnungen dem User mitgeteilt werden.
 
 \begin{table}[H]
 \centering
