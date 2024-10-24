@@ -445,7 +445,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 \hline
 \textbf{} & \textbf{Brute Force} & \textbf{D* (Iterativ)}\\
   \hline
-  \textbf{Beschreibung} & Durchsucht alle möglichen Wege im Netzwerk, um den kürzesten Pfad zu finden. Ein exhaustiver Ansatz, der keine Optimierungen oder Heuristiken verwendet. & Wiederholender Ansatz, der schrittweise den besten Pfad verbessert. Häufig verwendet in dynamischen oder iterativen Umgebungen, bei denen der Pfad durch inkrementelle Schritte gefunden wird.\\
+  \textbf{Beschreibung} & Durchsucht alle möglichen Wege im Netzwerk, um den kürzesten Pfad zu finden. Ein exhaustiver Ansatz, der keine Optimierungen oder Heuristiken verwendet. & Mit D* vom Zielknoten zum Startknoten den Weg berechnet und so mehrere Startknoten hat. Wiederholender Ansatz, der schrittweise den besten Pfad verbessert. Häufig verwendet in dynamischen oder iterativen Umgebungen, bei denen der Pfad durch inkrementelle Schritte gefunden wird.\\
   \hline
   \textbf{Vorteile} & \makecell{-Findet garantiert eine Lösung\\wenn es einen gibt.} & \makecell{-Gut für dynamische Graphen} \\
   \hline
@@ -533,6 +533,41 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 \end{tabularx}
 \caption{Kamera Vergleich}
 \label{table:camera-compare}
+\end{table}
+
+\textbf{Bilderkennung Rechner:} Nachfolgend werden einige Varianten verglichen, die als Rechner eingesetzt werden könnten. Auf diesem Rechner wird die Bilderkennungssoftware, sowie die Pfandfindung laufen.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Jetson Dev Kit} & \textbf{Raspberry Pi}\\
+  \hline
+  \textbf{Beschreibung} & &  \\
+  \hline
+  \textbf{Vorteile}  & \makecell{} & \makecell{} \\
+  \hline
+  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{} & \url{} \\
+  \hline
+\end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+\textbf{} & \textbf{Coral Dev Board} & \textbf{} \\
+  \hline
+  \textbf{Beschreibung} &  & \\
+  \hline
+  \textbf{Vorteile}  & \makecell{} & \makecell{} \\
+  \hline
+  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \hline
+  \textbf{Links} & \url{} & \\
+  \hline
+\end{tabularx}
+\caption{SW Rechner Vergleich}
+\label{table:sw-pc-compare}
 \end{table}
 
 
@@ -737,7 +772,9 @@ Die Varianten eines Clientinterfaces wurden hier verglichen.
   \hline
   \textbf{Nachteile} & \makecell{-mehr Aufwand} & \makecell{-eher unübersichtlich} \\
   \hline
-  \textbf{Links} &&\\
+  \textbf{Links} & \url{https://blog.hubspot.com/website/what-is-gui} | 3 & \url{https://www.w3schools.com/whatis/whatis_cli.asp} | 3\\
+  &\url{https://docs.python.org/3/library/turtle.html} | 3 & \url{https://click.palletsprojects.com/en/8.1.x/} | 4\\
+  &\url{https://www.pygame.org/news} | 5 &\\
   \hline
 \end{tabularx}
 
@@ -751,7 +788,7 @@ Die Varianten eines Clientinterfaces wurden hier verglichen.
   \hline
   \textbf{Nachteile} & \makecell{-Sehr intransparent} & \\
   \hline
-  \textbf{Links} & \url{} &  \\
+  \textbf{Links} & \url{https://docs.python.org/3/tutorial/errors.html} | 3 & \url{https://en.wikipedia.org/wiki/Text-based_user_interface} | 2 \\
   \hline
 
 \end{tabularx}
