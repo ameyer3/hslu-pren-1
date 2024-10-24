@@ -629,9 +629,9 @@ Das Wegenetzwerk könnte auf folgende Arten gespeichert werden.
   \hline
   \textbf{Beschreibung} & Jeder Knoten ist ein Key und hat als Value eine Liste der Konten, mit denen er verbunden ist. &  Es wird eine Adjazenzmatrix erstellt in einem zweidimensionalen Array.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-lightweight} &  \\
+  \textbf{Vorteile}  & \makecell{-lightweight} & \makecell{-möglich in allen Sprachen} \\
   \hline
-  \textbf{Nachteile} &  & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-je nach Sprache aufwändiger} & \makecell{} \\
   \hline
   \textbf{Links} & \url{https://www.python.org/doc/essays/graphs/} & \url{https://de.wikipedia.org/wiki/Adjazenzmatrix}\\
   \hline
@@ -647,7 +647,7 @@ Das Wegenetzwerk könnte auf folgende Arten gespeichert werden.
   \hline
   \textbf{Nachteile} & \makecell{-externe Abhängigkeit\\-eventuell unnütze andere Funktionen} & \makecell{} \\
   \hline
-  \textbf{Links} & \url{https://networkx.org/} &  \\
+  \textbf{Links} & \url{https://networkx.org/} | 4 &  \\
   \hline
 \end{tabularx}
 \caption{Wegenetz erfassen Vergleich}
@@ -669,9 +669,9 @@ Damit die beweglichen Hindernisse in unserem gespeicherten Netzwerk erfasst werd
   \hline
   \textbf{Vorteile}  & \makecell{-Natürlicher Aspekt der Graphentheorie\\-Diese Strecken werden so vermieden} & \makecell{-simpel} \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{-möglicherweise langer Weg\\-gibt möglicherweise keine Strecke\\ ohne Hindernisse} \\
+  \textbf{Nachteile} & \makecell{-Gewichtung muss ermittelt werden} & \makecell{-möglicherweise langer Weg\\-gibt möglicherweise keine Strecke\\ ohne Hindernisse} \\
   \hline
-  \textbf{Links} & \url{https://hyperskill.org/learn/step/5645} &  \\
+  \textbf{Links} & \url{https://hyperskill.org/learn/step/5645} | 5 &  \url{https://www.freecodecamp.org/news/python-remove-key-from-dictionary/} | 4\\
   \hline
 \end{tabularx}
 \caption{Bewegliche Hindernisse erfassen Vergleich}
@@ -693,11 +693,9 @@ Damit die blockierenden Hindernisse in unserem gespeicherten Netzwerk erfasst we
   \hline
   \textbf{Beschreibung} & Die blockierten Knoten werden markiert.  &  Die Knoten inklusive der Verbindungen werden entfernt. \\
   \hline
-  \textbf{Vorteile}  & \makecell{} & \makecell{-simpel} \\
+  \textbf{Vorteile}  & \makecell{-ürsprünglicher Graph noch vorhanden} & \makecell{-simpel} \\
   \hline
   \textbf{Nachteile} & \makecell{-überkompliziert} & \makecell{} \\
-  \hline
-  \textbf{Links} & \url{} &  \\
   \hline
 \end{tabularx}
 \caption{Blockierte Knoten erfassen Vergleich}
@@ -721,9 +719,10 @@ Die Implementation der Wegfindung kann auf folgende Arten umgesetzt werden. Die 
   \hline
   \textbf{Vorteile}  & \makecell{-keine externen Abhängigkeiten\\-keine unnötigen Zusatzfunktionen} & \makecell{-simpel\\-wahrscheinlich effizienter\\-weniger Fehleranfällig} \\
   \hline
-  \textbf{Nachteile} & \makecell{-komplex} & \makecell{-externe Abhängigkeit} \\
+  \textbf{Nachteile} & \makecell{-komplex} & \makecell{-externe Abhängigkeit\\-schwergewichtig} \\
   \hline
-  \textbf{Links} & &\url{https://networkx.org/}  \url{https://pypi.org/project/astar/}  \\
+  \textbf{Links} & \url{https://www.w3schools.com/dsa/dsa_algo_graphs_dijkstra.php} | 5 &\url{https://networkx.org/} | 4\\
+  & \url{https://www.geeksforgeeks.org/python-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/} | 2&\url{https://pypi.org/project/astar/} | 3 \\
   \hline
 \end{tabularx}
 \caption{Wegfindung implementieren Vergleich}
@@ -744,11 +743,12 @@ Hier wurden Möglichkeiten verglichen, wie das Ziel ausgewählt werden kann im S
   \hline
   \textbf{Beschreibung} & Durch Input einer Person wird das Ziel gewählt. & Der Roboter wählt zufällig eines der Ziele aus.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-Simpel} & \makecell{-Schnell} \\
+  \textbf{Vorteile}  & \makecell{-Simpel\\-einfaches Debugging} & \makecell{-Schnell \\ -gut für Performancemessung \\-deckt viele Graph-Varianten ab} \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{-langsamer} & \makecell{-schwierigers Debugging} \\
   \hline
-  \textbf{Links} &&\\
+  \textbf{Links} &\url{https://www.w3schools.com/python/ref_func_input.asp} | 4& \url{https://docs.python.org/3/library/random.html} | 5\\
+  &\url{https://python.land/data-processing/python-yaml} | 3&\\
   \hline
 \end{tabularx}
 \caption{Zielauswahl Vergleich}
@@ -786,7 +786,7 @@ Die Varianten eines Clientinterfaces wurden hier verglichen.
   \hline
   \textbf{Vorteile}  & \makecell{-Einfach} & \makecell{-einfach\\-übersichtlich} \\
   \hline
-  \textbf{Nachteile} & \makecell{-Sehr intransparent} & \\
+  \textbf{Nachteile} & \makecell{-Sehr intransparent} & -wenig Ressourcen/Libraries\\
   \hline
   \textbf{Links} & \url{https://docs.python.org/3/tutorial/errors.html} | 3 & \url{https://en.wikipedia.org/wiki/Text-based_user_interface} | 2 \\
   \hline
