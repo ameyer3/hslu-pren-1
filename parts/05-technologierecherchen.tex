@@ -443,7 +443,7 @@ Es gibt mehrere Algorithmen, mit denen ein Weg in einem Wegenetzwerk gefunden we
 \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Brute Force} & \textbf{Iterativ}\\
+\textbf{} & \textbf{Brute Force} & \textbf{D* (Iterativ)}\\
   \hline
   \textbf{Beschreibung} & Durchsucht alle möglichen Wege im Netzwerk, um den kürzesten Pfad zu finden. Ein exhaustiver Ansatz, der keine Optimierungen oder Heuristiken verwendet. & Wiederholender Ansatz, der schrittweise den besten Pfad verbessert. Häufig verwendet in dynamischen oder iterativen Umgebungen, bei denen der Pfad durch inkrementelle Schritte gefunden wird.\\
   \hline
@@ -743,7 +743,7 @@ Die Varianten eines Clientinterfaces wurden hier verglichen.
 
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Keine Inputs oder Outputs} & TUI \textbf{}\\
+\textbf{} & \textbf{Keine Inputs oder Outputs} & \textbf{TUI}\\
   \hline
   \textbf{Beschreibung} & Der Mensch kommuniziert nicht mit dem Roboter. Falls der Roboter das Ziel nicht erreicht wird eine Exception raised. &  Text-Based User Interface \\
   \hline
