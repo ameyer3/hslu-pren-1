@@ -550,24 +550,51 @@ Es gibt mehrere Algorithmen, mit denen der kürzeste Weg in einem Wegenetzwerk g
   \hline
   \textbf{Beschreibung} & Ein leistungsstarkes Entwicklerkit von NVIDIA, das für KI- und Robotikanwendungen optimiert ist und auf der Jetson-Plattform basiert. & Ein kostengünstiger, vielseitiger Einplatinencomputer, der für zahlreiche Projekte von Bildung bis hin zu Heimautomation verwendet wird. \\
   \hline
-  \textbf{Vorteile}  & \makecell{} & \makecell{} \\
+  \textbf{Vorteile}  & \makecell{
+  -Hohe Rechenleistung für KI und\\maschinelles Lernen \\
+  -GPU-Unterstützung (NVIDIA CUDA) \\
+  -Energieeffizient für seine Leistung \\
+  -Gute Integration in das NVIDIA-\\Ökosystem
+  } & \makecell{
+  -Günstiger Preis \\
+  -Grosse Community und umfangreiche\\Dokumentation \\
+  -Vielseitig für verschiedene\\Anwendungen \\
+  -Zahlreiche Erweiterungen und Zubehör
+  } \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{
+  -Höherer Preis im Vergleich zu anderen\\Entwicklerboards \\
+  -Begrenzte Community-Unterstützung\\im Vergleich zu Raspberry Pi \\
+  -Komplexere Einrichtung für Anfänger
+  } & \makecell{
+  -Begrenzte Rechenleistung für intensive\\Aufgaben wie KI \\
+  -Kein dedizierter Beschleuniger für\\maschinelles Lernen \\
+  -Nicht ideal für energieintensive oder\\hochgradig spezialisierte Anwendungen
+  } \\
   \hline
-  \textbf{Links} & \url{} & \url{} \\
+  \textbf{Links} & \url{https://developer.nvidia.com/embedded/jetson-developer-kits} | 4 & \url{https://www.raspberrypi.com/} | 5 \\
   \hline
 \end{tabularx}
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
 \textbf{} & \textbf{Coral Dev Board} & \textbf{} \\
   \hline
-  \textbf{Beschreibung} &  & \\
+  \textbf{Beschreibung} & Ein Google-basiertes Entwicklerboard, das speziell für schnelle maschinelle Lernanwendungen mit integrierter Edge-TensorFlow-Beschleunigung entwickelt wurde. & \\
   \hline
-  \textbf{Vorteile}  & \makecell{} & \makecell{} \\
+  \textbf{Vorteile}  & \makecell{
+  -Integrierter Edge-TPU für schnelle\\maschinelle Lerninferenz \\
+  -Gute Leistung bei ML-Anwendungen\\(Edge AI) \\
+  -Google TensorFlow-Unterstützung \\
+  -Energieeffizient für ML-Anwendungen
+  } & \makecell{} \\
   \hline
-  \textbf{Nachteile} & \makecell{} & \makecell{} \\
+  \textbf{Nachteile} & \makecell{
+  -Teurer als Raspberry Pi \\
+  -Begrenzte allgemeine Verfügbarkeit und\\Zubehör im Vergleich zu Raspberry Pi \\
+  -Kleinere Community
+  } & \makecell{} \\
   \hline
-  \textbf{Links} & \url{} & \\
+  \textbf{Links} & \url{https://coral.ai/} | 4 & \\
   \hline
 \end{tabularx}
 \caption{SW Rechner Vergleich}
@@ -721,7 +748,7 @@ Die Implementation der Wegfindung kann auf folgende Arten umgesetzt werden. Die 
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-\textbf{} & \textbf{Selber implementieren} & \textbf{Externe Library verwenden}\\
+\textbf{} & \textbf{Eigene Implementation} & \textbf{Externe Library verwenden}\\
   \hline
   \textbf{Beschreibung} & Der Algorithmus zur Wegfindung wird manuell implementiert.  & Es wird eine externe Library verwendet, um den Algorithmus auszuführen.  \\
   \hline
