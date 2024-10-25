@@ -316,6 +316,42 @@ Für die Antriebsfunktion benötigt es Antriebe welche unterschiedliche Eigensch
   \hline
 \end{tabularx}
 
+
+
+
+\subsubsection{Motoransteuerung}
+
+Um die Motoren präzise anzusteuern, ist die Wahl einer geeigneten Regelungs- und Steuerungslösung erforderlich.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+  \textbf{} & \textbf{Eingekauft} & \textbf{Eigenbau} \\
+  \hline
+  \textbf{Beschreibung}  & Motorsteuerungslösung für Plug and Play fertiggestellt& Leicht wechselbare Spannungsversorgung\\
+  \hline
+  \textbf{Vorteile}  & \makecell{-geeignet für hoher Stromverbrauch\\-Ausgangsspannungsstabilität} & \makecell{-Billig \\-einfach einbaubar\\-Gewicht}\\
+  \hline
+  \textbf{Nachteile} & \makecell{-Gewicht} & \makecell{-keine Spannungsstabilität\\-keine grosse Ströme möglich}\\
+  \hline
+  \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Akkumulator} & \url{https://de.wikipedia.org/wiki/Batterie_(Elektrotechnik)}\\
+  \hline
+\end{tabularx}
+\caption{Stromversorgung}
+\label{table:power-supply-compare}
+\end{table}
+
+
+
+
+
+
+
+
+
+
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
   \textbf{} & \textbf{Asynchron Motor} & \textbf{Schrittmotoren}\\
@@ -390,18 +426,9 @@ Aufgrund der Streckenführung, dass man über eine Linie folgen muss besteht die
   \textbf{Nachteile} & \makecell{-Implementierungsaufwand} & \makecell{-keine genauen Daten}\\
   \hline
   \textbf{Links} & \url{https://www.pi-shop.ch/pimoroni-display-o-tron-3000} & \url{https://de.wikipedia.org/wiki/Leuchtdiode}\\
-
 \hline
-\textbf{} & \textbf{Balkenanzeige} & \textbf{} \\
-  \hline
-  \textbf{Beschreibung} & Einfache Darstellung über das Aufleuchten einzelner Balken & \\
-  \hline
-  \textbf{Vorteile}  & \makecell{-präzisere Anzeige als mit LED's \\ -einfach} & \makecell{} \\
-  \hline
-  \textbf{Nachteile} & \makecell{-keine genauen Daten} & \makecell{} \\
-  \hline
-  \textbf{Links} & \url{https://www.mouser.ch/ProductDetail/Kingbright/DC10EWA?} & \\
-  \hline
+
+
 \end{tabularx}
 \caption{Linienerkennungsmöglichkeiten}
 \label{table:et-line-detection-compare}
