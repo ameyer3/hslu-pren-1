@@ -14,7 +14,7 @@ Es ist geplant einen Roboter in U-Form zu bauen, der sich mit drei Raedern fortb
 Die Steuerung wird auf einem Tiny k22 laufen. Die Distanz zu den Objekten werden mit Ultraschall erkannt und es wird ein buerstebehafteter Motor verwendet. Dieser Motor wird mit einem gekauften Treiber angesteuert. Die Stromversorgung laeuft ueber einen Akku. Der Akkustand und der Status des Roboters wird mit einem LED angezeigt. Damit der Roboter die Linien erkennt, wird ein Fototransistor verwendet. Das Ziel wird ueber einen Schalte von uns eingegeben.
 Wenn der Roboter das Ziel erreicht, verkuendet er dies ueber einen Lautsprecher. Im Notfall wird der Roboter ueber einen Taster ausgeschaltet.
 
-Die Software wird in Python geschrieben und laeuft auf einem Raspberry Pi.
+Die Software wird in Python geschrieben und laeuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kuerzeste Weg wird mit einem Dijkstra berechnet.
 
 \subsection{Schnittstellen}
 
