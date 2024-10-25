@@ -8,14 +8,26 @@ Auf Basis der Technologierecherche wurden verschiedene Lösungsansätze für die
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/MK_Maschinentechnik.pdf}
-\caption{Morpholighscer Kasten: Mechanik}
+\includegraphics[width=\textwidth]{assets/MK-Maschinentechnik.pdf}
+\caption{Morphologischer Kasten: Mechanik}
 \label{fig:mk-mechanik}
 \end{figure}
 
 PLACEHOLDER
 
 \subsection{Elektrotechnik Morphologischer Kasten}
+
+Aus der Technologierecherche wurde folgender Morphologischer Kasten mit drei Varianten für die Elektrotechnik Teilfunktionen erstellt.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth -5mm]{assets/MK_Elektrotechnik.pdf}
+\caption{Morphologischer Kasten: Elektrotechnik}
+\label{fig:mk-elektrotechnik}
+\end{figure}
+
+Bei den drei Varianten fällt auf, dass immer ein Mikrocontroller gewählt wurde. Es gibt einige Optionen, die mehrheitlich austauschbar sind, wie der Buzzer und Lautsprecher oder Drehschalter und Knöpfe. Genauere Schaltungselemente, wie Strombegrenzer und Spannungsregler wurden nicht mit in den Morphologischenkasten aufgenommen
+
 
 PLACEHOLDER
 
@@ -65,7 +77,24 @@ PLACEHOLDER
 
 \subsection{Elektrotechnik Nutzwertanalyse}
 
-PLACEHOLDER
+Mithilfe des morphologischen Kasten wurden verschiedene Lösungsvarianten aufgezeigt. Die Varianten bestehen aus diversen Komponenten. 
+
+
+Nun werden die folgenden drei Varianten in der Nutzwertanalyse evaluiert.
+
+\begin{itemize}
+    \item Variante A: Das verwenden vom Tiny K22 macht das System echtzeitfähig. Leichte Motoren, Inputs und Outputs einfach gehalten über Leuchten und Schalter. Für die Motorsteuerug werden die Treiber eingekauft.
+    \item Variante B: Bei dieser Variante werden die Bauteile Raspberry Pi tauglich verwendet, grob gesagt eine "Plug and Play" Methode. Ebenfalls haben die Motoren ein geringes Gewicht.
+    \item Variante C: Durch die Schrittmotoren und die Objekterkennung mit Lidar weist diese Kombination eine hohe Präzision auf. Mit dem Horn als akkustisches Signal wäre dieser Komponent auffällig und einzigartig. Aufgrund der Schrittmotoren wird das ganze schwer, was einen Nachteil ist.
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{assets/Nutzwertanalyse-ET.pdf}
+\caption{Nutzwertanalyse: Elektrotechnik}
+\label{fig:nutzwert-ET}
+\end{figure}
 
 \subsection{Informatik Nutzwertanalyse}
 
@@ -83,7 +112,9 @@ TODO BILD
 
 Aus der Nutzwertanalyse kann abgelesen werden, dass die Variante B mit Python, PyTorch und OpenCV am besten passt. Die detaillierte Variante ist eingezeichnet in diesem Morphologischen Kasten.
 
-TODO BILD VARIANTE IN KASTEN
+\begin{itemize}
+    \item ...
+\end{itemize}
 
 \subsection{Simulator Nutzwertanalyse}
 
@@ -102,12 +133,18 @@ Die folgenden drei Lösungskombinationen, werden im nächsten Schritt evaluiert.
 \centering
 \includegraphics[width=\textwidth]{assets/Nutzwertanalyse-Simulator.pdf}
 \caption{Nutzwertanalyse: Simulator}
-\label{fig:nutzwert-simulator}
+\label{fig:nutzwert-Simulator}
 \end{figure}
 
 Die Nutzwertanalyse zeigt, dass die Variante B: Python mit YAML und einem GUI am besten abschneidet. Diese Variante besteht aus folgenden Teilen.
 
 \begin{itemize}
     \item Programmiersprache: Python
-    \item ...
+    \item Wegnetz einlesen: YAML
+    \item Wegnetz intern speichern: Key-Values
+    \item Bewegliche Hindernisse erfassen: Gewichtung
+    \item Blockierte Knoten erfassen: Knoten entfernen
+    \item Wegfindung: eigene Implementation
+    \item Zielauswahl: human input und random
+    \item Clientseitige Kommunikation I/O: GUI
 \end{itemize}
