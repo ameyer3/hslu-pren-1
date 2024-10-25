@@ -15,6 +15,8 @@ Auf Basis der Technologierecherche wurden verschiedene Lösungsansätze für die
 
 PLACEHOLDER
 
+
+
 \subsection{Elektrotechnik Morphologischer Kasten}
 
 Aus der Technologierecherche wurde folgender Morphologischer Kasten mit drei Varianten für die Elektrotechnik Teilfunktionen erstellt.
@@ -26,10 +28,8 @@ Aus der Technologierecherche wurde folgender Morphologischer Kasten mit drei Var
 \label{fig:mk-elektrotechnik}
 \end{figure}
 
-Bei den drei Varianten fällt auf, dass immer ein Mikrocontroller gewählt wurde. Es gibt einige Optionen, die mehrheitlich austauschbar sind, wie der Buzzer und Lautsprecher oder Drehschalter und Knöpfe. Genauere Schaltungselemente, wie Strombegrenzer und Spannungsregler wurden nicht mit in den Morphologischenkasten aufgenommen
+In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Komponenten, wie etwa Buzzer und Lautsprecher oder Drehschalter und Tasten, sind größtenteils austauschbar. Spezifische Schaltungselemente wie Strombegrenzer und Spannungsregler wurden hingegen nicht im morphologischen Kasten berücksichtigt, da solche Entscheidungen erst während des Layoutprozesses getroffen werden.
 
-
-PLACEHOLDER
 
 \subsection{Informatik Morphologischer Kasten}
 
@@ -95,6 +95,21 @@ Nun werden die folgenden drei Varianten in der Nutzwertanalyse evaluiert.
 \caption{Nutzwertanalyse: Elektrotechnik}
 \label{fig:nutzwert-ET}
 \end{figure}
+
+Aus den Bewertungen aus der Nutzwertanalyse zeigt sich die Variante A als höchst bewertete. Somit wird diese Variante weiter verfolgt und besteht aus folgenden Komponenten.
+
+\begin{itemize}
+    \item Rechner: Tiny K22
+    \item Objekterkennung: Ultraschall
+    \item Motoren: Bürstenbehafteter Motor
+    \item Anzeige: LED's 
+    \item Akkustische Signalisierung: Lautsprecher
+    \item Motorenansteuerung: Treiber einkaufen
+    \item Stromversorgung: Akku
+    \item Linienerkennung: Fototransistor
+    \item Not-Stop: Taster
+    \item Inputoption: Schalter
+\end{itemize}
 
 \subsection{Informatik Nutzwertanalyse}
 
