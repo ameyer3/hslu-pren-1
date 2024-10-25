@@ -342,9 +342,9 @@ Um die Objekte zu erkennen, welche auf dem Wegnetzwerk stehen, werden zwei versc
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-  \textbf{} & \textbf{Ultraschall} & \textbf{Optoelektrisch} & \textbf{}\\
+  \textbf{} & \textbf{Ultraschall} & \textbf{Optoelektrisch}\\
   \hline
-  \textbf{Beschreibung}  & \makecell{Senden und Empfangen von Ultraschall} & \makecell{Senden und Emfpangen von Licht}\\
+  \textbf{Beschreibung}  & Senden und Empfangen von Ultraschall & Senden und Emfpangen von Licht\\
   \hline
   \textbf{Vorteile}  & \makecell{-geringe Störeinflüsse von Material und \\Umwelt\\-grosse Reichweite} & \makecell{-Präzise Messungen möglich}\\
   \hline
@@ -352,6 +352,10 @@ Um die Objekte zu erkennen, welche auf dem Wegnetzwerk stehen, werden zwei versc
   \hline
   \textbf{Links} & \url{https://doi.org/10.1007/978-3-658-12562-2} & \url{https://doi.org/10.1007/978-3-658-12562-2}\\
   \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
 \textbf{} & \textbf{Lidar} & \textbf{} \\
   \hline
   \textbf{Beschreibung} & Senden und Empfangen von Laserstrahlen & \\
@@ -377,16 +381,17 @@ Aufgrund der Streckenführung, dass man über eine Linie folgen muss besteht die
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-  \textbf{} & \textbf{Fototransistor} & \textbf{Farbsensor} & \textbf{}\\
+  \textbf{} & \textbf{Phototransistor} & \textbf{Farbsensor} \\
   \hline
-  \textbf{Beschreibung}  & \makecell{} & \makecell{Die LED können aufleuchten um etwas\\ visuell anzuzeigen}\\
+  \textbf{Beschreibung}  & Ein Fototransistor ist abhängig von der Helligkeit der Fläche. Er leitet je nach dem besser oder schlechter. & Ein Farbsensor kann mittels Photodioden und Farbfiltern Farben erkennen.\\
   \hline
-  \textbf{Vorteile}  & \makecell{-genauere Anzeige mit Beschreibung \\kompakte Darstellung\\-Übersichtlichkkeit} & \makecell{-einfach und robust}\\
+  \textbf{Vorteile}  & \makecell{-} & \makecell{-einfach und robust}\\
   \hline
   \textbf{Nachteile} & \makecell{-Implementierungsaufwand} & \makecell{-keine genauen Daten}\\
   \hline
   \textbf{Links} & \url{https://www.pi-shop.ch/pimoroni-display-o-tron-3000} & \url{https://de.wikipedia.org/wiki/Leuchtdiode#:~:text=Eine%20Leuchtdiode%20(kurz%20LED%20von,sperrt%20die%20LED%20den%20Strom.}\\
-  \hline
+
+\hline
 \textbf{} & \textbf{Balkenanzeige} & \textbf{} \\
   \hline
   \textbf{Beschreibung} & Einfache Darstellung über das Aufleuchten einzelner Balken & \\
@@ -397,7 +402,10 @@ Aufgrund der Streckenführung, dass man über eine Linie folgen muss besteht die
   \hline
   \textbf{Links} & \url{https://www.mouser.ch/ProductDetail/Kingbright/DC10EWA?} & \\
   \hline
-
+\end{tabularx}
+\caption{Linienerkennungsmöglichkeiten}
+\label{table:et-line-detection-compare}
+\end{table}
 
 \subsubsection{Anzeige}
 
@@ -408,7 +416,7 @@ Damit wichtige Informationen visuell angezeigt werden können werden in dieser T
 \small
 \begin{tabularx}{\textwidth}{|l|X|X|}
 \hline
-  \textbf{} & \textbf{Display} & \textbf{LED's} & \textbf{}\\
+  \textbf{} & \textbf{Display} & \textbf{LED's} \\
   \hline
   \textbf{Beschreibung}  & \makecell{Auf einem Display werden die\\wichtigsten Daten mit Texten angezeigt.} & \makecell{Die LED können aufleuchten um etwas\\ visuell anzuzeigen}\\
   \hline
@@ -418,6 +426,10 @@ Damit wichtige Informationen visuell angezeigt werden können werden in dieser T
   \hline
   \textbf{Links} & \url{https://www.pi-shop.ch/pimoroni-display-o-tron-3000} & \url{https://de.wikipedia.org/wiki/Leuchtdiode#:~:text=Eine%20Leuchtdiode%20(kurz%20LED%20von,sperrt%20die%20LED%20den%20Strom.}\\
   \hline
+\end{tabularx}
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
 \textbf{} & \textbf{Balkenanzeige} & \textbf{} \\
   \hline
   \textbf{Beschreibung} & Einfache Darstellung über das Aufleuchten einzelner Balken & \\
@@ -428,7 +440,6 @@ Damit wichtige Informationen visuell angezeigt werden können werden in dieser T
   \hline
   \textbf{Links} & \url{https://www.mouser.ch/ProductDetail/Kingbright/DC10EWA?} & \\
   \hline
-
 \end{tabularx}
 \caption{Anzeigemöglichkeiten}
 \label{table:et-object-detection-compare}
