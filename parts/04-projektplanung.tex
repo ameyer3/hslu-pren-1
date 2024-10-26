@@ -15,7 +15,7 @@ Zusätzlich zu den definierten Massnahmen sollen mithilfe von Prototypen so viel
 \hline
   \textbf{Nr} & \textbf{Beschreibung} & \textbf{Prävention} & \textbf{Mitigation} & \textbf{V.} & \textbf{N.} \\
   \hline
-    1&Hindernisse werden nicht erkannt. &Viele Bilder in verschiedenen Situationen machen, um zu trainieren.&Redundanz mit Sensor. Roboter kann zurückfahren durch Distanzensor.&20&5 \\
+    1&Hindernisse werden nicht erkannt. &Mit vielen Bildern trainieren.& Distanzsensor; Roboter faehrt zurück.&20&5 \\
   \hline
       2&Knoten werden nicht erkannt. &Viele Bilder in verschiedenen Situationen machen, um zu trainieren.&Linien werden erkannt und Roboter orientiert sich daran.&20& 12\\
   \hline
@@ -29,25 +29,25 @@ Zusätzlich zu den definierten Massnahmen sollen mithilfe von Prototypen so viel
   \hline
       7& Ein Objekt wird fehlerhaft gedeutet und falsche Wege werden intern entfernt. &Knoten erkennen und nicht nur Hindernisse.&Roboter ist schnell genug und hat einen Trial \& Error Modus.&16&6 \\
   \hline
-      8&Hindernisse werden beim Anheben verschoben und können nicht mehr an den selben Ort gestellt werden. &Möglichst robuste Greifmethode waehlen und diese testen.&&12&8 \\
+      8&Hindernisse werden beim Anheben verschoben. &Robuste Greifmethode waehlen und testen.&&12&8 \\
   \hline
-      9&Überstrom bei blockierten Motoren. &Endschalter/Stromsensoren.&Abschalten bevor Überstrom Bauteile beschädigt.&10&5 \\
+      9&Überstrom bei blockierten Motoren. &Endschalter/Stromsensoren.&Abschalten bevor Bauteile beschädigt.&10&5 \\
   \hline
       10&Ungenaue Abfahrtsituation vom Knoten, Fahrzeug fährt von der Linie weg. &Liniensensor als Unterstützung, Kamera prueft Linie&Korrigieren falls nötig.&15&5 \\
   \hline
-      11&Die Kamera liefert unscharfe oder verzerrte Bilder, wodurch Hindernisse oder Wegpunkte nicht richtig erkannt werden. &Verwendung von Kameras mit hoher Auflösung.&&12&6 \\
+      11&Die Kamera liefert unscharfe oder verzerrte unbrauchbare Bilder. &Verwendung von Kameras mit hoher Auflösung.&Falls Bilder unscharf sind, Roboter anhalten und neue Bilder aufnehmen.&12&6 \\
   \hline
-      12& Der Roboter wählt einen falschen Pfad, weil die Hinderniserkennung fehlerhaft ist&&&12& 6\\
+      12& Der Roboter wählt einen falschen Pfad, weil die Hinderniserkennung fehlerhaft ist.&Optimierung der Hinderniserkennung.&Roboter bei Fehlverhalten anhalten und zurücksetzen in vorherigen Zustand. Roboter ist schnell.&12& 6\\
   \hline
-      13&Ein Softwarefehler führt zu einem Absturz während der Laufzeit, wodurch der Roboter stoppt oder Fehlfunktionen aufweist. &&&15&4 \\
+      13&Ein Softwarefehler führt zu einem Absturz während der Laufzeit, wodurch der Roboter stoppt oder Fehlfunktionen aufweist. &Exception Handling und umfangreiche Tests unter verschiedenen Bedingungen.&Automatischer SW-Neustart, Wiederaufnahme des letzten bekannten Zustands.&15&4 \\
   \hline
-      14&Ein Software-Update führt zu neuen Fehlern oder ist nicht kompatibel mit der aktuellen Hardware. &&&6&2 \\
+      14&Ein Software-Update führt zu neuen Fehlern oder ist nicht kompatibel mit der aktuellen Hardware. &Gründliche Tests vor dem Rollout eines Updates.&Möglichkeit, schnell zur vorherigen stabilen Version zurückzukehren.&6&2 \\
   \hline
-      15&Akkustand ist zu niedrig bei Start des Laufes. &&&5& 1\\
+      15&Akkustand ist zu niedrig bei Start des Laufes. & Anzeige des Akkustandes. Leicht austauschbarer Akku. Akku aufladen.&Ein zweiter Akku, der voll aufgeladen ist.&5& 1\\
   \hline
-      16&Personenausfall durch Krankheit oder Unfall. &&&6& 3\\
+      16&Personenausfall durch Krankheit oder Unfall. &&Stellvertretungen und virtuelle Kommunikation.&6& 3\\
   \hline
-      17&Datenkorruption. &&&4& 1\\
+      17&Datenkorruption. &&Regelmaessige Backups.&4& 1\\
   \hline
 
 
@@ -61,7 +61,7 @@ Alle Risiken wurden bewertet anhand der Wahrscheinlichkeit und der Auswirkung. D
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth -30mm]{assets/Risikoanalyse-vorher.pdf}
+\includegraphics[width=\textwidth -40mm]{assets/Risikoanalyse-vorher.pdf}
 \caption{Risikoanalyse vor Massnahmen}
 \label{fig:risk-before}
 \end{figure}
@@ -70,7 +70,7 @@ Dieselbe Matrix wurde erstellt für die Risiken nach den definierten Massnahmen.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth -30mm]{assets/Risikoanalyse-nachher.pdf}
+\includegraphics[width=\textwidth -40mm]{assets/Risikoanalyse-nachher.pdf}
 \caption{Risikoanalyse nach Massnahmen}
 \label{fig:risk-after}
 \end{figure}
