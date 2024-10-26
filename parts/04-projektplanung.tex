@@ -1,28 +1,61 @@
 \section{Projektplanung}
 
 Die Projektplanung wurde anhand der vorgegebenen Abgabetermine durchgeführt.
-Da es vier Abgabetermine gibt, wurde das Projekt in vier Sprints aufgeteilt, die jeweils mit einem Meilenstein enden.
+Da es vier Abgabetermine gibt, wurde das Projekt in vier Sprints aufgeteilt, die jeweils mit einem Meilenstein enden. 
 
 \subsection{Risikobewertung}
 
-Die Risiken des Projektes sind gesammelt und bewertet worden. Pro Risiko wurden Massnahmen zur Praevention und zur Mitigation gesammelt.
-Zusaetzlich zu den definierten Massnahmen sollen mithilfe von Prototypen so viele Risiken wie möglich, so gut wie möglich vermindert werden. 
+Die Risiken des Projektes sind gesammelt und bewertet worden. Pro Risiko wurden Massnahmen zur Prävention und zur Mitigation gesammelt. Die Bewertung wurde durchgeführt vor dem Definieren der Massnahmen (V.) und nachher (N.).
+Zusätzlich zu den definierten Massnahmen sollen mithilfe von Prototypen so viele Risiken wie möglich, so gut wie möglich vermindert werden. 
 
-TODO TABLE
-\begin{table}[h!]
+\begin{table}[H]
 \centering
-\begin{tabularx}\textwidth{|X | X |}
+\small
+\begin{tabularx}\textwidth{|l | X | X | X | l | l|}
 \hline
-  \textbf{Grösse} & \textbf{Dauer} \\
+  \textbf{Nr} & \textbf{Beschreibung} & \textbf{Prävention} & \textbf{Mitigation} & \textbf{V.} & \textbf{N.} \\
   \hline
-    &  \\
+    1&Hindernisse werden nicht erkannt. &Viele Bilder in verschiedenen Situationen machen, um zu trainieren.&Redundanz mit Sensor. Roboter kann zurückfahren durch Distanzensor.&20&5 \\
   \hline
+      2&Knoten werden nicht erkannt. &Viele Bilder in verschiedenen Situationen machen, um zu trainieren.&Linien werden erkannt und Roboter orientiert sich daran.&20& 12\\
+  \hline
+      3&4 Minuten reichen nicht. &Testdurchfläufe in realistischen Umgebungen.&&8&4 \\
+  \hline
+      4& 1 Minute reicht nicht zum Aufbau.&Testdurchfläufe und einfaches Interface.&Zufaelliges Ziel wird gewaehlt von SW.&5&3 \\
+  \hline
+      5&Bodenfugen werden als Linie erkannt. &Testdurchfläufe in realistischen Umgebungen.&Kamera hilft Linien zu erkennen, hilft Roboter gerade zu stellen.&15&4 \\
+  \hline
+      6&Liniensensor fehlerhaft. &Sichere Implementation mit Tests.&Encoder Motoren.&8&3 \\
+  \hline
+      7& Ein Objekt wird fehlerhaft gedeutet und falsche Wege werden intern entfernt. &Knoten erkennen und nicht nur Hindernisse.&Roboter ist schnell genug und hat einen Trial \& Error Modus.&16&6 \\
+  \hline
+      8&Hindernisse werden beim Anheben verschoben und können nicht mehr an den selben Ort gestellt werden. &Möglichst robuste Greifmethode waehlen und diese testen.&&12&8 \\
+  \hline
+      9&Überstrom bei blockierten Motoren. &Endschalter/Stromsensoren.&Abschalten bevor Überstrom Bauteile beschädigt.&10&5 \\
+  \hline
+      10&Ungenaue Abfahrtsituation vom Knoten, Fahrzeug fährt von der Linie weg. &Liniensensor als Unterstützung, Kamera prueft Linie&Korrigieren falls nötig.&15&5 \\
+  \hline
+      11&Die Kamera liefert unscharfe oder verzerrte Bilder, wodurch Hindernisse oder Wegpunkte nicht richtig erkannt werden. &Verwendung von Kameras mit hoher Auflösung.&&12&6 \\
+  \hline
+      12& Der Roboter wählt einen falschen Pfad, weil die Hinderniserkennung fehlerhaft ist&&&12& 6\\
+  \hline
+      13&Ein Softwarefehler führt zu einem Absturz während der Laufzeit, wodurch der Roboter stoppt oder Fehlfunktionen aufweist. &&&15&4 \\
+  \hline
+      14&Ein Software-Update führt zu neuen Fehlern oder ist nicht kompatibel mit der aktuellen Hardware. &&&6&2 \\
+  \hline
+      15&Akkustand ist zu niedrig bei Start des Laufes. &&&5& 1\\
+  \hline
+      16&Personenausfall durch Krankheit oder Unfall. &&&6& 3\\
+  \hline
+      17&Datenkorruption. &&&4& 1\\
+  \hline
+
+
 
 \end{tabularx}
-\caption{T-Shirt Grössen}
-\label{table:t-shirt}
+\caption{Risiken}
+\label{table:risks}
 \end{table}
-
 
 Alle Risiken wurden bewertet anhand der Wahrscheinlichkeit und der Auswirkung. Dies ist ersichtlich aus dieser Grafik.
 
@@ -33,7 +66,7 @@ Alle Risiken wurden bewertet anhand der Wahrscheinlichkeit und der Auswirkung. D
 \label{fig:risk-before}
 \end{figure}
 
-Dieselbe Matrix wurde erstellt fuer die Risiken nach den definieren der Massnahmen.
+Dieselbe Matrix wurde erstellt für die Risiken nach den definierten Massnahmen.
 
 \begin{figure}[H]
 \centering
@@ -42,6 +75,16 @@ Dieselbe Matrix wurde erstellt fuer die Risiken nach den definieren der Massnahm
 \label{fig:risk-after}
 \end{figure}
 
+Aus der Risikomatrix nach den Massnahmen geht hervor, dass die grössten Risiken, die beim Entwickeln des Roboters berücksichtigt werden müssen die folgenden drei Risiken sind:
+
+\begin{itemize}
+    \item Risiko 2: Knoten werden nicht erkannt.
+    \item Risiko 7: Ein Objekt wird fehlerhaft gedeutet und falsche Wege werden intern entfernt.
+    \item Risiko 12: Der Roboter wählt einen falschen Pfad, weil die Hinderniserkennung fehlerhaft ist.
+\end{itemize}
+
+
+\newpage
 \subsection{Projektplan}
 
 Der Projektplan in Tabelle \ref{table:projektplan} zeigt die Meilensteine, die zu erreichen sind.
@@ -123,6 +166,8 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
   1.3 & Ziele definieren & Definieren, wie wir uns den Roboter vorstellen. & S\\
   \hline
   1.4 & Vorgehen definieren & Geeignete Projektmethode wird gewählt. & S\\
+  \hline
+    1.5 & Risikomatrix erstellen & Risiken werden gesammelt und bewertet. & M\\
   \hline
   2 & \textbf{Aufgabenstellung klären} && \\
   \hline
