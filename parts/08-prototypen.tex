@@ -6,9 +6,11 @@ Nachdem ein Gesamtkonzept geplant wurde, wird nun möglichst viel Prototyping du
 
 \subsection{Kürzester Weg finden}
 
-Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlaessigt werden kann.
+Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlässigt werden kann.
 
-Um zu ueberpruefen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten der kuerzeste Weg zu allen anderen Knoten im vorgegebenen Graphen mit 8 Knoten berechnet. Die Zeit dafuer wurde gestoppt und ausgegeben:
+Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten der kürzeste Weg zu allen anderen Knoten im vorgegebenen Graphen mit 8 Knoten berechnet. Die Zeit dafür wurde gestoppt und ausgegeben:
+
+TODO: Skript anhaengen oder verlinken?
 
 \begin{figure}[H]
 \centering
@@ -17,13 +19,14 @@ Um zu ueberpruefen, dass diese These stimmt, wurde ein traditioneller Dijkstra A
 \label{fig:dijkstra-time}
 \end{figure}
 
-Um den kuerzesten Pfad acht mal zu berechnen wurden ungefaehr 18 
- Es war jedoch wichtig, dass der Algorithmus moeglichst lightweight ist, da nur eine beschraenkte Rechenkraft zu Verfuegung steht.
+Um den kürzesten Pfad acht mal zu berechnen wurden ungefähr 0.18 ms benötigt. Dies ist schnell genug. Aufgrund dieses Test wurde entschieden einen einfachen selbst implementieren Dijkstra zu verwenden, da es wichtig ist, dass der Algorithmus möglichst lightweight ist, da nur beschränkte Rechenkraft und Speichergrösse zu Verfügung stehen.
 
 
 \subsection{Bilderkennung}
 
 \subsection{Simulator}
+
+TODO: eigenes File?
 
 Das Erarbeiten des Konzeptes des Simulators, der Implementierung und des Gebrauchs wird in diesem Kapitel festgehalten.
 
