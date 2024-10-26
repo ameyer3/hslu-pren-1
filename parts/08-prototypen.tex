@@ -6,8 +6,20 @@ Nachdem ein Gesamtkonzept geplant wurde, wird nun möglichst viel Prototyping du
 
 \subsection{Kürzester Weg finden}
 
-PLACEHOLDER
--> lightweight, schnelligkeit egal weil nur 8 Knoten, Tests von Lukas mit Screenshot (ev. Code in Anhang)
+Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlaessigt werden kann.
+
+Um zu ueberpruefen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten der kuerzeste Weg zu allen anderen Knoten im vorgegebenen Graphen mit 8 Knoten berechnet. Die Zeit dafuer wurde gestoppt und ausgegeben:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/dijkstra-time.jpeg}
+\caption{Dijkstra Zeitmessung}
+\label{fig:dijkstra-time}
+\end{figure}
+
+Um den kuerzesten Pfad acht mal zu berechnen wurden ungefaehr 18 
+ Es war jedoch wichtig, dass der Algorithmus moeglichst lightweight ist, da nur eine beschraenkte Rechenkraft zu Verfuegung steht.
+
 
 \subsection{Bilderkennung}
 
@@ -27,6 +39,6 @@ Nach der Nutzwertanalyse war das grundlegende Konzept klar und es konnte mit der
 
 - Poetry
 
-- GUI Roboter bewegt sich
+- Die einzelnen Kanten werden identifiziert mit Sortierung
 
-- Die einzelnen Kanten werden identifiziert mit Sortierung + Bilder mit Grad?
+- GUI Roboter bewegt sich
