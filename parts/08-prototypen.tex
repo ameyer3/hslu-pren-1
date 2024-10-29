@@ -8,19 +8,23 @@ Nachdem ein Gesamtkonzept geplant wurde, wird nun möglichst viel Prototyping du
 
 Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlässigt werden kann.
 
-Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten der kürzeste Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. Die Zeit dafür wurde gestoppt und ausgegeben:
+Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten den kürzesten Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. währendessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auch auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt, und einige male wiederholt. Was uns zu nachfolgender Ausgabe und Kenntnissen bringt:
 
-TODO: Skript anhaengen oder verlinken?
+\begin{verbatim}
+Shortest distance from E to A is 18 via path: E -> G -> A
+Shortest distance from E to B is 22 via path: E -> G -> H -> B
+Shortest distance from E to C is 20 via path: E -> D -> C
+Shortest distance from E to D is 10 via path: E -> D
+Shortest distance from E to E is 0 via path: E
+Shortest distance from E to F is 10 via path: E -> F
+Shortest distance from E to G is 6 via path: E -> G
+Shortest distance from E to H is 12 via path: E -> G -> H
+This calculation took about 0.128ms
+\end{verbatim}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/dijkstra-time.jpeg}
-\caption{Dijkstra Zeitmessung}
-\label{fig:dijkstra-time}
-\end{figure}
+Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
-Um den kürzesten Pfad acht mal zu berechnen wurden ungefähr 0.18 ms benötigt. Dies ist schnell genug. Aufgrund dieses Test wurde entschieden einen einfachen selbst implementieren Dijkstra zu verwenden, da es wichtig ist, dass der Algorithmus möglichst lightweight ist, da nur beschränkte Rechenkraft und Speichergrösse zu Verfügung stehen.
-
+Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen Dijkstra-Algorithmus zu verwenden, da es wichtig ist, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
 
 \subsection{Bilderkennung}
 
