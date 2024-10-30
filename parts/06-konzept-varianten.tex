@@ -1,29 +1,29 @@
 \section{Evaluation Lösungsprinzipien}
 
-Aus der vorhergehenden Technologierecherche wird pro Studiengang ein Morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Ein Überblick über alle morphologischen Kästen befindet sich im Anhang \ref{Morphologischer Kasten}.
+Aus der vorhergehenden Technologierecherche wird pro Studiengang ein Morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Nachfolgend ein Überblick über alle morphologischen Kästen.
 
 \subsection{Maschinentechnik Morphologischer Kasten}
 
 Auf Basis der Maschinentechnik-Technologierecherche wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und im morphologischen Kasten festgehalten. Es wurden nur die Lösungskombinationen markiert welche in der Nutzwertanalyse verglichen werden.  
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/MK_Maschinentechnik.pdf}
 \caption{Morphologischer Kasten: Mechanik}
-\label{fig:mk-mechanik}
-\end{figure}
+\label{table:mk-mechanik}
+\end{table}
 
 
 \subsection{Elektrotechnik Morphologischer Kasten}
 
 Aus der Technologierecherche wurde folgender Morphologischer Kasten mit drei Varianten für die Elektrotechnik Teilfunktionen erstellt.
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
 \includegraphics[width=\textwidth -5mm]{assets/MK_Elektrotechnik.pdf}
 \caption{Morphologischer Kasten: Elektrotechnik}
-\label{fig:mk-elektrotechnik}
-\end{figure}
+\label{table:mk-elektrotechnik}
+\end{table}
 
 In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Komponenten, wie etwa Buzzer und Lautsprecher oder Drehschalter und Tasten, sind grösstenteils austauschbar. Spezifische Schaltungselemente wie Strombegrenzer und Spannungsregler wurden hingegen nicht im morphologischen Kasten berücksichtigt, da solche Entscheidungen erst während des Layoutprozesses getroffen werden.
 
@@ -32,12 +32,12 @@ In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Ko
 
 Aus der Technologierecherche wurde folgender Morphologischer Kasten mit drei Varianten für die Informatik Teilfunktionen erstellt.
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/MK_Informatik.pdf}
 \caption{Morphologischer Kasten: Informatik}
-\label{fig:mk-informatik}
-\end{figure}
+\label{table:mk-informatik}
+\end{table}
 
 
 Bei den drei Varianten fällt auf, dass alle Python und den Wegfindealgorithmus Dijkstra verwenden. Python wurde immer gewählt, da Bilderkennung und Machine Learning sehr gut mit Python harmonisieren. Viele Libraries, inklusive dieser, die hier ersichtlich sind, sind kompatibel mit Python. Dijkstra wurde immer gewählt, weil dieser Algorithmus simpel und robust ist und die Geschwindigkeit vernachlässigbar ist. Da es im Graphen nur 8 Knoten gib, wird die Berechnung bei jedem Algorithmus schnell sein.
@@ -47,12 +47,12 @@ Bei den drei Varianten fällt auf, dass alle Python und den Wegfindealgorithmus 
 
 Aus der Technologierecherche wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen.
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/MK_Simulator.pdf}
 \caption{Morphologischer Kasten: Simulator}
-\label{fig:mk-simulator}
-\end{figure}
+\label{table:mk-simulator}
+\end{table}
 
 
 
@@ -76,12 +76,12 @@ Folgende drei Lösungskombinationen aus dem morphologischen Kasten werden in der
     \item Variante C: Die Fortbewegung erfolgt mit zwei separat angesteuerten Raupen. Angesteuert werden die Raupen durch ein Überlagerungsgetriebe. Das Hindernis wird mit einem Gabelgreifer angehoben. 
 \end{itemize}
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/Nutzwertanalyse-M.pdf}
+\includegraphics[width=0.75\textwidth]{assets/Nutzwertanalyse-M.pdf}
 \caption{Nutzwertanalyse: Maschinentechnik}
-\label{fig:nutzwert-maschinentechnik}
-\end{figure}
+\label{table:nutzwert-maschinentechnik}
+\end{table}
 
 Die Analyse der drei genannten Varianten hat ergeben, dass die Variante B sich am besten für die Umsetzung eignet. Enstprechen wurden folgende Komponenten und Systeme ausgewählt. 
 
@@ -107,12 +107,12 @@ Nun werden die folgenden drei Varianten in der Nutzwertanalyse evaluiert.
 \end{itemize}
 
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/Nutzwertanalyse-ET.pdf}
+\includegraphics[width=0.75\textwidth]{assets/Nutzwertanalyse-ET.pdf}
 \caption{Nutzwertanalyse: Elektrotechnik}
-\label{fig:nutzwert-ET}
-\end{figure}
+\label{table:nutzwert-ET}
+\end{table}
 
 Aus den Bewertungen aus der Nutzwertanalyse zeigt sich die Variante A als höchst bewertete. Somit wird diese Variante weiter verfolgt und besteht aus folgenden Komponenten.
 
@@ -141,12 +141,12 @@ Es gibt diese drei Lösungskombinationen, die evaluiert werden.
     \item Variante C: Python verwendet nur OpenCV zur Bilderkennung und berechnet mit Dijkstra den Weg, es rechnet auf einem Raspberry Pi mit einer Raspberry Camera.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/Nutzwertanalyse-I.pdf}
+\includegraphics[width=0.75\textwidth]{assets/Nutzwertanalyse-I.pdf}
 \caption{Nutzwertanalyse: Informatik}
-\label{fig:nutzwert-informatik}
-\end{figure}
+\label{table:nutzwert-informatik}
+\end{table}
 
 Aus der Nutzwertanalyse kann abgelesen werden, dass die Variante A mit Python, PyTorch und OpenCV am besten passt. Die entsprechenden Komponenten aus dieser Variante sind nachfolgend aufgelistet.
 
@@ -171,12 +171,12 @@ Die folgenden drei Lösungskombinationen, werden im nächsten Schritt evaluiert.
     \item Variante C: Ein Python Simulator liest ein Bild ein und speichert es in einem Graph Datentyp. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Eine externe Library implementiert Dijkstra, das Ziel wird manuell ausgwählt und die Aktivitäten des Roboters werden in einem CLI dargestellt.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/Nutzwertanalyse-Simulator.pdf}
+\includegraphics[width=0.75\textwidth]{assets/Nutzwertanalyse-Simulator.pdf}
 \caption{Nutzwertanalyse: Simulator}
-\label{fig:nutzwert-Simulator}
-\end{figure}
+\label{table:nutzwert-Simulator}
+\end{table}
 
 Die Nutzwertanalyse zeigt, dass die Variante B: Python mit YAML und einem GUI am besten abschneidet. Diese Variante besteht aus folgenden Teilen.
 
