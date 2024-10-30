@@ -11,13 +11,13 @@ Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwi
 Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten den kürzesten Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. währenddessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auch auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt, und einige male wiederholt. Was uns zu nachfolgender Ausgabe und Kenntnissen bringt:
 
 \begin{figure}[H]
-\begin{subfigure}{0.35\textwidth}
-\includegraphics[width=0.9\linewidth]{img/graph_with_weighted_edges.png} 
+\begin{subfigure}{0.275\textwidth}
+\includegraphics[width=0.95\linewidth]{img/graph_with_weighted_edges.png} 
 \caption{Gewichteter Graph}
 \label{fig:weighted-graph}
 \end{subfigure}
-\begin{subfigure}{0.7\textwidth}
-\begin{scriptsize}
+\begin{subfigure}{0.720\textwidth}
+\begin{footnotesize}
 \begin{verbatim}
 Shortest distance from E to A is 18 via path: E -> G -> A
 Shortest distance from E to B is 22 via path: E -> G -> H -> B
@@ -29,12 +29,12 @@ Shortest distance from E to G is 6 via path: E -> G
 Shortest distance from E to H is 12 via path: E -> G -> H
 This calculation took about 0.128ms
 \end{verbatim}
-\end{scriptsize}
+\end{footnotesize}
 \caption{Skript Ausgabe}
 \label{fig:djikstra-test-skript-output}
 \end{subfigure}
 
-\caption{Caption for this figure with two images}
+\caption{Djikstra Algoritmus Test mit Python}
 \label{fig:image2}
 \end{figure}
 
