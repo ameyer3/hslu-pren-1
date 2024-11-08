@@ -80,28 +80,45 @@ TODO: Was soll Simulator koennen?
 \begin{table}[H]
 \centering
 \small
-\begin{tabularx}{\textwidth}{|l|X|X|}
+\begin{tabularx}{\textwidth}{|l|X|l|}
 \hline
-  \textbf{Nr.} & \textbf{Spezifikation} & \textbf{Schalter} \\
+  \textbf{Nr.} & \textbf{Spezifikation} & \textbf{Priorität 1-3}  \\
   \hline
-  1  & Der Zielknoten kann manuell und  & Der Schalter wird gedrückt und löst den Not-Stop aus.\\
+  1  & Der Zielknoten kann ausgewählt werden. &  2\\
   \hline
-  \textbf{Vorteile}  & \makecell{-Erkennung von Not-Aus\\-Einrastfunktion} & \makecell{-klein und benötigt wenig Druck}\\
+   2   & Der Roboter speichert den Graph intern.  & 1\\
   \hline
-  \textbf{Nachteile} & \makecell{-muss mit Kraft gedrückt werden} & \makecell{-keine Einrastfunktion}\\
+   3 & Der Roboter überprüft seine Nachbarsknoten.&1\\
   \hline
-  \textbf{Links} &  \url{https://de.wikipedia.org/wiki/Notausschalter} | 3& \url{https://de.wikipedia.org/wiki/Schalter_(Elektrotechnik)} | 3\\
+  4 & Der Roboter erkennt fehlende Linien und reagiert darauf. & 1\\
   \hline
+  5 &   Der Roboter erkennt Pylonen und reagiert darauf. & 1\\
+  \hline
+   6  &   Der Roboter erkennt Barrieren und reagiert darauf. & 1\\
+  \hline
+    7 &   Der Roboter berechnet den kürzesten Weg im Graphen.& 1\\
+  \hline
+     8  &   Der Weg des Roboters wird im GUI angezeigt. & 1\\
+  \hline
+      9   &   Die Reaktionen auf die Hindernisse werden im GUI angezeigt. & 2\\
+  \hline
+ 10   &   Die Hindernisse werden im GUI angezeigt. & 2\\
+  \hline
+   11   &   Die Reihenfolge der Knoten wird erkannt, als Vorbereitung, dass der Roboter, der Steuerung sagen kann, wo sich der nächste Weg befindet. & 3\\
+  \hline
+
 \end{tabularx}
-\caption{Not-Aus Schalter}
-\label{table:not-stop-compare}
+\caption{Spezifikationen Simulator}
+\label{table:spezifikation-simulator}
 \end{table}
 
 \subsubsection{Konzeption}
 
-Morphologischer Kasten (ev. Fliesstext)
+Es wurden mehrere Varianten ermittelt mit einem morphologischen Kasten, die alle die Spezifikatinen erfuellen koennen. Mit einer Nutzwertanalyse wurde die beste Variante bestimmt.
 
-- GitHub, Issues sammeln, Festlegen Git ettiquete (aka MRs)
+TODO BEschreib gewaehlte Variante, depending wo Kasten \& Analyse sind in Doku
+
+Die einzelnen Taetigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wurde jeweils der Person zugeordnet, die gerade daran arbeitet. So konnte koordiniert entwickelt werden.
 
 \begin{figure}[H]
 \centering
@@ -110,10 +127,11 @@ Morphologischer Kasten (ev. Fliesstext)
 \label{fig:github-issues}
 \end{figure}
 
-- Struktur mit Klassen (ERD?): Robot, Reader, Calculator, GUI
+Es wurde ein objektorientierter Ansatz gewaehlt, um den Simulator umzusetzen. Die Roboterklasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die physische Kamera, die Objekte erkennt, mit einem GraphReader simuliert werden.
+
+TODO ERD
 
 \subsubsection{Entwicklung}
-
 
 - Roboter liest Graph, ueberprueft Nodes und Barrieren
 
