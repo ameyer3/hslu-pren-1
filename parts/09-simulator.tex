@@ -139,9 +139,26 @@ edges_to_target = (target_index - start_index) % len(neighbors)
 \end{verbatim}
 
 Diese Ablauf wird so lange wiederholt, bis der Zielknoten erreicht wird.
-Waehrend des ganzen Ablaufes werden die Klassen aufgerufen, die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik
+Waehrend des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik (zum Beispiel Hindernisse aus dem Konfigurationsfile lesen anstatt aus Bildern von der Kamera) und oft nur simple Print Statements. Diese Print Statements sollen die Schnittstelle zu der Elektronik simulieren. Ein Beispiel davon ist die Wheels Klasse:
 
-SCHNITTSTELLE NNACHICTHEN
+\begin{verbatim}
+class Wheels:
+    def drive(self, distance: int):
+        print(f"DRIVE {distance}CM.")
+
+    def turn(self, degree: int):
+        print(f"TURN {degree} DEGREES.")
+
+    # Turns until sensor detect objects
+    def turn_until(self, until_condition: str):
+        print(f"TURN {until_condition}.")
+        is_line = False
+        while not is_line:
+            print("Turning")
+            # Simulate that a line was detected by a sensor
+            is_line = True
+        print(f"Found the next line to traverse.")
+\end{verbatim}
 
 \textbf{Technische Aspekte:}
 
@@ -156,6 +173,6 @@ Um die Abhaengigkeiten zu externen Bibliotheken zu organisieren wird Poetry verw
 
 \textbf{Trial and Error Mode}
 
-Es wurde ein Modus implementiert, zu dem gewechselt wird, falls der Roboter nicht mehr weiss, wo er sich befindet. Dies soll im richtigen Roboter als Risikomitigation impplementiert sein. Fuer die Simulation wurde ein Ablauf definiert fuer diesen Modus und er wurde entwickelt. Die Nachrichten der Sensoren wurden gemockt.
+Es wurde ein Modus implementiert, zu dem gewechselt wird, falls der Roboter nicht mehr weiss, wo er sich befindet. Dies soll im richtigen Roboter als Risikomitigation implementiert sein. Fuer die Simulation wurde ein Ablauf definiert fuer diesen Modus und er wurde implementiert. Die Nachrichten der Sensoren wurden gemockt.
 
 TODO BILD
