@@ -109,18 +109,53 @@ missing_line:
   - [E, D]
 \end{verbatim}
 
-Der 
-- Roboter liest Graph, ueberprueft Nodes und Barrieren
--> add Graph YAML \& Barriere YAML
+Der Simulator liest die beiden Dateien ein und speichert sie intern als Python Dictionaries.
 
-- Calculator holt kürzester Weg, Roboter geht zu nächsten Node
+\textbf{Ablauf des Simulators:}
 
-- Poetry
+Das Ziel ist es, dass der Ablauf moeglichst nah ist an dem Ablauf des Gesamtkonzeptes.
+Der Programmablauf besteht aus folgenden Teilen:
+\begin{enumerate}
+    \item Nachbarsknoten auf Hindernisse pruefen
+    \item Naechste Knoten berechnen
+    \item Zu naechstem Knoten fahren
+\end{enumerate}
 
-- Die einzelnen Kanten werden identifiziert mit Sortierung
+Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhrezeigersinn im Kreis und prueft alle Nachbarsknoten. In der Simulation wird dafuer der Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprueft. Falls ein Hinderniss detektiert wirde, reagiert er wie folgt:
+
+\begin{itemize}
+    \item Ein Pylon steht auf dem Nachbarsknoten: Dieser Knoten und alle Kanten, die dahin fuehren, werden im intern gespeicherten Graph-Dictionary entfernt.
+    \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary hoeher gewichtet. TODO WIE VIEL?
+    \item Eine ausgehende Linie fehlt: Diese Verbindung wird aus dem intern gespeicherten Graph entfernt.
+\end{itemize}
+
+Falls noch nie eine Berechnung des kuerzesten Weges durchgefuehrt wurde oder der intern gespeicherte Graph sich veraendert hat, wie die Berechnung der kuerzesten Pfades durchgefuehrt. Ein Dijkstra wird verwendet. Die geplante Pfad und der naechste Knoten werden gespeichert.
+
+Danach bewegt sich der Roboter zum naechsten Knoten. Dabei wird simuliert, dass sich der Roboter zur naechsten Linie drehen soll und die Distanz zum naechsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der naechsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{https://en.wikipedia.org/wiki/Circular\_buffer} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation moeglich sein, die Kanten zu identifizieren. 
+
+TODO RING BUFFER DRAWING WITH GRAPH EDGES 
+\begin{verbatim}
+edges_to_target = (target_index - start_index) % len(neighbors)
+\end{verbatim}
+
+Diese Ablauf wird so lange wiederholt, bis der Zielknoten erreicht wird.
+Waehrend des ganzen Ablaufes werden die Klassen aufgerufen, die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik
+
+SCHNITTSTELLE NNACHICTHEN
+
+\textbf{Technische Aspekte:}
+
+Um die Abhaengigkeiten zu externen Bibliotheken zu organisieren wird Poetry verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgefuehrt wird.
+
+\textbf{Graphical User Interface:}
+
 
 - GUI Roboter bewegt sich
 
 - GUI Hindernisse aufgezeigt in GUI
 
-- Trial and error mode; Knoten verloren
+\textbf{Trial and Error Mode}
+
+Es wurde ein Modus implementiert, zu dem gewechselt wird, falls der Roboter nicht mehr weiss, wo er sich befindet. Dies soll im richtigen Roboter als Risikomitigation impplementiert sein. Fuer die Simulation wurde ein Ablauf definiert fuer diesen Modus und er wurde entwickelt. Die Nachrichten der Sensoren wurden gemockt.
+
+TODO BILD
