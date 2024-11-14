@@ -127,10 +127,15 @@ Die einzelnen Taetigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wur
 \label{fig:github-issues}
 \end{figure}
 
-Es wurde ein objektorientierter Ansatz gewaehlt, um den Simulator umzusetzen. Die Roboterklasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die physische Kamera, die Objekte erkennt, mit einem GraphReader simuliert werden.
+Es wurde ein objektorientierter Ansatz gewaehlt, um den Simulator umzusetzen. Die Roboterklasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels Klasse verwendet werden als Simulation fuer das Drehen und fortbewegen. An dieser Klasse werden diese Nachrichten gesendet, die im echten Roboter an die elektrische Steuerung gesendet werden wuerden betreffend der Fortbewegung.
 
 
-TODO ERD
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/simulator-erd.png}
+\caption{Simulator ERD}
+\label{fig:simulator-erd}
+\end{figure}
 
 \subsubsection{Entwicklung}
 

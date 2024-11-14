@@ -16,12 +16,40 @@ Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher.
 
 Die Software wird in Python geschrieben und läuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
 
-
+TODO SKIZZE
 
 \subsection{Ablauf}
 
-PLACEHOLDER
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{assets/gesamtkonzept/ablaufdiagramm.png}
+\caption{Ablaufdiagramm}
+\label{fig:ablaufdiagramm}
+\end{figure}
 
-\subsection{Schnittstellen}
+\subsubsection{Ausgehende Kanten erkennen}
 
-PLACEHOLDER
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{assets/gesamtkonzept/ablaufdiagramm-kanten-erkennen.png}
+\caption{Ablaufdiagramm ausgehende Kanten erkennen}
+\label{fig:ablaufdiagramm-kanten-erkennen}
+\end{figure}
+
+\subsubsection{Hindernisse erkennen}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
+\caption{Ablaufdiagramm Hindernis erkennen}
+\label{fig:ablaufdiagramm-hindernis-erkennen}
+\end{wrapfigure}
+
+\subsubsection{Hinernisse bewegen}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernis-bewegen.png}
+\caption{Ablaufdiagramm Hindernis bewegen}
+\label{fig:ablaufdiagramm-hindernis-bewegen}
+\end{wrapfigure}
