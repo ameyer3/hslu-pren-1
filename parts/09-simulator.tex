@@ -133,7 +133,15 @@ Falls noch nie eine Berechnung des kuerzesten Weges durchgefuehrt wurde oder der
 
 Danach bewegt sich der Roboter zum naechsten Knoten. Dabei wird simuliert, dass sich der Roboter zur naechsten Linie drehen soll und die Distanz zum naechsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der naechsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{https://en.wikipedia.org/wiki/Circular\_buffer} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation moeglich sein, die Kanten zu identifizieren. 
 
-TODO RING BUFFER DRAWING WITH GRAPH EDGES 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/ring-buffer-graph.png}
+\caption{Graph with Ring Buffer}
+\label{fig:ring-buffer-graph}
+\end{figure}
+
+Die Position relativ zu einer bestimmten Kante herauszufinden wird wie folgt implementiert:
+
 \begin{verbatim}
 edges_to_target = (target_index - start_index) % len(neighbors)
 \end{verbatim}
@@ -162,17 +170,32 @@ class Wheels:
 
 \textbf{Technische Aspekte:}
 
-Um die Abhaengigkeiten zu externen Bibliotheken zu organisieren wird Poetry verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgefuehrt wird.
+Um die Abhaengigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{https://python-poetry.org/} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgefuehrt wird.
 
 \textbf{Graphical User Interface:}
 
+Das GUI wurde mit PyGame\footnote{https://www.pygame.org/news} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter ist ein Kreis mit einem Dreieck. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
+Der Fahrt des Roboters auf den Linien ist ebenfalls dargestellt.
 
-- GUI Roboter bewegt sich
+Auf folgendem Bild dreht sich unser Roboter auf der Stelle im Kreis, um die umliegenden Knoten und Kanten zu ueberpruefen.
+Das orangene Dreieck stellt einen Pylon dar, das rote Rechteck ein Hindernis, das beseitigt werden kann und das rote Kreuz ist eine Linie, die fehlt. Die rote Fahne ist das Ziel, das der Roboter erreichen soll.
 
-- GUI Hindernisse aufgezeigt in GUI
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/sim-ui.png}
+\caption{GUI des Simulators}
+\label{fig:sim-gui}
+\end{figure}
+
+TODO BILD: Roboter auf Kante, mit entfernten Kanten 
 
 \textbf{Trial and Error Mode}
 
 Es wurde ein Modus implementiert, zu dem gewechselt wird, falls der Roboter nicht mehr weiss, wo er sich befindet. Dies soll im richtigen Roboter als Risikomitigation implementiert sein. Fuer die Simulation wurde ein Ablauf definiert fuer diesen Modus und er wurde implementiert. Die Nachrichten der Sensoren wurden gemockt.
 
-TODO BILD
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/simulator-trial-and-error-mode.png}
+\caption{Trial and Error Mode}
+\label{fig:sim-gui}
+\end{figure}
