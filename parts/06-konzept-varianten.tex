@@ -67,6 +67,12 @@ Bei den drei Varianten fällt auf, dass alle Python und den Wegfindealgorithmus 
 
 Aus der Technologierecherche wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen.
 
+\begin{itemize}
+    \item Variante A: Ein Java Simulator liest ein JSON File mit dem Basegraph und den Hindernissen und speichert es in einem 2D Array. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird mit einer externen Library implementiert. Die Auswahl des Zielknotens erfolgt zufällig und die Aktivitäten des Roboters werden in einem TUI\footnote{https://en.wikipedia.org/wiki/Text-based\_user\_interface} dargestellt. Im richtigen Roboter wird wahrschienlich nicht Java verwednetet werden. Deswegen koennte der Code hier nicht wiederverwendet werden.
+    \item Variante B: Ein Python Simulator liest ein YAML File\footnote{https://yaml.org/} mit dem Basegraph und den Hindernissen und speichert es in einem Dictionary. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird selber implementiert, das Ziel kann vom Menschen und zufällig ausgewählt werden und die Aktivitäten des Roboters sind in einem GUI ersichtlich. Der Code kann einfach wiederverwendet werden, unter anderem durch die wenigen externen Abhaengigkeiten und die Leichtgewichtigkeit. 
+    \item Variante C: Ein Python Simulator liest ein Bild einese Graphes ein und speichert es in einem Graph Datentyp. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Eine externe Library implementiert Dijkstra, die Aktivitäten des Roboters werden in einem CLI dargestellt. Hier wuerde bereits Zeit in die Bilderkennung gesteckt werden, jedoch muesste auch das Konzept davon bereits sehr frueh definiert sein.
+\end{itemize}
+
 \begin{table}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/MK_Simulator.pdf}
@@ -161,9 +167,6 @@ Aus der Nutzwertanalyse kann abgelesen werden, dass die Variante A mit Python, P
 \subsection{Simulator Nutzwertanalyse}
 
 Die drei Varianten wie der Simulator umgesetzt werden könnte, werden bewertet in folgender Nutzwertanalyse. Die Kriterien und deren Gewichtung sind dieselben, wie bei der Nutzwertanalyse für die Informatik im Roboter. Das Ziel des Simulators ist es, diesen möglichst realistisch und wiederverwendbar für \acrshort{pren2} umzusetzen.
-
-
-Die folgenden drei Lösungskombinationen, werden im nächsten Schritt evaluiert.
 
 
 \begin{table}[H]
