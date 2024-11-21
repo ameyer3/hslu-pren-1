@@ -166,9 +166,9 @@ Die drei Varianten wie der Simulator umgesetzt werden könnte, werden bewertet i
 Die folgenden drei Lösungskombinationen, werden im nächsten Schritt evaluiert.
 
 \begin{itemize}
-    \item Variante A: Ein Java Simulator liest ein JSON File und speichert es in einem 2D Array. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird mit einer externen Library implementiert. Die Auswahl des Zielknotens erfolgt zufällig und die Aktivitäten des Roboters werden in einem TUI dargestellt.
-    \item Variante B: Ein Python Simulator liest ein YAML File und speichert es in einem Dictionary. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird selber implementiert, das Ziel kann vom Menschen und zufällig ausgewählt werden und die Aktivitäten des Roboters sind in einem GUI ersichtlich.
-    \item Variante C: Ein Python Simulator liest ein Bild ein und speichert es in einem Graph Datentyp. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Eine externe Library implementiert Dijkstra, das Ziel wird manuell ausgwählt und die Aktivitäten des Roboters werden in einem CLI dargestellt.
+    \item Variante A: Ein Java Simulator liest ein JSON File mit dem Basegraph und den Hindernissen und speichert es in einem 2D Array. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird mit einer externen Library implementiert. Die Auswahl des Zielknotens erfolgt zufällig und die Aktivitäten des Roboters werden in einem TUI dargestellt.
+    \item Variante B: Ein Python Simulator liest ein YAML File mit dem Basegraph und den Hindernissen und speichert es in einem Dictionary. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird selber implementiert, das Ziel kann vom Menschen und zufällig ausgewählt werden und die Aktivitäten des Roboters sind in einem GUI ersichtlich.
+    \item Variante C: Ein Python Simulator liest ein Bild einese Graphes ein und speichert es in einem Graph Datentyp. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Eine externe Library implementiert Dijkstra, das Ziel wird manuell ausgwählt und die Aktivitäten des Roboters werden in einem CLI dargestellt. 
 \end{itemize}
 
 \begin{table}[H]
