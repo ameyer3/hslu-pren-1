@@ -1,12 +1,12 @@
 \section{Evaluation Lösungsprinzipien}
 
-Aus der vorhergehenden Technologierecherche wird pro Studiengang ein morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Nachfolgend sind alle morphologischen Kästen aufgezeigt.
+Aus der vorhergehenden Technologierecherche (siehe Anhang \ref{techrecherche}) wird pro Studiengang ein morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Nachfolgend sind alle morphologischen Kästen aufgezeigt.
 
 Die Lösungsvarianten wurden gewaählt anhand der Muss-Kriterien, die erreicht werden sollen: Simpel, nicht zu teuer, nicht die 30cmx30cmx80cm ausnutzen, Robustheit. Zusätzlich wurde in Betracht gezogen, wie stimmig die einzelnen Technologien miteinander sind.
 
 \subsection{Mechanik Morphologischer Kasten}
 
-Auf Basis der Technologierecherche wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und in den morphologischen Kasten aufgenommen.
+Auf Basis der Technologierecherche (siehe Anhang \ref{techrecherche}) wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und in den morphologischen Kasten aufgenommen.
 
 \begin{itemize}
     \item Variante A - Gelb: Zwei von drei Rädern werden direkt durch einen Motor angetrieben. Das dritte Rad ist frei drehend und dient als Stützrad. Das Hindernis wird mit einem parallel Greifer angehoben. Da Variante A nur drei Räder hat bietet sich eine U-Form für das Chassis an. 
@@ -24,7 +24,7 @@ Auf Basis der Technologierecherche wurden verschiedene Lösungsansätze für die
 
 \subsection{Steuerung Morphologischer Kasten}
 
-Aus der Technologierecherche entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik und die Steuerung im Roboter bilden.
+Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik und die Steuerung im Roboter bilden.
 
 \begin{itemize}
     \item Variante A - Gelb: Das verwenden vom Tiny K22 macht das System echtzeitfähig. Leichte Motoren werden eingesetzt. Inputs und Outputs werden einfach gehalten über Leuchten und Schalter. Für die Motorsteuerug werden die Treiber eingekauft.
@@ -44,7 +44,7 @@ In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Ko
 
 \subsection{Navigation Morphologischer Kasten}
 
-Aus der Technologierecherche wurde folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Navigation bilden, erstellt.
+Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) wurde folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Navigation bilden, erstellt.
 
 \begin{itemize}
      \item Variante A - Gelb: Python verwendet eine Mischung aus PyTorch und OpenCV, um AI und reine Bilderkennung zu verwenden. Dijkstra berechnet den Weg. Das Ganze rechnet auf einem Raspberry Pi mit einer Raspberry Camera angeschlossen. Diese Methode ist robust, da zwei Moeglichkeiten zur Erkennung des Graphes verwednet werde nkoennen. Die Kamera und das Board passen gut zusammen und sind recht guenstig. 
@@ -65,7 +65,7 @@ Bei den drei Varianten fällt auf, dass alle Python und den Wegfindealgorithmus 
 \subsection{Simulator Morphologischer Kasten}
 
 
-Aus der Technologierecherche wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen.
+Aus der Technologierecherche\ref{techrecherche} wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen.
 
 \begin{itemize}
     \item Variante A: Ein Java Simulator liest ein JSON File mit dem Basegraph und den Hindernissen und speichert es in einem 2D Array. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. Dijkstra wird mit einer externen Library implementiert. Die Auswahl des Zielknotens erfolgt zufällig und die Aktivitäten des Roboters werden in einem TUI\footnote{https://en.wikipedia.org/wiki/Text-based\_user\_interface} dargestellt. Im richtigen Roboter wird wahrschienlich nicht Java verwednetet werden. Deswegen koennte der Code hier nicht wiederverwendet werden.
