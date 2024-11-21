@@ -22,9 +22,15 @@ Auf Basis der Technologierecherche wurden verschiedene Lösungsansätze für die
 \end{table}
 
 
-\subsection{Elektronik Morphologischer Kasten}
+\subsection{Steuerung Morphologischer Kasten}
 
-Aus der Technologierecherche entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik im Roboter bilden.
+Aus der Technologierecherche entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik und die Steuerung im Roboter bilden.
+
+\begin{itemize}
+    \item Variante A - Gelb: Das verwenden vom Tiny K22 macht das System echtzeitfähig. Leichte Motoren, Inputs und Outputs werden einfach gehalten über Leuchten und Schalter. Für die Motorsteuerug werden die Treiber eingekauft.
+    \item Variante B - : Bei dieser Variante werden die Bauteile Raspberry Pi tauglich verwendet, grob gesagt eine "Plug and Play" Methode. Ebenfalls haben die Motoren ein geringes Gewicht.
+    \item Variante C: Durch die Schrittmotoren und die Objekterkennung mit Lidar weist diese Kombination eine hohe Präzision auf. Mit dem Horn als akustisches Signal wäre dieser Komponent auffällig und einzigartig. Aufgrund der Schrittmotoren wird der Roboter schwer, was ein Nachteil ist.
+\end{itemize}
 
 \begin{table}[H]
 \centering
@@ -74,7 +80,7 @@ Ebenfalls wird ein Knoten immer entfernt falls ein Pylon darauf steht. Er wird n
 
 Zur Auswahl der passendsten Lösungskombination wird pro Teilbereich eine Nutzwertanalyse durchgeführt. Die Kriterien und deren Gewichtung sind individuell pro Teilbereich, damit sie ideal passen. Die Variante mit der höchsten Punktezahl ist die Variante, die am besten passt.
 
-\subsection{Maschinentechnik Nutzwertanalyse}
+\subsection{Mechanik Nutzwertanalyse}
 
 Folgende drei Lösungskombinationen aus dem morphologischen Kasten werden in der Nutzwertanalyse untersucht. 
 
@@ -97,18 +103,14 @@ Die Analyse der drei genannten Varianten hat ergeben, dass die Variante C sich a
     \item Chassis: U-Form 
 \end{itemize}
 
-\subsection{Elektrotechnik Nutzwertanalyse}
+\subsection{Steuerung Nutzwertanalyse}
 
 Mithilfe des morphologischen Kastens wurden verschiedene Lösungsvarianten aufgezeigt. Die Varianten bestehen aus diversen Komponenten. 
 
 
 Nun werden die folgenden drei Varianten in der Nutzwertanalyse evaluiert.
 
-\begin{itemize}
-    \item Variante A: Das verwenden vom Tiny K22 macht das System echtzeitfähig. Leichte Motoren, Inputs und Outputs werden einfach gehalten über Leuchten und Schalter. Für die Motorsteuerug werden die Treiber eingekauft.
-    \item Variante B: Bei dieser Variante werden die Bauteile Raspberry Pi tauglich verwendet, grob gesagt eine "Plug and Play" Methode. Ebenfalls haben die Motoren ein geringes Gewicht.
-    \item Variante C: Durch die Schrittmotoren und die Objekterkennung mit Lidar weist diese Kombination eine hohe Präzision auf. Mit dem Horn als akustisches Signal wäre dieser Komponent auffällig und einzigartig. Aufgrund der Schrittmotoren wird der Roboter schwer, was ein Nachteil ist.
-\end{itemize}
+
 
 
 \begin{table}[H]
