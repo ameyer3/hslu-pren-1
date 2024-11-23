@@ -2,11 +2,12 @@
 
 Das Erarbeiten des Konzeptes des Simulators, der Implementierung und des Gebrauchs wird in diesem Kapitel festgehalten.
 
-Nach der Nutzwertanalyse war das grundlegende Konzept klar und es konnte mit der Implementierung begonnen werden.
+
+
 
 \subsubsection{Spezifikationen}
 
-TODO: Was soll Simulator koennen?
+Die folgenden Spezifikationen soll der Simulator erfuellen.
 
 \begin{table}[H]
 \centering
@@ -45,9 +46,18 @@ TODO: Was soll Simulator koennen?
 
 \subsubsection{Konzeption}
 
-Es wurden mehrere Varianten ermittelt mit einem morphologischen Kasten, die alle die Spezifikatinen erfuellen koennen. Mit einer Nutzwertanalyse wurde die beste Variante bestimmt.
+Es wurden mehrere Varianten ermittelt mit einem morphologischen Kasten, die alle die Spezifikatinen erfuellen koennen. Mit einer Nutzwertanalyse(siehe Anhang \ref{nutzwertanalyse}) wurde die beste Variante bestimmt.
 
-TODO BEschreib gewaehlte Variante, depending wo Kasten \& Analyse sind in Doku
+\begin{itemize}
+    \item Programmiersprache: Python
+    \item Wegnetz einlesen: YAML
+    \item Wegnetz intern speichern: Key-Values
+    \item Bewegliche Hindernisse erfassen: Gewichtung
+    \item Blockierte Knoten erfassen: Knoten entfernen
+    \item Wegfindung: eigene Implementation
+    \item Zielauswahl: human input und random
+    \item Clientseitige Kommunikation I/O: GUI
+\end{itemize}
 
 Die einzelnen Taetigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wurde jeweils der Person zugeordnet, die gerade daran arbeitet. So konnte koordiniert entwickelt werden.
 

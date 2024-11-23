@@ -1,10 +1,17 @@
 \section{Gesamtkonzept}
 
-Aus den morphologischen Kasten und den Nutzwertanalysen wurde folgendes Gesamtkonzept ermittelt. 
+\subsection{Visualisierung}
+
+TODO SKIZZE
+
+
+\subsection{Komponenten}
+
+Folgendes Kompontenten fuer das Konzept wurden mithilfe der Technologierecherche (siehe Anhang \ref{techrecherche}) und anschliessenden morphologische Kästen (siehe Anhang \ref{mk}) und Nutzwertanalysen (siehe Anhang \ref{nutzwertanalyse}) ermittelt. 
 
 \begin{table}[H]
 \centering
-\includegraphics[width=\textwidth -40mm]{assets/MK-all.pdf}
+\includegraphics[width=\textwidth -20mm]{assets/MK-all.pdf}
 \caption{Morphologischer Kasten: Gesamtkonzept}
 \label{table:mk-all}
 \end{table}
@@ -16,7 +23,6 @@ Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher.
 
 Die Software wird in Python geschrieben und läuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
 
-TODO SKIZZE
 
 \subsection{Ablauf}
 
@@ -43,7 +49,7 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \begin{table}[h!]
 \centering
 \begin{tabularx}\textwidth{X  X }
-  Erkennugn von Hindernissen  & \begin{figure}[H]
+& \begin{figure}[H]
 \centering
 \includegraphics[width=0.48\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
 \caption{Ablaufdiagramm Hindernis erkennen}
@@ -58,7 +64,6 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 
 This is how I want to describe Hindernisse erkennen.
 
-
 \subsubsection{Hindernisse bewegen}
 
 \begin{figure}[H]
@@ -68,12 +73,18 @@ This is how I want to describe Hindernisse erkennen.
 \label{fig:ablaufdiagramm-hindernis-bewegen}
 \end{figure}
 
-In der Nutzwertanalyse hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der schmalsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifen wird ein Endschalter verwendet.
+In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der schmalsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifen wird ein Endschalter verwendet.
 Der Greifer wird sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° um das Hindernis anzuheben
   
 \subsubsection{Bilderkennung}
 
 Bilderkennung
+
+\subsubsection{...}
+
+PLACHEOLDER
+
+\subsection{Schnittstellen zwischen den Kompontenten}
 
 
 
