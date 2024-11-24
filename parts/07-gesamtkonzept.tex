@@ -35,6 +35,14 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \label{fig:ablaufdiagramm}
 \end{figure}
 
+\subsubsection{Fortbewegung}
+
+PLACEHOLDER
+
+\subsubsection{Linienerkennung}
+
+PLACEHOLDER
+
 \subsubsection{Kameraposition}
 
 Hoehe \& Winkel, Hochformat
@@ -74,7 +82,7 @@ Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur rich
 PLACEHOLDER YOLO/OpenCV? OpenCV right?
 
 
-\subsubsection{Hindernisse erkennen}
+\subsubsection{Pylonen und Hindernisse erkennen}
 
 
 \begin{figure}[H]
@@ -84,7 +92,7 @@ PLACEHOLDER YOLO/OpenCV? OpenCV right?
 \label{fig:ablaufdiagramm-hindernis-erkennen}
 \end{figure}
 
-Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er recht weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
+Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
 Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei werden Pylonen und Barrieren erkannt. Beides wird intern gespeichert und bei der Berechnung des Weges beruecksichtigt.
 
@@ -103,11 +111,6 @@ TODO BILDER VON OBJEKTERKENNUNG, Bilder von RASPI in hochformat UND MIT ERKENNUN
 
 In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der schmalsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifen wird ein Endschalter verwendet.
 Der Greifer wird sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° um das Hindernis anzuheben
-
-\subsubsection{...}
-
-PLACHEOLDER
-
 
 
 \subsection{Schnittstellen zwischen den Kompontenten}
