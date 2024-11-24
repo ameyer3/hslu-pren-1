@@ -37,7 +37,7 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 
 \subsubsection{Kameraposition}
 
-Hoehe \& Winkel
+Hoehe \& Winkel, Hochformat
 
 \subsubsection{Ausgehende Kanten erkennen}
 
@@ -48,7 +48,7 @@ Hoehe \& Winkel
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
-Der Roboter bewegt sich auf einen Konten zu und haelt 20cm vor dem Knoten an. Der Knoten wird fotografiert. Das Bild wird mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Die Koordinaten werden so angepasst, dass die Linie, von der der Roboter kommt, 0 Grad ist. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung soll eine Liste sein mit Winkeln.
+Der Roboter bewegt sich auf einen Konten zu und haelt 20cm vor dem Knoten an. Der Knoten wird fotografiert und der Roboter faehrt anschliessen auf den Knoten. Das Bild wird mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Die Koordinaten werden so angepasst, dass die Linie, von der der Roboter kommt, 0 Grad ist. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung soll eine Liste sein mit Winkeln.
 
 TODO Beschreib Winkel messen \& verzerren genauer im Prototyp
 
@@ -65,9 +65,13 @@ Als erstes wird die Laenge der Liste mit Winkeln gemessen. Wenn sich gleich viel
 
 Falls es weniger Winkel gibt als erwartet, werden die erhaltenen Winkel zu den einzelnen moeglichen Bereichen zugeordnet. In diesem Bereich, dem kein Winkel zugeordnet wurde, fehlt eine Linie. Folglich akutalisiert der Roboter seine internen Informationen: eine Linie wird aus dem Grundgraphen entfernt und die anderen Winkel werden ersetzt mit den gemessenen Werten.
 
-Diese beiden Prozesse sind ebenfalls im Prototyping genauer ausgefuehrt (siehe Anhang \ref{winkelerkennung}.
+Diese beiden Prozesse sind ebenfalls im Prototyping genauer ausgefuehrt (siehe Anhang \ref{winkelerkennung}).
 
-Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur richtigeausgehen
+Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur richtigen ausgehenden Kante an die Steuerung gesendet. Der Roboter dreht sich, um auf diese Linie weiterzufahren.
+
+\subsubsection{Zielknoten erkennen}
+
+PLACEHOLDER YOLO/OpenCV? OpenCV right?
 
 
 \subsubsection{Hindernisse erkennen}
@@ -79,6 +83,12 @@ Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur rich
 \caption{Ablaufdiagramm Hindernis erkennen}
 \label{fig:ablaufdiagramm-hindernis-erkennen}
 \end{figure}
+
+Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er recht weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
+
+Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei werden Pylonen und Barrieren erkannt. Beides wird intern gespeichert und bei der Berechnung des Weges beruecksichtigt.
+
+TODO BILDER VON OBJEKTERKENNUNG, Bilder von RASPI in hochformat UND MIT ERKENNUNGEN
 
 
 
@@ -93,14 +103,12 @@ Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur rich
 
 In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der schmalsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifen wird ein Endschalter verwendet.
 Der Greifer wird sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° um das Hindernis anzuheben
-  
-\subsubsection{Bilderkennung}
-
-Bilderkennung
 
 \subsubsection{...}
 
 PLACHEOLDER
+
+
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
