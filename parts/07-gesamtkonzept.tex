@@ -35,6 +35,10 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \label{fig:ablaufdiagramm}
 \end{figure}
 
+\subsubsection{Kameraposition}
+
+Hoehe \& Winkel
+
 \subsubsection{Ausgehende Kanten erkennen}
 
 \begin{figure}[H]
@@ -44,25 +48,39 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
+Der Roboter bewegt sich auf einen Konten zu und haelt 20cm vor dem Knoten an. Der Knoten wird fotografiert. Das Bild wird mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Die Koordinaten werden so angepasst, dass die Linie, von der der Roboter kommt, 0 Grad ist. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung soll eine Liste sein mit Winkeln.
+
+TODO Beschreib Winkel messen \& verzerren genauer im Prototyp
+
+TODO: BILD KNOTEN, BILD KNOTEN VERZERRT, BILD WINKEL GEMESSEN
+
+Die erhaltene Liste mit Winkeln wird nun verwendet, um moegliche fehlende Linien zu erkennen und die Winkel intern zu speichern.
+
+Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfuegung gestellten Graph.
+Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden Bereiche definiert, in denen sich die Winkel befinden sollten.
+
+TODO CODE von gespeichert mit Winkel und Ranges. TODO Bild von Graph mit Winkekl und Ranges eingezeichnet, TODO Bild von bestimmten Knoten mit Winkeln und Ranges um Grafik zu erklaeren.
+
+Als erstes wird die Laenge der Liste mit Winkeln gemessen. Wenn sich gleich viele Winkel darin befinden, wie es laut dem Grundgraphen ausgehende Linie haben soll, dann bedeutet das, dass keine Linie fehlt. In diesem Fall werden die internen Winkel aktualisiert mit den tatsaechlichen Werten. 
+
+Falls es weniger Winkel gibt als erwartet, werden die erhaltenen Winkel zu den einzelnen moeglichen Bereichen zugeordnet. In diesem Bereich, dem kein Winkel zugeordnet wurde, fehlt eine Linie. Folglich akutalisiert der Roboter seine internen Informationen: eine Linie wird aus dem Grundgraphen entfernt und die anderen Winkel werden ersetzt mit den gemessenen Werten.
+
+Diese beiden Prozesse sind ebenfalls im Prototyping genauer ausgefuehrt (siehe Anhang \ref{winkelerkennung}.
+
+Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur richtigeausgehen
+
+
 \subsubsection{Hindernisse erkennen}
 
-\begin{table}[h!]
+
+\begin{figure}[H]
 \centering
-\begin{tabularx}\textwidth{X  X }
-& \begin{figure}[H]
-\centering
-\includegraphics[width=0.48\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
+\includegraphics[width=0.35\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
 \caption{Ablaufdiagramm Hindernis erkennen}
 \label{fig:ablaufdiagramm-hindernis-erkennen}
 \end{figure}
- \\
-
-\end{tabularx}
-\end{table}
 
 
-
-This is how I want to describe Hindernisse erkennen.
 
 \subsubsection{Hindernisse bewegen}
 
