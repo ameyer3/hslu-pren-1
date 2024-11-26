@@ -34,10 +34,8 @@ GitHub\cite{github-sustainability}, keine Pipeline, um weniger Ressourcen zu bra
 
 Damit Overleaf produktiv verwendet werden konnte fuer die LaTeX Dokumentation, wurde eine Vollversion benoetigt. Damit das Budget nicht dafuer verwendet werden musste, wurde eine eigene Overleaf Instanz aufgesetzt. Damit diese moeglichst nachhaltig laeuft, wurde sie auf einem Server aufgesetzt, der einen anderen Hauptzweck hat und bereits vor PREN immer eingeschaltet war. So wird kein zusaetzlicher Strom benoetigt.
 
-Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusaetzlich wird das Backup beschraenkt auf einmal am Tag, damit nicht bei jeder Aenderung an ein Backup gestartet wird. Das Backup wird auf 
-
-- backup auf anderem server, aber auch ein server, der sowieso laeuft und urspruenglich anderen Zweck han, ebenfalls wird Backup auf GitHub pushed (ist env frinedly) und Backup ist limitiert (nicht einfach bei jeder Aenderung) um Rechenpowernutzung zu senken
+Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusaetzlich wird das Backup beschraenkt auf einmal am Tag, damit nicht bei jeder Aenderung an ein Backup gestartet wird. Das Backup wird auf GitHub pushed und in einer GitHub Action\footnote{https://docs.github.com/en/actions/about-github-actions/understanding-github-actions} wird die LaTeX Dokumentation zu einem PDF gebaut. Dadurch, dass dies maximal einmal am Tag geschieht, wird die Nutzung des geteilten Speichers von GitHub gesenkt.
 
 \subsection{Datenaustausch}
 
-Alles elektronisch, nichts ausdrucken, keine Flipchart, zero paper
+Zu Beginn des Projektes wurde in der Gruppe entschieden, dass auf jegliches Papier verzichtet wird. Der gesamte Datenaustausch findet elektronisch statt. Es wird komplett auf Flipcharts oder Notizpapier verzichtet. Alle Mitglieder besitzen ein elektronisches Tablet, welches Papier sehr einfach ersetzen kann.
