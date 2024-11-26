@@ -36,10 +36,29 @@ Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was
 
 Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
+\subsubsection{Kamera Position}\label{camera-position}
+
+Um die Kamera optimal zu platzieren können wir einige Eigenschaften der Kamera und sonstige Parameter zusammenziehen und dies berechnen.
+
+\begin{itemize}
+    \item Kamera wird auf einer Höhe von 22.5cm montiert.
+    \item Horizontaler Field of View der Kamera beträgt 66 Grad.
+    \item Kamera soll Knoten in einer nähe bis zu 15cm vor dem Roboter aufzeichnen.
+    \item Kamera soll Objekte bis zu 2 Meter entfernung aufzeichnen.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
+    \caption{Kamera Positionierung}
+    \label{fig:camera-position}
+\end{figure}
+
+
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
 
 Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel PLACEHOLDER beschrieben, wird unsere Kamera in einem Winkel von PLACEHOLDER Grad montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
-Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst einer geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreihe Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch mathematische Formeln berechnet werden.
+Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreihe Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels Opencv berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
@@ -48,26 +67,74 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\linewidth, angle=90]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg}
-        \caption{Kameraaufnahme eines Knotens}
-        \label{fig:enter-label}
+        \caption{Originale Kamera Aufnahme eines Knotens}
+        \label{fig:before-node}
     \end{figure}
     \item Geometrische Transformation anhand fix definierten Punkten anwenden
-    \item Knoten sowie dessen Mittelpunkt detektieren
-    \item Ausgehende Kanten detektieren
-    \item Geometrischer Schwerpunkt der einzelnen Kanten detektieren.
-    \item Winkel der Kanten berechnen
+        \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_before_transformation_corners.png} 
+        \caption{Vier Punkte für Transformation}
+        \label{fig:node-before-geometric-transform}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_after_transformation.png} 
+        \caption{Nach Transformation}
+        \label{fig:node-after-geometric-transform}
+        \end{subfigure}
+        \caption{Geometrische Transformation}
+        \label{fig:node-geometric-transform}
+        \end{figure}
+    \item Knoten maskieren und dessen Mittelpunkt detektieren
+        \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_after_transformation_masked.png} 
+        \caption{Maskieren}
+        \label{fig:node-masked}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_detecting_center.png} 
+        \caption{Mittelpunkt des Knoten detektieren}
+        \label{fig:node-center}
+        \end{subfigure}
+        \caption{Knoten und dessen Mittelpunkt detektieren}
+        \label{fig:detecting-node}
+        \end{figure}
+    \item Ausgehende Kanten maskieren
+        \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_masked.png} 
+        \caption{Nur Kanten maskieren}
+        \label{fig:edge-masked}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_contours.png} 
+        \caption{Kontur der Kanten zeichnen}
+        \label{fig:edge-contours}
+        \end{subfigure}
+        \caption{Kanten detektieren}
+        \label{fig:detecting-edges}
+        \end{figure}
+    \item Geometrischer Schwerpunkt der Kanten berechnen und Winkel zu Knoten Zentrum berechnen.
+        \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_detect_centers.png} 
+        \caption{Mittelpunkte der Kanten berechnen}
+        \label{fig:edge-center}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_with_edge_angles_annotated.png} 
+        \caption{Winkel der Kanten}
+        \label{fig:angle-lines}
+        \end{subfigure}
+        \caption{Winkel der einzelnen Kanten detektieren}
+        \label{fig:node-with-edge-angles}
+        \end{figure}
 \end{enumerate}
-
-PLACEHOLDER
-Winkel messunge, Bildverzerrung, Tests wieso 20cm abstand
-TODO Beschreib Winkel messen \& verzerren genauer im Prototyp
-
-Wie Winkel intern abspeichern, wie mapping, ...
-
-Offset 180 Grad
-
-
-Hardcoded Winkel, simuliere gemessene Winkel und reageire, Mapping und speichern
 
 \subsubsection{Graph-, Pylonen- und Barrierenerkennung}
 
@@ -81,21 +148,25 @@ Als Basis fuer die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa. Es wu
 
 \textbf{FAST, SIFT}
 
-PLACEHOLDER
+PLACEHOLDER FOR TESTING
+
+Mit diesem Algorithmus ist es nicht moeglich die Hindernisse zu erkennen.
 
 \textbf{Objekterkennung mit OpenCV}
 
 PLACEHOLER
 
+Die Objekterkennung von OpenCV kann die Hindernisse recht sicher erkennen, jedoch ist es nicht moeglich die Knoten zu detektieren.
+
 \textbf{YOLOv11}
 
-Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 39 erstellten Bilder labeled.
+Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 58 erstellten Bilder labeled.
 Das bedeutet, dass manuell die zu erkennenden Objekte ausgewaehlt und zu bestimmten Klassen hinzugefuegt wurden.
 
 Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benoetigt, um waehrend dem Trainingsprozess zu pruefen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Dieses Testset ist noetig, weil es wichtig ist, dass die Daten, die schlussendlich verwendet werden, um zu pruefen, wie gut das Model ist, dem Model noch komplett unbekannt sein sollten.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{assets/informatik-prototyp/yolo/train-test-split.png}
+    \includegraphics[width=\linewidth]{assets/informatik-prototyp/yolo/dataset-split.png}
     \caption{Datenset Split}
     \label{fig:data-split}
 \end{figure}
@@ -170,12 +241,50 @@ Die Bilderkennung des selben Jupyter Notbooks mit den reduzierten Klassen sah wi
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth -20mm]{assets/informatik-prototyp/yolo/conf-matrix.png}
-\caption{YOLOv11 Confusion Matrix}
+\caption{YOLOv11 Confusion Matrix Knoten, Barrieren und Pylonen}
 \label{fig:conf-matrix-yolo}
 \end{figure}
 
 Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren richtig erkannt werden. Einmal wird eine Pylone erkannt, obwohl es keine gibt. Die meisten vorausgesagten Knoten, sind wirklich Knoten, jedoch werden viele Knoten nicht erkannt. Dabei muss jedoch bedacht werden, dass es einfacher ist fuer das Model Knoten zu erkennen, die nahe und dadurch deutlicher sind und dass das Trainingsdatenset sehr klein ist. Trotzdem besteht ein sehr wahrscheinliches Risiko, dass ein Knoten nicht erkannt werden koennte.
 
-TODO nur Barrieren \& Pylonen
+Das gleiche Experiment wurde noch einmal durchgefuehrt mit nur Pylonen und Barrieren:
+
+\begin{figure}[H]
+\begin{subfigure}{0.55\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/label-cone-obstacle.png} 
+\caption{Bild mit Hindernissen markiert}
+\label{fig:labeled-image-obst}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/classes-cone-obstacle.png} 
+\caption{Markierte Klassen}
+\label{fig:cone-obst-classes}
+\end{subfigure}
+\caption{Roboflow labeled Bild nur mit Hindernissen}
+\label{fig:labeling-with-cone-obst}
+\end{figure}
+
+
+Die Resultate fuer die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch faellt, wie erwartet die Unsicherheit der Knoten weg. Das Problem ist es nun, dass aus den erkannten Elementen auf dem dargestellten Bild geschlossen werden wuerde, dass sich auf dem naechsten Knoten ein Pylon befindet, da der vorherige Knoten nicht mehr erkannt wird.
+
+\begin{figure}[H]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/cone-obst-recognition.png} 
+\caption{Erkanntes Bild mit Hindernissen}
+\label{fig:image-recognition-with-cone-obst}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/cone-obst-conf-matrix.png} 
+\caption{Confusion Matrix mit Hindernissen}
+\label{fig:conf-matrix-cone-obst}
+\end{subfigure}
+
+\caption{Bilderkennung mit Hindernissen}
+\label{fig:recognition-with-cone-obst}
+\end{figure}
+
+
 
 \textbf{Fazit}
+
+Zur Erkennung der Hindernisse und des Graphens, funktionierte YOLO am besten. Dabei wird versucht werden die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist ein grosses Risiko. Deshalb wird versucht eine Strategie zu finden, die mit den ausgehenden Linien vom Knoten arbeitet und wobei nur die jeweils naechsten Knoten erkannt werden muessen.

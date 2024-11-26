@@ -45,11 +45,13 @@ PLACEHOLDER
 
 \subsubsection{Wegfindung}
 
-Dijkstra TODO
+Der kuerzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa_algo_graphs_dijkstra.php} berechnet. Die Berechnung wird zu Beginn berechnet. Danach wird der Weg jedes Mal wieder berechnet, wenn der Graph, der der Roboter bei sich gespeichert hat, sich veraendert hat.
+
+Zusaetzlich zum zukuenftigen Pfad, wird auch der bereits gefahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurueckzufahren und immer noch weiss, wo er sich befindet.
 
 \subsubsection{Kameraposition}
 
-Hoehe \& Winkel, Hochformat
+Hoehe \& Winkel, Hochformat PLACEHOLDER
 
 \subsubsection{Ausgehende Kanten erkennen}
 
@@ -61,8 +63,6 @@ Hoehe \& Winkel, Hochformat
 \end{figure}
 
 Der Roboter bewegt sich auf einen Konten zu und haelt 20cm vor dem Knoten an. Der Knoten wird fotografiert und der Roboter faehrt anschliessen auf den Knoten. Das Bild wird rotierert und mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
-
-TODO Was genau in OpenCV wird verwendet?
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -91,13 +91,26 @@ Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert is
 C: [{D: [60, [30, 120]}, {B: [240, [120, 30]}, {H: [60, [30, 30]}]
 \end{verbatim}
 
-TODO Bild von Graph mit Winkekl und Ranges eingezeichnet, TODO Bild von bestimmten Knoten mit Winkeln und Ranges um Grafik zu erklaeren.
+Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht 'C: [{D: [60, [30, 120]}' im YAML File. Wenn der Roboter sich von Knoten C zu Knoten D bewegen moechte, dann waere diese Kante im Idealfall 60° von der Kante links aus. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30° und 120°. Von der linksliegenden Kante aus, darf kann sich die Kante zu Knoten D also im Bereich von 60°-30° und 60°+120°, sprich 30° und 180° befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird die Kante C zu D sein.
+
+\begin{figure}[H]
+\begin{subfigure}{0.62\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/graph-angles.png} 
+\caption{Graph mit Winkeln und Winkelbereichen}
+\label{fig:angled-graph}
+\end{subfigure}
+\begin{subfigure}{0.38\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/c-d-angle.png} 
+\caption{C zu D Winkel}
+\label{fig:excerpt-angled-graph}
+\end{subfigure}
+\caption{Winkel im Graphen}
+\label{fig:angles}
+\end{figure}
 
 Als erstes wird die Laenge der Liste mit Winkeln gemessen. Wenn sich gleich viele Winkel darin befinden, wie es laut dem Grundgraphen ausgehende Linie haben soll, dann bedeutet das, dass keine Linie fehlt. In diesem Fall werden die internen Winkel aktualisiert mit den tatsaechlichen Werten. 
 
 Falls es weniger Winkel gibt als erwartet, werden die erhaltenen Winkel zu den einzelnen moeglichen Bereichen zugeordnet. In diesem Bereich, dem kein Winkel zugeordnet wurde, fehlt eine Linie. Folglich akutalisiert der Roboter seine internen Informationen: eine Linie wird aus dem Grundgraphen entfernt und die anderen Winkel werden ersetzt mit den gemessenen Werten.
-
-Diese beiden Prozesse sind ebenfalls im Prototyping genauer ausgefuehrt (siehe Anhang \ref{winkelerkennung}).
 
 Nachdem der Roboter den naechsten Knoten berechnet hat, wird der Winkel zur richtigen ausgehenden Kante an die Steuerung gesendet. Der Roboter dreht sich, um auf diese Linie weiterzufahren.
 
@@ -118,9 +131,14 @@ PLACEHOLDER OpenCV OpenCV right?
 
 Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
-Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei werden Pylonen und Barrieren erkannt. Beides wird intern gespeichert und bei der Berechnung des Weges beruecksichtigt.
+Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei werden sowohle Knoten, als auch Pylonen und Barrieren erkannt. Hindernisse werden intern gespeichert und bei der Berechnung des Weges beruecksichtigt.
 
-TODO BILDER VON OBJEKTERKENNUNG, Bilder von RASPI in hochformat UND MIT ERKENNUNGEN
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
+\caption{YOLOv11 Bilderkennung}
+\label{fig:img-recognition-yolo}
+\end{figure}
 
 
 
