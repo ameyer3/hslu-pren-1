@@ -147,9 +147,12 @@ Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei 
 \label{fig:img-recognition-yolo}
 \end{figure}
 
-
+\newpage
 
 \subsubsection{Hindernisse bewegen}
+
+In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird ein Endschalter verwendet.
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° drehen, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180°, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren. 
 
 \begin{figure}[H]
 \centering
@@ -158,8 +161,12 @@ Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei 
 \label{fig:ablaufdiagramm-hindernis-bewegen}
 \end{figure}
 
-In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der schmalsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifen wird ein Endschalter verwendet.
-Der Greifer wird sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° um das Hindernis anzuheben
+\textbf{[ABLAUFDIAGRAMM HINDERNIS BEWEGEN ANPASSEN]}\\
+
+\textbf{Skizze Greifpunkte} \\
+\textbf{Skizze Ablauf Hindernis bewegen}\\
+\textbf{Skizze Hindernis greifen/ absetzen}
+
 
 
 \subsection{Schnittstellen zwischen den Kompontenten}
