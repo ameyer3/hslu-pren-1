@@ -14,15 +14,32 @@
 
 \subsection{Bilderkennung}
 
-- erste versuche mit raspi \& kamera mit dingen die schon besessen. (huelle, zusammen getaped anstatt 3d druckte kombination, eigentliche produkte, stativ, um unnoetige 3D gedruckte cases zu vermeiden), erst danach neue raspi version bestellt
+Als erster Schritt, um die Bilderkennung zu testen, musste in der Mensa ein Graph aufgeklebt werden.
+Um dabei nicht so viel Klebeband und Klebepunkte zu verschwenden, wurde dies jeweils mit einem anderen Team zusammen gemacht. Zusaetzlich konnten so gemeinsam die vorhandenen Hindernisse verwendet werden, damit vermieden werden kann mehrere Hindernisse zu drucken oder zu kaufen.
+Nach dem Aufkleben wurden moeglichst viele Bilder aus vielen verschiedenen Winkeln mit verschiedenen Hindernissen aufgestellt gemacht. Damit wird versucht so selten wie moeglich PLACEHOLDER m Klebeband aufzukleben, um es danach sofort wieder wegzuwerfen.
 
-- Graph immer mit anderen aufgeklebt und auch Hindernisse e.g mit anderen Gruppen geteilt, damit vermieden werden konnte, Barrieren selber z udrucken/kayfen
+Die Bilder wurden bereits frueh mit einem Raspberry Pi und eine Raspberry Pi Kamera aufgenommen. Bevor dafuer etwas neues bestellt wurde, wurden Dinge verwendet, die schon besessen wurden. Es wurden ein Raspberry Board und eine Kamera verwendet, die ein Teammitglid bereits zu Hause hatte. Beide hatten ebenfalls je eine Huelle.
+Um die beiden Einzelteile miteinander zu verwenden, wurden sie lediglich zusammengeklebt, damit nicht eine neue Huelle gedruck oder gekauft werden muss, die wahrscheinlich nicht im Roboter verwendet werden wird.
+Um die Hoehe und die Ausrichtung der Kamera zu simulieren, wurde ein kleiner Stativ verwendet, das ebenfalls schon im Besitz eines Teammitglieds war.
+Erst nachdem klar war, dass die Qualitaet der Bilder in Ordnung ist, wurden die neusten Versionen der Raspberry Pis bestellt. Diese wurden benoetigt, da die Rechenpower ansonsten zu tief gewesen waere.
 
-- Namal oeppis wo likely viel z wiit hergholt isch @Lukas: OpenSource Technologien, anstatt proprieaetere software zu unterstuetzen, die zu grossfirmen gehoeren, die schlechten einfluss auf environment haben (obwohl viel OSS doch auch zu firmen gehoeren..., depends on what we have iguess)  + verteilung von rechenpower auf einzelne Users 
+
+TODO - Namal oeppis wo likely viel z wiit hergholt isch @Lukas: OpenSource Technologien, anstatt proprieaetere software zu unterstuetzen, die zu grossfirmen gehoeren, die schlechten einfluss auf environment haben (obwohl viel OSS doch auch zu firmen gehoeren..., depends on what we have iguess)  + verteilung von rechenpower auf einzelne Users 
 
 \subsection{Code Repositories}
 
-GitHub\cite{github-sustainability}, keine Pipeline, um weniger Ressourcen zu brauchen?
+Die Code Repositories befinden sich auf GitHub. Dabei gibt es fuer den Simulator keine GitHub Action\footnote{https://docs.github.com/en/actions/about-github-actions/understanding-github-actions}, die den Code testet. Dies bedeutet, dass nur das Minimum an Rechenpower von den GitHub Server verwendet wird, sprich, nur diesen Speicher, der noetig ist, um Code zu speichern. Die automatischen Tests werden lokal ausgefuehrt.
+
+Zusaetzlich setzt sich GitHub fuer Nachhaltigkeit ein.\cite{github-sustainability}
+
+
+Sie haben zusaetzlich mit 3 andren Firmen die Green Software Initiative gegruendet. Diese soll dabei helfen gruene Software zu erstellen.  Dabei geht es um Software Tools, die sich ihrem Kohlenstoffausstoss bewusst sind und dabei effizient handeln. Das Ziel von der Green Software Initiative ist es, Kohlenstoff zu reduzieren und nicht nur zu neutralisieren.\cite{green-software-initiative}
+
+Zum einen wird nachhaltige Software von GitHub unterstuetzt und gefoerdert. So gibt es ein GitHub Repository, dass eine extensive Liste von gruener Software hat.Sie sind in 4 Kateogrien eingeteilt: Messungssoftware, Kohlenstoffeffizienz (Software, die dabei hilft Kohlenstoff auszustossen), Kohlenstoffbewusstsein und spezielle Tools. \cite{green-software}
+
+
+
+
 
 %%%%%%%%%%%%%%% ALLG NACHHALTIGKEIT %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,7 +49,7 @@ GitHub\cite{github-sustainability}, keine Pipeline, um weniger Ressourcen zu bra
 
 Damit Overleaf produktiv verwendet werden konnte fuer die LaTeX Dokumentation, wurde eine Vollversion benoetigt. Damit das Budget nicht dafuer verwendet werden musste, wurde eine eigene Overleaf Instanz aufgesetzt. Damit diese moeglichst nachhaltig laeuft, wurde sie auf einem Server aufgesetzt, der einen anderen Hauptzweck hat und bereits vor PREN immer eingeschaltet war. So wird kein zusaetzlicher Strom benoetigt.
 
-Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusaetzlich wird das Backup beschraenkt auf einmal am Tag, damit nicht bei jeder Aenderung an ein Backup gestartet wird. Das Backup wird auf GitHub pushed und in einer GitHub Action\footnote{https://docs.github.com/en/actions/about-github-actions/understanding-github-actions} wird die LaTeX Dokumentation zu einem PDF gebaut. Dadurch, dass dies maximal einmal am Tag geschieht, wird die Nutzung des geteilten Speichers von GitHub gesenkt.
+Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusaetzlich wird das Backup beschraenkt auf einmal am Tag, damit nicht bei jeder Aenderung an ein Backup gestartet wird. Das Backup wird auf GitHub pushed und in einer GitHub Action wird die LaTeX Dokumentation zu einem PDF gebaut. Dadurch, dass dies maximal einmal am Tag geschieht, wird die Nutzung des geteilten Speichers von GitHub gesenkt.
 
 \subsection{Datenaustausch}
 
