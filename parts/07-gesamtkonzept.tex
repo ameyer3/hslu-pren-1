@@ -128,24 +128,39 @@ PLACEHOLDER OpenCV OpenCV right?
 
 \subsubsection{Pylonen und Hindernisse erkennen}
 
-
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.35\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
 \caption{Ablaufdiagramm Hindernis erkennen}
 \label{fig:ablaufdiagramm-hindernis-erkennen}
+\end{subfigure}
+\begin{subfigure}{0.55\textwidth}
+\includegraphics[width=\textwidth]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
+\caption{YOLOv11 Bilderkennung}
+\label{fig:img-recognition-yolo}
+\end{subfigure}
+\caption{Bilderkennung Hindernisse}
+\label{fig:image-detection-obstacles}
 \end{figure}
+
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.35\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
+% \caption{Ablaufdiagramm Hindernis erkennen}
+% \label{fig:ablaufdiagramm-hindernis-erkennen}
+% \end{figure}
 
 Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
 Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei werden sowohle Knoten, als auch Pylonen und Barrieren erkannt. Hindernisse werden intern gespeichert und bei der Berechnung des Weges beruecksichtigt.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
-\caption{YOLOv11 Bilderkennung}
-\label{fig:img-recognition-yolo}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
+% \caption{YOLOv11 Bilderkennung}
+% \label{fig:img-recognition-yolo}
+% \end{figure}
 
 \newpage
 
