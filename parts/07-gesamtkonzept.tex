@@ -45,13 +45,20 @@ PLACEHOLDER
 
 \subsubsection{Wegfindung}
 
-Der kuerzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa_algo_graphs_dijkstra.php} berechnet. Die Berechnung wird zu Beginn berechnet. Danach wird der Weg jedes Mal wieder berechnet, wenn der Graph, der der Roboter bei sich gespeichert hat, sich veraendert hat.
+Der kuerzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php} berechnet. Die Berechnung wird zu Beginn berechnet. Danach wird der Weg jedes Mal wieder berechnet, wenn der Graph, der der Roboter bei sich gespeichert hat, sich veraendert hat.
 
 Zusaetzlich zum zukuenftigen Pfad, wird auch der bereits gefahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurueckzufahren und immer noch weiss, wo er sich befindet.
 
 \subsubsection{Kameraposition}
 
 Hoehe \& Winkel, Hochformat PLACEHOLDER
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
+    \caption{Kamera Positionierung}
+    \label{fig:camera-position-concept}
+\end{figure}
 
 \subsubsection{Ausgehende Kanten erkennen}
 
@@ -62,13 +69,13 @@ Hoehe \& Winkel, Hochformat PLACEHOLDER
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
-Der Roboter bewegt sich auf einen Konten zu und haelt 20cm vor dem Knoten an. Der Knoten wird fotografiert und der Roboter faehrt anschliessen auf den Knoten. Das Bild wird rotierert und mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
+Der Roboter bewegt sich auf einen Konten zu und haelt 15 cm vor dem Knoten an. Der Knoten wird fotografiert und der Roboter faehrt anschliessen auf den Knoten. Das Bild wird rotierert und mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/knoten-bild.jpeg} 
-\caption{Knoten mit 20cm Abstand}
-\label{fig:node-20cm-before}
+\caption{Knoten mit 15cm Abstand}
+\label{fig:node-15cm-before}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/knoten-winkel.jpeg} 
