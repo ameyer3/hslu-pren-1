@@ -1,20 +1,24 @@
 \subsubsection{Motoren}
 
-Test mit variabler Spannung und Duty Cycle
+Nach ersten Berechnungen für die Motoren wurde ein passender Motor ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung.
 
-Nach ersten Berechnungen welche man für die Motoren gemacht hat konnte man den ersten Motor bestellen und testen. Grössen wie das Drehmoment und die Spannung waren bei dieser Auswahl entscheidend.
+Der Test bestand darin, den Motor mit einer Pulsweitenmodulation (PWM) bei zwei unterschiedlichen Spannungen zu betreiben. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der Duty Cycle schrittweise erhöht, bis der Motor bei 58\% des Duty Cycles zu drehen begann. Nachdem der Motor angelaufen war, konnte der Duty Cycle auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
 
-Bei dem Test wurden zwei verschiedene Spannungen getestet um den Motor mit einem PWM zu speisen. Zuerst wurde der Test mit der Spannung von 5V durchgeführt. Der Duty Cycle wurde langsam erhöht und man konnte feststellen, dass der Motor bei 58\% des Duty Cycles angefangen hat zu drehen. Ist der Motor angesprungen konnte man bis 44\% runter drehen bis der Motor aufhörte zu drehen. Die zweite Testsequenz erfolgte genau gleich nur mit einer Spannung von 12V. Dabei konnte man den Duty Cycle bis 33\% erhöhen, dann fing der Motor an zu drehen. Drehte man die Einschaltzeit des PWM wieder runter drehte der Motor bis zu 12\% Duty Cycle noch weiter. Da der Motor möglichst genau sein soll müssen die Umdrehungen fein einstellbar sein. Aufgrund der Motor bei 5V sehr lange hat um den Anlaufstrom zu erreichen wird der Motor schon zu schnell drehen um eine feine Steuerung garantieren zu können. Gründe wie Streuungsverluste und die Bauart des Motors sorgen dafür das zum Anlaufen ein höherer Strom notwendig ist. Damit man aber trotzdem mit der minimalen Drehzahl die Motoren starten kann, wird der Motor mit 12V gestartet. Für einen kurzen Moment schaltet man das PWM mit 12V ein, bis der Motor anläuft. Sobald der Motor dreht, wird die Spannung auf 5V gesenkt und man kann der tiefere Duty Cycle nutzen.
+In einer zweiten Testsequenz wurde die gleiche Vorgehensweise mit einer Spannung von 12V durchgeführt. Hier begann der Motor bei einem Duty Cycle von 33\% zu drehen. Beim schrittweisen Reduzieren der Einschaltzeit drehte der Motor bis zu einem Duty Cycle von 12\% weiter.
+
+Da der Motor möglichst präzise gesteuert werden soll, ist eine feine Einstellung der Drehzahl erforderlich. Der Test zeigte jedoch, dass der Motor bei 5V nur verzögert anlief, was zu einer zu schnellen Drehbewegung führen könnte und die präzise Steuerung erschwert. Streuverluste sowie die Bauart des Motors erfordern einen höheren Anlaufstrom.
+
+Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initial mit 12V gestartet. Sobald der Motor angelaufen ist, wird die Spannung auf 5V reduzier, wodurch der Motor bei hohen Duty Cycle nicht Überlastet werdet.
 
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Spannung} & \textbf{Einschaltzeit (Duty Cycle)} & \textbf{Ausschaltzeit (Duty Cycle)} \\ \hline
-12 V & 33 \% & 12 \% \\ \hline
-5 V  & 58 \% & 44 \% \\ \hline
+12V & 33\% & 12\% \\ \hline
+5V  & 58\% & 44\% \\ \hline
 \end{tabular}
-\caption{Vergleich der Duty-Cycle-Werte bei 12 V und 5 V}
+\caption{Vergleich der Duty-Cycle-Werte bei 12V und 5V}
 \label{tab:dutycycle}
 \end{table}
 
