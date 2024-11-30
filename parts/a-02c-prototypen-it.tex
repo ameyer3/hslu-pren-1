@@ -58,7 +58,7 @@ Nachfolgend skizziert wie diese Parameter die Position und Neigung der Kamera de
 
 Aus den Parametern kann also berechnet werden, dass die Kamera in einem Winkel von ca. 56 Grad eingebaut werden muss. Um die Knoten in der nähe sowie die Pylonen in der Distanz zu erfassen:
 
-Nachfolgend dies Dargestellt in einem Graphen mit korrekten Proportionen:
+Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
 
 \begin{figure}[H]
     \centering
@@ -73,7 +73,7 @@ Nachfolgend dies Dargestellt in einem Graphen mit korrekten Proportionen:
 
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
 
-Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel PLACEHOLDER beschrieben, wird unsere Kamera in einem Winkel von PLACEHOLDER Grad montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
+Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \ref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56 Grad montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
 Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreihe Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels Opencv berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
@@ -162,15 +162,113 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 Als Basis fuer die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa. Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkuerlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
-\textbf{FAST, SIFT}
+\textbf{OpenCV SIFT, FAST, ORB Algorithmen}
 
-PLACEHOLDER FOR TESTING
+OpenCV bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zum Objekterkennung und Tracking eingesetzt werden:
 
-Mit diesem Algorithmus ist es nicht moeglich die Hindernisse zu erkennen.
+\begin{enumerate}
+    \item SIFT (Scale-Invariant Feature Transform)
+    
+    SIFT ist ein Algorithmus, der robuste und skalierungsinvariante Merkmale in Bildern erkennt. Er findet markante Punkte, sogenannte Keypoints, und berechnet Deskriptoren, die invariant gegenüber Skalierung, Rotation und Beleuchtung sind. Es eignet sich gut für Objektwiedererkennung und Bildregistrierung.
 
-\textbf{Objekterkennung mit OpenCV}
+    \item FAST (Features from Accelerated Segment Test)
+    
+    FAST ist ein sehr schneller Eckendetektor, der besonders für Echtzeitanwendungen geeignet ist. Er überprüft, ob ein Pixel ein Merkmal (Ecke) ist, indem es die Intensitäten der Pixel in einem kreisförmigen Muster um es herum vergleicht. Es ist jedoch nicht robust gegenüber Skalierung oder Rotation.
 
-PLACEHOLER
+    \item ORB (Oriented FAST and Rotated BRIEF)
+    
+    ORB kombiniert FAST für die Merkmalsdetektion und BRIEF (Binary Robust Independent Elementary Features) für die Merkmalsbeschreibung. Es erweitert FAST, indem es Orientierung und Rotation berücksichtigt, und bietet eine effiziente, patentfreie Alternative zu SIFT und SURF, mit ähnlicher Genauigkeit und deutlich besserer Performance.
+\end{enumerate}
+
+Zusammenfassend:
+
+\begin{itemize}
+    \item SIFT ist genau und robust, aber rechenintensiv.
+    \item FAST ist schnell, aber weniger robust.
+    \item ORB ist ein guter Kompromiss zwischen Geschwindigkeit und Genauigkeit.
+\end{itemize}
+
+Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/sift/sift_good_example.png}
+    \caption{Gutes Beispiel von SIFT Algorymtus}
+    \label{fig:good-sift-example}
+\end{figure}
+
+Da unsere Objekte jedoch dreidimensionale sind und eine freie Rotation und Position in einem dredimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
+
+\begin{figure}[H]
+    \centering
+\begin{subfigure}{1\textwidth}
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/sift/sift_our_usecase_example.png}
+    \caption{SIFT Algorithmus}
+    \label{fig:bad-sift-example}
+\end{subfigure}
+\begin{subfigure}{1\textwidth}
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/sift/orb_our_usecase_example.png}
+    \caption{ORB Algorithmus}
+    \label{fig:bad-orb-example}
+\end{subfigure}
+    \caption{SIFT und ORB in unserem Usecase}
+    \label{fig:sift-orb-in-our-usecase}
+\end{figure}
+
+
+Aus diesem Test Können wir entscheiden, dass die OpenCV Merkmalsdetektions Algorytmen nicht aussreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Desshalb wird dieser Ansatz nicht mehr weiter verfolgt.
+
+\textbf{Objekterkennung mit Farberkennung}
+
+Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig.
+Wir haben grundsätzlich 3 oder 4 verschieden Objekte zu detekieren:
+\begin{itemize}
+    \item Pylone (Orange)
+    \item Barriere (Rot)
+    \item Barriere (Weiss)
+    \item Knoten (Weiss)
+\end{itemize}
+
+Orange und Rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung wo der Roboter schlussendlich operiert, sehr eindeutig sind:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection.png}
+    \caption{Objekterkennung mittels Farberkennung der roten Barriere und orangen Pylone}
+    \label{fig:opencv_hsv_object_detection_good}
+\end{figure}
+
+
+Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn einerseits haben sie die gleiche Farbe, was das unterscheiden dieser schwierig macht, und unter anderem haben wir, unter verschiedenen Lichtverhältnissen, Spiegelungen, welche sich im bild auch als weisse Flecken darstellen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection.png}
+    \caption{Objekterkennung mittels Farberkennung der roten Barriere und orangen Pylone}
+    \label{fig:opencv_hsv_object_detection_good}
+\end{figure}
+
+
+\begin{itemize}
+    \item Beleuchtung: Änderungen im Licht können die Farbgenauigkeit beeinflussen.
+    \item Hintergrund: Farben im Hintergrund können zu Fehlklassifikationen führen.
+    \item Kalibrierung: Bestimme die Farbbereiche (lower, upper) individuell für die Umgebung.
+    \item Performance: Farbmasken können effizient auf Echtzeitanwendungen angewendet werden.
+\end{itemize}
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item Einfach und schnell: Geringe Rechenleistung erforderlich.
+    \item Intuitiv: Keine komplexen Modelle notwendig.
+    \item Robust für klare Farben: Funktioniert gut, wenn die Farben eindeutig sind.
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item Empfindlichkeit gegenüber Licht: Variierende Beleuchtung beeinträchtigt die Erkennung.
+    \item Begrenzte Flexibilität: Funktioniert schlecht bei ähnlichen Farben oder gemusterten Objekten.
+    \item Störanfälligkeit: Hintergrundrauschen kann Probleme bereiten.
+\end{itemize}
+
 
 Die Objekterkennung von OpenCV kann die Hindernisse recht sicher erkennen, jedoch ist es nicht moeglich die Knoten zu detektieren.
 

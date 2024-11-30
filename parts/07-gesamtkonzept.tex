@@ -78,7 +78,7 @@ Der Roboter bewegt sich auf einen Konten zu und haelt 15 cm vor dem Knoten an. D
 \label{fig:node-15cm-before}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/knoten-winkel.jpeg} 
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_with_edge_angles_annotated.png} 
 \caption{Knoten mit gemessenen Winkeln}
 \label{fig:node-angles}
 \end{subfigure}
@@ -166,8 +166,17 @@ Die Bilder werden ausgewertet mit einem YOLO Objekterkennungsalgorithmus. Dabei 
 
 \subsubsection{Hindernisse bewegen}
 
-In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten greift. Das Hindernis soll mit nur einem Motor sowohl "geklemmt" als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird ein Endschalter verwendet.
-Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne. somit Muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° drehen, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180°, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren. 
+In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb.\ref{fig:obstacle_clamping_concept}). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Greifer_Backen_Trimetric.png} 
+\caption{Position Klemmbacken}
+\label{fig:obstacle_clamping_concept}
+\end{figure}
+
+Das Hindernis soll mit nur einem Motor sowohl geklemmt als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird ein Endschalter am Greifmechanismus verwendet.
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne \textbf{(REF KONZEPTSKIZZE)}. somit muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180° drehen, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180° und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb.\ref{fig:ablaufdiagramm-hindernis-bewegen}). 
 
 \begin{figure}[H]
 \centering
@@ -177,7 +186,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 \end{figure}
 
 
-\textbf{Skizze Greifpunkte} \\
+
 \textbf{Skizze Ablauf Hindernis bewegen}\\
 \textbf{Skizze Hindernis greifen/ absetzen}
 
