@@ -152,7 +152,7 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \end{figure}
 \end{enumerate}
 
-\subsubsection{Graph-, Pylonen- und Barrierenerkennung}
+\subsubsection{Graph-, Pylonen- und Barriere-Erkennung}
 
 % \textbf{Spiegelung}
 
@@ -193,7 +193,7 @@ Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensiona
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/sift/sift_good_example.png}
-    \caption{Gutes Beispiel von SIFT Algorymtus}
+    \caption{Gutes Beispiel von SIFT Algorithmus}
     \label{fig:good-sift-example}
 \end{figure}
 
@@ -216,12 +216,12 @@ Da unsere Objekte jedoch dreidimensionale sind und eine freie Rotation und Posit
 \end{figure}
 
 
-Aus diesem Test Können wir entscheiden, dass die OpenCV Merkmalsdetektions Algorytmen nicht aussreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Desshalb wird dieser Ansatz nicht mehr weiter verfolgt.
+Aus diesem Test Können wir entscheiden, dass die OpenCV Merkmalsdetektions Algorithmen nicht aussreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Desshalb wird dieser Ansatz nicht mehr weiter verfolgt.
 
 \textbf{Objekterkennung mit Farberkennung}
 
 Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig.
-Wir haben grundsätzlich 3 oder 4 verschieden Objekte zu detekieren:
+Wir haben grundsätzlich 3 oder 4 verschieden Objekte zu Detektieren:
 \begin{itemize}
     \item Pylone (Orange)
     \item Barriere (Rot)
@@ -233,44 +233,22 @@ Orange und Rote Objekte können grundsätzlich sehr einfach detektiert werden. D
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection.png}
+    \includegraphics[width=0.5\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection.png}
     \caption{Objekterkennung mittels Farberkennung der roten Barriere und orangen Pylone}
     \label{fig:opencv_hsv_object_detection_good}
 \end{figure}
 
 
-Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn einerseits haben sie die gleiche Farbe, was das unterscheiden dieser schwierig macht, und unter anderem haben wir, unter verschiedenen Lichtverhältnissen, Spiegelungen, welche sich im bild auch als weisse Flecken darstellen:
+Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn einerseits haben sie die gleiche Farbe, was das unterscheiden dieser schwierig macht, und unter anderem haben wir, unter verschiedenen Lichtverhältnissen, Spiegelungen, welche sich im Bild auch als weisse Flecken darstellen und somit als Objekte erkennt werden:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection.png}
-    \caption{Objekterkennung mittels Farberkennung der roten Barriere und orangen Pylone}
-    \label{fig:opencv_hsv_object_detection_good}
+    \includegraphics[width=0.5\linewidth]{assets/informatik-prototyp/opencv/object_detection_with_hsv/hsv_object_detection_white.png}
+    \caption{Objekterkennung mittels Farberkennung der weissen Barriere}
+    \label{fig:opencv_hsv_object_detection_bad}
 \end{figure}
 
-
-\begin{itemize}
-    \item Beleuchtung: Änderungen im Licht können die Farbgenauigkeit beeinflussen.
-    \item Hintergrund: Farben im Hintergrund können zu Fehlklassifikationen führen.
-    \item Kalibrierung: Bestimme die Farbbereiche (lower, upper) individuell für die Umgebung.
-    \item Performance: Farbmasken können effizient auf Echtzeitanwendungen angewendet werden.
-\end{itemize}
-
-\textbf{Vorteile:}
-\begin{itemize}
-    \item Einfach und schnell: Geringe Rechenleistung erforderlich.
-    \item Intuitiv: Keine komplexen Modelle notwendig.
-    \item Robust für klare Farben: Funktioniert gut, wenn die Farben eindeutig sind.
-\end{itemize}
-\textbf{Nachteile:}
-\begin{itemize}
-    \item Empfindlichkeit gegenüber Licht: Variierende Beleuchtung beeinträchtigt die Erkennung.
-    \item Begrenzte Flexibilität: Funktioniert schlecht bei ähnlichen Farben oder gemusterten Objekten.
-    \item Störanfälligkeit: Hintergrundrauschen kann Probleme bereiten.
-\end{itemize}
-
-
-Die Objekterkennung von OpenCV kann die Hindernisse recht sicher erkennen, jedoch ist es nicht moeglich die Knoten zu detektieren.
+Mit vielen Feineinstellungen ist es eventuel auch möglich, die weissen Objekte zu detektieren. Jedoch ist es nicht eine sichere Lösung, da die Lichtverhältnisse in dieser Umgebung stark variieren und wir keine Kontrolle darüber haben.
 
 \textbf{YOLOv11}
 
