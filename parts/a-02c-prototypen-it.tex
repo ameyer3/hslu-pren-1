@@ -38,7 +38,7 @@ Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Li
 
 \subsubsection{Kamera Position}\label{camera-position}
 
-Um die Kamera optimal zu platzieren können wir einige Eigenschaften der Kamera und sonstige Parameter zusammenziehen:
+Die Platzierung der Kamera ist ein entscheidender Faktor, um sicherzustellen, dass sie die gewünschten Objekte und Bereiche korrekt erfassen kann. Im Folgenden werden die relevanten Parameter erläutert:
 
 \begin{itemize}
     \item Kamera wird auf einer Höhe von 22.5cm montiert.
@@ -47,12 +47,29 @@ Um die Kamera optimal zu platzieren können wir einige Eigenschaften der Kamera 
     \item Kamera soll Objekte bis zu 2 Meter Entfernung aufzeichnen.
 \end{itemize}
 
+Nachfolgend skizziert wie diese Parameter die Position und Neigung der Kamera definieren:
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
-    \caption{Kamera Positionierung}
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/camera/camera_position.png}
+    \caption{Skizze der Kamera Positionierung}
     \label{fig:camera-position}
 \end{figure}
+
+Aus den Parametern kann also berechnet werden, dass die Kamera in einem Winkel von ca. 56 Grad eingebaut werden muss. Um die Knoten in der nähe sowie die Pylonen in der Distanz zu erfassen:
+
+Nachfolgend dies Dargestellt in einem Graphen mit korrekten Proportionen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/camera/camera_position_exact_bigger.png}
+    \caption{Graph der Kamera Positionierung}
+    \label{fig:camera-position-exact}
+\end{figure}
+
+
+
+
 
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
 
