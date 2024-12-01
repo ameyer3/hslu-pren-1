@@ -7,7 +7,7 @@ TODO SKIZZE
 
 \subsection{Komponenten}
 
-Folgendes Kompontenten fuer das Konzept wurden mithilfe der Technologierecherche (siehe Anhang \ref{techrecherche}) und anschliessenden morphologische Kästen (siehe Anhang \ref{mk}) und Nutzwertanalysen (siehe Anhang \ref{nutzwertanalyse}) ermittelt. 
+Folgendes Komponenten für das Konzept wurden mithilfe der Technologierecherche (siehe Anhang \ref{techrecherche}) und anschliessenden morphologische Kästen (siehe Anhang \ref{mk}) und Nutzwertanalysen (siehe Anhang \ref{nutzwertanalyse}) ermittelt. 
 
 \begin{table}[H]
 \centering
@@ -16,7 +16,7 @@ Folgendes Kompontenten fuer das Konzept wurden mithilfe der Technologierecherche
 \label{table:mk-all}
 \end{table}
 
-Es ist geplant einen Roboter in U-Form zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besetzt. Hindernisse kann der Roboter mit einem Parallelgreifer anheben.
+Es ist geplant einen Roboter in U-Form zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter mit einem Parallelgreifer anheben.
 
 Die Steuerung wird auf einem Tiny k22 laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit LED's angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
@@ -45,9 +45,9 @@ PLACEHOLDER
 
 \subsubsection{Wegfindung}
 
-Der kuerzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php} berechnet. Die Berechnung wird zu Beginn berechnet. Danach wird der Weg jedes Mal wieder berechnet, wenn der Graph, der der Roboter bei sich gespeichert hat, sich veraendert hat.
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
 
-Zusaetzlich zum zukuenftigen Pfad, wird auch der bereits gefahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurueckzufahren und immer noch weiss, wo er sich befindet.
+Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
 
 \subsubsection{Kameraposition}
 
@@ -69,7 +69,7 @@ Hoehe \& Winkel, Hochformat PLACEHOLDER
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
-Der Roboter bewegt sich auf einen Konten zu und haelt 15 cm vor dem Knoten an. Der Knoten wird fotografiert und der Roboter faehrt anschliessen auf den Knoten. Das Bild wird rotierert und mit OpenCV zuerst so verzerrt, dass der Knoten moeglichst gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausfuehrlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
+Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so verzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -87,7 +87,7 @@ Der Roboter bewegt sich auf einen Konten zu und haelt 15 cm vor dem Knoten an. D
 \label{fig:angle-recognition}
 \end{figure}
 
-Die erhaltene Liste mit Winkeln wird nun verwendet, um moegliche fehlende Linien zu erkennen und die Winkel intern zu speichern. Die internen Winkel werden verwendet, um den Roboter richtig auszurichten, wenn dieser auf die naechste Linie faehrt.
+Die erhaltene Liste mit Winkeln wird nun verwendet, um mögliche fehlende Linien zu erkennen und die Winkel intern zu speichern. Die internen Winkel werden verwendet, um den Roboter richtig auszurichten, wenn dieser auf die naechste Linie faehrt.
 
 Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfuegung gestellten Graph.
 Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden Bereiche definiert, in denen sich die Winkel befinden sollten.
