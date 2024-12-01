@@ -42,7 +42,7 @@ Die Platzierung der Kamera ist ein entscheidender Faktor, um sicherzustellen, da
 
 \begin{itemize}
     \item Kamera wird auf einer Höhe von 22.5cm montiert.
-    \item Field of View der Kamera beträgt 66 Grad.
+    \item Field of View der Kamera beträgt 66\textdegree.
     \item Kamera soll Knoten in einer nähe bis zu 15cm vor dem Roboter aufzeichnen.
     \item Kamera soll Objekte bis zu 2 Meter Entfernung aufzeichnen.
 \end{itemize}
@@ -56,7 +56,7 @@ Nachfolgend skizziert wie diese Parameter die Position und Neigung der Kamera de
     \label{fig:camera-position}
 \end{figure}
 
-Aus den Parametern kann also berechnet werden, dass die Kamera in einem Winkel von ca. 56 Grad eingebaut werden muss. Um die Knoten in der nähe sowie die Pylonen in der Distanz zu erfassen:
+Aus den Parametern kann also berechnet werden, dass die Kamera in einem Winkel von ca. 56\textdegree\ eingebaut werden muss. Um die Knoten in der nähe sowie die Pylonen in der Distanz zu erfassen:
 
 Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
 
@@ -73,7 +73,7 @@ Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
 
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
 
-Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \ref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56 Grad montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
+Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \ref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
 Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreihe Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels Opencv berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
@@ -255,7 +255,7 @@ Mit vielen Feineinstellungen ist es eventuel auch möglich, die weissen Objekte 
 Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 58 erstellten Bilder gelabelt.
 Das bedeutet, dass manuell die zu erkennenden Objekte ausgewählt und zu bestimmten Klassen hinzugefügt wurden.
 
-Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benötigt, um während dem Trainingsprozess zu prüfen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Dieses Testset ist nötig, weil es wichtig ist, dass die Daten, die schlussendlich verwendet werden, um zu prüfen, wie gut das Model ist, dem Model noch komplett unbekannt sein sollten.
+Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benötigt, um während dem Trainingsprozess zu prüfen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Das Testset ist erforderlich, da die Daten, die zur Bewertung der Modellleistung verwendet werden, dem Modell vollständig unbekannt sein müssen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{assets/informatik-prototyp/yolo/dataset-split.png}
@@ -263,7 +263,7 @@ Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, 
     \label{fig:data-split}
 \end{figure}
 
-Als erstes wurden versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und Hindernisse erkennt:
+Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und Hindernisse erkennt:
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -282,7 +282,7 @@ Als erstes wurden versucht ein Model zu trainieren, das alle Graphenelemente (Kn
 \end{figure}
 
 
-Mihilfe eines Jupyter Notebooks, das von Roboflow zur Verfügung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{https://deepai.org/machine-learning-glossary-and-terms/epoch} trainiert. Danach wurden Bilder aus dem Testset genutzt, wobei das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.} erstellt, die zeigt, welche Elemente als was erkannt wurde.
+Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/epoch}} trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{\url{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.}} erstellt, die zeigt, welche Elemente als was erkannt wurde.
 
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
@@ -303,7 +303,7 @@ Mihilfe eines Jupyter Notebooks, das von Roboflow zur Verfügung gestellt wird, 
 Aus diesem Experiment war klar, sowohl aus dem Bild mit den "erkannten" Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
 Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet ("background").
 
-Als nächste wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
+Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -379,4 +379,4 @@ Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen
 
 \textbf{Fazit}
 
-Zur Erkennung der Hindernisse und des Graphens, funktionierte YOLO am besten. Dabei wird versucht werden die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist ein grosses Risiko. Deshalb wird versucht eine Strategie zu finden, die mit den ausgehenden Linien vom Knoten arbeitet und wobei nur die jeweils nächsten Knoten erkannt werden müssen.
+Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht, die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
