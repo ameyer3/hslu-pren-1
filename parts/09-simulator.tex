@@ -7,7 +7,7 @@ Das Erarbeiten des Konzeptes des Simulators, der Implementierung und des Gebrauc
 
 \subsubsection{Spezifikationen}
 
-Die folgenden Spezifikationen soll der Simulator erfuellen.
+Die folgenden Spezifikationen soll der Simulator erfüllen.
 
 \begin{table}[H]
 \centering
@@ -46,7 +46,7 @@ Die folgenden Spezifikationen soll der Simulator erfuellen.
 
 \subsubsection{Konzeption}
 
-Es wurden mehrere Varianten ermittelt mit einem morphologischen Kasten, die alle die Spezifikatinen erfuellen koennen. Mit einer Nutzwertanalyse(siehe Anhang \ref{nutzwertanalyse}) wurde die beste Variante bestimmt.
+Mit einem morphologischen Kasten (siehe Anhang \ref{mk-simulator}) wurden mehrere Varianten ermittelt, die alle die Spezifikationen erfüllen können. Mit einer Nutzwertanalyse(siehe Anhang \ref{nutzwertanalyse}) wurde die beste Variante bestimmt.
 
 \begin{itemize}
     \item Programmiersprache: Python
@@ -59,7 +59,7 @@ Es wurden mehrere Varianten ermittelt mit einem morphologischen Kasten, die alle
     \item Clientseitige Kommunikation I/O: GUI
 \end{itemize}
 
-Die einzelnen Taetigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wurde jeweils der Person zugeordnet, die gerade daran arbeitet. So konnte koordiniert entwickelt werden.
+Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wurde jeweils der Person zugeordnet, die gerade daran arbeitet. So konnte koordiniert entwickelt werden.
 
 \begin{figure}[H]
 \centering
@@ -68,8 +68,7 @@ Die einzelnen Taetigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wur
 \label{fig:github-issues}
 \end{figure}
 
-Es wurde ein objektorientierter Ansatz gewaehlt, um den Simulator umzusetzen. Die Roboterklasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels Klasse verwendet werden als Simulation fuer das Drehen und fortbewegen. An dieser Klasse werden diese Nachrichten gesendet, die im echten Roboter an die elektrische Steuerung gesendet werden wuerden betreffend der Fortbewegung.
-
+Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung der Räder gesendet werden würden.
 
 \begin{figure}[H]
 \centering
@@ -78,12 +77,12 @@ Es wurde ein objektorientierter Ansatz gewaehlt, um den Simulator umzusetzen. Di
 \label{fig:simulator-erd}
 \end{figure}
 
-Die Methode run\_blind\_testing\_mode wird im folgenden Abschnitt Trial and Error Mode beschrieben. 
+Die Methode \verb|run_blind_testing_mode| wird im folgenden Abschnitt Trial and Error Mode beschrieben. 
 
 \subsubsection{Entwicklung}
 
 Der erste Schritt war es einen Graph zu definieren. Dazu wurde ein YAML File mit dem konfigurierten Graph erstellt. 
-Dazu wurde der vorgegebene Graph beschriftet: Jeder Knoten erhaelt einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die relativen Laengen der Strecken. Diese Beschriftung wurde wie folgt in einem YAML File beschrieben.
+Dazu wurde der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die relativen Längen der Strecken. Diese Beschriftung wurde wie folgt in einem YAML File beschrieben.
 
 \begin{figure}[H]
 \begin{subfigure}{0.275\textwidth}
@@ -110,7 +109,7 @@ H: [{ G: 6 }, { D: 10 }, { C: 10 }, { B: 10 }, { A: 10 }]
 \end{subfigure}
 \end{figure}
 
-Die Hindernisse und die fehlenden Linien sind ebenfalls in einem YAML File definiert. So koennen diese einfach angepasst werden:
+Die Hindernisse und die fehlenden Linien sind ebenfalls in einem YAML File definiert. So können diese einfach angepasst werden:
 
 \begin{verbatim}
 cone:
@@ -125,25 +124,25 @@ Der Simulator liest die beiden Dateien ein und speichert sie intern als Python D
 
 \textbf{Ablauf des Simulators:}
 
-Das Ziel ist es, dass der Ablauf moeglichst nah ist an dem Ablauf des Gesamtkonzeptes.
+Das Ziel ist es, dass der Ablauf möglichst nah an dem Ablauf des Gesamtkonzeptes herankommt.
 Der Programmablauf besteht aus folgenden Teilen:
 \begin{enumerate}
-    \item Nachbarsknoten auf Hindernisse pruefen
-    \item Naechste Knoten berechnen
-    \item Zu naechstem Knoten fahren
+    \item Nachbarsknoten auf Hindernisse prüfen
+    \item Nächste Knoten berechnen
+    \item Zu nächstem Knoten fahren
 \end{enumerate}
 
-Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhrezeigersinn im Kreis und prueft alle Nachbarsknoten. In der Simulation wird dafuer der Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprueft. Falls ein Hinderniss detektiert wirde, reagiert er wie folgt:
+Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhrzeigersinn im Kreis und prüft alle Nachbarsknoten. In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprüft. Falls ein Hindernis detektiert wird, reagiert er wie folgt:
 
 \begin{itemize}
-    \item Ein Pylon steht auf dem Nachbarsknoten: Dieser Knoten und alle Kanten, die dahin fuehren, werden im intern gespeicherten Graph-Dictionary entfernt.
-    \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary hoeher gewichtet. TODO WIE VIEL?
+    \item Ein Pylon steht auf dem Nachbarsknoten: Dieser Knoten und alle Kanten, die dahin führen, werden im intern gespeicherten Graph-Dictionary entfernt.
+    \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary höher gewichtet. Die Höhe der neuen Gewichtung widerspiegelt sich im Verhältnis zur Zeit die das zusätzliche Abhandeln des Objektes entspricht.
     \item Eine ausgehende Linie fehlt: Diese Verbindung wird aus dem intern gespeicherten Graph entfernt.
 \end{itemize}
 
-Falls noch nie eine Berechnung des kuerzesten Weges durchgefuehrt wurde oder der intern gespeicherte Graph sich veraendert hat, wie die Berechnung der kuerzesten Pfades durchgefuehrt. Ein Dijkstra wird verwendet. Die geplante Pfad und der naechste Knoten werden gespeichert.
+Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels Dijkstra durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
 
-Danach bewegt sich der Roboter zum naechsten Knoten. Dabei wird simuliert, dass sich der Roboter zur naechsten Linie drehen soll und die Distanz zum naechsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der naechsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{https://en.wikipedia.org/wiki/Circular\_buffer} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation moeglich sein, die Kanten zu identifizieren. 
+Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{https://en.wikipedia.org/wiki/Circular\_buffer} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
 
 \begin{figure}[H]
 \centering
@@ -158,8 +157,8 @@ Die Position relativ zu einer bestimmten Kante herauszufinden wird wie folgt imp
 edges_to_target = (target_index - start_index) % len(neighbors)
 \end{verbatim}
 
-Diese Ablauf wird so lange wiederholt, bis der Zielknoten erreicht wird.
-Waehrend des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik (zum Beispiel Hindernisse aus dem Konfigurationsfile lesen anstatt aus Bildern von der Kamera) und oft nur simple Print Statements. Diese Print Statements sollen die Schnittstelle zu der Elektronik simulieren. Ein Beispiel davon ist die Wheels Klasse:
+Dieser Ablauf wird so lange wiederholt, bis der Zielknoten erreicht wird.
+Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik (zum Beispiel Hindernisse aus dem Konfigurationsfile lesen anstatt aus Bildern von der Kamera detektieren) und oft nur simple Print-Statements. Diese Print-Statements sollen die Schnittstelle zu der Elektronik simulieren. Ein Beispiel davon ist die Wheels-Klasse:
 
 \begin{verbatim}
 class Wheels:
@@ -180,22 +179,22 @@ class Wheels:
         print(f"Found the next line to traverse.")
 \end{verbatim}
 
-\textbf{Reset}
+\textbf{Reset:}
 
 TODO
-Falls etwas erkannt mit Sensoren, dass nicht erkannt wurde mit Kameras, zuruecksetzen und das was getroffen wurde in Graph intern eintragen
+Falls Sensoren etwas erkennen, das von den Kameras nicht erfasst wurde, wird der Zustand zurückgesetzt und das erkannte Hindernis intern im Graphen vermerkt.
 
 \textbf{Technische Aspekte:}
 
-Um die Abhaengigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{https://python-poetry.org/} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgefuehrt wird.
+Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{https://python-poetry.org/} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
 
 \textbf{Graphical User Interface:}
 
-Das GUI wurde mit PyGame\footnote{https://www.pygame.org/news} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter ist ein Kreis mit einem Dreieck. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
-Der Fahrt des Roboters auf den Linien ist ebenfalls dargestellt.
+Das GUI wurde mit PyGame\footnote{https://www.pygame.org/news} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter wird als ein Kreis mit einem Dreieck dargestellt. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
+Die Fahrt des Roboters auf den Linien ist ebenfalls dargestellt.
 
-Auf folgendem Bild dreht sich unser Roboter auf der Stelle im Kreis, um die umliegenden Knoten und Kanten zu ueberpruefen.
-Das orangene Dreieck stellt einen Pylon dar, das rote Rechteck ein Hindernis, das beseitigt werden kann und das rote Kreuz ist eine Linie, die fehlt. Die rote Fahne ist das Ziel, das der Roboter erreichen soll.
+Auf folgendem Bild dreht sich unser Roboter auf der Stelle im Kreis, um die umliegenden Knoten und Kanten zu überprüfen.
+Das orangene Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das beseitigt werden kann und das rote Kreuz ist eine Linie, die fehlt. Die rote Fahne ist das Ziel, das der Roboter erreichen soll.
 
 \begin{figure}[H]
 \centering
@@ -208,7 +207,7 @@ TODO BILD: Roboter auf Kante, mit entfernten Kanten
 
 \textbf{Trial and Error Mode}
 
-Es wurde ein Modus implementiert, zu dem gewechselt wird, falls der Roboter nicht mehr weiss, wo er sich befindet. Dies soll im richtigen Roboter als Risikomitigation implementiert sein. Fuer die Simulation wurde ein Ablauf definiert fuer diesen Modus und er wurde implementiert. Die Nachrichten der Sensoren wurden gemockt.
+Ein Modus wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Für die Simulation wurde ein Ablauf für diesen Modus definiert und umgesetzt, wobei die Sensornachrichten simuliert (gemockt) wurden.
 
 \begin{figure}[H]
 \centering

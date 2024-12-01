@@ -160,7 +160,7 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 % Beleuchtung
 
-Als Basis fuer die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa. Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkuerlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
+Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa. Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
 \textbf{OpenCV SIFT, FAST, ORB Algorithmen}
 
@@ -252,10 +252,10 @@ Mit vielen Feineinstellungen ist es eventuel auch möglich, die weissen Objekte 
 
 \textbf{YOLOv11}
 
-Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 58 erstellten Bilder labeled.
-Das bedeutet, dass manuell die zu erkennenden Objekte ausgewaehlt und zu bestimmten Klassen hinzugefuegt wurden.
+Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 58 erstellten Bilder gelabelt.
+Das bedeutet, dass manuell die zu erkennenden Objekte ausgewählt und zu bestimmten Klassen hinzugefügt wurden.
 
-Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benoetigt, um waehrend dem Trainingsprozess zu pruefen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Dieses Testset ist noetig, weil es wichtig ist, dass die Daten, die schlussendlich verwendet werden, um zu pruefen, wie gut das Model ist, dem Model noch komplett unbekannt sein sollten.
+Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benötigt, um während dem Trainingsprozess zu prüfen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Dieses Testset ist nötig, weil es wichtig ist, dass die Daten, die schlussendlich verwendet werden, um zu prüfen, wie gut das Model ist, dem Model noch komplett unbekannt sein sollten.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{assets/informatik-prototyp/yolo/dataset-split.png}
@@ -282,7 +282,7 @@ Als erstes wurden versucht ein Model zu trainieren, das alle Graphenelemente (Kn
 \end{figure}
 
 
-Mihilfe eines Jupyter Notebooks, das von Roboflow zur Verfuegung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{https://deepai.org/machine-learning-glossary-and-terms/epoch} trainiert. Danach wurden Bilder aus dem Testset genutzt, wobei das Model versucht die einzelnen Elemente zu erkennen. Zusaetzlich wurde eine Confusion Matrix\footnote{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.} erstellt, die zeigt, welche Elemente als was erkannt wurde.
+Mihilfe eines Jupyter Notebooks, das von Roboflow zur Verfügung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{https://deepai.org/machine-learning-glossary-and-terms/epoch} trainiert. Danach wurden Bilder aus dem Testset genutzt, wobei das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.} erstellt, die zeigt, welche Elemente als was erkannt wurde.
 
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
@@ -300,10 +300,10 @@ Mihilfe eines Jupyter Notebooks, das von Roboflow zur Verfuegung gestellt wird, 
 \label{fig:recognition-with-lines}
 \end{figure}
 
-Aus diesem Experiment war klar, sowohl aus dem Bild mit den "erkannten" Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden koennen.
+Aus diesem Experiment war klar, sowohl aus dem Bild mit den "erkannten" Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
 Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet ("background").
 
-Als naechste wurde das gleiche noch einmal durchgefuehrt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
+Als nächste wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -337,9 +337,9 @@ Die Bilderkennung des selben Jupyter Notebooks mit den reduzierten Klassen sah w
 \label{fig:conf-matrix-yolo}
 \end{figure}
 
-Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren richtig erkannt werden. Einmal wird eine Pylone erkannt, obwohl es keine gibt. Die meisten vorausgesagten Knoten, sind wirklich Knoten, jedoch werden viele Knoten nicht erkannt. Dabei muss jedoch bedacht werden, dass es einfacher ist fuer das Model Knoten zu erkennen, die nahe und dadurch deutlicher sind und dass das Trainingsdatenset sehr klein ist. Trotzdem besteht ein sehr wahrscheinliches Risiko, dass ein Knoten nicht erkannt werden koennte.
+Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren richtig erkannt werden. Einmal wird eine Pylone erkannt, obwohl es keine gibt. Die meisten vorausgesagten Knoten, sind wirklich Knoten, jedoch werden viele Knoten nicht erkannt. Dabei muss jedoch bedacht werden, dass es einfacher ist für das Model Knoten zu erkennen, die nahe und dadurch deutlicher sind und dass das Trainingsdatenset sehr klein ist. Trotzdem besteht ein sehr wahrscheinliches Risiko, dass ein Knoten nicht erkannt werden könnte.
 
-Das gleiche Experiment wurde noch einmal durchgefuehrt mit nur Pylonen und Barrieren:
+Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barrieren:
 
 \begin{figure}[H]
 \begin{subfigure}{0.55\textwidth}
@@ -357,7 +357,7 @@ Das gleiche Experiment wurde noch einmal durchgefuehrt mit nur Pylonen und Barri
 \end{figure}
 
 
-Die Resultate fuer die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch faellt, wie erwartet die Unsicherheit der Knoten weg. Das Problem ist es nun, dass aus den erkannten Elementen auf dem dargestellten Bild geschlossen werden wuerde, dass sich auf dem naechsten Knoten ein Pylon befindet, da der vorherige Knoten nicht mehr erkannt wird.
+Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt, wie erwartet die Unsicherheit der Knoten weg. Das Problem ist es nun, dass aus den erkannten Elementen auf dem dargestellten Bild geschlossen werden würde, dass sich auf dem nächsten Knoten ein Pylon befindet, da der vorherige Knoten nicht mehr erkannt wird.
 
 \begin{figure}[H]
 \begin{subfigure}{0.5\textwidth}
@@ -379,4 +379,4 @@ Die Resultate fuer die Pylonen und die Barrieren ist dasselbe, wie im vorherigen
 
 \textbf{Fazit}
 
-Zur Erkennung der Hindernisse und des Graphens, funktionierte YOLO am besten. Dabei wird versucht werden die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist ein grosses Risiko. Deshalb wird versucht eine Strategie zu finden, die mit den ausgehenden Linien vom Knoten arbeitet und wobei nur die jeweils naechsten Knoten erkannt werden muessen.
+Zur Erkennung der Hindernisse und des Graphens, funktionierte YOLO am besten. Dabei wird versucht werden die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist ein grosses Risiko. Deshalb wird versucht eine Strategie zu finden, die mit den ausgehenden Linien vom Knoten arbeitet und wobei nur die jeweils nächsten Knoten erkannt werden müssen.
