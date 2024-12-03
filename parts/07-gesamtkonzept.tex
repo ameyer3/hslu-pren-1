@@ -171,8 +171,12 @@ Die Bilder werden mit einem YOLO Objekterkennungsalgorithmus ausgewertet. Dabei 
 \newpage
 
 \subsubsection{Hindernisse bewegen}
+Um ein vorhandenes Hindernis zu bewegen wird ein Mechanismus zum Anheben (nachfolgen Greifer genannt) und das Fahrzeug selbst zum verschieben des Hindernisses verwendet. Dieser Vorgang und der Aufbau des Greifers wird in folgendem Kapitel erläutert.\\
 
+ Die gezeigten Abbildungen des Greifers stammen von einem Prototyp und stellen nicht das finale Design dar. Sie dienen lediglich zur Veranschaulichung der Funktionsweise. Die Dimensionen des Gestänges sowie die Positionen der Lagerstellen sollen für die Finale Variante beibehalten werden.\\
+ \\
 In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb.\ref{fig:obstacle_clamping_concept}). 
+
 
 \begin{figure}[H]
 \centering
@@ -181,7 +185,40 @@ In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben d
 \label{fig:obstacle_clamping_concept}
 \end{figure}
 
-Das Hindernis soll mit nur einem Motor sowohl geklemmt als auch angehoben werden. Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird ein Endschalter am Greifmechanismus verwendet.
+\newpage
+
+Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen Servomotor zu realisieren wurde der Mechanismus als ein Gestänge realisiert (Abb. \ref{fig:gripper_components}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{assets/greifer-prototyp/Greifer_side_Komponentennamen.png} 
+\caption{Komponenten des Greifers}
+\label{fig:gripper_components}
+\end{figure}
+
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden und wird von der Pendelstütze geführt. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, Welcher durch eine Zugfeder vorgespannt ist. Dreht der Servomotor im Uhrzeigersinn, so schwingt die Greifbacke nach oben weg, und kann nicht mehr mit dem Hindernis kollidieren. der Greifer ist geöffnet \textbf{ABB. GREIFER OFFEN}. Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schingt die Greifbacke zurück, bis sie in Berührung mit dem Hinderniss kommt. Dadurch wird das Hindernis gegen die Spannbacken gedrückt welche wiederum durch die Vorspannung der Feder gegen das Hindernis drucken. Das Hindernis wird eingeklemmt \textbf{ABB. KLEMMEN}. Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannarm im Gegenuhrzeigersinn mit, da er über das Hindernis vom Greifarm bewegt wird. Die Rotation des Spannarms führt dazu, dass sich das Hinderniss anhebt \textbf{ABB ANGEHOBEN}. Gleichzeitig wird durch die Rotation des Spannarms die Zugfeder leicht verlängert. Somit wird die Klemmkraft auf das Hindernis erhöht und sichergestellt, dass es nicht aus dem Greifer rutscht.
+
+\begin{figure}[H]
+\begin{subfigure}{0.55\textwidth}
+\includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Offen.png}
+\caption{offen}
+\label{fig:gripper_open_side}
+\end{subfigure}
+\begin{subfigure}{0.55\textwidth}
+\includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Klemmen.png}
+\caption{klemmen}
+\label{fig:gripper_gripping_side}
+\end{subfigure}
+\begin{subfigure}{0.55\textwidth}
+\includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Angehoben.png}
+\caption{angehoben}
+\label{fig:gripper_lifted_side}
+\end{subfigure}
+\caption{Ablauf Hindernis anheben}
+\label{fig:obstacle_gripping_process}
+\end{figure}
+
+ Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird ein Endschalter am Greifmechanismus verwendet.
 Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). somit muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb.\ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 \begin{figure}[H]
@@ -191,7 +228,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 \label{fig:ablaufdiagramm-hindernis-bewegen}
 \end{figure}
 
-Um sowohl das Klemmen als auch das Anheben des Hindernis mit einem einzelnen Motor zu realisieren wurde der Mechanismus als ein Gestänge realisiert. Dieses Gestänge bewegt die einzelne Klemmbacke (rechts in Abb. \ref{fig:obstacle_clamping_concept}). Die beiden anderen Klemmbacken werden durch einen Federvorgespannten arm in einen Anschlag gedrückt, damit sie auf der richtigen Höhe befinden, um das Hinderniss zu Klemmen. 
+
 \\
 \textbf{Skizze Hindernis greifen/ absetzen}
 
