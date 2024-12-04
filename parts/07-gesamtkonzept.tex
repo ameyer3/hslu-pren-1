@@ -129,7 +129,7 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 \subsubsection{Zielknoten erkennen}
 
-PLACEHOLDER OpenCV OpenCV right? Still in prototyping stage... Not yet documented.
+PLACEHOLDER Still in prototyping stage... Not yet documented.
 
 
 \subsubsection{Pylonen und Hindernisse erkennen}
@@ -177,7 +177,7 @@ Um ein vorhandenes Hindernis zu bewegen wird ein Mechanismus zum Anheben (nachfo
 
  Die gezeigten Abbildungen des Greifers stammen von einem Prototyp und stellen nicht das finale Design dar. Sie dienen lediglich zur Veranschaulichung der Funktionsweise. Die Dimensionen des Gestänges sowie die Positionen der Lagerstellen sollen für die finale Variante beibehalten werden.\\
  \\
-In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb.\ref{fig:obstacle_clamping_concept}). 
+In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb. \ref{fig:obstacle_clamping_concept}). 
 
 
 \begin{figure}[H]
@@ -231,12 +231,11 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
  \newpage
  
 Der Greifmechanismus wurde gemäss \textbf{(REF AUSLEGUNG GREIFER)} ausgelegt und in Kapitel (REF PROTOYTPING) auf seine Funktionsfähigkeit geprüft.\\
-\\
 
 Das Klemmen und anheben ist nur ein Teilschritt  zur beseitigung eines Hindernisses. Nachfolgend wird der gesammte Ablauf erläutert.\\
-\\
+
  Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
-Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). somit muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb.\ref{fig:ablaufdiagramm-hindernis-bewegen}).
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). somit muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 \begin{figure}[H]
 \centering
