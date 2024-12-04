@@ -55,7 +55,6 @@ Mit einem morphologischen Kasten (siehe Anhang \ref{mk-simulator}) wurden mehrer
     \item Bewegliche Hindernisse erfassen: Gewichtung
     \item Blockierte Knoten erfassen: Knoten entfernen
     \item Wegfindung: eigene Implementation
-    \item Zielauswahl: human input und random
     \item Clientseitige Kommunikation I/O: GUI
 \end{itemize}
 
@@ -77,12 +76,14 @@ Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Di
 \label{fig:simulator-erd}
 \end{figure}
 
-Die Methode \verb|run_blind_testing_mode| wird im folgenden Abschnitt Trial and Error Mode beschrieben. 
+ERD is still in progress, as not everything is implemented yet.
+
+TODO this methode will likely not exist anymore after implementation of new trial and error Die Methode \verb|run_blind_testing_mode| wird im folgenden Abschnitt Trial and Error Mode beschrieben. 
 
 \subsubsection{Entwicklung}
 
-Der erste Schritt war es einen Graph zu definieren. Dazu wurde ein YAML File mit dem konfigurierten Graph erstellt. 
-Dazu wurde der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die relativen Längen der Strecken. Diese Beschriftung wurde wie folgt in einem YAML File beschrieben.
+Der erste Schritt ist es einen Graph zu definieren. Dazu wird ein YAML File mit dem konfigurierten Graph erstellt. 
+Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die relativen Längen der Strecken. Diese Beschriftung wird wie folgt in einem YAML File beschrieben.
 
 \begin{figure}[H]
 \begin{subfigure}{0.275\textwidth}
@@ -122,7 +123,7 @@ missing_line:
 
 Der Simulator liest die beiden Dateien ein und speichert sie intern als Python Dictionaries.
 
-\textbf{Ablauf des Simulators:}
+\textbf{Ablauf des Simulators}
 
 Das Ziel ist es, dass der Ablauf möglichst nah an dem Ablauf des Gesamtkonzeptes herankommt.
 Der Programmablauf besteht aus folgenden Teilen:
@@ -146,7 +147,7 @@ Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/ring-buffer-graph.png}
+\includegraphics[width=0.5\textwidth]{assets/informatik-prototyp/simulator/ring-buffer-graph.png}
 \caption{Graph with Ring Buffer}
 \label{fig:ring-buffer-graph}
 \end{figure}
@@ -158,60 +159,33 @@ edges_to_target = (target_index - start_index) % len(neighbors)
 \end{verbatim}
 
 Dieser Ablauf wird so lange wiederholt, bis der Zielknoten erreicht wird.
-Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik (zum Beispiel Hindernisse aus dem Konfigurationsfile lesen anstatt aus Bildern von der Kamera detektieren) und oft nur simple Print-Statements. Diese Print-Statements sollen die Schnittstelle zu der Elektronik simulieren. Ein Beispiel davon ist die Wheels-Klasse:
+Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die die einzelnen Roboterbauteile simulieren. In diesen befindet sich zum Teil eine Mock-Logik (zum Beispiel Hindernisse aus dem Konfigurationsfile lesen anstatt aus Bildern von der Kamera detektieren) und oft nur simple Print-Statements. Diese Print-Statements sollen die Schnittstelle zu der Elektronik simulieren.
 
-\begin{verbatim}
-class Wheels:
-    def drive(self, distance: int):
-        print(f"DRIVE {distance}CM.")
+\textbf{Trial and Error Mode}
 
-    def turn(self, degree: int):
-        print(f"TURN {degree} DEGREES.")
+Ein Modus wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. De Roboter kennt alle ausgehenden Kanten des naechsten Knotens und die Hindernisse, die sich daneben befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen fuehrt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
 
-    # Turns until sensor detect objects
-    def turn_until(self, until_condition: str):
-        print(f"TURN {until_condition}.")
-        is_line = False
-        while not is_line:
-            print("Turning")
-            # Simulate that a line was detected by a sensor
-            is_line = True
-        print(f"Found the next line to traverse.")
-\end{verbatim}
-
-\textbf{Reset:}
-
-TODO
-Falls Sensoren etwas erkennen, das von den Kameras nicht erfasst wurde, wird der Zustand zurückgesetzt und das erkannte Hindernis intern im Graphen vermerkt.
-
-\textbf{Technische Aspekte:}
+\textbf{Technische Aspekte}
 
 Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{https://python-poetry.org/} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
 
-\textbf{Graphical User Interface:}
+\textbf{Graphical User Interface}
 
 Das GUI wurde mit PyGame\footnote{https://www.pygame.org/news} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter wird als ein Kreis mit einem Dreieck dargestellt. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
 Die Fahrt des Roboters auf den Linien ist ebenfalls dargestellt.
 
 Auf folgendem Bild dreht sich unser Roboter auf der Stelle im Kreis, um die umliegenden Knoten und Kanten zu überprüfen.
-Das orangene Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das beseitigt werden kann und das rote Kreuz ist eine Linie, die fehlt. Die rote Fahne ist das Ziel, das der Roboter erreichen soll.
+Das orange Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das beseitigt werden kann und das rote Kreuz ist eine Linie, die fehlt. Die rote Fahne ist das Ziel, das der Roboter erreichen soll.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/sim-ui.png}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/sim-ui.png}
 \caption{GUI des Simulators}
 \label{fig:sim-gui}
-\end{figure}
-
-TODO BILD: Roboter auf Kante, mit entfernten Kanten 
-
-\textbf{Trial and Error Mode}
-
-Ein Modus wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Für die Simulation wurde ein Ablauf für diesen Modus definiert und umgesetzt, wobei die Sensornachrichten simuliert (gemockt) wurden.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth]{assets/informatik-prototyp/simulator/simulator-trial-and-error-mode.png}
-\caption{Trial and Error Mode}
-\label{fig:sim-trial-error}
+\end{subfigure}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/removed-lines-sim.png}
+\caption{GUI des Simulators unbefahrbare Linien entfernt}
+\label{fig:sim-gui-removed-lines}
+\end{subfigure}
 \end{figure}
