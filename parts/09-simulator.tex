@@ -67,7 +67,9 @@ Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wur
 \label{fig:github-issues}
 \end{figure}
 
-Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung der Räder gesendet werden würden.
+Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und Fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung des Motors gesendet werden würden.
+
+Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls er nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt "Trial and Error" noch weiter erklärt. Im ERD sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der oeffentlichen \verb|run| Methode ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
 
 \begin{figure}[H]
 \centering
@@ -76,9 +78,7 @@ Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Di
 \label{fig:simulator-erd}
 \end{figure}
 
-ERD is still in progress, as not everything is implemented yet.
-
-TODO this methode will likely not exist anymore after implementation of new trial and error Die Methode \verb|run_blind_testing_mode| wird im folgenden Abschnitt Trial and Error Mode beschrieben. 
+HINT: ERD is a continuous work in progress, as not everything is implemented yet.
 
 \subsubsection{Entwicklung}
 
@@ -163,7 +163,7 @@ Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die
 
 \textbf{Trial and Error Mode}
 
-Ein Modus wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. De Roboter kennt alle ausgehenden Kanten des naechsten Knotens und die Hindernisse, die sich daneben befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen fuehrt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
+Ein Modus BLIND\_TESTING wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. De Roboter kennt alle ausgehenden Kanten des naechsten Knotens und die Hindernisse, die sich daneben befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen fuehrt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
 
 \textbf{Technische Aspekte}
 
