@@ -26,7 +26,7 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 
 Für die Hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 nach dem Morphologischen Kasten (Verweis auf Morphologischen Kasten einfügen) bestummen. Für die Software und Hardware auslegung des Projektes ist eine Funktionsbestimmung der einzelnen Pins erforderlich.
 
-Das Tiny K22 PCB stellt 28Pins zu verfügung (Link zu Tiny Bild). Davon können die Pins zu Timer, ADC, IIC, SPI, UART, Input oder Outputpins umfunktioniert werden.
+Das Tiny K22 PCB stellt 28 Pins zu verfügung (Link zu Tiny Bild). Davon können die Pins zu Timer, ADC, IIC, SPI, UART, Input oder Outputpins umfunktioniert werden.
 
 Für das Projket wurde die gesammte Pinbelegschaft verwendet (Link zu Pinoutbild). Die zeitkritischen Funktionen werden auf den Tiny K22 abgehandelt. Dazu gehören die Encoder auswertung, der Mikrokontroller hat einen eingebauten Quadraturencoderauswertung auf Timer1 und 2. Die Linienerfassung besetzt den gesammten Timer0. Die Motoren teilen sich Timer3 mit dem Ultraschallsensor, Buzzer und dem Servomotor, da es sonst keinen weiteren Platz hat. Das hat zu folge, dass die Motoren im Höhrbaren bereich betrieben werden. Dies ist Akzetabel, da keine Lautstärkelimite festgelegt würde.
 
