@@ -67,8 +67,21 @@ Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
     \label{fig:camera-position-exact}
 \end{figure}
 
+Zusätzlich haben wir dies mit unserem Raspberry und Kamera nachgestellt:
 
-
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+\centering
+    \includegraphics[height=7cm]{assets/informatik-prototyp/camera/camera_position_prototype_at_home.jpg}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\centering
+    \includegraphics[height=7cm]{assets/informatik-prototyp/camera/camera_position_prototype.jpg}
+\end{subfigure}
+\caption{Test der Kamera Position}
+\label{fig:camera-position-prototype}
+\end{figure}
 
 
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
@@ -80,12 +93,32 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 \begin{enumerate}
     \item Vor dem Knoten anhalten und Bild aufnehmen
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=0.5\linewidth]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg}
+    %     \caption{Originale Kamera Aufnahme eines Knotens}
+    %     \label{fig:before-node}
+    % \end{figure}
+
+
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\linewidth, angle=90]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg}
+        \begin{subfigure}{0.25\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg}
         \caption{Originale Kamera Aufnahme eines Knotens}
         \label{fig:before-node}
-    \end{figure}
+        \end{subfigure}
+        \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/camera_position_before_node.jpg} 
+        \caption{Kamera vor Knoten}
+        \label{fig:before-node-camera}
+        \vspace{5mm}
+        \end{subfigure}
+        \caption{Aufnahme vor Knoten}
+        \label{fig:image-before-node}
+        \end{figure}
+
+        
     \item Geometrische Transformation anhand fix definierten Punkten anwenden
         \begin{figure}[H]
         \centering
@@ -154,17 +187,26 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 \subsubsection{Graph-, Pylonen- und Barriere-Erkennung}
 
+
+
 % \textbf{Spiegelung}
 
 % Starke Spiegelungen stellen ein grosses Problem bei der Erkennung von Knoten dar. Um die Bilder zu entspiegeln, können die Lichtverhältnisse angepasst, Polfilter verwendet oder Nachbearbeitungen durchgeführt werden.\cite{avoid-reflection}
 
 % Beleuchtung
 
-Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa. Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
+Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/informatik-prototyp/opencv/test_graph.jpg}
+    \caption{Aufgeklebter Graph zu Testzwecken}
+    \label{fig:test-graph}
+\end{figure}
 
 \textbf{OpenCV SIFT, FAST, ORB Algorithmen}
 
-OpenCV bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zum Objekterkennung und Tracking eingesetzt werden:
+OpenCV bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zu Objekterkennung und -tracking eingesetzt werden:
 
 \begin{enumerate}
     \item SIFT (Scale-Invariant Feature Transform)
@@ -216,7 +258,7 @@ Da unsere Objekte jedoch dreidimensionale sind und eine freie Rotation und Posit
 \end{figure}
 
 
-Aus diesem Test Können wir entscheiden, dass die OpenCV Merkmalsdetektions Algorithmen nicht aussreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Desshalb wird dieser Ansatz nicht mehr weiter verfolgt.
+Aus diesem Test können wir entscheiden, dass die OpenCV Merkmalsdetektionsalgorithmen nicht ausreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Deshalb wird dieser Ansatz nicht mehr weiter verfolgt.
 
 \textbf{Objekterkennung mit Farberkennung}
 
@@ -229,7 +271,7 @@ Wir haben grundsätzlich 3 oder 4 verschieden Objekte zu Detektieren:
     \item Knoten (Weiss)
 \end{itemize}
 
-Orange und Rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung wo der Roboter schlussendlich operiert, sehr eindeutig sind:
+Orange und rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung, wo der Roboter schlussendlich operiert, sehr eindeutig sind:
 
 \begin{figure}[H]
     \centering
@@ -248,7 +290,7 @@ Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn eine
     \label{fig:opencv_hsv_object_detection_bad}
 \end{figure}
 
-Mit vielen Feineinstellungen ist es eventuel auch möglich, die weissen Objekte zu detektieren. Jedoch ist es nicht eine sichere Lösung, da die Lichtverhältnisse in dieser Umgebung stark variieren und wir keine Kontrolle darüber haben.
+Mit vielen Feineinstellungen ist es eventuell auch möglich, die weissen Objekte zu detektieren. Jedoch ist es nicht eine sichere Lösung, da die Lichtverhältnisse in dieser Umgebung stark variieren und wir keine Kontrolle darüber haben.
 
 \textbf{YOLOv11}
 
@@ -318,7 +360,7 @@ Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die 
 \end{subfigure}
 
 \caption{Roboflow labeled Bild mit Linien}
-\label{fig:labeling-with-lines}
+\label{fig:labeled-with-lines}
 \end{figure}
 
 Die Bilderkennung des selben Jupyter Notebooks mit den reduzierten Klassen sah wie folgt aus:

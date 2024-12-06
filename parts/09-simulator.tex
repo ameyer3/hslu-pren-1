@@ -143,7 +143,7 @@ Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhr
 
 Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels Dijkstra durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
 
-Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{https://en.wikipedia.org/wiki/Circular\_buffer} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
+Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{\url{https://en.wikipedia.org/wiki/Circular\_buffer}} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
 
 \begin{figure}[H]
 \centering
@@ -167,11 +167,11 @@ Ein Modus BLIND\_TESTING wurde implementiert, der aktiviert wird, wenn der Robot
 
 \textbf{Technische Aspekte}
 
-Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{https://python-poetry.org/} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
+Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{\url{https://python-poetry.org/}} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
 
 \textbf{Graphical User Interface}
 
-Das GUI wurde mit PyGame\footnote{https://www.pygame.org/news} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter wird als ein Kreis mit einem Dreieck dargestellt. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
+Das GUI wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. Der Graph wird mit beschrifteten Knoten dargestellt. Der Roboter wird als ein Kreis mit einem Dreieck dargestellt. Die Spitze des Dreiecks zeigt die Richtung, in welche der Roboter schaut.
 Die Fahrt des Roboters auf den Linien ist ebenfalls dargestellt.
 
 Auf folgendem Bild dreht sich unser Roboter auf der Stelle im Kreis, um die umliegenden Knoten und Kanten zu überprüfen.

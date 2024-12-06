@@ -92,7 +92,7 @@ Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der K
 \begin{figure}[H]
 \begin{subfigure}{0.45\textwidth}
 \centering
-\includegraphics[width=0.95\linewidth, angle=90]{assets/informatik-prototyp/opencv/knoten-Bild.jpeg} 
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg} 
 \caption{Knoten mit 15cm Abstand}
 \label{fig:node-15cm-before}
 \end{subfigure}
@@ -156,7 +156,7 @@ PLACEHOLDER Still in prototyping stage... Not yet documented.
 \begin{subfigure}{0.55\textwidth}
 \includegraphics[width=\textwidth]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
 \caption{YOLOv11 Bilderkennung}
-\label{fig:img-recognition-yolo}
+\label{fig:img-recognition-yolo-concept}
 \end{subfigure}
 \caption{Bilderkennung Hindernisse}
 \label{fig:image-detection-obstacles}
@@ -198,13 +198,13 @@ Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen 
 \label{fig:gripper_components}
 \end{figure}
 
-Die Greifbacke ist gelenkig mit dem Greifarm verbunden welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, Welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur Montagepunkte der Feder in Abbildung ersichtlich).
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur Montagepunkte der Feder in Abbildung ersichtlich).
 
 \newpage
 
 Dreht der Servomotor im Uhrzeigersinn, so schwingen Greifarm und Greifbacke nach oben weg. Der Greifer ist geöffnet (Abb. \ref{fig:gripper_opening_side}). So kann das Farzeug auf das Hindernis zu fahren, bis dieses die zwei Spannbacken berührt. An einer der Spannbacken wird ein Endschalter montiert sein (auf den Abbildungen nicht vorhanden), welcher erkennt, wann das Hindernis nahe genug ist.\\
 \\
-Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt die Greifbacke zurück, bis sie in Berührung mit dem Hindernis kommt. Dadurch wird das Hindernis gegen die zwei Spannbacken gedrückt welche wiederum durch die Vorspannung der Feder gegen das Hindernis drücken. Das Hindernis wird eingeklemmt (Abb. \ref{fig:gripper_gripping_side}).\\
+Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt die Greifbacke zurück, bis sie in Berührung mit dem Hindernis kommt. Dadurch wird das Hindernis gegen die zwei Spannbacken gedrückt, welche wiederum durch die Vorspannung der Feder gegen das Hindernis drücken. Das Hindernis wird eingeklemmt (Abb. \ref{fig:gripper_gripping_side}).\\
 \\
 Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannarm im Gegenuhrzeigersinn mit, da er über das Hindernis vom Greifarm bewegt wird. Die Rotation des Spannarms führt dazu, dass das Hinderniss angehoben wird (Abb. \ref{fig:gripper_lifting_side}). Gleichzeitig wird durch die Rotation des Spannarms die Zugfeder leicht verlängert. Somit wird die Klemmkraft auf das Hindernis erhöht und sichergestellt, dass dieses nicht aus dem Greifer rutscht.
 
@@ -230,12 +230,9 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
 
  \newpage
  
-Als Basis zur Auslegung des Greifers diente eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern als auch das Hindernis anzuheben. Die detailierten Berechnungen sin im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.\\
+Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.\\
 
-Das Klemmen und anheben ist nur ein Teilschritt  zur beseitigung eines Hindernisses. Nachfolgend wird der gesammte Ablauf erläutert.\\
-
- Mit einem Ultraschall-Sensor soll das vorhanden sein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
-Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). somit muss sich das Fahrzeug, nach dem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
+Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert.
 
 \begin{figure}[H]
 \centering
@@ -244,6 +241,8 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 \label{fig:ablaufdiagramm-hindernis-bewegen}
 \end{figure}
 
+ Mit einem Ultraschall-Sensor soll das Vorhandensein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug nachdem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 
 \subsection{Schnittstellen zwischen den Kompontenten}
@@ -255,7 +254,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
     \centering
     \includegraphics[width=1\linewidth]{img/Blockdiagramm_Elektrotechnik.pdf}
     \caption{Blockdiagramm Steuerung}
-    \label{fig:camera-position-concept}
+    \label{Blockdiagramm Steuerung}
 \end{figure}
 
-Im Blockschaltdiagramm werden die für die Steuerung notwendigen Komponente aufgezeigt. Der zentrale Punkt ist der Mikrocontroller der die einzelnen Signale für und von den Bauteilen verarbeitet. Ebenfalls sieht man die Verknüpfung zur Bildverarbeitung. Die Bildverarbeitung erfolgt über den Raspberry Pi, die über eine UART Schnittstelle zum Mikrocontroller vom Tiny K22 erfolgt.
+\ref{Blockdiagramm Steuerung}Im Blockschaltdiagramm wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller werden im Prototyping Kapitel erwähnt. \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten}

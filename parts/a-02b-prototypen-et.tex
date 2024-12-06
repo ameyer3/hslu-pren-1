@@ -2,7 +2,17 @@
 
 Nach ersten Berechnungen für die Motoren wurde ein passender Motor ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung.
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Motorenaufbau.jpg}
+    \caption{Motorenbefestigung Prototyp}
+    \label{fig:Motorenaufbau}
+\end{figure}
+
+
 Der Test bestand darin, den Motor mit einer Pulsweitenmodulation (PWM) bei zwei unterschiedlichen Spannungen zu betreiben. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der Duty Cycle schrittweise erhöht, bis der Motor bei 58\% des Duty Cycles zu drehen begann. Nachdem der Motor angelaufen, konnte der Duty Cycle auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
+
 
 In einer zweiten Testsequenz wurde die gleiche Vorgehensweise mit einer Spannung von 12V durchgeführt. Hier begann der Motor bei einem Duty Cycle von 33\% zu drehen. Beim schrittweisen Reduzieren der Einschaltzeit drehte der Motor bis zu einem Duty Cycle von 12\% weiter.
 
@@ -10,7 +20,7 @@ Da der Motor möglichst präzise gesteuert werden soll, ist eine feine Einstellu
 
 Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initial mit 12V gestartet. Sobald der Motor angelaufen ist, wird die Spannung auf 5V reduzier, wodurch der Motor bei hohen Duty Cycle nicht Überlastet werdet.
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -22,13 +32,28 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 \label{tab:dutycycle}
 \end{table}
 
-\subsubsection{Tiny K22 Pinout}
+\subsubsection{Tiny K22 Pinout} \label{Blockdiagramm: Schnittstellen zwischen den Komponenten}
 
-Für die hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Verweis auf Morphologischen Kasten einfügen). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
+Für die hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
 
-Das Tiny K22 PCB bietet insgesamt 28 Pins (Link zu Tiny-Bild). Diese Pins können flexibel als Timer, ADC, IIC, SPI, UART, Input- oder Output-Pins konfiguriert werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Tiny_K22_PCB.png}
+    \caption{Tiny K22}
+    \label{fig:Tiny_K22_PCB}
+\end{figure}
 
-Im Rahmen des Projekts wurden 25 Pins verwendet (Link zu Pinout-Bild). Die zeitkritischen Funktionen werden direkt auf dem Tiny K22 verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
+
+Das Tiny K22 PCB bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als Timer, ADC, IIC, SPI, UART, Input- oder Output-Pins konfiguriert werden.
+
+Im Rahmen des Projekts wurden 25 Pins verwendet\ref{fig:Tiny_K22_Pinout_definition}. Die zeitkritischen Funktionen werden direkt auf dem Tiny K22 verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth, angle=-90]{img/Tiny_K22_Pinout_definition.jpg}
+    \caption{Pinout Tiny K22}
+    \label{fig:Tiny_K22_Pinout_definition}
+\end{figure}
 
 Encoder-Auswertung: Der Mikrocontroller nutzt die integrierte Quadratur-Encoder-Auswertung auf Timer 1 und Timer 2.
 Linienerfassung: Diese Funktion belegt den gesamten Timer 0.
@@ -45,4 +70,27 @@ Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effi
 Das Programm welches man auf das Tiny K22 laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger ist. Es können vom Modul Mikrocontroller Fundamentals bestehende Libraries verwendet werden können. Einige Anpassungen wie zum Beispiel die UART wurden bereits vorgenommen.
 
 
+\subsubsection{Liniensensor}
 
+Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem PCB angeordnet. Es sind 7 Pins auf dem Tiny K22 reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion Input Capture kann die bei Entladung fallende Flanke detektiert werden. Input Capture gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Liniensensor_Schaltung.png}
+    \caption{Schaltungsprinzip Liniensensor}
+    \label{fig:Liniensensor_Schaltung}
+\end{figure}
+
+
+\subsubsection{Ultraschall}
+
+IN PROGRESS
+
+\subsubsection{Akku}
+
+IN PROGRESS
+
+\subsubsection{PCBA Designe}
+
+IN PROGRESS
