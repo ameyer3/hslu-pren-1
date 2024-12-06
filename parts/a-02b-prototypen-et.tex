@@ -24,18 +24,25 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 
 \subsubsection{Tiny K22 Pinout}
 
-Für die Hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 nach dem Morphologischen Kasten (Verweis auf Morphologischen Kasten einfügen) bestummen. Für die Software und Hardware auslegung des Projektes ist eine Funktionsbestimmung der einzelnen Pins erforderlich.
+Für die hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Verweis auf Morphologischen Kasten einfügen). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
 
-Das Tiny K22 PCB stellt 28 Pins zu verfügung (Link zu Tiny Bild). Davon können die Pins zu Timer, ADC, IIC, SPI, UART, Input oder Outputpins umfunktioniert werden.
+Das Tiny K22 PCB bietet insgesamt 28 Pins (Link zu Tiny-Bild). Diese Pins können flexibel als Timer, ADC, IIC, SPI, UART, Input- oder Output-Pins konfiguriert werden.
 
-Für das Projket wurde die gesammte Pinbelegschaft verwendet (Link zu Pinoutbild). Die zeitkritischen Funktionen werden auf den Tiny K22 abgehandelt. Dazu gehören die Encoder auswertung, der Mikrokontroller hat einen eingebauten Quadraturencoderauswertung auf Timer1 und 2. Die Linienerfassung besetzt den gesammten Timer0. Die Motoren teilen sich Timer3 mit dem Ultraschallsensor, Buzzer und dem Servomotor, da es sonst keinen weiteren Platz hat. Das hat zu folge, dass die Motoren im Höhrbaren bereich betrieben werden. Dies ist Akzetabel, da keine Lautstärkelimite festgelegt würde.
+Im Rahmen des Projekts wurden 25 Pins verwendet (Link zu Pinout-Bild). Die zeitkritischen Funktionen werden direkt auf dem Tiny K22 verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
+
+Encoder-Auswertung: Der Mikrocontroller nutzt die integrierte Quadratur-Encoder-Auswertung auf Timer 1 und Timer 2.
+Linienerfassung: Diese Funktion belegt den gesamten Timer 0.
+Motorsteuerung, Ultraschallsensor, Buzzer und Servomotor: Diese teilen sich Timer 3, da keine weiteren Timer zur Verfügung stehen. Dies führt dazu, dass die Motoren im hörbaren Frequenzbereich betrieben werden. Dieser Umstand ist jedoch akzeptabel, da keine Vorgaben zur maximalen Lautstärke existieren.
+Zusätzlich wird ein IIC-Bus für zeitunkritische Funktionen verwendet. Zu diesen gehören die Ziellampe und die Zielauswahlschalter.
+
+Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effizient verarbeitet werden, während gleichzeitig Flexibilität für zusätzliche Funktionen über den IIC-Bus gewährleistet bleibt.
 
 
 
 
+\subsubsection{Software}
 
-
-
+Das Programm welches man auf das Tiny K22 laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger ist. Es können vom Modul Mikrocontroller Fundamentals bestehende Libraries verwendet werden können. Einige Anpassungen wie zum Beispiel die UART wurden bereits vorgenommen.
 
 
 

@@ -29,6 +29,40 @@ Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher.
 Die Software wird in Python geschrieben und läuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
 
 
+
+
+\subsection{Fortbewegung}
+
+PLACEHOLDER Documentation in progress
+
+\subsection{Linienerkennung}
+
+PLACEHOLDER Documentation in progress
+
+\subsection{Distanzsensor}
+
+PLACEHOLDER Documentation in progress to describe recognition of barriers and cones
+
+\subsection{Wegfindung}
+
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
+
+Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
+
+\subsection{Kameraposition}
+
+Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position dieser ist fix, das heisst wir benötigen keine schwenkbare Kamera.
+Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
+    \caption{Kamera Positionierung}
+    \label{fig:camera-position-concept}
+\end{figure}
+
+
+
 \subsection{Ablauf}
 
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
@@ -40,31 +74,9 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \label{fig:ablaufdiagramm}
 \end{figure}
 
-\subsubsection{Fortbewegung}
 
-PLACEHOLDER
 
-\subsubsection{Linienerkennung}
 
-PLACEHOLDER
-
-\subsubsection{Wegfindung}
-
-Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
-
-Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
-
-\subsubsection{Kameraposition}
-
-Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position dieser ist fix, das heisst wir benötigen keine schwenkbare Kamera.
-Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
-    \caption{Kamera Positionierung}
-    \label{fig:camera-position-concept}
-\end{figure}
 
 \subsubsection{Ausgehende Kanten erkennen}
 
@@ -78,12 +90,13 @@ Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{ht
 Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so verzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
 
 \begin{figure}[H]
-\begin{subfigure}{0.55\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/knoten-bild.jpeg} 
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=0.95\linewidth, angle=90]{assets/informatik-prototyp/opencv/knoten-Bild.jpeg} 
 \caption{Knoten mit 15cm Abstand}
 \label{fig:node-15cm-before}
 \end{subfigure}
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.45\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_with_edge_angles_annotated.png} 
 \caption{Knoten mit gemessenen Winkeln}
 \label{fig:node-angles}
@@ -149,24 +162,11 @@ PLACEHOLDER Still in prototyping stage... Not yet documented.
 \label{fig:image-detection-obstacles}
 \end{figure}
 
-
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.35\textwidth]{assets/gesamtkonzept/ablaufdiagramm-hindernisse-erkennen.png}
-% \caption{Ablaufdiagramm Hindernis erkennen}
-% \label{fig:ablaufdiagramm-hindernis-erkennen}
-% \end{figure}
-
 Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
-Die Bilder werden mit einem YOLO Objekterkennungsalgorithmus ausgewertet. Dabei werden sowohl Knoten, als auch Pylonen und Barrieren erkannt. Hindernisse werden intern gespeichert und bei der Berechnung des Weges berücksichtigt.
+Die Bilder werden mit einem YOLO Objekterkennungsalgorithmus ausgewertet. Dabei werden sowohl Knoten, als auch Pylonen und Barrieren erkannt. Das erhaltene Resultat beschreibt, welche Elemente erkannt wurden anhand der definierten Klassen und wo sich diese befinden mit Koordinaten auf dem Bild.
+Alle Hindernisse werden intern gespeichert und bei der Berechnung des Weges berücksichtigt.
 
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=\textwidth -30mm]{assets/informatik-prototyp/yolo/recognized-images.jpeg}
-% \caption{YOLOv11 Bilderkennung}
-% \label{fig:img-recognition-yolo}
-% \end{figure}
 
 \newpage
 
@@ -230,7 +230,7 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
 
  \newpage
  
-Als Basis zur Auslegung des Greifers diente eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern als auch das Hindernis anzuheben. Die detailierten Berechnungen sin im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{} anhand eines Prototyps validiert.\\
+Als Basis zur Auslegung des Greifers diente eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern als auch das Hindernis anzuheben. Die detailierten Berechnungen sin im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.\\
 
 Das Klemmen und anheben ist nur ein Teilschritt  zur beseitigung eines Hindernisses. Nachfolgend wird der gesammte Ablauf erläutert.\\
 
@@ -246,9 +246,16 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 
 
-
-
 \subsection{Schnittstellen zwischen den Kompontenten}
 
 
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{img/Blockdiagramm_Elektrotechnik.pdf}
+    \caption{Blockdiagramm Steuerung}
+    \label{fig:camera-position-concept}
+\end{figure}
+
+Im Blockschaltdiagramm werden die für die Steuerung notwendigen Komponente aufgezeigt. Der zentrale Punkt ist der Mikrocontroller der die einzelnen Signale für und von den Bauteilen verarbeitet. Ebenfalls sieht man die Verknüpfung zur Bildverarbeitung. Die Bildverarbeitung erfolgt über den Raspberry Pi, die über eine UART Schnittstelle zum Mikrocontroller vom Tiny K22 erfolgt.
