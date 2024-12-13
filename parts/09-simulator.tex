@@ -69,16 +69,15 @@ Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wur
 
 Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und Fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung des Motors gesendet werden würden.
 
-Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls er nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt "Trial and Error" noch weiter erklärt. Im ERD sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der oeffentlichen \verb|run| Methode ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
+Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls er nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt "Trial and Error" noch weiter erklärt. Im Klassendiagramm sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der oeffentlichen \verb|run| Methode ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/simulator-erd.png}
-\caption{Simulator ERD}
-\label{fig:simulator-erd}
+\caption{Simulator Klassendiagramm}
+\label{fig:simulator-classdia}
 \end{figure}
-
-HINT: ERD is a continuous work in progress, as not everything is implemented yet.
+HINT: Klassendiagramm is a continuous work in progress, as not everything is implemented yet.
 
 \subsubsection{Entwicklung}
 
@@ -143,7 +142,7 @@ Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhr
 
 Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels Dijkstra durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
 
-Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer Algorithmus\footnote{\url{https://en.wikipedia.org/wiki/Circular\_buffer}} berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
+Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer \footnote{\url{https://en.wikipedia.org/wiki/Circular\_buffer}} zirkulär berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
 
 \begin{figure}[H]
 \centering
