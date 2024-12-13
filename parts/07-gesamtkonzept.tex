@@ -142,7 +142,35 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 \subsubsection{Zielknoten erkennen}
 
-PLACEHOLDER Still in prototyping stage... Not yet documented.
+Damit der Roboter ueberpruefen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden koennen, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der OpenCV Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
+
+Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu pruefne, wird ebenfalls geprueft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt ORB um welchen es sich handelt.
+
+Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht noetig, die Rotation der Buchstaben zu beachten. Unabhaengig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
+
+\begin{figure}[H]
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-a.png} 
+\caption{ORB A}
+\label{fig:orb-a-konzept}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-b.png} 
+\caption{ORB B}
+\label{fig:orb-b-konzept}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-c.png} 
+\caption{ORB C}
+\label{fig:orb-c-konzept}
+\end{subfigure}
+
+\caption{Zielknotenerkennung mit ORB}
+\label{fig:orb-zielknoten-konzep}
+\end{figure}
+
+
+Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispeilsweise als das Klammer Zeichen \verb|(| erkannt werden wuerde.
 
 
 \subsubsection{Pylonen und Hindernisse erkennen}
