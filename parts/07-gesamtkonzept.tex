@@ -31,40 +31,6 @@ Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher.
 Die Software wird in Python geschrieben und läuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
 
 
-
-
-\subsection{Fortbewegung}
-
-PLACEHOLDER Documentation in progress
-
-\subsection{Linienerkennung}
-
-PLACEHOLDER Documentation in progress
-
-\subsection{Distanzsensor}
-
-PLACEHOLDER Documentation in progress to describe recognition of barriers and cones
-
-\subsection{Wegfindung}
-
-Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
-
-Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
-
-\subsection{Kameraposition}
-
-Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position dieser ist fix, das heisst wir benötigen keine schwenkbare Kamera.
-Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
-    \caption{Kamera Positionierung}
-    \label{fig:camera-position-concept}
-\end{figure}
-
-
-
 \subsection{Ablauf}
 
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
@@ -273,6 +239,40 @@ Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernis
 
  Mit einem Ultraschall-Sensor soll das Vorhandensein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
 Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug nachdem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
+
+
+\subsection{Fortbewegung}
+
+PLACEHOLDER Documentation in progress
+
+\subsection{Linienerkennung}
+
+PLACEHOLDER Documentation in progress
+
+\subsection{Distanzsensor}
+
+PLACEHOLDER Documentation in progress to describe recognition of barriers and cones
+
+\subsection{Wegfindung}
+
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
+
+Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
+
+\subsection{Kameraposition}
+
+Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position dieser ist fix, das heisst wir benötigen keine schwenkbare Kamera.
+Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets//informatik-prototyp//camera/camera_position.png}
+    \caption{Kamera Positionierung}
+    \label{fig:camera-position-concept}
+\end{figure}
+
+
+
 
 
 \subsection{Schnittstellen zwischen den Kompontenten}
