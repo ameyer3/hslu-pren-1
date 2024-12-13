@@ -1,5 +1,7 @@
 \section{Gesamtkonzept}
 
+TODO Einletung zu Konzept
+
 \subsection{Visualisierung}
 
 \begin{figure}[H]
@@ -142,11 +144,11 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 \subsubsection{Zielknoten erkennen}
 
-Damit der Roboter ueberpruefen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden koennen, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der OpenCV Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
+Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der OpenCV Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
 
-Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu pruefne, wird ebenfalls geprueft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt ORB um welchen es sich handelt.
+Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt ORB um welchen es sich handelt.
 
-Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht noetig, die Rotation der Buchstaben zu beachten. Unabhaengig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
+Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
 
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
@@ -170,7 +172,7 @@ Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht noetig, die
 \end{figure}
 
 
-Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispeilsweise als das Klammer Zeichen \verb|(| erkannt werden wuerde.
+Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispielsweise als das Klammer Zeichen \verb|(| erkannt werden würde.
 
 
 \subsubsection{Pylonen und Hindernisse erkennen}

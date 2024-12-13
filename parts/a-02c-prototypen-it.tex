@@ -427,7 +427,7 @@ Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dab
 
 Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen, um sicherzustellen, dass er sich wirklich im Ziel befindet. Dazu wurden drei verschiedene Varianten evaluiert: Tesseract OCR Algorithmus\footnote{\url{https://tesseract-ocr.github.io/}}, EasyOCR \footnote{\url{https://github.com/jaidedai/easyocr}} und \acrfull{orb}\footnote{\url{https://docs.opencv.org/4.x/d1/d89/tutorial_py_orb.html}}.
 
-Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern durchgefuehrt. Diese sind unveraenderte Aussschnitte aus dem zur Verfuegung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualitaet sind.
+Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern durchgeführt. Diese sind unveränderte Aussschnitte aus dem zur Verfügung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualität sind.
 
 TODO they are all very different size
 
@@ -455,7 +455,7 @@ TODO they are all very different size
 
 \textbf{Tesseract OCR}
 
-Tesseract ist ein bekannter Algorithmus, um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textbloecke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden koennen. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
+Tesseract ist ein bekannter Algorithmus, um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textblöcke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden können. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
 
 \begin{verbatim}
 text = pytesseract.image_to_string(image, config='--psm 10 -c tessedit_char_whitelist=ABC')
@@ -472,7 +472,7 @@ Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte
 
 \textbf{EasyOCR}
 
-EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benoetigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der OpenCV Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
+EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der OpenCV Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
 
 \begin{figure}[H]
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/easyocr.png} 
@@ -480,11 +480,11 @@ EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, ben
 \label{fig:zielknoten-easyocr}
 \end{figure}
 
-Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausfuehrung des Algorithmus bereits auf einem Laptop recht langsam und zum anderen wird der Buchstabe C als Klammer-Auf \verb|(| erkannt.
+Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Algorithmus bereits auf einem Laptop recht langsam und zum anderen wird der Buchstabe C als Klammer-Auf \verb|(| erkannt.
 
 \textbf{ORB}
 
-\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde. Alle gfundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu pruefen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind, wie auf dem Muster Bild.
+\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild welches Objekt gefunden wurde. Alle gefundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu prüfen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind wie auf dem Muster Bild.
 
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
@@ -509,4 +509,4 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausfuehrung des Al
 
 \textbf{Fazit}
 
-Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel 'C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens noetig, da ORB die Buchstaben auch rotiert erkennt.
+Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel 'C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens nötig, da ORB die Buchstaben auch rotiert erkennt.
