@@ -2,20 +2,21 @@
 
 Nachdem mithilfe der Nutzwertanalyse im Kapitel \ref{nutzwertanalyse} ein grundlegendes Gesamtkonzept festgelegt wurde, wird nun an Prototypen der einzelen Teilfunktionen gearbeitet. Das Ziel ist es, die einzelnen Teilfunktionen zu Testen und möglichst viele Fehler frühzeitig zu erkennen. Detaillierte Prototypen helfen die bereits bekannten Risiken besser einzuschätzen und neue Risiken frühzeitig zu erkennen.
 
-\subsubsection{Greifer-Prototyp I}
+\subsubsection{Greifer Prototyp I}
 \label{subsubsection:gripper-prototype-1}
 
 
-Der Aufbau und die Funktionsweise des Greifers werden in Kapitel \ref{subsubsection:Hindernisse bewegen} erläutert. Um die Auslegung des Greifers \textbf{(REF AUSLEGUNG)} zu validieren und sein Funktionsprinzip zu überprüfen wurde ein Prototyp gebaut. Nachfolgend wurden die Ergebnisse aus den Tests am Protoyp dokumentiert
+Der Aufbau und die Funktionsweise des Greifers werden in Kapitel \ref{subsubsection:Hindernisse bewegen} erläutert. Um die Auslegung des Greifers \textbf{(REF AUSLEGUNG)} zu validieren und sein Funktionsprinzip zu überprüfen wurde ein Prototyp gebaut. Nachfolgend wurden die Ergebnisse aus den Tests am Protoyp I dokumentiert\\
 
 \textbf{Testaufbau}
- Der Prototyp besteht abgesehen von Befestigungselementen aus 3D-Druck Komponenten. der Aufbau wurde so gewählt, dass Iterationen an Einzelteilen schnell realisiert und verbaut werden können (Abb. \ref{fig:gripper-prototype-trimetric-notes}). 
+
+ Der Prototyp besteht abgesehen von Befestigungselementen aus 3D-Druck Komponenten. der Aufbau wurde so gewählt, dass Iterationen an Einzelteilen schnell realisiert und verbaut werden können (Abb. \ref{fig:gripper-prototype-1-trimetric-notes}). 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{assets/greifer-prototyp/Greifer_Trimetrisch_Notes.png}
-\caption{Prototyp Greifer}
-\label{fig:gripper-prototype-trimetric-notes}
+\caption{Greifer Prototyp I}
+\label{fig:gripper-prototype-1-trimetric-notes}
 \end{figure}
 
 Der Prototyp wird manuell über einen Hebel bedient, welcher anstelle des Servomotors in der Konstruktion verbaut ist. Diese Entscheidung wurde getroffen, da das ausgelegte Motordrehmoment durch mögliche Reibung in den Gelenken nicht ausreichen könnte. Mit dem Hebel kann das ausgelegte Drehmoment einfach durch aufbringen einer bekannten Last validiert werden.
@@ -43,7 +44,7 @@ Die gelenkigen Verbindungen im Prototyp wurden mit M3 Schrauben realisiert. Dies
 
 \textbf{Ziele}
 
-Mit dem Prototyp sollen folgende Punkte getestet werden (Ergebnisse in Tabelle \ref{tab:test-gripper-prototype-1}):
+Mit dem Prototyp sollen folgende Anforderungen getestet werden (Ergebnisse in Tabelle \ref{tab:test-gripper-prototype-1}):
 \begin{itemize}
     \item 1. Reibung in den Gelenken ist ausreichend gering, Gestänge lässt sich leichtgängig bewegen
     \item 2. Das Gestänge verklemmt im Betrieb nicht (keine overconstraints)
@@ -83,12 +84,18 @@ Mit dem Prototyp sollen folgende Punkte getestet werden (Ergebnisse in Tabelle \
 
 \textbf{Fazit}
 
-Alle Anforderungen wurden erfüllt. Somit wurde entschieden am Greifer Design festzuhalten. Optimierungsbedarf besteht in folgenden Punkten: Die Backen, welche das Hindernis klemmen sind manchmal nicht korrekt ausgerichtet, da sie drehbar gelagert sein müssen. Dies führt dazu dass das Hindernis nicht immer gleich angehoben wird. Die gestellten Anforderungen betreffend dem Anheben wurden zwar erfüllt, ein Risiko, dass nicht korrekt angehoben wird besteht dennoch. Die Vorspannfeder berührt das Gestell und wird deswegen nicht korrekt gespannt. Auch hier sind die Anforderungen trotzdem erfüllt, das Problem ist jedoch leicht durch eine Aussparung zu beheben.
+Alle Anforderungen sind erfüllt. Somit wurde entschieden am Greifer Design festzuhalten. Optimierungsbedarf besteht in folgenden Punkten: 
+\begin{itemize}
+    \item Die Backen, welche das Hindernis klemmen sind manchmal nicht korrekt ausgerichtet, da sie drehbar gelagert sein müssen. Dies führt dazu dass das Hindernis nicht immer gleich angehoben wird. Die gestellten Anforderungen betreffend dem Anheben wurden zwar erfüllt, ein Risiko, dass nicht korrekt angehoben wird besteht dennoch.
+    \item  Die Vorspannfeder berührt das Gestell und wird deswegen nicht korrekt gespannt. Auch hier sind die Anforderungen trotzdem erfüllt, das Problem ist jedoch leicht durch eine Aussparung zu beheben.
+\end{itemize}
+
 
 
 \textbf{Weiteres Vorgehen}
 
-Da das ausgelegte Motordrehmoment mit dem Prototyp I validiert werden konnte, wird nun ein passend dimensionierter Servomotor bestellt. Der Greifer Prototyp I soll auf den Betrieb mit Servomotor zum Greifer Prototyp II umgebaut werden. Zusätzlich werden Endschalter zur Erkennung des Hindernisses
+Da das ausgelegte Motordrehmoment mit dem Prototyp I validiert werden konnte, wird nun ein passend dimensionierter Servomotor bestellt. Der manuell betätigte Greifer Prototyp I soll auf den Betrieb mit Servomotor zum Greifer Prototyp II umgebaut werden. Zusätzlich werden Endschalter zur Erkennung des Hindernisses installiert. Die im Fazit genannten Probleme sollen behandelt werden.
+Bei den Tests am Prototyp II sollen die Geschwindigkeit des Anhebevorgangs und die Erkennung des Hindernisses durch die Endschalter im Fokus stehen.
 
 
 \subsubsection{Fahrwerk}
