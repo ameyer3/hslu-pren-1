@@ -89,18 +89,13 @@ Damit man die Hindernisse detektieren kann wird ein Ultraschallsensor verwendet.
 
 \subsubsection{Akku}
 
-jonah
-IN PROGRESS
-30W/12V
+Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet. Dieser liefert in einer Stunde 3000mA. Bei einer geschätzten maximalen Leistung von 30W und einer Spannung von 12V reicht diese Kapazität für ca. 1.2 Stunden. 
 
-\subsubsection{PCBA Designe}
 
-jonah
-IN PROGRESS
-- aufbau modular,gesteckt, einzelne komponenten als seperate pcb ->wiederverwendung
 
-- es sollte ein pcb sein bei dem man einzelne stücke rausbrechen kann
-- abfall minimieren und produktionskosten
+\subsubsection{PCB Design}
+
+Das PCB wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste PCB Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das TinyK22 steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen PCB als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
 
 
 
@@ -127,6 +122,7 @@ Der Servomotor wurde direkt am Greifer Prototyp getestet. In der unteren Tabelle
 \label{tab:testpunkte Servomotor}
 \end{table}
 
+\newpage
 
 Der Startpunkt des Tests hat man bei einem Duty Cycle von 86\% festgelegt. Wie in der Abbildung \ref{fig: Greiferposition offen: Duty Cycle 86} ersichtlich wird, war das die Position bei welchem der Greifer offen ist.
 
@@ -138,4 +134,26 @@ Der Startpunkt des Tests hat man bei einem Duty Cycle von 86\% festgelegt. Wie i
 \end{figure}
 
 
-Der nächste Messpunkt ist bei dem Zeitpunkt Nach dem man den den Duty Cycle minimiert hat 
+\newpage
+
+Der nächste Messpunkt ist bei dem Zeitpunkt nach dem man den den Duty Cycle so minimiert hat, bis der Greifer das Hindernis klemmt aber noch nicht angehoben hat. Dies sieht man in der unten stehenden Abbildung \ref{fig: Greiferposition eingeklemmt: Duty Cycle 47}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/ServoGreiferKlemmt.jpeg}
+    \caption{Greiferposition eingeklemmt: Duty Cycle 47\%}
+    \label{fig: Greiferposition eingeklemmt: Duty Cycle 47}
+\end{figure}
+
+
+\newpage
+
+Damit man der Anforderung von Tabelle \ref{tab:test-gripper-prototype-1} mit der Hubhöhe gerecht werden kann musste der Duty Cycle auf 32\% reuziert werden. Somit kann man auf der Abbildung \ref{fig: Greiferposition angehoben: Duty Cycle 32} das um 7.5mm angehobene Hindernis erkennen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/ServoHindernisAngehoben.jpeg}
+    \caption{Greiferposition eingeklemmt: Duty Cycle 32\%}
+    \label{fig: Greiferposition angehoben: Duty Cycle 32}
+\end{figure}
