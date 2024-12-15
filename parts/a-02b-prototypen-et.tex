@@ -106,8 +106,7 @@ IN PROGRESS
 
 \subsubsection{Servomotor}
 
-- sieh
-
+Der Servomotor wurde direkt am Greifer Prototyp getestet. In der unteren Tabelle \ref{tab:testpunkte Servomotor} sind die Messergebnisse eingetragen, welche positiv ausgefallen sind. Man hat den Servomotor bei zwei unterschiedlichen Frequenzen, mit der Betriebsspannung von 5V und ob das Hindernis auf die geforderten 7.5mm angehoben werden kann getestet.
 
 
 \textbf{Messungen und Beobachtungen}
@@ -122,13 +121,21 @@ IN PROGRESS
         1 & PWM mit 10kHz & Motor soll drehen & Der Motor dreht nicht & Test nicht erfüllt \\ \hline
         2 & PWM mit 400Hz & Motor soll drehen & bei 15\% Duty Cycle dreht Servomotor 180 Grad & Test erfüllt \\ \hline
         3 & Betriebsspannung mit 5V & Betrieb damit PWM funktioniert  & PWM funktioniert & Test erfüllt\\ \hline
-        4 & Zuverlässiges Anheben & Erfolgreiche Anhebungen in 50 Zyklen & 50/50 Zyklen erfolgreich & Test erfüllt \\ \hline
-        5 & Anheben bei Schrägstellung & 50 Zyklen bei bis zu 15\textdegree\ erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\ \hline
-        6 & Rücksetzen des Hindernisses & Rücksetzgenauigkeit \pm 2 mm in 50 Zyklen& \pm1 mm in 50 Zyklen & Test erfüllt \\ \hline
-        7 & Kein Rutschen bei Vibrationen & Hindernis bleibt fixiert & Hindernis verrutsch auch bei starkem Schütteln nicht & Test erfüllt \\ \hline
-        8 & Max. Drehmoment  & Gemessenes Drehmoment \leq 20 Ncm & 17 Ncm & Test erfüllt \\ \hline
-        9 & Greifbacke über Hindernis & Abstand \geq 5 mm im geöffneten Zustand & 12 mm & Test erfüllt \\ \hline
+        4 & Motor drehen bis Hindernis angehoben & Hindernis wird angehoben & Greifer hebt Hindernis 7.5mm hoch, bei 32\% Duty Cylce & Test erfüllt \\ \hline
 \end{tabularx}
     \caption{Testergebnisse des Servomotors am Greifer.}
-\label{tab:testpunkte}
+\label{tab:testpunkte Servomotor}
 \end{table}
+
+
+Der Startpunkt des Tests hat man bei einem Duty Cycle von 86\% festgelegt. Wie in der Abbildung \ref{fig: Greiferposition offen: Duty Cycle 86} ersichtlich wird, war das die Position bei welchem der Greifer offen ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/ServoGreifferoffen.jpeg}
+    \caption{Greiferposition offen: Duty Cycle 86\%}
+    \label{fig: Greiferposition offen: Duty Cycle 86}
+\end{figure}
+
+
+Der nächste Messpunkt ist bei dem Zeitpunkt Nach dem man den den Duty Cycle minimiert hat 
