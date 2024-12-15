@@ -28,11 +28,12 @@ Es ist geplant einen Roboter in U-Form zu bauen, der sich mit drei Rädern fortb
 Die Steuerung wird auf einem Tiny k22 laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit LED's angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
 
-Die Bildverarbeitung und Navigation werden in Python geschrieben und läuft auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
+Die Bildverarbeitung und Navigation werden in Python geschrieben und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
 
 
 \subsection{Ablauf}
 
+Der Ablauf einer Durchfahrt ist im Ablaufdiagramm \ref{fig:ablaufdiagramm} aufgezeigt.
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
 
 \begin{figure}[H]
@@ -56,6 +57,9 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \end{figure}
 
 Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so verzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
+
+TODO HERE UPDATE GRAPHIC
+FEEDBACK 
 
 \begin{figure}[H]
 \begin{subfigure}{0.45\textwidth}
@@ -261,7 +265,7 @@ Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeich
 
 \subsection{Kameraposition}
 
-Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position dieser ist fix, das heisst wir benötigen keine schwenkbare Kamera.
+Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position ist fix, das heisst wir benötigen keine schwenkbare Kamera. Dies Kameraposition ist ersichtlich in der folgenden Grafik \ref{fig:camera-position-concept}.
 Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
 
 \begin{figure}[H]
