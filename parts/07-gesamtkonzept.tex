@@ -58,9 +58,6 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 
 Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so verzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
 
-TODO HERE UPDATE GRAPHIC
-FEEDBACK 
-
 \begin{figure}[H]
 \begin{subfigure}{0.45\textwidth}
 \centering
@@ -92,13 +89,13 @@ C: [{D: [60, [30, 120]}, {B: [240, [120, 30]}, {H: [60, [30, 30]}]
 Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [60, [30, 120]}'| im YAML File. Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 60\textdegree\ von der Kante links aus. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Von der linksliegenden Kante aus, darf kann sich die Kante zu Knoten D also im Bereich von 60\textdegree-30\textdegree\ und 60\textdegree+120\textdegree, sprich 30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
-\begin{subfigure}{0.62\textwidth}
+\begin{subfigure}{0.7\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/graph-angles.png} 
 \caption{Graph mit Winkeln und Winkelbereichen}
 \label{fig:angled-graph}
 \end{subfigure}
-\begin{subfigure}{0.38\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/c-d-angle.png} 
+\begin{subfigure}{0.25\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/c-d-angle-labeled.png} 
 \caption{C zu D Winkel}
 \label{fig:excerpt-angled-graph}
 \end{subfigure}
@@ -120,6 +117,8 @@ Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf be
 
 Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
 
+Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen Linien dargestellt, wie ORB die bekannten Merkmale (jeweils linkes Bild) in den zu analysierenden Bildern (jeweils rechtes Bild) findet.
+
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-a.png} 
@@ -138,7 +137,7 @@ Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht nötig, die
 \end{subfigure}
 
 \caption{Zielknotenerkennung mit ORB}
-\label{fig:orb-zielknoten-konzep}
+\label{fig:orb-zielknoten-konzept}
 \end{figure}
 
 
@@ -165,7 +164,7 @@ Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorit
 Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras, sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
 Die Bilder werden mit einem YOLO Objekterkennungsalgorithmus ausgewertet. Dabei werden sowohl Knoten, als auch Pylonen und Barrieren erkannt. Das erhaltene Resultat beschreibt, welche Elemente erkannt wurden anhand der definierten Klassen und wo sich diese befinden mit Koordinaten auf dem Bild.
-Alle Hindernisse werden intern gespeichert und bei der Berechnung des Weges berücksichtigt.
+Alle Hindernisse werden intern gespeichert indem die jeweiligen Kanten höher gewichtet werden.
 
 
 \newpage
@@ -198,7 +197,7 @@ Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen 
 \label{fig:gripper_components}
 \end{figure}
 
-Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur Montagepunkte der Feder in Abbildung ersichtlich).
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur die Montagepunkte der Feder sind in der Abbildung \ref{fig:gripper_components} ersichtlich).
 
 \newpage
 
@@ -281,7 +280,9 @@ Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{ht
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
+Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben.
 
+TODO KURZE BESCHREIBUNG GRAFIK
 
 
 \begin{figure}[H]
@@ -291,4 +292,4 @@ Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{ht
     \label{Blockdiagramm Steuerung}
 \end{figure}
 
-\ref{Blockdiagramm Steuerung}Im Blockschaltdiagramm wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller werden im Prototyping Kapitel erwähnt. \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten}
+

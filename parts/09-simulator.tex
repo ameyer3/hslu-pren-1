@@ -1,8 +1,6 @@
 \subsection{Simulator}
 
-Das Erarbeiten des Konzeptes des Simulators, der Implementierung und des Gebrauchs wird in diesem Kapitel festgehalten.
-
-
+In diesem Kapitel wird das Erarbeiten des Konzeptes des Simulators, der Implementierung und des Gebrauchs festgehalten.
 
 
 \subsubsection{Spezifikationen}
@@ -58,12 +56,12 @@ Mit einem morphologischen Kasten (siehe Anhang \ref{mk-simulator}) wurden mehrer
     \item Clientseitige Kommunikation I/O: GUI
 \end{itemize}
 
-Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Jedes Issue wurde jeweils der Person zugeordnet, die gerade daran arbeitet. So konnte koordiniert entwickelt werden.
+Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Die einzelnen Features wurden unter den Entwickelnden aufgeteilt und via GitHub Issues assigned. So ist sichtbar, wer woran arbeitet.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{img/github-issues.png}
-\caption{GitHub Issue Liste}
+\caption{Ausschnitt GitHub Issue Liste}
 \label{fig:github-issues}
 \end{figure}
 
@@ -77,7 +75,6 @@ Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus
 \caption{Simulator Klassendiagramm}
 \label{fig:simulator-classdia}
 \end{figure}
-HINT: Klassendiagramm is a continuous work in progress, as not everything is implemented yet.
 
 \subsubsection{Entwicklung}
 
@@ -142,7 +139,7 @@ Es wird simuliert, dass der Roboter auf einem Knoten steht. Er dreht sich im Uhr
 
 Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels Dijkstra durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
 
-Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer \footnote{\url{https://en.wikipedia.org/wiki/Circular\_buffer}} zirkulär berechnet. So kann Simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation mäglich sein, die Kanten zu identifizieren. 
+Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll. Im Simulator sind alle Kanten eines Knotens im Uhrzeigersinn angeordnet gespeichert. Die Position (relativ zu der Strecke, von der der Roboter herkommt) der nächsten Strecke wird mit dem Ring Buffer \footnote{\url{https://en.wikipedia.org/wiki/Circular\_buffer}} zirkulär berechnet. So kann simuliert werden, dass eine Liste in einem Kreis angeordnet ist. So wird es in der richtigen Applikation möglich sein, die Kanten zu identifizieren. 
 
 \begin{figure}[H]
 \centering
@@ -162,7 +159,7 @@ Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die
 
 \textbf{Trial and Error Mode}
 
-Ein Modus BLIND\_TESTING wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. De Roboter kennt alle ausgehenden Kanten des naechsten Knotens und die Hindernisse, die sich daneben befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen fuehrt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
+Ein Modus BLIND\_TESTING wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. Der Roboter kennt alle ausgehenden Kanten des nächsten Knotens und die Hindernisse, die sich darauf befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen führt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
 
 \textbf{Technische Aspekte}
 
@@ -191,4 +188,4 @@ Das orange Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das 
 
 \subsubsection{Simulation}
 
-TODO document simulation runs
+TODO document simulation runs + Ergebnisse (ev in Tabelle "Testprotokoll")
