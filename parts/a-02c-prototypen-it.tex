@@ -230,7 +230,7 @@ Zusammenfassend:
     \item ORB ist ein guter Kompromiss zwischen Geschwindigkeit und Genauigkeit.
 \end{itemize}
 
-Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen:
+Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
 
 \begin{figure}[H]
     \centering
@@ -239,7 +239,7 @@ Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensiona
     \label{fig:good-sift-example}
 \end{figure}
 
-Da unsere Objekte jedoch dreidimensionale sind und eine freie Rotation und Position in einem dredimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
+Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dredimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
 
 \begin{figure}[H]
     \centering
@@ -342,8 +342,8 @@ Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wi
 \label{fig:recognition-with-lines}
 \end{figure}
 
-Aus diesem Experiment war klar, sowohl aus dem Bild mit den "erkannten" Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
-Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet ("background").
+Aus diesem Experiment war klar, sowohl aus dem Bild mit den 'erkannten' Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
+Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet ('background').
 
 Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
 
