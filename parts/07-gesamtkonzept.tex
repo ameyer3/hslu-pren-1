@@ -86,15 +86,16 @@ Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert is
 C: [{D: [60, [30, 120]}, {B: [240, [120, 30]}, {H: [60, [30, 30]}]
 \end{verbatim}
 
-Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [60, [30, 120]}'| im YAML File. Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 60\textdegree\ von der Kante links aus. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Von der linksliegenden Kante aus, darf kann sich die Kante zu Knoten D also im Bereich von 60\textdegree-30\textdegree\ und 60\textdegree+120\textdegree, sprich 30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
+Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [60, [30, 120]}'| im YAML File. 
+Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 60\textdegree\ von der Kante links aus. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Von der linksliegenden Kante aus, darf kann sich die Kante zu Knoten D also im Bereich von 60\textdegree-30\textdegree\ und 60\textdegree+120\textdegree, sprich 30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
-\begin{subfigure}{0.7\textwidth}
+\begin{subfigure}{0.65\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/graph-angles.png} 
 \caption{Graph mit Winkeln und Winkelbereichen}
 \label{fig:angled-graph}
 \end{subfigure}
-\begin{subfigure}{0.25\textwidth}
+\begin{subfigure}{0.32\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/c-d-angle-labeled.png} 
 \caption{C zu D Winkel}
 \label{fig:excerpt-angled-graph}
