@@ -25,7 +25,7 @@ Folgendes Komponenten für das Konzept wurden mithilfe der Technologierecherche 
 
 Es ist geplant einen Roboter in U-Form zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter mit einem Parallelgreifer anheben. Dies ist ersichtlich in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld}.
 
-Die Steuerung wird auf einem Tiny k22 laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit LED's angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
+Die Steuerung wird auf einem TinyK22 laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit LED's angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
 
 Die Bildverarbeitung und Navigation werden in Python geschrieben und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
@@ -198,7 +198,7 @@ Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen 
 \label{fig:gripper_components}
 \end{figure}
 
-Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur die Montagepunkte der Feder sind in der Abbildung \ref{fig:gripper_components} ersichtlich).
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur die Montagepunkte der Feder sind in der Abbildung \ref{fig:gripper_components} ersichtlich). 
 
 \newpage
 
@@ -247,15 +247,15 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung}
 
-PLACEHOLDER Documentation in progress
+Das Fahrzeug wird mit zwei seperat angetriebenen Räder angetrieben. Die Motoren besitzen Encoder, somit kann man genau feststellen welche Distanz zurückgelegt wurde. Der Fahrbefehl ensteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller TinyK22 werden Distanz und Drehwinkel mitgeteilt, wodurch dann die Motoren angesteuert werden können.
 
 \subsection{Linienerkennung}
 
-PLACEHOLDER Documentation in progress
+Mit einem Array von Phototransistoren und Kondensatoren/Widerstände misst man die Entladezeit mittels Mikrocontroller und der Input Capture Funktion. Der Liniensensor dient als Unterstützung damit man die Linie nicht verlässt während dem Fahren. Jedoch ist das Ziel den Robotor gerade vor der Linie zu positionieren, so dass der Liniensensor theoretisch nicht gebraucht wird während des Fahrens. Ein weiterer Nutzen benötigt man um zu prüfen ob man auf einem Knoten steht oder nicht.
 
 \subsection{Distanzsensor}
 
-PLACEHOLDER Documentation in progress to describe recognition of barriers and cones
+Um die Distanz zwischen einem Fahrzeug und Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstoss mit einer Pylone verhindert, falls man bei der Wahl des Pfades die falsche Entscheidung getroffen hat.
 
 \subsection{Wegfindung}
 
