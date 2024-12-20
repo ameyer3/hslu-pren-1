@@ -440,12 +440,12 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
         \hline
         \textbf{Algorithmus} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Testergebnis} & \textbf{Bewertung} \\
         \hline \hline
-        SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
-        ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
+        SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline \hline
+        ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline \hline
         OpenCV HSV & rote Barriere erkennen & Barriere wird erkannt & Barriere wird erkannt & Test erfüllt \\ \hline
         OpenCV HSV & orange Pylone erkennen & Pylone wird erkannt & Pylone wird erkannt & Test erfüllt \\ \hline
         OpenCV HSV & weisser Knoten erkennen & Knoten wird erkannt & Falsche Knoten werden erkannt, Knoten werden nicht erkannt & Test nicht erfüllt \\ \hline
-        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline
+        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline \hline
         YOLOv11 & Barriere erkennen & Barrier wird erkannt & Barrieren werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Pylone erkennen & Pylone wird erkannt & Pylone werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Knoten erkennen & Knoten wird erkannt & Knoten werden meist erkannt & Test meist erfüllt \\ \hline
@@ -477,17 +477,17 @@ Die Methode, die gewaehlt wird muss in der Lage sein folgendes zu tun:
 TODO they are all very different size
 
 \begin{figure}[H]
-\begin{subfigure}{0.3\textwidth}
+\begin{subfigure}{0.35\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/a.png} 
 \caption{Muster A}
 \label{fig:image-a}
 \end{subfigure}
-\begin{subfigure}{0.3\textwidth}
+\begin{subfigure}{0.2\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/b.png} 
 \caption{Muster B}
 \label{fig:image-b}
 \end{subfigure}
-\begin{subfigure}{0.3\textwidth}
+\begin{subfigure}{0.33\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/c.png} 
 \caption{Muster C}
 \label{fig:image-c}
@@ -503,7 +503,8 @@ TODO they are all very different size
 Tesseract ist ein bekannter Algorithmus, um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textblöcke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden können. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
 
 \begin{verbatim}
-text = pytesseract.image_to_string(image, config='--psm 10 -c tessedit_char_whitelist=ABC')
+text = pytesseract.image_to_string(image, config='--psm 10 -c
+tessedit_char_whitelist=ABC')
 \end{verbatim}
 
 Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden:
@@ -565,10 +566,10 @@ Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \r
         \hline \hline
         Tesseract OCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         Tesseract OCR & Buchstabe B erkennen & B wird erkannt & nichts erkannt & Test nicht erfüllt \\ \hline
-        Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline
+        Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline \hline
         EasyOCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         EasyOCR & Buchstabe B erkennen & B wird erkannt & B erkannt &  Test erfüllt \\ \hline
-        EasyOCR & Buchstabe C erkennen & C wird erkannt & \verb|(| (Klammer auf) erkannt & Test nicht erfüllt \\ \hline
+        EasyOCR & Buchstabe C erkennen & C wird erkannt & \verb|(| (Klammer auf) erkannt & Test nicht erfüllt \\ \hline \hline
         ORB & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe B erkennen & B wird erkannt & B erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe C erkennen & C wird erkannt & C erkannt & Test erfüllt \\ \hline
@@ -588,7 +589,7 @@ Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werde
 %%%%%%%% PROTOTYPE PRODUKTE ALLG %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Prototypen}\label{prototyp-products}
+\subsection{Physische Prototypen}\label{prototyp-products}
 
 In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des Roboters in \acrshort{pren2} parallelisieren werden. Die Prototypen koennen entweder einzeln verwendet werden oder schnell zusammengefuegt werden und in Kombination miteinander genutzt werden.
 
