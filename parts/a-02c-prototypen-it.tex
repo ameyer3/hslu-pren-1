@@ -204,6 +204,15 @@ Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. 
     \label{fig:test-graph}
 \end{figure}
 
+Die Methode, die gewaehlt wird, muss in der Lage sein folgende Elemente zu erkennen.
+
+\begin{itemize}
+    \item Rote Barriere erkennen
+    \item Weisse Barriere erkennen
+    \item Pylonen erkennen
+    \item Knoten erkennen
+\end{itemize}
+
 \textbf{OpenCV SIFT, FAST, ORB Algorithmen}
 
 OpenCV bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zu Objekterkennung und -tracking eingesetzt werden:
@@ -421,10 +430,8 @@ Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen
 
 \textbf{Fazit}
 
-TABLE TODO
+In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einzelnen Methoden aufgelistet.
 
-
-Was muss moeglich sein? Knoten, Barriere, Pylone TODO
 
 \begin{table}[H]
 \centering
@@ -457,6 +464,15 @@ Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dab
 Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen, um sicherzustellen, dass er sich wirklich im Ziel befindet. Dazu wurden drei verschiedene Varianten evaluiert: Tesseract OCR Algorithmus\footnote{\url{https://tesseract-ocr.github.io/}}, EasyOCR \footnote{\url{https://github.com/jaidedai/easyocr}} und \acrfull{orb}\footnote{\url{https://docs.opencv.org/4.x/d1/d89/tutorial_py_orb.html}}.
 
 Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern durchgeführt. Diese sind unveränderte Aussschnitte aus dem zur Verfügung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualität sind.
+
+Die Methode, die gewaehlt wird muss in der Lage sein folgendes zu tun:
+
+\begin{itemize}
+    \item Buchstaben A erkennen
+    \item Buchstaben B erkennen
+    \item Buchstaben C erkennen
+    \item Mit Rotation der Buchstaben umgehen
+\end{itemize}
 
 TODO they are all very different size
 
@@ -539,7 +555,7 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Al
 \textbf{Fazit}
 
 Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \ref{tab:test-target-node} zusammengefasst.
-TODO WAS MUSS KOENNNE
+
 \begin{table}[H]
 \centering
 \small
@@ -584,7 +600,7 @@ BILD
 
 \subsubsection{Fortbewegung}
 
-Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benoetigt es vor allem die Raeder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusaetzlichen Sensoren und Rechner anzubringen, die fuer die Steuerung benoetigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor vorne befestigt.
+Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benoetigt es vor allem die Raeder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusaetzlichen Sensoren und Rechner anzubringen, die fuer die Steuerung benoetigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
 
 BILD
 
@@ -592,4 +608,16 @@ BILD
 
 Es wurde ein Greifer gebaut, der an einen Motor angeschlossen ist. Dieser wird verwendet um das Hindernis anzuheben.
 
-BILD
+\begin{figure}[H]
+\begin{subfigure}{0.33\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_offen.jpeg} 
+\end{subfigure}
+\begin{subfigure}{0.328\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_klemmen.jpeg} 
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_greifer_2_anheben.jpeg} 
+\end{subfigure}
+\caption{Prototyp Greifer}
+\label{fig:prototype-greifer}
+\end{figure}

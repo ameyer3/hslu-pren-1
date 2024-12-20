@@ -16,18 +16,19 @@ MT NACHHALTIGKEIT IN PROGRESS
 Der Motorentest wurde im Labor der Hochschule durchgeführt. Für den Aufbau wurde ein Steckplatine verwendet, diese kann mehrmals genutzt werden. Die nötigen elektronischen Bauteile wurden nicht extra bestellt, sondern von der Werkstatt ausgeliehen. Um den Stromverbrauch gering zu halten wurde der Motor zwischen den Tests ständig abgeschaltet. 
 
 \subsection{Leiterplatten}
+\label{Leiterplatten}
 
 Leiterplatten (Printed Circuit Boards, PCBs) sind aus der modernen Elektronik nicht mehr wegzudenken. Allerdings sind mit der aktuellen Technologie einige Herausforderungen verbunden. Viele der verwendeten Materialien, wie beispielsweise Blei, sind giftig für die Umwelt. Andere, wie der in der Fertigung eingesetzte Klebstoff, sind nicht biologisch abbaubar.
 
 Die Minimierung von Abfall beginnt bereits bei der Planung und dem Design der Schaltung. Für die Produktion von einmaligen Prototypen sollten Designansätze gewählt werden, die eine Weiterverwendung der Bauteile nach Abschluss des Projekts ermöglichen, anstatt sie zu entsorgen. Komplexe Formen und Aussparungen in den Leiterplatten führen zu erhöhtem Materialabfall und sollten ebenfalls vermieden werden.
 
-Es gibt bereits die Möglichkeit, sogenannte „grüne“ PCBs herzustellen, die aus umweltfreundlicheren Materialien gefertigt werden. Weitere Informationen dazu können hier gefunden werden: (https://de.venture-mfg.com/Was-sind-biologisch-abbaubare-Leiterplatten\%3F/). Derzeit sind diese jedoch noch kostenintensiv und werden im Rahmen dieses Projekts nicht berücksichtigt.
+Es gibt bereits die Möglichkeit, sogenannte „grüne“ PCBs herzustellen, die aus umweltfreundlicheren Materialien gefertigt werden\footnote{https://de.venture-mfg.com/Was-sind-biologisch-abbaubare-Leiterplatten\%3F/}.  Derzeit sind diese jedoch noch kostenintensiv und werden im Rahmen dieses Projekts nicht berücksichtigt.
 
 \subsection{Wiederverwendbarkeit}
 
-Wie im Kapitel [Leiterplatten](Referenz einfügen) beschrieben, hat die Wiederverwendbarkeit einzelner Komponenten einen positiven Einfluss auf die Nachhaltigkeit. Aus diesem Grund wird nicht eine grosse, monolithische Leiterplatte entwickelt, sondern mehrere kleinere Platinen, die jeweils auf spezifische Teilaufgaben abgestimmt sind.
+Wie im Kapitel Leiterplatten \ref{Leiterplatten} beschrieben, hat die Wiederverwendbarkeit einzelner Komponenten einen positiven Einfluss auf die Nachhaltigkeit. Aus diesem Grund wird nicht eine grosse, monolithische Leiterplatte entwickelt, sondern mehrere kleinere Platinen, die jeweils auf spezifische Teilaufgaben abgestimmt sind.
 
-Ein Beispiel dafür ist die Verwendung eines separaten Moduls für den Mikroprozessor, wie etwa beim Modell Tiny K22 (Referenz einfügen). Dieses modulare Design ermöglicht es, einzelne Komponenten dieses Projekts auch in zukünftigen Vorhaben weiterzuverwenden, wodurch Materialressourcen effizienter genutzt und Abfälle reduziert werden können.
+Ein Beispiel dafür ist die Verwendung eines separaten Moduls für den Mikroprozessor, wie etwa beim Modell Tiny K22 \ref{fig:Tiny_K22_PCB}. Dieses modulare Design ermöglicht es, einzelne Komponenten dieses Projekts auch in zukünftigen Vorhaben weiterzuverwenden, wodurch Materialressourcen effizienter genutzt und Abfälle reduziert werden können.
 
 \subsection{Transport}
 
@@ -36,22 +37,13 @@ Ein Grossteil der Elektronikkomponenten wird aus China oder Taiwan importiert. D
 Für die Herstellung eines einzelnen Prototyps ist der Aufbau einer eigenen Industrie zur Produktion in der Schweiz wirtschaftlich nicht sinnvoll. Ebenso wurde in diesem Projekt keine Zeit darauf verwendet, alternative Bezugsquellen bei europäischen Herstellern zu identifizieren und einzubeziehen.
 
 \subsection{Energie}
-CO2!! noch anpassen und REf einfügen
+
 Die Herstellung der einzelnen Elektronikkomponenten erfordert erhebliche Mengen an Energie. Da die Energieproduktion zu den grössten Verursachern von Umweltbelastungen gehört, ist es sinnvoll, den Energiemix der Hauptproduktionsstandorte zu berücksichtigen.
 
-Die Bauteile für dieses Projekt stammen überwiegend aus den USA, China und Taiwan, während die Endmontage in der Schweiz erfolgt. In den Produktionsländern USA, China und Taiwan wird ein Grossteil der Energie aus fossilen Brennstoffen wie Kohle gewonnen, was erhebliche CO₂-Emissionen verursacht. Obwohl diese Form der Energiegewinnung umweltschädlich ist, stellt sie in der globalen Lieferkette eine gegenwärtige Realität dar, die sich kurzfristig nicht ändern lässt. Diese Länder bieten aufgrund ihrer etablierten Produktionsinfrastruktur und ihrer Kosteneffizienz wesentliche Vorteile, die sie zu unverzichtbaren Akteuren in der Elektronikfertigung machen.
+Die Bauteile für dieses Projekt stammen überwiegend aus den USA, China\footnote{https://www.bpb.de/kurz-knapp/zahlen-und-fakten/europa/75143/eu-usa-china-energiemix/} und Taiwan\footnote{https://moeaea.gov.tw/ECW/English/content/Content.aspx?menu_id=1679}, während die Endmontage in der Schweiz erfolgt. In den Produktionsländern USA, China und Taiwan wird ein Grossteil der Energie aus fossilen Brennstoffen wie Kohle gewonnen, was erhebliche CO$_{2}$-Emissionen verursacht. Obwohl diese Form der Energiegewinnung umweltschädlich ist, stellt sie in der globalen Lieferkette eine gegenwärtige Realität dar, die sich kurzfristig nicht ändern lässt. Diese Länder bieten aufgrund ihrer etablierten Produktionsinfrastruktur und ihrer Kosteneffizienz wesentliche Vorteile, die sie zu unverzichtbaren Akteuren in der Elektronikfertigung machen.
 
-Im Gegensatz dazu erzeugt die Schweiz ihren Strom überwiegend aus erneuerbaren Quellen, insbesondere aus Wasserkraft, wodurch die Endmontage mit einem deutlich geringeren CO₂-Ausstoss verbunden ist. Die Menge an CO₂, die durch die Energieversorgung der einzelnen Komponenten freigesetzt wurde, wird in diesem Projekt jedoch nicht untersucht.
+Im Gegensatz dazu erzeugt die Schweiz ihren Strom überwiegend aus erneuerbaren Quellen\footnote{https://www.kernenergie.ch/de/schweizer-strommix-_content---1--1069.html}, insbesondere aus Wasserkraft, wodurch die Endmontage mit einem deutlich geringeren CO$_{2}$-Ausstoss verbunden ist. Die Menge an CO$_{2}$, die durch die Energieversorgung der einzelnen Komponenten freigesetzt wurde, wird in diesem Projekt jedoch nicht untersucht.
 
-
-%https://www.kernenergie.ch/de/schweizer-strommix-_content---1--1069.html
-
-%https://moeaea.gov.tw/ECW/English/content/Content.aspx?menu_id=1679
-
-%https://www.bpb.de/kurz-knapp/zahlen-und-fakten/europa/75143/eu-usa-china-energiemix/
-
-IN PROGRESS
-Ivan
 
 
 %%%%%%%%%%%%%%% IT NACHHALTIGKEIT %%%%%%%%%%%%%%%%%%%%%
