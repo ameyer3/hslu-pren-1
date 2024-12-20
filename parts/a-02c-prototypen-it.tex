@@ -421,7 +421,31 @@ Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen
 
 \textbf{Fazit}
 
+TABLE TODO
+
+
+Objekterkennung - which algo?
+Yolov11 - Cone, Line, Node, Obstacle
+Yolov11 - Cone, node, obstacle
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|c|X|X|X|l|}
+        \hline
+        \textbf{Algorithmus} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Testergebnis} & \textbf{Bewertung} \\
+        \hline \hline
+        SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
+        ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
+        OpenCV & 
+
+\end{tabularx}
+    \caption{Testergebnisse Hindernisse erkennen}
+\label{tab:test-obst-detection}
+\end{table}
+
 Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht, die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
+
 
 \subsubsection{Zielknoten erkennen}
 
@@ -482,7 +506,7 @@ EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, ben
 
 Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Algorithmus bereits auf einem Laptop recht langsam und zum anderen wird der Buchstabe C als Klammer-Auf \verb|(| erkannt.
 
-\textbf{ORB}
+\textbf{\acrfull{orb}}
 
 \gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild welches Objekt gefunden wurde. Alle gefundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu prüfen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind wie auf dem Muster Bild.
 
@@ -509,7 +533,39 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Al
 
 \textbf{Fazit}
 
+Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \ref{tab:test-target-node} zusammengefasst.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|c|X|X|X|l|}
+        \hline
+        \textbf{Algorithmus} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Testergebnis} & \textbf{Bewertung} \\
+        \hline \hline
+        Tesseract OCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
+        Tesseract OCR & Buchstabe B erkennen & B wird erkannt & nichts erkannt & Test nicht erfüllt \\ \hline
+        Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline
+        EasyOCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
+        EasyOCR & Buchstabe B erkennen & B wird erkannt & B erkannt &  Test erfüllt \\ \hline
+        EasyOCR & Buchstabe C erkennen & C wird erkannt & \verb|(| (Klammer auf) erkannt & Test nicht erfüllt \\ \hline
+        ORB & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
+        ORB & Buchstabe B erkennen & B wird erkannt & B erkannt & Test erfüllt \\ \hline
+        ORB & Buchstabe C erkennen & C wird erkannt & C erkannt & Test erfüllt \\ \hline
+        ORB & Buchstabe A mit Rotation erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
+        ORB & Buchstabe B mit Rotation erkennen & B wird erkannt & B erkannt & Test erfüllt \\ \hline
+        ORB & Buchstabe C mit Rotation erkennen & C wird erkannt & C erkannt & Test erfüllt \\ \hline
+
+\end{tabularx}
+    \caption{Testergebnisse Zielknoten erkennen}
+\label{tab:test-target-node}
+\end{table}
+
 Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel 'C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens nötig, da ORB die Buchstaben auch rotiert erkennt.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% PROTOTYPE PRODUKTE ALLG %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Prototypen}\label{prototyp-products}
 

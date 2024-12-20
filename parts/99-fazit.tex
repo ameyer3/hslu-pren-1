@@ -7,9 +7,9 @@ Als letztes werden die gesammelten Erfahrungen bezüglich der Arbeiten und der Z
 
 \subsection{Erfüllung der Anforderungen}
 
-Im Rahmen von \acrshort{pren1} wurde der Roboter in Teilfunktionen zerelgt, daraus wurde eine Technologierecherche duchgefuehrt. Aus den Recherchen wurden mithilfe von morphologischen Kasten fuer die einzelnen Teilbereiche Loesungsvarianten erarbeitet. Diese wurden mit Nutzerwertanalysen bewertet. Die Varianten, die am besten abschlossen, wurden im naechsten Schritt mit Prototyping verfeinert und getestet. Daraus wurde ein Gesamtkonzept erarbeitet und dokumentiert. Ebenfalls wurden 3 physische Prototypen erstellt, die einzelne Teilbereiche des Roboters darstellen. Diese dienen in \acrshort{pren2} dazu, dass damit parallel entwickelt werden kann. Die drei Prototypen sind ein Greife, ein Kameraturm und ein Fahrwerk.
+Im Rahmen von \acrshort{pren1} wurde das Konzept des Roboters als erstes in Teilfunktionen zerlegt, daraus wurde eine Technologierecherche duchgefuehrt. Aus den Recherchen wurden mithilfe von morphologischen Kasten fuer die einzelnen Teilbereiche Loesungsvarianten erarbeitet. Diese wurden mit Nutzerwertanalysen bewertet. Die Varianten, die am besten abschlossen, wurden im naechsten Schritt mit Prototyping verfeinert und getestet. Daraus wurde ein Gesamtkonzept erarbeitet und dokumentiert. Ebenfalls wurden 3 physische Prototypen erstellt, die einzelne Teilbereiche des Roboters darstellen. Diese dienen in \acrshort{pren2} dazu, dass damit parallel entwickelt werden kann. Die drei Prototypen sind ein Greifer, ein Kameraturm und ein Fahrwerk.
 
-Der Roboter, der designed wurde hat drei Raeder, wovon zwei mit Moteren angetrieben wird. Diese dienen zur Fortbewegung und zur Lenkung. Fototransistoren bilden den Liniensenor.
+Das Konzept unseres Roboters hat drei Raeder, wovon zwei mit Moteren angetrieben wird. Diese dienen zur Fortbewegung und zur Lenkung. Fototransistoren bilden den Liniensenor.
 Die Hebervorrichtung, die der Roboter braucht, um bewegliche Hindernisse zu beseitigen, wird mit einem Greifer umgesetzt. Mit einem Ultraschallsensor wird die anzuhebende Barriere erkannt. 
 Hindernisse werden mit einer Kamera fotografiert und mit Bilderkennung erkannt. So weiss der Roboter, welche Wege befahrbar sind. Die Navigation wurde in einem Simulator simuliert.
 
@@ -59,13 +59,40 @@ Insgesamt stehen fuer PREN 1 und PREN 2 500.- zur Verfuegung. Im folgenden wird 
 \hline
   \textbf{Bezeichnung} & \textbf{Anzahl} & \textbf{Stückpreis} & \textbf{Gesamkosten} \\
   \hline
-    Getriebemotor mit Encode & 2 &CHF 29.90 & CHF 59.80\\
+    Getriebemotor mit Encoder & 2 &CHF 29.90 & CHF 59.80\\
   \hline
     Raspberry Pi Camera Module 3 & 1 & CHF 29.90& CHF 29.90\\
   \hline
   Raspberry Pi 5 4GB & 1 & CHF 60.90 & CHF X 60.90\\
+  
   \hline
-    ... & X & CHF X& CHF X\\
+    Servomotor & 1 & CHF 4 & CHF 4\\
+        ... & X & CHF X& CHF X\\
+
+    \hline
+   Piezo-Buzzer & 1 & CHF 0.92 & CHF 0.92\\
+
+
+
+    \hline
+Abstandssensor ToF-based & 1 & CHF 5.71 & CHF 5.71\\
+
+    \hline
+Ultraschallsensor & 1 & CHF 5.39 & CHF 5.39\\    
+
+    \hline
+I/O Expander I2C 8-bit & 1 & CHF 1.57 & CHF 1.57\\
+
+\hline
+Motor/Motion/Ignition Controllers \& Drivers AUTOMOTIVE FULL BRIDGE MOSFET & 2 & CHF 3.81 & CHF 7.62\\
+
+\hline
+Optical Sensor Development Tools Line Sensor & 2 & CHF 3.00 & CHF 6.00\\
+
+
+\hline
+Pololu QTR-8RC Reflectance Sensor Array & 1 & CHF 8.36 & CHF 8.36\\
+
   \hline
   \hline
   \textbf{Gesamtkosten} && &CHF 1000\\
@@ -81,11 +108,16 @@ Wir hatten die Moeglichkeit von Grund auf ein Projekt zu planen. Wir haben geler
 
 \acrshort{pren1} war das erste interdisziplinaere Modul fuer uns. Dies stellte fuer uns eine Chance dar.
 
-Wir hatten die Moeglichkeit Einblicke in andere Studiengaenge zu erhalten. Das heisst, dass wir ein oberflaechliches Verstaendnis fuer andere Kompetenzen erlangen konnten und ebenfalls unterschiedliche Herangehensweisen beobachten konnten. Die Herangehensweise, um eine Loesung fuer ein Problem zu finden, ist bei jeder Person anders. Jedoch konnten klare Unterschiede in unserem Team zwischen den einzelnen Studiengaengen beobachtet werden. Beispielweise wurde in der Informatik bereits schnell mit dem Entwickeln begonnen, es gab nur eine kurze Designphase, jedoch gab es in der Maschinentechnik grundsaetzlich eine laengere Designphase, bevor gebaut wurde.
+Wir hatten die Moeglichkeit Einblicke in andere Studiengaenge zu erhalten. Das heisst, dass wir ein oberflaechliches Verstaendnis fuer andere Kompetenzen erlangen konnten und ebenfalls unterschiedliche Herangehensweisen beobachten konnten.
+Die Herangehensweise, um eine Loesung fuer ein Problem zu finden, ist bei jeder Person anders. Jedoch konnten klare Unterschiede in unserem Team zwischen den einzelnen Studiengaengen beobachtet werden.
+Beispielweise wurde in der Informatik bereits schnell mit dem Entwickeln begonnen, es gab nur eine kurze Designphase, jedoch gab es in der Maschinentechnik grundsaetzlich eine laengere Designphase, bevor gebaut wurde.
 
-Duch diese unterschiedlichen Herangehensweisen konnten wir voneinander lernen. Wir wissen nun, was zu erwarten ist bei interdisziplinaeren Arbeiten und wir haben neue Arten gelernt, wie wir selber  in Zukunft vorgehen koennten.
+Duch diese unterschiedlichen Herangehensweisen konnten wir voneinander lernen.
+Wir wissen nun, was zu erwarten ist bei interdisziplinaeren Arbeiten und wir haben neue Arten gelernt, wie wir selber  in Zukunft vorgehen koennten.
 
-Bereits ab sechs Teammitgliedern kann es chaotisch werden, vor allem wenn diese recht klar an unterschiedlichen Punkten arbeitet. Wir haben zu Beginn eine Projektleiterin festgelegt, um sicherzugehen, dass mindestens eine Person von allen zu einem gewissen GRad weiss, an was gearbeitet wird. Dies hat definitiv geholfen bei der Organisation. Ebenfalls war es sehr hilfreich, dass wir uns jede Woche getroffen und ausgetauscht haben. Die Kommunikation ist sehr wichtig in Projektarbeiten und dies ist uns gelungen.
+Bereits ab sechs Teammitgliedern kann es chaotisch werden, vor allem wenn diese recht klar an unterschiedlichen Punkten arbeitet.
+Wir haben zu Beginn eine Projektleiterin festgelegt, um sicherzugehen, dass mindestens eine Person von allen zu einem gewissen GRad weiss, an was gearbeitet wird.
+Dies hat definitiv geholfen bei der Organisation. Ebenfalls war es sehr hilfreich, dass wir uns jede Woche getroffen und ausgetauscht haben. Die Kommunikation ist sehr wichtig in Projektarbeiten und dies ist uns gelungen.
 
 Wir sind stolz auf unser finales Design, unsere neu erworbenen Kompetenzen und auf unsere Zusammenarbeit im Team. Waehrend dem letzten Semester haben wir vieles gelernt und wir fuehlen uns bereit fuer \acrshort{pren2}.
 
