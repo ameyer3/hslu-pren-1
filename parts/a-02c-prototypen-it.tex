@@ -424,9 +424,7 @@ Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen
 TABLE TODO
 
 
-Objekterkennung - which algo?
-Yolov11 - Cone, Line, Node, Obstacle
-Yolov11 - Cone, node, obstacle
+Was muss moeglich sein? Knoten, Barriere, Pylone TODO
 
 \begin{table}[H]
 \centering
@@ -437,14 +435,21 @@ Yolov11 - Cone, node, obstacle
         \hline \hline
         SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
         ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
-        OpenCV & 
+        OpenCV HSV & rote Barriere erkennen & Barriere wird erkannt & Barriere wird erkannt & Test erfüllt \\ \hline
+        OpenCV HSV & orange Pylone erkennen & Pylone wird erkannt & Pylone wird erkannt & Test erfüllt \\ \hline
+        OpenCV HSV & weisser Knoten erkennen & Knoten wird erkannt & Falsche Knoten werden erkannt, Knoten werden nicht erkannt & Test nicht erfüllt \\ \hline
+        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline
+        YOLOv11 & Barriere erkennen & Barrier wird erkannt & Barrieren werden erkannt & Test erfüllt \\ \hline
+        YOLOv11 & Pylone erkennen & Pylone wird erkannt & Pylone werden erkannt & Test erfüllt \\ \hline
+        YOLOv11 & Knoten erkennen & Knoten wird erkannt & Knoten werden meist erkannt & Test meist erfüllt \\ \hline
+        YOLOv11 & Kanten erkennen & Kanten wird erkannt & Kanten werden nicht erkannt & Test nicht erfüllt \\ \hline
 
 \end{tabularx}
     \caption{Testergebnisse Hindernisse erkennen}
 \label{tab:test-obst-detection}
 \end{table}
 
-Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht, die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
+Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
 
 
 \subsubsection{Zielknoten erkennen}
@@ -534,7 +539,7 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Al
 \textbf{Fazit}
 
 Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \ref{tab:test-target-node} zusammengefasst.
-
+TODO WAS MUSS KOENNNE
 \begin{table}[H]
 \centering
 \small
@@ -579,12 +584,12 @@ BILD
 
 \subsubsection{Fortbewegung}
 
-Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benoetigt es vor allem die Raeder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusaetzlichen Sensoren und Rechner anzubringen, die fuer die Steuerung benoetigt werden. 
+Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benoetigt es vor allem die Raeder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusaetzlichen Sensoren und Rechner anzubringen, die fuer die Steuerung benoetigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor vorne befestigt.
 
 BILD
 
 \subsubsection{Greifer}
 
-Es wurde ein Greifer gebaut, der an einen Motor angeschlossen ist. Dieser wird verwendet, um das Anheben des Hindernisses zu implementieren und zu kombinieren mit dem Rest des Roboterprototypes.
+Es wurde ein Greifer gebaut, der an einen Motor angeschlossen ist. Dieser wird verwendet um das Hindernis anzuheben.
 
 BILD

@@ -9,15 +9,14 @@ Die Lösungsvarianten wurden gewählt anhand der Muss-Kriterien, die erreicht we
 Auf Basis der Technologierecherche (siehe Anhang \ref{techrecherche}) wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und in den morphologischen Kasten aufgenommen.  Diese Lösungsansätze wurden nach folgenden Kriterien erstellt.
 
 \begin{itemize}
-    \item Variante Gelb:
-    \item Variante Rot:
-    \item Variante Grün:
+    \item Variante Gelb: Effizient
+    \item Variante Rot: Präzise
+    \item Variante Grün: Robust
 \end{itemize}
-
 
 \begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{assets/MK_Maschinentechnik.pdf}
+\includegraphics[width=0.7\textwidth]{assets/MK_Maschinentechnik.pdf}
 \caption{Morphologischer Kasten: Mechanik}
 \label{table:mk-mechanik}
 \end{table}
@@ -97,12 +96,12 @@ Zur Auswahl der passendsten Lösungskombination wird pro Teilbereich eine Nutzwe
 
 \subsubsection{Mechanik Nutzwertanalyse}
 
-Fuer die  drei Lösungskombinationen aus dem morphologischen Kasten wird eine Nutzwertanalyse gemacht. 
+Für die  drei Lösungskombinationen aus dem morphologischen Kasten wird eine Nutzwertanalyse gemacht.    
 
 \begin{itemize}
-    \item Variante A - Gelb: Zwei von drei Rädern werden direkt durch einen Motor angetrieben. Das dritte Rad ist frei drehend und dient als Stützrad. Das Hindernis wird mit einem parallel Greifer angehoben. Da Variante A nur drei Räder hat bietet sich eine U-Form für das Chassis an. 
-    \item Variante B - Rot: Die vier Räder sind diamantförmig angeordnet. Zwei Räder werden direkt angetrieben, die weiteren Räder sind frei drehende Stützräder. Der Greifer ist an einem Arm befestigt. 
-    \item Variante C - Grün: Die Fortbewegung erfolgt mit zwei separat angesteuerten Raupen. Angesteuert werden die Raupen durch ein Überlagerungsgetriebe. Das Hindernis wird mit einem Gabelgreifer angehoben. 
+    \item Variante A - Gelb: Zwei von drei Rädern werden direkt durch einen Motor angetrieben. Das dritte Rad ist frei drehend und dient als Stützrad. Das Hindernis wird mit einem Greifer angehoben der zwei flexible Backen hat, die sich optimal an das Hindernis anpassen. Da Variante A nur drei Räder hat, hat das Chassis die Form eines freien Polygons. Diese Variante zeichnet sich durch ihre effiziente Bauweise aus. 
+    \item Variante B - Rot: Die vier Mecanum Räder sind auf der halbrunden Grundplatte angeordnet. Jedes Rad wird mit einem seperaten Motor angetrieben.  Das Hindernis wird mit einer Gabel wie bei einem Gabelstapler angehoben. Diese Variante stellt eine präzise Verschiebung des Hindernisses sicher, ist jedoch in in der umsetzung Aufwändiger als die Variante A. 
+    \item Variante C - Grün: Der Antrieb erfolgt mit einem Motor und wird mit mithilfe eines Überlagerungsgetriebes auf die einzelnen Raupen übertragen.  Das Hindernis wird mit einem selbst-klemmenden Seilzuggreifer angehoben. Das Fahrzeug wird auf einem runden Chassis aufgebaut. Aufgrund des Raupenantrieb ist die Variante C die Robusteste der drei Varianten. 
 \end{itemize}
 
 \begin{table}[H]
@@ -112,14 +111,14 @@ Fuer die  drei Lösungskombinationen aus dem morphologischen Kasten wird eine Nu
 \label{table:nutzwert-maschinentechnik}
 \end{table}
 
-Die Analyse der drei genannten Varianten hat ergeben, dass die Variante C sich am besten für die Umsetzung eignet. Enstprechend wurden folgende Komponenten und Systeme ausgewählt. 
+Die Analyse der drei genannten Varianten hat ergeben, dass die Variante A sich am besten für die Umsetzung eignet. Entsprechend wurden folgende Komponenten und Systeme ausgewählt. 
 
 \begin{itemize}
     \item Fortbewegung: Räder 
     \item Anordnung:  Zwei Räder hinten und ein Stützrad vorne
     \item Lenkung: Direkt Antrieb für zwei Räder
-    \item Hebevorrichtung: Parallele Greifer Backen
-    \item Chassis: U-Form 
+    \item Hebevorrichtung: Greifer Backen mit flexiblen Backen
+    \item Chassis: Freies Polygon
 \end{itemize}
 
 \subsubsection{Steuerung Nutzwertanalyse}
