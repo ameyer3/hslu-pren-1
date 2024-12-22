@@ -29,7 +29,7 @@ Folgende Komponenten für das Konzept wurden mithilfe der Technologierecherche (
 
 Es ist geplant einen Roboter in in Form eines freien Ploygons zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter mit einem Greifer mit flexiblen Backen anheben. Dies ist ersichtlich in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld}.
 
-Die Steuerung wird auf einem \acrfull{tinyk22} laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
+Die Steuerung wird auf einem \acrshort{tinyk22} laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
 
 Die Bildverarbeitung und Navigation werden in Python geschrieben und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
@@ -117,11 +117,11 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der OpenCV Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
 
-Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt ORB um welchen es sich handelt.
+Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt \acrshort{orb} um welchen es sich handelt.
 
-Dadurch dass ORB die Merkmal der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
+Dadurch dass \acrshort{orb} die Merkmal der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
 
-Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen Linien dargestellt, wie ORB die bekannten Merkmale (jeweils linkes Bild) in den zu analysierenden Bildern (jeweils rechtes Bild) findet.
+Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen Linien dargestellt, wie \acrshort{orb} die bekannten Merkmale (jeweils linkes Bild) in den zu analysierenden Bildern (jeweils rechtes Bild) findet.
 
 \begin{figure}[H]
 \begin{subfigure}{0.3\textwidth}
@@ -145,7 +145,7 @@ Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen 
 \end{figure}
 
 
-Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispielsweise als das Klammer Zeichen \verb|(| erkannt werden würde.
+Mit \acrshort{orb} werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispielsweise als das Klammer Zeichen \verb|(| erkannt werden würde.
 
 
 \subsubsection{Pylonen und Hindernisse erkennen}

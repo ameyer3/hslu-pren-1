@@ -11,7 +11,7 @@ Nach ersten Berechnungen für die Motoren wurde ein passender Motor ausgewählt,
 \end{figure}
 
 
-Der Test bestand darin, den Motor mit einer Pulsweitenmodulation (PWM) bei zwei unterschiedlichen Spannungen zu betreiben. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der Duty Cycle schrittweise erhöht, bis der Motor bei 58\% des Duty Cycles zu drehen begann. Nachdem der Motor angelaufen, konnte der Duty Cycle auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
+Der Test bestand darin, den Motor mit einer \acrfull{pwm} bei zwei unterschiedlichen Spannungen zu betreiben. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der Duty Cycle schrittweise erhöht, bis der Motor bei 58\% des Duty Cycles zu drehen begann. Nachdem der Motor angelaufen, konnte der Duty Cycle auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
 
 
 In einer zweiten Testsequenz wurde die gleiche Vorgehensweise mit einer Spannung von 12V durchgeführt. Hier begann der Motor bei einem Duty Cycle von 33\% zu drehen. Beim schrittweisen Reduzieren der Einschaltzeit drehte der Motor bis zu einem Duty Cycle von 12\% weiter.
@@ -34,7 +34,7 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 
 \subsubsection{Tiny K22 Pinout} \label{Blockdiagramm: Schnittstellen zwischen den Komponenten}
 
-Für die hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
+Für die hardwarenahe Steuerung und Regelung wurde ein \acrshort{tinyk22} Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
 
 \begin{figure}[H]
     \centering
@@ -44,9 +44,9 @@ Für die hardwarenahe Steuerung und Regelung wurde ein Tiny K22 Version 1.4 ausg
 \end{figure}
 
 
-Das Tiny K22 PCB bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als FTM, ADC, IIC, SPI, UART, Input- oder Output-Pins konfiguriert werden.
+Das \acrshort{tinyk22} \acrshort{pcb} bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als \acrfull{ftm}, \acrfull{adc}, \acrfull{iic}, \acrfull{spi}, \acrshort{uart}, Input- oder Output-Pins konfiguriert werden.
 
-Im Rahmen des Projekts wurden 25 Pins verwendet\ref{fig:Tiny_K22_Pinout_definition}. Die zeitkritischen Funktionen werden direkt auf dem Tiny K22 verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
+Im Rahmen des Projekts wurden 25 Pins verwendet\ref{fig:Tiny_K22_Pinout_definition}. Die zeitkritischen Funktionen werden direkt auf dem \acrshort{tinyk22} verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
 
 \begin{figure}[H]
     \centering
@@ -58,21 +58,21 @@ Im Rahmen des Projekts wurden 25 Pins verwendet\ref{fig:Tiny_K22_Pinout_definiti
 Encoder-Auswertung: Der Mikrocontroller nutzt die integrierte Quadratur-Encoder-Auswertung auf Timer 1 und Timer 2.
 Linienerfassung: Diese Funktion belegt den gesamten Timer 0.
 Motorsteuerung, Ultraschallsensor, Buzzer und Servomotor: Diese teilen sich Timer 3, da keine weiteren Timer zur Verfügung stehen. Dies führt dazu, dass die Motoren im hörbaren Frequenzbereich betrieben werden. Dieser Umstand ist jedoch akzeptabel, da keine Vorgaben zur maximalen Lautstärke existieren.
-Zusätzlich wird ein IIC-Bus für zeitunkritische Funktionen verwendet. Zu diesen gehören die Ziellampe und die Zielauswahlschalter.
+Zusätzlich wird ein \acrshort{iic}-Bus für zeitunkritische Funktionen verwendet. Zu diesen gehören die Ziellampe und die Zielauswahlschalter.
 
-Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effizient verarbeitet werden, während gleichzeitig Flexibilität für zusätzliche Funktionen über den IIC-Bus gewährleistet bleibt.
+Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effizient verarbeitet werden, während gleichzeitig Flexibilität für zusätzliche Funktionen über den \acrshort{iic}-Bus gewährleistet bleibt.
 
 
 
 
 \subsubsection{Software}
 
-Das Programm welches man auf das Tiny K22 laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger ist. Es können vom Modul Mikrocontroller Fundamentals bestehende Libraries verwendet werden können. Einige Anpassungen wie zum Beispiel die UART wurden bereits vorgenommen.
+Das Programm welches man auf das \acrshort{tinyk22} laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger ist. Es können vom Modul Mikrocontroller Fundamentals bestehende Libraries verwendet werden können. Einige Anpassungen wie zum Beispiel die \acrshort{uart} wurden bereits vorgenommen.
 
 
 \subsubsection{Liniensensor}
 
-Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem PCB angeordnet. Es sind 7 Pins auf dem Tiny K22 reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion Input Capture kann die bei Entladung fallende Flanke detektiert werden. Input Capture gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
+Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Es sind 7 Pins auf dem \acrshort{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion Input Capture kann die bei Entladung fallende Flanke detektiert werden. Input Capture gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
 
 
 \begin{figure}[H]
@@ -95,13 +95,13 @@ Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet. Die
 
 \subsubsection{PCB Design}
 
-Das PCB wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste PCB Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das TinyK22 steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen PCB als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
+Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das \acrshort{tinyk22} steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen \acrshort{pcb} als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
 
 
 
 \subsubsection{Servomotor}
 
-Der Servomotor wurde direkt am Greifer Prototyp getestet. In der unteren Tabelle \ref{tab:testpunkte Servomotor} sind die Messergebnisse eingetragen, welche positiv ausgefallen sind. Man hat den Servomotor bei zwei unterschiedlichen Frequenzen, mit der Betriebsspannung von 5V und ob das Hindernis auf die geforderten 7.5mm angehoben werden kann getestet. Das PWM Signal hat man mit einem Tektronix AFG1022 generiert, bei dem man mit dem Drehregler den Duty Cycle verstellen konnte.
+Der Servomotor wurde direkt am Greifer Prototyp getestet. In der unteren Tabelle \ref{tab:testpunkte Servomotor} sind die Messergebnisse eingetragen, welche positiv ausgefallen sind. Man hat den Servomotor bei zwei unterschiedlichen Frequenzen, mit der Betriebsspannung von 5V und ob das Hindernis auf die geforderten 7.5mm angehoben werden kann getestet. Das \acrshort{pwm} Signal hat man mit einem Tektronix AFG1022 generiert, bei dem man mit dem Drehregler den Duty Cycle verstellen konnte.
 
 
 \textbf{Messungen und Beobachtungen}
@@ -115,7 +115,7 @@ Der Servomotor wurde direkt am Greifer Prototyp getestet. In der unteren Tabelle
         \hline \hline
         1 & PWM mit 10kHz & Motor soll drehen & Der Motor dreht nicht & Test nicht erfüllt \\ \hline
         2 & PWM mit 400Hz & Motor soll drehen & bei 15\% Duty Cycle dreht Servomotor 180 Grad & Test erfüllt \\ \hline
-        3 & Betriebsspannung mit 5V & Betrieb damit PWM funktioniert  & PWM funktioniert & Test erfüllt\\ \hline
+        3 & Betriebsspannung mit 5V & Betrieb damit \acrshort{pwm} funktioniert  & PWM funktioniert & Test erfüllt\\ \hline
         4 & Motor drehen bis Hindernis angehoben & Hindernis wird angehoben & Greifer hebt Hindernis 7.5mm hoch, bei 32\% Duty Cylce & Test erfüllt \\ \hline
 \end{tabularx}
     \caption{Testergebnisse des Servomotors am Greifer.}
