@@ -87,7 +87,7 @@ Zusätzlich haben wir dies mit unserem Raspberry und Kamera nachgestellt:
 \subsubsection{Winkelerkennung}\label{winkelerkennung}
 
 Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \ref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
-Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreihe Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels Opencv berechnet werden.
+Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreie Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels OpenCV berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
@@ -189,12 +189,6 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 
 
-% \textbf{Spiegelung}
-
-% Starke Spiegelungen stellen ein grosses Problem bei der Erkennung von Knoten dar. Um die Bilder zu entspiegeln, können die Lichtverhältnisse angepasst, Polfilter verwendet oder Nachbearbeitungen durchgeführt werden.\cite{avoid-reflection}
-
-% Beleuchtung
-
 Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
 \begin{figure}[H]
@@ -204,7 +198,7 @@ Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. 
     \label{fig:test-graph}
 \end{figure}
 
-Die Methode, die gewaehlt wird, muss in der Lage sein folgende Elemente zu erkennen.
+Die Methode, die gewählt wird, muss in der Lage sein folgende Elemente zu erkennen.
 
 \begin{itemize}
     \item Rote Barriere erkennen
@@ -239,7 +233,9 @@ Zusammenfassend:
     \item ORB ist ein guter Kompromiss zwischen Geschwindigkeit und Genauigkeit.
 \end{itemize}
 
-Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
+FAST wurde nicht getestet, da es wichtig ist, dass unser Roboter eine robuste Bilderkennung implementiert hat. Es wurden lediglich SIFT und ORB getestet.
+
+Aus unseren Test funktionieren beide Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
 
 \begin{figure}[H]
     \centering
@@ -248,7 +244,7 @@ Aus unseren Test funktionieren alle diese Algorithmen sehr gut um zweidimensiona
     \label{fig:good-sift-example}
 \end{figure}
 
-Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dredimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
+Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dreidimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
 
 \begin{figure}[H]
     \centering
@@ -465,7 +461,7 @@ Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen
 
 Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern durchgeführt. Diese sind unveränderte Aussschnitte aus dem zur Verfügung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualität sind.
 
-Die Methode, die gewaehlt wird muss in der Lage sein folgendes zu tun:
+Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
 
 \begin{itemize}
     \item Buchstaben A erkennen
@@ -595,13 +591,13 @@ In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des
 
 \subsubsection{Navigation}
 
-Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, die stabil die Kamera in der definiereten Position befestigt hat. Ebenfalls soll es die Moeglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Mitigationsmassnahme, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
+Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, die stabil die Kamera in der definierten Position befestigt hat. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Mitigationsmassnahme, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
 
 BILD
 
 \subsubsection{Fortbewegung}
 
-Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benoetigt es vor allem die Raeder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusaetzlichen Sensoren und Rechner anzubringen, die fuer die Steuerung benoetigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
+Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benötigt es vor allem die Räder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusätzlichen Sensoren und Rechner anzubringen, die für die Steuerung benötigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
 
 BILD
 

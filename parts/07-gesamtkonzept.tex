@@ -1,8 +1,12 @@
 \section{Gesamtkonzept}
 
-TODO Einletung zu Konzept
+In den folgenden Kapiteln wird das erarbeite Konzept des Roboters vorgestellt. Dafür wird zuerst eine Skizze gezeigt, die den geplanten Roboter visualisiert, danach werden die Komponenten und Technologien, die für im Roboter verwendet werden aufgelistet. Folgend werden die einzelnen Teilfunktionen, die der Roboter während einem Durchlauf benötigt erläutert. 
+
+Das Konzept wurde mithilfe des Prototypings getestet. Dies ist im Anhang in Kapitel \ref{prototyping} zu finden.
 
 \subsection{Visualisierung}
+
+Die Einzelteile sollen auf dem Roboter wie auf Abbildung \ref{fig:robot_concept-scetch_labeld} gezeigt zusammengesetzt werden.
 
 \begin{figure}[H]
 \centering
@@ -44,10 +48,9 @@ Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln a
 \end{figure}
 
 
-
-
-
 \subsubsection{Ausgehende Kanten erkennen}
+
+Um alle ausgehenden Kanten und deren Winkel des nächsten Knoten zu erkennen, wird der folgende Ablauf in Abbildung \ref{fig:ablaufdiagramm} durchlaufen. Dies ist nötig, damit der Roboter weiss, in welche Richtung er sich drehen muss, um auf die nächste Kante zu gelangen. Ebenfalls können so fehlende Linien erkannt werden.
 
 \begin{figure}[H]
 \centering
@@ -146,6 +149,8 @@ Mit ORB werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorit
 
 
 \subsubsection{Pylonen und Hindernisse erkennen}
+
+Damit der Roboter weiss, ob sich eine Pylone auf einem Nachbarsknoten oder eine Barriere auf einer ausgehenden Linie befindet, wird der Ablauf auf Abbildung \ref{fig:image-detection-obstacles} durchgeführt.
 
 \begin{figure}[H]
 \begin{subfigure}{0.45\textwidth}
@@ -248,7 +253,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung}
 
-Das Fahrzeug wird mit zwei seperat angetriebenen Räder angetrieben. Die Motoren besitzen Encoder, somit kann man genau feststellen welche Distanz zurückgelegt wurde. Der Fahrbefehl ensteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \acrshort{tinyk22} werden Distanz und Drehwinkel mitgeteilt, wodurch dann die Motoren angesteuert werden können.
+Das Fahrzeug wird mit zwei seperat angetriebenen Räder angetrieben. Die Motoren besitzen Encoder, somit kann man genau feststellen welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \acrshort{tinyk22} werden Distanz und Drehwinkel mitgeteilt, wodurch dann die Motoren angesteuert werden können.
 
 \subsection{Linienerkennung}
 
@@ -256,7 +261,7 @@ Mit einem Array von Phototransistoren und Kondensatoren/Widerstände misst man d
 
 \subsection{Distanzsensor}
 
-Um die Distanz zwischen einem Fahrzeug und Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstoss mit einer Pylone verhindert, falls man bei der Wahl des Pfades die falsche Entscheidung getroffen hat.
+Um die Distanz zwischen einem Fahrzeug und Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstoss mit einer Pylone verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurde.
 
 \subsection{Wegfindung}
 
