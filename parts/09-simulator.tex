@@ -81,26 +81,26 @@ TOOD explain the diagram moree
 \subsubsection{Entwicklung}
 
 Der erste Schritt ist es einen Graph zu definieren. Dazu wird ein YAML File mit dem konfigurierten Graph erstellt. 
-Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die relativen Längen der Strecken. Diese Beschriftung wird wie folgt in einem YAML File beschrieben.
+Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie folgt in einem YAML File beschrieben.
 
 \begin{figure}[H]
-\begin{subfigure}{0.275\textwidth}
-\includegraphics[width=0.95\linewidth]{img/graph_with_weighted_edges.png} 
+\begin{subfigure}{0.35\textwidth}
+\includegraphics[width=0.95\linewidth]{img/graph_with_weighted_edges_1.png} 
 \caption{Beschrifteter Graph}
 \label{fig:labeled-graph}
 \end{subfigure}
 \begin{subfigure}{0.720\textwidth}
 \begin{footnotesize}
 \begin{verbatim}
-# the edges are assorted clock-wise
-A: [{ F: 10, G: 12, H: 10, B: 10 }]
-B: [{ A: 10, H: 10 }, { C: 10 }]
-C: [{ D: 10 B: 10 }, { H: 10 }]
-D: [{ E: 10 }, { C: 10 }, { H: 10 }, { G: 12 }]
-E: [{ D: 10 }, { G: 6 }, { F: 10 }]
-F: [{ E: 10 }, { G: 6 }, { A: 10 }]
-G: [{ E: 6 }, { D: 12 }, { H: 6 }, { A: 12 }, { F: 6 }]
-H: [{ G: 6 }, { D: 10 }, { C: 10 }, { B: 10 }, { A: 10 }]
+START: { E: 300 }
+A: { F: 1732, G: 2000, H: 1732, B: 1732 }
+B: { A: 1732, H: 1732, C: 1732 }
+C: { D: 1732, B: 1732, H: 1732 }
+D: { E: 1732, C: 1732, H: 1732, G: 2000 }
+E: { START: 300, D: 1732, G: 1000, F: 1732 }
+F: { E: 1732, G: 1000, A: 1732 }
+G: { E: 1000, D: 2000, H: 1000, A: 2000, F: 1000 }
+H: { G: 1000, D: 1732, C: 1732, B: 1732, A: 1732 }
 \end{verbatim}
 \end{footnotesize}
 \caption{Graph in YAML}
@@ -163,7 +163,7 @@ Während des ganzen Ablaufes werden die einzelnen Klassen aufgerufen, welche die
 
 Ein Modus BLIND\_TESTING wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. Der Roboter kennt alle ausgehenden Kanten des nächsten Knotens und die Hindernisse, die sich darauf befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen führt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
 
-\textbf{Technische Aspekte}
+\textbf{Technische Aspekte}\label{technical-aspect-simulator}
 
 Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{\url{https://python-poetry.org/}} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
 
@@ -177,18 +177,111 @@ Das orange Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das 
 
 \begin{figure}[H]
 \begin{subfigure}{0.49\textwidth}
-\includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/sim-ui.png}
+\includegraphics[width=0.95\textwidth]{assets/informatik-prototyp/simulator/sim-ui.png}
 \caption{GUI des Simulators}
 \label{fig:sim-gui}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
-\includegraphics[width=\textwidth]{assets/informatik-prototyp/simulator/removed-lines-sim.png}
+\includegraphics[width=0.95\textwidth]{assets/informatik-prototyp/simulator/removed-lines-sim.png}
 \caption{GUI des Simulators unbefahrbare Linien entfernt}
 \label{fig:sim-gui-removed-lines}
 \end{subfigure}
 \end{figure}
 
 \subsubsection{Simulation}
+
+In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie man diesen verwendet. Zusätzlich haben wir automatisierte Testdurchläuffe durchgeführt, welche Ergebnisse anschliessend Dokumentiert sind.
+
+\textbf{Voraussetzungen und Installation}
+
+Wie in Kapitel \ref{technical-aspect-simulator} erwähnt, wird unser Simulator in einer Virtuellen Python Umgebung ausgeführt. Um diese Virtuelle Python Umgebung zu nutzen müssen vorerst nachfolgende Software installiert sein:
+
+\begin{itemize}
+    \item Python Version 3.9 oder neuer
+    
+    \url{https://www.python.org/}
+    \item Poetry Version 1.8 oder neuer
+    
+    \url{https://python-poetry.org/}
+\end{itemize}
+
+Sofern dies installiert ist, kann im Grundverzeichnis des Simulators der nachfolgende Befehl ausgeführt werden, um die Abhängigkeiten zu installieren
+
+\begin{verbatim}
+poetry install
+\end{verbatim}
+
+\textbf{Simulator ausführen}
+
+Sind die Vorbedingungen erfüllt, kann im Grundverzeichnis Simulators nachfolgender Befehl ausgeführt werden, um eine einfache Simulation zu starten:
+
+\begin{verbatim}
+poetry run python -m simulator
+\end{verbatim}
+
+Um die Hilfe anzuzeigen kann das Argument \verb|--help| angegeben werden. Somit werden alle Optionen welche der Simulator bietet angezeigt.:
+
+
+\begin{footnotesize}
+\begin{verbatim}
+poetry run python -m simulator --help
+usage: simulator [-h] [-s START_NODE] [-t {A,B,C}] [-r] [-c CONES] [-b BARRIERS] 
+[-l MISSING_LINES] [--no-gui] [--speed SPEED] [--time-multiplier TIME_MULTIPLIER] 
+[--simulate-time] [--verbose]
+
+PREN1 Simulator
+
+options:
+  -h, --help                        show this help message and exit
+  -s START_NODE, --start-node START_NODE
+  -t {A,B,C}, --target-node {A,B,C}
+  -r, --random                      Generate random obstacles
+  -c, --cones CONES                 if random: Number of cones to add
+  -b, --barriers BARRIERS           if random: Number of barriers to add
+  -l, --missing-lines MISSING_LINES if random: Number of missing-lines to add
+  --no-gui                          Run simulation without gui
+  --speed SPEED                     Speed of the robot in mm/s
+  --time-multiplier TIME_MULTIPLIER multiplier for all simulations
+  --simulate-time                   Simulate time for task that the robot does
+  --verbose                         Prints the single steps
+\end{verbatim}
+\end{footnotesize}
+
+Dies gibt uns hinweise über alle Möglichen Aktionen. Die wichtigsten nachfolgend erklährt:
+
+\begin{itemize}
+    \item \verb|--random| ermöglicht das automatisch generieren von Hindernissen.
+    \item \verb|--cones|, \verb|--barriers|, \verb|--missing-lines| bestimmt, wie viele Hindernisse im generierten Graph platziert werden. Standardmässig werden jeweils 2 Stück platziert.
+    \item \verb|--no-gui| und \verb|--simulate-time| wird verwendet um den Simulator ohne grafisches User Interface durchlaufen zu lassen. Die Simulation wird in dem Verfahren so schnell wie möglich ausgeführt. Dies ist äussert hilfreich wenn hunderte, oder tausende Simulationen durchgeführt werden sollen.
+    \item \verb|--verbose| ermöglicht Debugging-Ausgaben des Simulators in der Konsole.
+\end{itemize}
+
+Jede Simulations Ausführung gibt jeweils auch Informationen über den Verlauf der Simulation. Nachfolgend eine Beispielausgabe dieser:
+
+\begin{footnotesize}
+\begin{verbatim}
+...
+......
+.........
+[2024-12-26 16:47:56,305] DRIVE 816.0MM.
+[2024-12-26 16:48:00,409] DRIVE -100MM.
+[2024-12-26 16:48:01,932] DRIVE 100MM.
+[2024-12-26 16:48:02,451] [ET] I am now infront of my next node B. I will now check for the next 1 connections.
+[2024-12-26 16:48:02,451] TURN -60 DEGREES.
+[2024-12-26 16:48:04,134] TAKE PIC
+[2024-12-26 16:48:04,134] Planned path is ['A', 'B', 'C']
+[2024-12-26 16:48:04,134] The next node considering the shortest path is node C
+[2024-12-26 16:48:04,134] Moving from B to C which is 0 degrees from current direction
+[2024-12-26 16:48:04,134] TURN 0 DEGREES.
+[2024-12-26 16:48:04,136] DRIVE 1732MM.
+[2024-12-26 16:48:12,820] DRIVE -100MM.
+[2024-12-26 16:48:14,353] Expected a line from node C to D with angle 0deg
+[2024-12-26 16:48:14,353] DRIVE 100MM.
+Reached the target C via ['START', 'E', 'D', 'E', 'F', 'A', 'B', 'C']
+traversing the graph took 84.728 seconds
+\end{verbatim}
+\end{footnotesize}
+
 
 TODO HOW YO RUN SIMULATOR WITH ALL THE PARAMS
 
