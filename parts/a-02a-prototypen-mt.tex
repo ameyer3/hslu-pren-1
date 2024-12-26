@@ -22,7 +22,7 @@ Der Aufbau und die Funktionsweise des Greifers werden in Kapitel \ref{subsubsect
 \end{figure}
 
 Der Prototyp wird manuell über einen Hebel bedient, welcher anstelle des Servomotors in der Konstruktion verbaut ist. Diese Entscheidung wurde getroffen, da das ausgelegte Motordrehmoment durch mögliche Reibung in den Gelenken nicht ausreichen könnte. Mit dem Hebel kann das ausgelegte Drehmoment einfach durch aufbringen einer bekannten Last validiert werden.
-\\
+
 Die Lagerpunkte des Gestänges wurden für den Prototyp an ein Gestell aufgebracht (Abb. \ref{fig:gripper-frame-mounting-points}). So kann der Greifer unabhängig vom Fahrzeug getestet werden. Die Abstände zwischen den Lagerpunkten sowie zum Boden sollen für den finalen Greifer dieselben sein. Auch die Dimensionen des Gestänges sollen beibehalten werden (Abb. \ref{fig:gripper-linkage-dimensions}). Somit bleiben die von der Geometrie abhängigen Kräfte dieselben und Ergebnisse aus Prototypentests können auf spätere Iterationen übertragen werden. 
 
 \begin{figure}[H]
@@ -40,9 +40,7 @@ Die Lagerpunkte des Gestänges wurden für den Prototyp an ein Gestell aufgebrac
 \label{gripper-prototype-dimensions}
 \end{figure}
 
-Die gelenkigen Verbindungen im Prototyp wurden mit M3 Schrauben realisiert. Dies bedeutet das in den Gelenken die Gewinde der Schrauben direkt am Kunstoff der 3D-druck Teile reiben. Eine solche Lagerung hat erhöhte Reibung und ungenaue Toleranzen zur Folge, wurde aber bewusst gewählt da sie Kostengünstig und schnell realisiert werden kann. zur Verminderung der Reibung wurden alle Gelenke mit PTFE-Trockenschmiermittel behandelt.\\
-\\
-
+Die gelenkigen Verbindungen im Prototyp wurden mit M3 Schrauben realisiert. Dies bedeutet das in den Gelenken die Gewinde der Schrauben direkt am Kunstoff der 3D-druck Teile reiben. Eine solche Lagerung hat erhöhte Reibung und ungenaue Toleranzen zur Folge, wurde aber bewusst gewählt da sie Kostengünstig und schnell realisiert werden kann. zur Verminderung der Reibung wurden alle Gelenke mit PTFE-Trockenschmiermittel behandelt.
 
 \textbf{Ziele}
 
@@ -53,7 +51,7 @@ Mit dem Prototyp sollen folgende Anforderungen getestet werden (Ergebnisse in Ta
     \item Das Hindernis wird um mindestens 7.5mm angehoben
     \item Hindernis kann zuverlässig angehoben werden (50 Testzyklen)
     \item Hindernis kann auch bei bis zu 15\textdegree\ Schrägstellung angehoben werden (50 Testzyklen in verschiedenen Winkeln)
-    \item Hindernis wird \pm 2mm an dieselbe Stelle zurückgesetzt (50 Testzyklen)
+    \item Hindernis wird $\pm$ 2mm an dieselbe Stelle zurückgesetzt (50 Testzyklen)
     \item Hindernis rutscht nicht aus dem Greifer bei Vibrationen (Hinderniss klemmen, Prototyp aufheben und schütteln, Hinderniss darf nicht rutschen)
     \item Nötiges Drehmoment zum Anheben ist maximal gleich gross wie das ausgelegte Drehmoment (20 Ncm)
     \item Die Greifbacke liegt in geöffnetem Zustand min. 5mm über dem Hindernis.
@@ -104,7 +102,6 @@ Bei den Tests am Prototyp II sollen die Geschwindigkeit des Anhebevorgangs und d
 \label{subsubsection:gripper-prototype-2}
 
 Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \ref{subsubsection:gripper-prototype-1}). Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Anhang \textbf{REF Auslegung} vorausgelegt und durch den Greifer Prototyp I validiert wurde. Mit zwei an den Klemmbacken montierten Endschaltern soll der Prototyp II bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
-\\
 
 \textbf{Aufbau}
 
@@ -118,23 +115,23 @@ Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \
 Der Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses derselbe. Alle Im Prototyp I aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken so bearbeitet, dass die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welch verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Backen sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde.
 
 \begin{figure}[H]
-\begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{assets/greifer-prototyp/Backe_alt_trimetrisch.png}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_alt_trimetrisch.png}
 \caption{Klemmbacke Prototyp I}
 \label{fig:jaw_old_trimetric}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{assets/greifer-prototyp/Backe_neu_trimetrisch.png}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_neu_trimetrisch.png}
 \caption{Klemmbacke Prototyp II}
 \label{fig:jaw_new_trimetric}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{assets/greifer-prototyp/Backe_alt_schnitt.png}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_alt_schnitt.png}
 \caption{Anschlagwinkel Prototyp I}
 \label{fig:jaw_old_section}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
-\includegraphics[width=\textwidth]{assets/greifer-prototyp/Backe_neu_schnitt.png}
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_neu_schnitt.png}
 \caption{Anschlagwinkel Prototyp II}
 \label{fig:jaw_new_section}
 \end{subfigure}
