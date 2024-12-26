@@ -67,7 +67,7 @@ Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Die einzelnen F
 
 Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und Fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung des Motors gesendet werden würden.
 
-Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls er nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt "Trial and Error" noch weiter erklärt. Im Klassendiagramm sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der oeffentlichen \verb|run| Methode ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
+Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls er nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt ``Trial and Error'' noch weiter erklärt. Im Klassendiagramm sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der oeffentlichen \verb|run| Methode ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
 
 TOOD explain the diagram moree
 
@@ -93,9 +93,9 @@ Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstab
 \begin{footnotesize}
 \begin{verbatim}
 # the edges are assorted clock-wise
-A: [{ F: 10 }, { G: 12 }, { H: 10 }, { B: 10 }]
-B: [{ A: 10 }, { H: 10 }, { C: 10 }]
-C: [{ D: 10 }, { B: 10 }, { H: 10 }]
+A: [{ F: 10, G: 12, H: 10, B: 10 }]
+B: [{ A: 10, H: 10 }, { C: 10 }]
+C: [{ D: 10 B: 10 }, { H: 10 }]
 D: [{ E: 10 }, { C: 10 }, { H: 10 }, { G: 12 }]
 E: [{ D: 10 }, { G: 6 }, { F: 10 }]
 F: [{ E: 10 }, { G: 6 }, { A: 10 }]
@@ -192,4 +192,4 @@ Das orange Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das 
 
 TODO HOW YO RUN SIMULATOR WITH ALL THE PARAMS
 
-TODO document simulation runs + Ergebnisse (ev in Tabelle "Testprotokoll")
+TODO document simulation runs + Ergebnisse (ev in Tabelle ''Testprotokoll'')
