@@ -247,7 +247,7 @@ options:
 \end{verbatim}
 \end{footnotesize}
 
-Dies gibt uns hinweise über alle Möglichen Aktionen. Die wichtigsten nachfolgend erklährt:
+Dies gibt uns Hinweise über alle Möglichen Aktionen. Die wichtigsten nachfolgend erklährt:
 
 \begin{itemize}
     \item \verb|--random| ermöglicht das automatisch generieren von Hindernissen.
@@ -266,8 +266,8 @@ Jede Ausführung gibt jeweils auch Informationen über den Verlauf der Simulatio
 [2024-12-26 16:47:56,305] DRIVE 816.0MM.
 [2024-12-26 16:48:00,409] DRIVE -100MM.
 [2024-12-26 16:48:01,932] DRIVE 100MM.
-[2024-12-26 16:48:02,451] [ET] I am now infront of my next node B. I will now check for the
-    next 1 connections.
+[2024-12-26 16:48:02,451] [ET] I am now infront of my next node B. I will now check for 
+    the next 1 connections.
 [2024-12-26 16:48:02,451] TURN -60 DEGREES.
 [2024-12-26 16:48:04,134] TAKE PIC
 [2024-12-26 16:48:04,134] Planned path is ['A', 'B', 'C']
@@ -283,17 +283,52 @@ traversing the graph took 84.728 seconds
 \end{verbatim}
 \end{footnotesize}
 
-Bei erfolgreichem traversieren des Graphen wird am Ende den gesamten Pfad sowie de benötigte Zeit dafür ausgegeben.
+Bei erfolgreichem traversieren des Graphen wird am Ende den gesamten Pfad sowie die benötigte Zeit dafür ausgegeben.
 
-Der Verlauf kann auch im Grafischen User Interface verfolgt werden. Dabei sind in Farbe die Hindernisse welche bereits erkennt worden sind. Sowie Schwarz der Pfad der bekannt ist. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind.
+Der Verlauf kann auch im Grafischen User Interface verfolgt werden. Dabei sind in Farbe die Hindernisse welche bereits erkennt worden sind. Sowie schwarz der Pfad der bekannt ist. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind.
 Die Anzeige aktualisiert sich in Echtzeit.
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{assets//informatik-prototyp//simulator/simulator-run.png}
-    \caption{GUI währen Simulation}
+    \caption{GUI während Simulation}
     \label{fig:simulation-run}
 \end{figure}
 
+\textbf{Benchmark}
+
+Durch das setzen des \verb|--random| Arguments können wir nun also auch zufällig generierte Graphen erstellen und diese traversieren.
+Wenn wir auch noch \verb|--simulate-time| mitgeben, wird die Ausführungszeit zusätzlich simuliert.
+Somit können wir fast unbegrenzt mögliche Graphen erstellen und die traversierung mit unserem Roboter in der selben Sekunde simulieren.
+
+Dies haben wir nun mit nachfolgenden Optionen durchgeführt:
+
+\begin{itemize}
+  \item Anzahl Pylonen: 0-6
+  \item Anzahl Barrieren: 0-14
+  \item Anzahl fehlende Kanten: 0-13
+  \item Zielknoten: A, B oder C
+\end{itemize}
+
+Mit allen möglichen Optionen wurden so 100'000 Durchläufe simuliert.
+Für uns ist dabei wichtig, dass wir unter einer Laufzeit von 4 Minuten stehen, egal welcher Graph mit welchen Hindernissen wir Traversieren müssen.
+
+Nachfolgend dazu die Auswertung dieser Durchläufe:
+
+\begin{figure}[H]
+  \centering\includegraphics[width=0.75\linewidth]{assets/informatik-prototyp/simulator/max_seconds.png}
+  \caption{Maximale benötigte Zeit}
+  \label{fig:simulation-run-max-seconds}
+\end{figure}
+
+\begin{figure}[H]
+  \centering\includegraphics[width=0.75\linewidth]{assets/informatik-prototyp/simulator/mean_seconds.png}
+  \caption{Durchschnittlich benötigte Zeit}
+  \label{fig:simulation-run-mean-seconds}
+\end{figure}
+
+Wie zu sehen ist, brauchen wir im worst case ungefähr 185 Sekunden für das Traversieren. 
+Die Durchschnittszeit ist jedoch viel besser und konstant unter 60 Sekunden.
+Somit können wir davon ausgehen, dass unser Roboter mit der aktuellen Strategie den Graphen problemlos in der geforderten Zeit erfolgreich traversieren kann.
 
 TODO HOW YO RUN SIMULATOR WITH ALL THE PARAMS
 
