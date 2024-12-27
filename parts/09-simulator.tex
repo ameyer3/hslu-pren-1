@@ -190,7 +190,7 @@ Das orange Dreieck stellt eine Pylone dar, das rote Rechteck ein Hindernis, das 
 
 \subsubsection{Simulation}
 
-In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie man diesen verwendet. Zusätzlich haben wir automatisierte Testdurchläuffe durchgeführt, welche Ergebnisse anschliessend Dokumentiert sind.
+In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie man diesen verwendet. Zusätzlich haben wir automatisierte Testdurchläufe durchgeführt, welche Ergebnisse anschliessend Dokumentiert sind.
 
 \textbf{Voraussetzungen und Installation}
 
@@ -213,7 +213,7 @@ poetry install
 
 \textbf{Simulator ausführen}
 
-Sind die Vorbedingungen erfüllt, kann im Grundverzeichnis Simulators nachfolgender Befehl ausgeführt werden, um eine einfache Simulation zu starten:
+Sind die Vorbedingungen erfüllt, kann im Grundverzeichnis des Simulators nachfolgender Befehl ausgeführt werden, um eine einfache Simulation zu starten:
 
 \begin{verbatim}
 poetry run python -m simulator
@@ -247,7 +247,7 @@ options:
 \end{verbatim}
 \end{footnotesize}
 
-Dies gibt uns Hinweise über alle Möglichen Aktionen. Die wichtigsten nachfolgend erklährt:
+Dies gibt uns Hinweise über alle möglichen Aktionen. Die wichtigsten nachfolgend erklärt:
 
 \begin{itemize}
     \item \verb|--random| ermöglicht das automatisch generieren von Hindernissen.
@@ -285,8 +285,8 @@ traversing the graph took 84.728 seconds
 
 Bei erfolgreichem traversieren des Graphen wird am Ende den gesamten Pfad sowie die benötigte Zeit dafür ausgegeben.
 
-Der Verlauf kann auch im Grafischen User Interface verfolgt werden. Dabei sind in Farbe die Hindernisse welche bereits erkennt worden sind. Sowie schwarz der Pfad der bekannt ist. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind.
-Die Anzeige aktualisiert sich in Echtzeit.
+Der Verlauf kann auch im Grafischen User Interface verfolgt werden. Dabei sind in Farbe die Hindernisse welche bereits erkannt worden sind. Sowie schwarz der Pfad, der bekannt ist. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind.
+Die Anzeige aktualisiert sich stetig.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{assets//informatik-prototyp//simulator/simulator-run.png}
@@ -309,8 +309,8 @@ Dies haben wir nun mit nachfolgenden Optionen durchgeführt:
   \item Zielknoten: A, B oder C
 \end{itemize}
 
-Mit allen möglichen Optionen wurden so 100'000 Durchläufe simuliert.
-Für uns ist dabei wichtig, dass wir unter einer Laufzeit von 4 Minuten stehen, egal welcher Graph mit welchen Hindernissen wir Traversieren müssen.
+Mit allen möglichen Optionen wurden so 4'215'593 verschieden Graphen erstellt und die Traversierung dieser simuliert.
+Für uns ist dabei wichtig, dass wir unter einer Laufzeit von ca. 2 Minuten stehen, egal welcher Graph mit welchen Hindernissen wir traversieren müssen.
 
 Nachfolgend dazu die Auswertung dieser Durchläufe:
 
