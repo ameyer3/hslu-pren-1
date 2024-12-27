@@ -27,9 +27,9 @@ Folgende Komponenten für das Konzept wurden mithilfe der Technologierecherche (
 \label{table:mk-all}
 \end{table}
 
-Es ist geplant einen Roboter in in Form eines freien Ploygons zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter mit einem Greifer mit flexiblen Backen anheben. Dies ist ersichtlich in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld}.
+Es ist geplant einen Roboter in in Form eines freien Ploygons zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter dank einem Greifer mit flexiblen Backen anheben. Dies ist ersichtlich in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld}.
 
-Die Steuerung wird auf einem \acrshort{tinyk22} laufen. Die Distanz zu den Objekten wird mit Ultraschall erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden mit \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Schalter vom Benutzer ausgewählt.
+Die Steuerung wird auf einem \acrshort{tinyk22} betrieben. Die Distanz zu den Objekten wird mittels einem Ultraschallsensor erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden durch \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Drehschalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
 
 Die Bildverarbeitung und Navigation werden in Python geschrieben und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
@@ -119,7 +119,7 @@ Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss 
 
 Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt \acrshort{orb} um welchen es sich handelt.
 
-Dadurch dass \acrshort{orb} die Merkmal der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
+Dadurch dass \acrshort{orb} die Merkmale der Buchstaben detektiert, ist es nicht nötig, die Rotation der Buchstaben zu beachten. Unabhängig von welcher Richtung der Roboter den Zielknoten fotografiert, kann der Buchstabe erkannt werden.
 
 Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen Linien dargestellt, wie \acrshort{orb} die bekannten Merkmale (jeweils linkes Bild) in den zu analysierenden Bildern (jeweils rechtes Bild) findet.
 
@@ -178,12 +178,12 @@ Alle Hindernisse werden intern gespeichert indem die jeweiligen Kanten höher ge
 \subsubsection{Hindernisse bewegen}
 \label{subsubsection:Hindernisse bewegen}
 
-Um ein vorhandenes Hindernis zu bewegen wird ein Mechanismus zum Anheben (nachfolgend Greifer genannt) und das Fahrzeug selbst zum verschieben des Hindernisses verwendet.
+Um ein vorhandenes Hindernis zu bewegen wird ein Mechanismus zum Anheben nachfolgend Greifer genannt verwendet. Nach dem Anheben bewegt sich der Roboter und setzt das Hindernis an der alten Position ab.
 Mit nur einem Motor wird das Hindernis eingeklemmt, zentriert und angehoben. Dieser Vorgang und der Aufbau des Greifers wird in folgendem Kapitel erläutert.\\
 
  Die gezeigten Abbildungen des Greifers stammen von einem Prototyp und stellen nicht das finale Design dar. Sie dienen lediglich zur Veranschaulichung der Funktionsweise. Die Dimensionen des Gestänges sowie die Positionen der Lagerstellen sollen für die finale Variante beibehalten werden.\\
  \\
-In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welches das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb. \ref{fig:obstacle_clamping_concept}). 
+In der Nutzwertanalyse (Anhang \ref{nutzwertanalyse}) hat man sich zum Anheben des Hindernisses für ein Klemm-Design entschieden, welcher das Hindernis oben an der längsten Kante an 3 Punkten einspannt (siehe Abb. \ref{fig:obstacle_clamping_concept}). 
 
 
 \begin{figure}[H]
@@ -204,11 +204,11 @@ Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen 
 \label{fig:gripper_components}
 \end{figure}
 
-Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt sein (der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp noch manuell bedient wird). Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird (nur die Montagepunkte der Feder sind in der Abbildung \ref{fig:gripper_components} ersichtlich). 
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt. Der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp anfangs von Hand bedient wird. Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird. Abgebildet sind nur die Montagepunkte der Feder. \ref{fig:gripper_components} ersichtlich). 
 
 \newpage
 
-Dreht der Servomotor im Uhrzeigersinn, so schwingen Greifarm und Greifbacke nach oben weg. Der Greifer ist geöffnet (Abb. \ref{fig:gripper_opening_side}). So kann das Farzeug auf das Hindernis zu fahren, bis dieses die zwei Spannbacken berührt. An einer der Spannbacken wird ein Endschalter montiert sein (auf den Abbildungen nicht vorhanden), welcher erkennt, wann das Hindernis nahe genug ist.\\
+Dreht der Servomotor im Uhrzeigersinn, so schwingen Greifarm und Greifbacke nach oben weg. Der Greifer ist geöffnet (Abb. \ref{fig:gripper_opening_side}). So kann der Roboter auf das Hindernis zu fahren, bis dieses die zwei Spannbacken berührt. An den Spannbacken wird je ein Endschalter montiert, welcher erkennt, wann das Hindernis nahe genug ist und anschliessend den Hebeprozess startet. Dieser Endschlater ist auf der (Abb. \ref{fig:gripper_opening_side}) nicht ersichtlich. \\
 \\
 Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt die Greifbacke zurück, bis sie in Berührung mit dem Hindernis kommt. Dadurch wird das Hindernis gegen die zwei Spannbacken gedrückt, welche wiederum durch die Vorspannung der Feder gegen das Hindernis drücken. Das Hindernis wird eingeklemmt (Abb. \ref{fig:gripper_gripping_side}).\\
 \\
@@ -238,7 +238,7 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
  
 Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.\\
 
-Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert.
+Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Unltraschall sensor der das Hindernis erkannt hat. 
 
 \begin{figure}[H]
 \centering
@@ -248,7 +248,7 @@ Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernis
 \end{figure}
 
  Mit einem Ultraschall-Sensor soll das Vorhandensein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
-Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug nachdem ein Hindernis mittels Ultraschall entdeckt wurde um 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug wiederum um 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug nachdem ein Hindernis mittels Ultraschall entdeckt wurde 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 
 \subsection{Fortbewegung}
