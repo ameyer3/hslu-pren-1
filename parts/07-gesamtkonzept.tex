@@ -238,7 +238,7 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
  
 Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.\\
 
-Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Unltraschall sensor der das Hindernis erkannt hat. 
+Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Ultraschallsensor der das Hindernis erkannt hat und den Prozess einleitet. 
 
 \begin{figure}[H]
 \centering
@@ -253,25 +253,25 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung}
 
-Das Fahrzeug wird mit zwei seperat angetriebenen Räder angetrieben. Die Motoren besitzen Encoder, somit kann man genau feststellen welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \acrshort{tinyk22} werden Distanz und Drehwinkel mitgeteilt, wodurch dann die Motoren angesteuert werden können.
+Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Die DC-Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden.  Dadurch kann genau festgestellt werden welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \acrshort{tinyk22}, der die Motoren ansteuert,  werden Distanz und Drehwinkel mitgeteilt.
 
 \subsection{Linienerkennung}
 
-Mit einem Array von Phototransistoren und Kondensatoren/Widerstände misst man die Entladezeit mittels Mikrocontroller und der Input Capture Funktion. Der Liniensensor dient als Unterstützung damit man die Linie nicht verlässt während dem Fahren. Jedoch ist das Ziel den Robotor gerade vor der Linie zu positionieren, so dass der Liniensensor theoretisch nicht gebraucht wird während des Fahrens. Ein weiterer Nutzen benötigt man um zu prüfen ob man auf einem Knoten steht oder nicht.
+Mit einem Array von Phototransistoren,  Kondensatoren und Widerständen misst man die Entladezeit mittels Mikrocontroller und der Input Capture Funktion. Der Liniensensor dient als Unterstützung damit man die Linie nicht verlässt während dem Fahren. Jedoch ist das Ziel den Robotor gerade vor der Linie zu positionieren, so dass der Liniensensor theoretisch nicht gebraucht wird während des Fahrens. Ein weiterer Nutzen benötigt man um zu prüfen ob man auf einem Knoten steht oder nicht.
 
 \subsection{Distanzsensor}
 
-Um die Distanz zwischen einem Fahrzeug und Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstoss mit einer Pylone verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurde.
+Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstoss mit einer Pylone verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurde.
 
 \subsection{Wegfindung}
 
-Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Diese wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, welche die Zielführung beeinflussen kann.
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Dieser wird zum Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat aktualisiert. 
 
-Zusätzlich zum zukünftigen Pfad, wird auch der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und immer noch weiss, wo er sich befindet.
+Zusätzlich zum zukünftigen Pfad, wird der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird im Fehlerzustand, auf den letzten Knoten zurückzufahren und dabei die Orientierung behält.
 
 \subsection{Kameraposition}
 
-Die Kamera wird in einer Höhe von 22.5cm und einem Winkel von 56\textdegree\ montiert. Die Position ist fix, das heisst wir benötigen keine schwenkbare Kamera. Dies Kameraposition ist ersichtlich in der folgenden Grafik \ref{fig:camera-position-concept}.
+Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textdegree\ montiert. Die Position ist fix, das heisst wir benötigen keine schwenkbare Kamera. Dies Kameraposition ist ersichtlich in der folgenden Grafik \ref{fig:camera-position-concept}.
 Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
 
 \begin{figure}[H]
