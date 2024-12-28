@@ -309,25 +309,19 @@ Dies haben wir nun mit nachfolgenden Optionen durchgeführt:
   \item Zielknoten: A, B oder C
 \end{itemize}
 
-Mit allen möglichen Optionen wurden so 4'215'593 verschieden Graphen erstellt und die Traversierung dieser simuliert.
+Mit allen möglichen Optionen wurden so 4'215'593 verschiedene Graphen erstellt und die Traversierung dieser simuliert.
 Für uns ist dabei wichtig, dass wir unter einer Laufzeit von ca. 2 Minuten stehen, egal welcher Graph mit welchen Hindernissen wir traversieren müssen.
 
 Nachfolgend dazu die Auswertung dieser Durchläufe:
 
 \begin{figure}[H]
-  \centering\includegraphics[width=0.75\linewidth]{assets/informatik-prototyp/simulator/max_seconds.png}
-  \caption{Maximale Laufzeit}
-  \label{fig:simulation-run-max-seconds}
+  \centering\includegraphics[width=\linewidth]{assets/informatik-prototyp/simulator/simulations_chart_sm.png}
+  \caption{Simulierte Laufzeiten}
+  \label{fig:simulation-run-chart}
 \end{figure}
 
-\begin{figure}[H]
-  \centering\includegraphics[width=0.75\linewidth]{assets/informatik-prototyp/simulator/mean_seconds.png}
-  \caption{Durchschnittlich Laufzeit}
-  \label{fig:simulation-run-mean-seconds}
-\end{figure}
-
-Wie zu sehen ist, brauchen wir im worst case ungefähr 185 Sekunden für das Traversieren. 
-Die Durchschnittszeit ist jedoch viel besser und konstant unter 60 Sekunden.
+Wie zu sehen ist, braucht der Roboter im worst case ungefähr 200 Sekunden für das Traversieren. Welches immernoch unter den geforderten Muss-Anforderungen von 240 Sekunden ist. 
+Viel interessanter ist jedoch die durchschnittliche Zeit. Diese fällt konstant unter 60 Sekunden aus.
 Somit können wir davon ausgehen, dass unser Roboter mit der aktuellen Strategie den Graphen problemlos in der geforderten Zeit erfolgreich traversieren kann.
 
 TODO HOW YO RUN SIMULATOR WITH ALL THE PARAMS
