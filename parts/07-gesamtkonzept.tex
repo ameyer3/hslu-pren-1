@@ -287,7 +287,7 @@ Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{ht
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
-Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im zentralen Punkt steht der Mikrocontroller welcher ein \acrshort{tinyk22} ist. Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Zudem ist eine Verbindung über \acrfull{uart} zum Raspberry Pi aufgebaut um die Daten der Bilderkennung zu erhalten. Die Stromüberwachung sorgt dafür das keine Überlast entsteht und so die Bauteile beschädigt werden. Die Pfeile zwischen Komponenten und Mikrocontroller zeigen die Aktion die stattfinden. 
+Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \acrshort{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
 
 
 
