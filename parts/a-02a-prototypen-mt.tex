@@ -101,7 +101,7 @@ Bei den Tests am Prototyp II sollen die Geschwindigkeit des Anhebevorgangs und d
 \subsubsection{Greifer Prototyp II}
 \label{subsubsection:gripper-prototype-2}
 
-Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \ref{subsubsection:gripper-prototype-1}). Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Anhang \textbf{REF Auslegung} vorausgelegt und durch den Greifer Prototyp I validiert wurde. Mit zwei an den Klemmbacken montierten Endschaltern soll der Prototyp II bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
+Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \ref{subsubsection:gripper-prototype-1}). Folgende Anpassungen wurden vorgenommen: Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Anhang \textbf{REF Auslegung} vorausgelegt und durch den Greifer Prototyp I validiert wurde. An den Klemmbacken wurden zwei Endschaltern montiert. Sie sollen bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
 
 \textbf{Aufbau}
 
@@ -112,7 +112,7 @@ Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \
 \label{fig:gripper-prototype-2-trimetric}
 \end{figure}
 
-Der Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses derselbe (Abbildung \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \ref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welch verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde(Abb. \ref{fig:jaw_iteration}.
+Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses derselbe (Abbildung \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \ref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde(Abb. \ref{fig:jaw_iteration}.
 
 \begin{figure}[H]
 \begin{subfigure}{0.49\textwidth}
@@ -126,12 +126,12 @@ Der Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur E
 \label{fig:jaw_new_trimetric}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
-\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_alt_schnitt.png}
+\includegraphics[width=0.8\textwidth]{assets/greifer-prototyp/Backe_alt_schnitt.png}
 \caption{Anschlagwinkel Prototyp I}
 \label{fig:jaw_old_section}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
-\includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_neu_schnitt.png}
+\includegraphics[width=0.8\textwidth]{assets/greifer-prototyp/Backe_neu_schnitt.png}
 \caption{Anschlagwinkel Prototyp II}
 \label{fig:jaw_new_section}
 \end{subfigure}
@@ -139,6 +139,23 @@ Der Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur E
 \label{fig:jaw_iteration}
 \end{figure}
 
+Der Servomotor des Greifers wird mit einem Arduino Nano Mikrokontroller gesteuert. Wenn einer der beiden Endschalter an den Backen durch Berührung mit dem Hindernis betätigt wird, wird der Anhebevorang ausgelöst. Der Servomotor dreht um ca. 90\textdegree,  
+um Das Hindernis anzuheben. Wird ein am Mikrokontroller angeschlossener Taster gedrückt, wird das Hindernis wieder abgesetzt. Alle Tests werden auf dem Fliesenboden der Mensa durchgeführt, wo in PREN2 der Wettkampf stattfinden wird.\\
+
+\textbf{Ziele}
+
+Mit dem Prototyp II sollen folgende Anforderungen getestet werden(Ergebnisse in Tabelle \textbf{REF}):
+
+\begin{enumerate}
+    \item Der Anhebe- und Absetztvorgang dauert jeweils nicht länger als 2.5 Sekunden.
+    \item Der Servomotor kann das Hinderniss zuverlässig anheben (50 Testzyklen)
+    \item Der Servomotor fährt die Vorgegebenen Winkel zuverlässig an ($\pm$ 2\textdegree unter Last in 50 Testzyklen)
+    \item Das Haltemoment des Servomotors ist ausreichend (Servomotor muss Hinderniss min. 2min in Angehobenem Zustand halten)
+    \item Das Hindernis löst die Endschalter aus ohne dabei verschoben zu werden (50 Testzyklen)
+    \item Das Hindernis löst die Endschalter bei bis zu 15\textdegree  Schrägstellung aus, ohne dabei verschoben zu werden (50 Testzyklen unter verschiedenen Winkeln)
+\end{enumerate}
+
+Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und erfüllt wurden, hier nicht mehr aufgeführt sind.
 \subsubsection{Fahrwerk}
 
 Auf Basis des Gesamtkonzepts wurde anschliessend ein Prototyp für das Fahrwerk konstruiert. Die Baugruppe Prototyp Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten.  Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet das verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibeler Prototyp ist Ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
