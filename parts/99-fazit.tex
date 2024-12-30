@@ -9,23 +9,22 @@ Als letztes werden die gesammelten Erfahrungen bezüglich der Arbeiten und der Z
 
 Im Rahmen von \acrshort{pren1} wurde das Konzept des Roboters als erstes in Teilfunktionen zerlegt, daraus wurde eine Technologierecherche duchgeführt. Aus den Recherchen wurden mithilfe von morphologischen Kasten für die einzelnen Teilbereiche Lösungsvarianten erarbeitet. Diese wurden mit Nutzerwertanalysen bewertet. Die Varianten, die am besten abschlossen, wurden im nächsten Schritt mit Prototyping verfeinert und getestet. Daraus wurde ein Gesamtkonzept erarbeitet und dokumentiert. Ebenfalls wurden 3 physische Prototypen erstellt, die einzelne Teilbereiche des Roboters darstellen. Diese dienen in \acrshort{pren2} dazu, dass damit parallel entwickelt werden kann. Die drei Prototypen sind ein Greifer, ein Kameraturm und ein Fahrwerk.
 
-Das Konzept unseres Roboters hat drei Räder, wovon zwei mit Motoren angetrieben wird. Diese dienen zur Fortbewegung und zur Lenkung. Fototransistoren bilden den Liniensenor.
-Die Hebervorrichtung, die der Roboter braucht, um bewegliche Hindernisse zu beseitigen, wird mit einem Greifer umgesetzt. Mit einem Ultraschallsensor wird die anzuhebende Barriere erkannt. 
-Hindernisse werden mit einer Kamera fotografiert und mit Bilderkennung erkannt. So weiss der Roboter, welche Wege befahrbar sind. Die Navigation wurde in einem Simulator simuliert.
+Das Konzept unseres Roboters hat drei Räder, wovon zwei mit Motoren angetrieben werdem. Diese dienen zur Fortbewegung und zur Lenkung. Die Linienerkennung erfolgt mittels Fototransistoren. Die Hebervorrichtung, die der Roboter braucht, um bewegliche Hindernisse zu beseitigen, wird mit einem Greifer umgesetzt, der zum Klemmen und Anheben einen den selben Servomotor besitzt. Mit einem Ultraschallsensor wird die anzuhebende Barriere erkannt. 
+Hindernisse werden mit einer Kamera fotografiert und mit Bilderkennung analysiert. So weiss der Roboter, welche Wege befahrbar sind. Die Navigation wurde in einem Simulator getestet.
 
 Somit wurde das Design für den Roboter erfolgreich erstellt und getestet. Mit diesem Design wird der Roboter in der Lage sein, die Anforderungen, die zu Beginn des Projektes erarbeitet wurden (siehe Kapitel \ref{anforderungliste}), zu erfüllen.
 
 \subsubsection{Ausblick PREN 2}
 
-Aus dem erstellten Design wird nun ein Roboter gebaut. Dabei werden die Einzelteile erstellt und möglichst früh zusammengeführt, um das Zusammenspiel aller Komponenten testen zu können.
+Aus dem erstellten Design wird nun ein Roboter gebaut. Dabei werden die Einzelteile erstellt und möglichst früh zusammengeführt, um das Zusammenspiel aller Komponenten zu testen.
 
 \textbf{Ausblick Mechanik}
 
-TODO MECHANIK offene Punkte und Ausblick
+In einem nächsten Schritt in der Anfangsphase von \acrshort{pren2} werden die Erkenntnisse aus den Tests mit den Prototypen aus \acrshort{pren1} ausgewertet. Auf Basis dieser Erkenntnisse wird ein finaler Roboter entwickelt, der alle Teilfunktionen vereint.   
 
 \textbf{Ausblick Steuerung}
 
-Die beim Prototyping getesteten Hardware Komponenten müssen nun in der Software implementiert werden, sodass die gesamte Steuerung entstehen kann. Die Schwierigkeit wird dabei sein, die Daten richtig zu verarbeiten wie auch die Kommunikation zwischen Mikrocontroller und der Bilderkennung herzustellen.
+Beo der getesteten Hardware Komponenten  muss in einem nächsten Schritt die Software implementiert werden, sodass die Steuerung für das Finale Fahrzeug aufgebaut werden kann. Die Schwierigkeit wird dabei sein, die Daten richtig zu verarbeiten wie auch die Kommunikation zwischen Mikrocontroller und der Bilderkennung herzustellen.
 
 \textbf{Ausblick Navigation}
 
@@ -43,13 +42,13 @@ Die erarbeiteten Risken werden in \acrshort{pren2} weiterhin berücksichtigt. Da
     \item Risiko 12: Der Roboter wählt einen falschen Pfad, weil die Hinderniserkennung fehlerhaft ist.
 \end{itemize}
 
-Zusätzlich kommt noch das Risiko hinzu des Zeitdrucks. Die Einzelteile müssen parallel erstellt werden und möglichst früh kombiniert werden, da in diesem Schritt wahrscheinlich noch viele Fehler entdeckt werden, die behoben werden müssen. 
+Zusätzlich wächst der Zeitdruck. Die Einzelteile müssen parallel erstellt werden und möglichst früh kombiniert werden, da in diesem Schritt wahrscheinlich noch viele Fehler entdeckt werden, die behoben werden müssen. 
 
 Ausserdem wird ein Studierender aus der Maschinentechnik das Team am Ende von \acrshort{pren1} verlassen und eine neue Person wird in \acrshort{pren2} beitreten. Dabei entsteht das Risiko, dass Wissen verloren geht. Diesem wurde so gut wie möglich entgegen gewirkt, durch regelmässigen Wissensaustausch und Dokumentation von den Arbeiten des Studierenden, der das Team verlässt.
 
 \subsection{Kosten}\label{kosten}
 
-Insgesamt stehen für PREN 1 und PREN 2 500.- zur Verfügung. Im folgenden wird aufgezeigt wie viel davon bereits verwendet wurde und wie viel voraussichtlich noch nächstes Semester benötigt wird.
+Insgesamt stehen für \acrshort{pren1} und \acrshort{pren2} 500.- zur Verfügung. Im folgenden wird aufgezeigt wie viel davon bereits verwendet wurde und wie viel voraussichtlich noch nächstes Semester benötigt wird.
 
 - Kosten
 - angefallene Kosten in PREN1
@@ -121,19 +120,19 @@ Buzzer in PREN 2& 1 & CHF 6.90 & CHF 6.90\\
 
 \subsection{Lessons Learned}
 
-Wir hatten die Möglichkeit von Grund auf ein Projekt zu planen. Wir haben gelernt eine Aufgabenstellung zu analysieren und mithilfe eines morphologischen Kastens Lösungsvarianten zu finden und die beste davon zu bestimmen. Durch das viele Prototyping haben wir zum einen mehr über die jeweiligen Technologien gelernt und zum anderen haben wir gelernt organisiert unsere Ideen zu testen und aufgrund der Testresultate zu überarbeiten.
+Wir hatten als Team die Möglichkeit von Grund auf ein Projekt zu planen. Wir haben gelernt eine Aufgabenstellung zu analysieren und mithilfe eines morphologischen Kastens Lösungsvarianten zu finden und die beste davon zu bestimmen. Durch das viele Prototyping haben wir zum einen mehr über die jeweiligen Technologien gelernt und zum anderen haben wir gelernt organisiert unsere Ideen zu testen und aufgrund der Testresultate zu überarbeiten.
 
 \acrshort{pren1} war das erste interdisziplinäre Modul für uns. Dies stellte für uns eine Chance dar.
 
 Wir hatten die Möglichkeit Einblicke in andere Studiengänge zu erhalten. Das heisst, dass wir ein oberflächliches Verständnis für andere Kompetenzen erlangen konnten und ebenfalls unterschiedliche Herangehensweisen beobachten konnten.
-Die Herangehensweise, um eine Lösung für ein Problem zu finden, ist bei jeder Person anders. Jeder konnten klare Unterschiede zwischen den einzelnen Studiengängen beobachten.
+Die Herangehensweise, um eine Lösung für ein Problem zu finden, ist bei jeder Person anders. Es konnten klare Unterschiede zwischen den einzelnen Studiengängen beobachtet werden.
 Beispielsweise wurde in der Informatik bereits schnell mit dem Entwickeln begonnen, es gab nur eine kurze Designphase, jedoch gab es in der Maschinentechnik grundsätzlich eine längere Designphase, bevor gebaut wurde.
 
 Durch diese unterschiedlichen Herangehensweisen konnten wir voneinander lernen.
 Wir wissen nun, was bei interdisziplinären Arbeiten zu erwarten ist und wir haben neue Arten gelernt, wie wir selber in Zukunft vorgehen können.
 
 Bereits ab sechs Teammitgliedern kann es chaotisch werden, vor allem wenn diese recht klar an unterschiedlichen Punkten arbeitet.
-wir haben zu Beginn eine Projektleiterin gewählt, um eine Person zu haben, welche den Überblick über das Gesamtprojekt behält
+Wir haben zu Beginn eine Projektleiterin gewählt, um eine Person zu haben, welche den Überblick über das Gesamtprojekt behält
 Dies hat bei der Organisation sehr geholfen. Ebenfalls war es sehr hilfreich, dass wir uns jede Woche getroffen und ausgetauscht haben. Die Kommunikation ist sehr wichtig in Projektarbeiten und dies ist uns gelungen.
 
 Wir sind stolz auf unser finales Design, unsere neu erworbenen Kompetenzen und auf unsere Zusammenarbeit im Team. Während dem letzten Semester haben wir vieles gelernt und wir fühlen uns bereit für \acrshort{pren2}.
