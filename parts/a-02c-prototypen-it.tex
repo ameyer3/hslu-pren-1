@@ -472,21 +472,22 @@ Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
     \item Mit Rotation der Buchstaben umgehen
 \end{itemize}
 
-TODO they are all very different size
-
 \begin{figure}[H]
 \begin{subfigure}{0.35\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/a.png} 
+\centering
+\includegraphics[height=30mm]{assets/informatik-prototyp/opencv/target_node_detection/a.png} 
 \caption{Muster A}
 \label{fig:image-a}
 \end{subfigure}
 \begin{subfigure}{0.2\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/b.png} 
+\centering
+\includegraphics[height=30mm]{assets/informatik-prototyp/opencv/target_node_detection/b.png} 
 \caption{Muster B}
 \label{fig:image-b}
 \end{subfigure}
 \begin{subfigure}{0.33\textwidth}
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/c.png} 
+\centering
+\includegraphics[height=30mm]{assets/informatik-prototyp/opencv/target_node_detection/c.png} 
 \caption{Muster C}
 \label{fig:image-c}
 \end{subfigure}
@@ -567,7 +568,7 @@ Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \r
         Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline \hline
         EasyOCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         EasyOCR & Buchstabe B erkennen & B wird erkannt & B erkannt &  Test erfüllt \\ \hline
-        EasyOCR & Buchstabe C erkennen & C wird erkannt & ( \enquote{Klammer auf} erkannt & Test nicht erfüllt \\ \hline \hline
+        EasyOCR & Buchstabe C erkennen & C wird erkannt & ( ``Klammer auf'' erkannt & Test nicht erfüllt \\ \hline \hline
         ORB & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe B erkennen & B wird erkannt & B erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe C erkennen & C wird erkannt & C erkannt & Test erfüllt \\ \hline
@@ -589,13 +590,23 @@ Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werde
 
 \subsection{Physische Prototypen}\label{prototyp-products}
 
-In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des Roboters in \acrshort{pren2} parallelisieren werden. Die Prototypen koennen entweder einzeln verwendet werden oder schnell zusammengefuegt werden und in Kombination miteinander genutzt werden.
+In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des Roboters in \acrshort{pren2} parallelisieren werden. Die Prototypen können entweder einzeln verwendet werden oder schnell zusammengefügt werden und in Kombination miteinander genutzt werden.
 
 \subsubsection{Navigation}
 
-Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, die stabil die Kamera in der definierten Position befestigt hat. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Mitigationsmassnahme, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
+Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, welche die Kamera stabil in der definierten Position befestigt. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Risikominderung, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
 
-BILD
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/camer_tower_1.png} 
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/camer_tower_2.png} 
+\end{subfigure}
+\caption{Prototyp Kamera Turm}
+\label{fig:prototype-camera-tower}
+\end{figure}
 
 \subsubsection{Fortbewegung}
 
@@ -608,13 +619,14 @@ BILD
 Es wurde ein Greifer gebaut, der an einen Motor angeschlossen ist. Dieser wird verwendet um das Hindernis anzuheben.
 
 \begin{figure}[H]
-\begin{subfigure}{0.33\textwidth}
+\centering
+\begin{subfigure}{0.32\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_offen.jpeg} 
 \end{subfigure}
-\begin{subfigure}{0.328\textwidth}
+\begin{subfigure}{0.32\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_klemmen.jpeg} 
 \end{subfigure}
-\begin{subfigure}{0.33\textwidth}
+\begin{subfigure}{0.32\textwidth}
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_greifer_2_anheben.jpeg} 
 \end{subfigure}
 \caption{Prototyp Greifer}
