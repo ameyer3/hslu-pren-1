@@ -144,7 +144,7 @@ um Das Hindernis anzuheben. Wird ein am Mikrokontroller angeschlossener Taster g
 
 \textbf{Ziele}
 
-Mit dem Prototyp II sollen folgende Anforderungen getestet werden(Ergebnisse in Tabelle \textbf{REF}):
+Mit dem Prototyp II sollen folgende Anforderungen getestet werden (Ergebnisse in Tabelle \ref{tab:test-gripper-prototype-2}):
 
 \begin{enumerate}
     \item Der Anhebe- und Absetztvorgang dauert jeweils nicht länger als 2.5 Sekunden.
@@ -155,7 +155,52 @@ Mit dem Prototyp II sollen folgende Anforderungen getestet werden(Ergebnisse in 
     \item Das Hindernis löst die Endschalter bei bis zu 15\textdegree  Schrägstellung aus, ohne dabei verschoben zu werden (50 Testzyklen unter verschiedenen Winkeln)
 \end{enumerate}
 
-Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und erfüllt wurden, hier nicht mehr aufgeführt sind.
+Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und erfüllt wurden, hier nicht mehr aufgeführt sind.\\
+
+\textbf{Messungen und Beobachtungen}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|c|X|X|X|l|}
+        \hline
+        \textbf{Index} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Messergebnisse} & \textbf{Bewertung} \\
+        \hline \hline
+        1 & Anhebe- und Absetztdauer & Vorgang dauert jeweils \(\leq 2.5\) Sekunden & 1.0 \pm0.1 Sekunden & Test erfüllt \\
+        \hline
+        2 & Zuverlässiges Anheben & 50 Testzyklen erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\
+        \hline
+        3 & Zuverlässige Winkelansteuerung & max. \pm 2\textdegree\  unter Last in 50 Testzyklen & \pm 0.5\textdegree & Test erfüllt \\
+        \hline
+        4 & Ausreichendes Haltemoment & Hindernis bleibt min. 2min angehoben & \geq 15min & Test erfüllt \\
+        \hline
+        5 & Auslösen der Endschalter & Hindernis rutscht nicht, Endschalter lösen korrekt aus (50 Zyklen) & 38/50 erfolgreich& Test NICHT erfüllt \\
+        \hline
+        6 & Auslösen der Endschalter bei Schrägstellung & Hindernis rutscht nicht bei bis zu 15\textdegree\ Schrägstellung, Endschalter lösen korrekt aus (50 Zyklen) & 31/50 erfolgreich & Test NICHT erfüllt \\
+        \hline
+\end{tabularx}
+    \caption{Testergebnisse Greifer Prototyp II}
+\label{tab:test-gripper-prototype-2}
+\end{table}
+
+\textbf{Fazit}\\
+
+Bis auf die Anforderungen Bezüglich der Hindernisserkennug mittels Endschalter (Anforderungen 5\&6) wurden alle Testbedingungen erfüllt. Die Endschalter, welche bei Berührung mit dem Hindernis den Hebevorgang auslösen sollen, müssen mit einer gewissen Kraft gedruckt werden um betätigt zu werden. Diese Kraft kann je nach Anfahrwinkel und Geschwindigkeit des Greifers bezüglich dem Hindernis nicht überwunden werden. Das Hindernis wird dann über den relativ glatten Fliesenboden geschoben, bevor die Schalter auslösen. Dabei wird das Hindernis zwar angehoben, würde aber beim Absetzten nicht mehr in seiner Ursprünglichen Position landen.
+
+Die kleineren Probleme welche im Fazit zum Prototyp I (Kapitel \ref{subsubsection:gripper-prototype-1}) aufgeführt wurden, konnten erfolgreich behoben werden.
+
+\textbf{Weiteres Vorgehen}\\
+
+Als nächstes müssen die oben aufgeführten Probleme mit den Endschaltern behoben werden. Folgende Ansätze sollen in Betracht gezogen werden:
+\begin{itemize}
+    \item Kleinere bzw. Endschalter mit geringerem Auslösegewicht verbauen
+    \item Die Hebel an den Endschaltern verlängeren, um die nötige Kraft zur Auslösung zu reduzieren
+    \item Einen Zusätlichen Ultraschallsensor am Heck des Fahrzeugs verbauen um die Distanz des Hindernisses festzustellen
+    \item Auf Erkennung des Hindernisses am Heck des Fahrzeugs verzichten und stattdessen durch die Encoder der Antriebsmotoren die Korrekte Ausrichtung ab Erkennung des Hindernisses an der Vorderseite des Fahrzeuges Hardcoden.
+\end{itemize}
+
+Wenn die Probleme mit den Endschaltern behoben sind, soll der Greifer in das Fahrzeug implementiert werden. Hierbei können alle Komponenten des Prototyp II, abgesehen vom Gestell an welchem dieser montiert ist, übernommen werden. Das spart Zeit, Ressourcen und ist nachhaltiger als die Teile neu zu Fertigen.
+
 \subsubsection{Fahrwerk}
 
 Auf Basis des Gesamtkonzepts wurde anschliessend ein Prototyp für das Fahrwerk konstruiert. Die Baugruppe Prototyp Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten.  Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet das verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibeler Prototyp ist Ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
