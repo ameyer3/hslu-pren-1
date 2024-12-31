@@ -84,11 +84,11 @@ Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden Ber
 Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert ist, ist hier eingefügt.
 
 \begin{verbatim}
-C: [{D: [60, [30, 120]}, {B: [240, [120, 30]}, {H: [60, [30, 30]}]
+C: [{D: [0, [30, 120]}, {B: [240, [120, 30]}, {H: 300, [30, 30]}]
 \end{verbatim}
 
-Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [60, [30, 120]}'| im YAML File. 
-Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 60\textdegree\ von der Kante links aus. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Von der linksliegenden Kante aus, darf kann sich die Kante zu Knoten D also im Bereich von 60\textdegree-30\textdegree\ und 60\textdegree+120\textdegree, sprich 30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
+Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. 
+Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 0\textdegree. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
 \centering
@@ -223,19 +223,23 @@ Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt 
 Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannarm im Gegenuhrzeigersinn mit, da er über das Hindernis vom Greifarm bewegt wird. Die Rotation des Spannarms führt dazu, dass das Hinderniss angehoben wird (Abb. \ref{fig:gripper_lifting_side}). Gleichzeitig wird durch die Rotation des Spannarms die Zugfeder leicht verlängert. Somit wird die Klemmkraft auf das Hindernis erhöht und sichergestellt, dass dieses nicht aus dem Greifer rutscht.
 
 \begin{figure}[H]
-\begin{subfigure}{0.55\textwidth}
+\centering
+\begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Offen.png}
 \caption{öffnen}
 \label{fig:gripper_opening_side}
 \end{subfigure}
-\begin{subfigure}{0.55\textwidth}
+\begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Klemmen.png}
 \caption{klemmen}
 \label{fig:gripper_gripping_side}
 \end{subfigure}
-\begin{subfigure}{0.55\textwidth}
+\begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_side_Angehoben.png}
-\caption{aneheben}
+\caption{anheben}
 \label{fig:gripper_lifting_side}
 \end{subfigure}
 \caption{Ablauf Hindernis anheben}

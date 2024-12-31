@@ -22,19 +22,19 @@ Der Projektstrukturplan in Tabelle \ref{table:projektplan} beschreibt detaillier
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l  l l|}
+\begin{tabularx}{\textwidth}{|l l X|}
 \hline
   \textbf{Meilenstein} & \textbf{Datum} & \textbf{Beschreibung} \\
   \hline
-  Meilenstein 1  & 04. Oktober 2024 & \makecell{Projektplan, Skizzierung der Aufgabenstellung,\\ Technologierecherche, Anforderungsliste}\\
+  Meilenstein 1  & 04. Oktober 2024 & Projektplan, Skizzierung der Aufgabenstellung, Technologierecherche, Anforderungsliste\\
   \hline
-  Meilenstein 2  & 01. November 2024 & \makecell{Evaluation der Lösungsprinzipien, Auswahl der\\ optimalen Lösungeskombinationen}\\
+  Meilenstein 2  & 01. November 2024 & Evaluation der Lösungsprinzipien, Auswahl der optimalen Lösungeskombinationen\\
   \hline
-  Meilenstein 3  & 06. Dezember 2024 & \makecell{Freigabe des Gesamtkonzepts, Simulator Wegplanung, \\Dokumentation zu 80\% fertiggstellt}\\
+  Meilenstein 3  & 06. Dezember 2024 & Freigabe des Gesamtkonzepts, Simulator Wegplanung, Dokumentation zu 80\% fertiggstellt\\
   \hline
-  Meilenstein 4  & 10. Januar 2025 & \makecell{Schlussbericht, Präsentation}\\
+  Meilenstein 4  & 10. Januar 2025 & Schlussbericht, Präsentation\\
   \hline
-\end{tabular}
+\end{tabularx}
 \caption{Projektplan}
 \label{table:projektplan}
 \end{table}
@@ -46,7 +46,7 @@ In diesem Projekt sind die einzelnen Meilensteine vorgegeben. Aus diesem Grund w
 
 \subsection{Sprintplanung}
 
-In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein Sprintbacklog erstellt. Für den Sprintbacklog wurden die einzelnen Meilensteine aus dem Projektplan in Epics\footnote{https://www.atlassian.com/agile/project-management/epics} beschrieben. Zu den Epics wurden User Stories erstellt. Der Aufwand der einzelnen Stories wurde mit T-Shirt Grössen geschätzt. Die einzelnen T-Shirt Grössen werden wie folgt in eine Zeitdauer umgerechnet:
+In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein Sprintbacklog erstellt. Für den Sprintbacklog wurden die einzelnen Meilensteine aus dem Projektplan in Epics\footnote{\url{https://www.atlassian.com/agile/project-management/epics}} beschrieben. Zu den Epics wurden User Stories erstellt. Der Aufwand der einzelnen Stories wurde mit T-Shirt Grössen geschätzt. Die einzelnen T-Shirt Grössen werden wie folgt in eine Zeitdauer umgerechnet:
 
 \begin{table}[H]
 \centering
@@ -86,7 +86,7 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
 \hline
   \textbf{Nr.} & \textbf{Titel} & \textbf{Beschreibung} & \textbf{Size}\\
   \hline
-  1  & \textbf{Projektorganisation definieren} &&\\
+  1  & \textbf{Projektorganisation definieren} &  & \\
   \hline
   1.1  & Rollendefinition & Die Rollen Projektleiter und Werkstattverwantwortliche werden definiert. & S\\
   \hline
@@ -96,25 +96,25 @@ In den folgenden Kapiteln wurden für jeden Sprint Sprintziele definiert und ein
   \hline
   1.4 & Vorgehen definieren & Geeignete Projektmethode wird gewählt. & S\\
   \hline
-    1.5 & Risikomatrix erstellen & Risiken werden gesammelt und bewertet. & M\\
+  1.5 & Risikomatrix erstellen & Risiken werden gesammelt und bewertet. & M\\
   \hline
-  2 & \textbf{Aufgabenstellung klären} && \\
+  2 & \textbf{Aufgabenstellung klären} &  & \\
   \hline
-  2.1 & Anforderungsliste erstellen & Anforderungen, die der Roboter erfüllen muss sammeln& M \\
+  2.1 & Anforderungsliste erstellen & Anforderungen, die der Roboter erfüllen muss sammeln & M \\
   \hline
   2.2 & Aufgabenstellung skizzieren & Modellierunge der Aufgabe zum Verständnis. & S \\
   \hline
-  3 & \textbf{Projektplanung} && \\
+  3 & \textbf{Projektplanung} &  & \\
   \hline
   3.1 & Projektplan erstellen & Meilensteine definieren. & S \\
   \hline
   3.2 & Backlog erstellen & Product Backlog für alle Sprints erstellen. & M \\
   \hline
-  4 & \textbf{Lösungsvarianten erarbeiten} && \\
+  4 & \textbf{Lösungsvarianten erarbeiten} &  &  \\
   \hline
   4.1 & Teilfunktionen finden & Roboter in Teilfunktionen aufteilen & S \\
   \hline
-  4.2 & Technologierecherche & Recherche zu den einzelnen Teilfunktionen  durchführen. & L\\
+  4.2 & Technologierecherche & Recherche zu den einzelnen Teilfunktionen durchführen. & L \\
   \hline
  
 \end{tabularx}
@@ -257,9 +257,10 @@ In diesem Sprint gab es kein neues Risiko.
 
 \textbf{Sprintziel:}
 \begin{itemize}
-    \item Lösung und Gesamkonzept werden präsentiert
     \item Dokumentation wird fertiggestellt und abgegeben
+    \item Prototypen werden abgeschlossen
     \item Simulator fertigstellen
+    \item Beginn der Präsentation
 \end{itemize}
 
 \textbf{Sprintbacklog:} Der Sprintbacklog von Sprint 4 ist in Tabelle \ref{table:sprint4-backlog} dargestellt.
@@ -287,8 +288,6 @@ In diesem Sprint gab es kein neues Risiko.
   \hline
   4.1 & Präsentation vorbereiten & Gesamtkonzept zusammenfassen. & M \\
   \hline
-  4.2 &Präsentation halten & Gesamtkonzept präsentieren. & S \\
-  \hline
 \end{tabularx}
 \caption{Sprint 4 Backlog}
 \label{table:sprint4-backlog}
@@ -296,7 +295,7 @@ In diesem Sprint gab es kein neues Risiko.
 
 \textbf{Sprintreview}
 
-Die Dokumentation und der Simulator sind abgeschlossen und die Präsentation ist vorbereitet. Das Prorotyping wurde ebenfalls noch beenedet in den Teilen, die noch in Bearbeitung waren.
+Die Dokumentation und der Simulator sind abgeschlossen und die Präsentation ist in Vorbereitung. Das Prorotyping wurde ebenfalls noch beendet in den Teilen, die noch in Bearbeitung waren.
 
 \textbf{Sprint Retrospektive}
 
