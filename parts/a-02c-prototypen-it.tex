@@ -106,11 +106,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
     \begin{figure}[H]
         \centering
         \begin{subfigure}{0.25\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/image_taken_by_pi_camer_before_node.jpg}
         \caption{Originale Kamera Aufnahme eines Knotens}
         \label{fig:before-node}
         \end{subfigure}
         \begin{subfigure}{0.5\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/camera_position_before_node.jpg} 
         \caption{Kamera vor Knoten}
         \label{fig:before-node-camera}
@@ -125,11 +127,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \begin{figure}[H]
         \centering
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_before_transformation_corners.png} 
         \caption{Vier Punkte für Transformation}
         \label{fig:node-before-geometric-transform}
         \end{subfigure}
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_after_transformation.png} 
         \caption{Nach Transformation}
         \label{fig:node-after-geometric-transform}
@@ -141,11 +145,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \begin{figure}[H]
         \centering
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_after_transformation_masked.png} 
         \caption{Maskieren}
         \label{fig:node-masked}
         \end{subfigure}
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_detecting_center.png} 
         \caption{Mittelpunkt des Knoten detektieren}
         \label{fig:node-center}
@@ -157,11 +163,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \begin{figure}[H]
         \centering
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_masked.png} 
         \caption{Nur Kanten maskieren}
         \label{fig:edge-masked}
         \end{subfigure}
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_contours.png} 
         \caption{Kontur der Kanten zeichnen}
         \label{fig:edge-contours}
@@ -173,11 +181,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \begin{figure}[H]
         \centering
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/edge_detect_centers.png} 
         \caption{Mittelpunkte der Kanten berechnen}
         \label{fig:edge-center}
         \end{subfigure}
         \begin{subfigure}{0.4\textwidth}
+        \centering
         \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/angle_detection/node_with_edge_angles_annotated.png} 
         \caption{Winkel der Kanten}
         \label{fig:angle-lines}
@@ -306,12 +316,15 @@ Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, 
 Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und Hindernisse erkennt:
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.55\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/labeled-image-lines.png} 
 \caption{Bild mit Elementen + Linie markiert}
 \label{fig:labeled-image-lines}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/labeled-classes-lines.png} 
 \caption{Markierte Klassen mit Linie}
 \label{fig:line-classes-lines}
@@ -325,12 +338,15 @@ Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Kno
 Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/epoch}} trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{\url{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.}} erstellt, die zeigt, welche Elemente als was erkannt wurde.
 
 \begin{figure}[H]
-\begin{subfigure}{0.3\textwidth}
+\centering
+\begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/line-recognitions.png} 
 \caption{Erkanntes Bild mit Linien}
 \label{fig:image-recognition-with-lines}
 \end{subfigure}
-\begin{subfigure}{0.69\textwidth}
+\begin{subfigure}{0.59\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/conf-matrix-lines.png} 
 \caption{Confusion Matrix mit Linien}
 \label{fig:conf-matrix-lines}
@@ -346,12 +362,15 @@ Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in
 Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.55\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/labeled-image.png} 
 \caption{Bild mit Elementen markiert}
 \label{fig:labeled-image}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/labeled-classes.png} 
 \caption{Markierte Klassen}
 \label{fig:line-classes}
@@ -382,12 +401,15 @@ Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren rich
 Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barrieren:
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.55\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/label-cone-obstacle.png} 
 \caption{Bild mit Hindernissen markiert}
 \label{fig:labeled-image-obst}
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/classes-cone-obstacle.png} 
 \caption{Markierte Klassen}
 \label{fig:cone-obst-classes}

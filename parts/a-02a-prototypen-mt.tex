@@ -26,12 +26,15 @@ Der Prototyp wird manuell über einen Hebel bedient, welcher anstelle des Servom
 Die Lagerpunkte des Gestänges wurden für den Prototyp an ein Gestell aufgebracht (Abb. \ref{fig:gripper-frame-mounting-points}). So kann der Greifer unabhängig vom Fahrzeug getestet werden. Die Abstände zwischen den Lagerpunkten sowie zum Boden sollen für den finalen Greifer dieselben sein. Auch die Dimensionen des Gestänges sollen beibehalten werden (Abb. \ref{fig:gripper-linkage-dimensions}). Somit bleiben die von der Geometrie abhängigen Kräfte dieselben und Ergebnisse aus Prototypentests können auf spätere Iterationen übertragen werden. 
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.9\textwidth}
+\centering
 \includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_Dimensionen_Lagerpunkte.png}
 \caption{Gestell mit Lagerpunkten}
 \label{fig:gripper-frame-mounting-points}
 \end{subfigure}
 \begin{subfigure}{0.9\textwidth}
+\centering
 \includegraphics[width=\textwidth]{assets/greifer-prototyp/Greifer_Dimensionen_Arme.png}
 \caption{Dimensionen des Gestänges}
 \label{fig:gripper-linkage-dimensions}
@@ -66,7 +69,7 @@ Mit dem Prototyp sollen folgende Anforderungen getestet werden (Ergebnisse in Ta
 \begin{tabularx}{\textwidth}{|c|X|X|X|l|}
         \hline
         \textbf{Index} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Messergebnisse} & \textbf{Bewertung} \\
-        \hline \hline
+        \hline
         1 & Reibung in den Gelenken & Gelenke sind leichtgängig & Das Gestänge lässt sich leicht mit einem Finger bewegen & Test erfüllt \\ \hline
         2 & Kein Verklemmen des Gestänges & Keine overconstraints festgestellt & Das Gestänge verklemmt nicht & Test erfüllt \\ \hline
         3 & Hindernis wird angehoben & Hubhöhe $\geq$ 7.5 mm  &  9.3 $\pm$0.2 mm & Test erfüllt\\ \hline
@@ -115,22 +118,27 @@ Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \
 Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses, derselbe (Abb. \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \ref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde (Abb. \ref{fig:jaw_iteration}).
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.5\textwidth]{assets/greifer-prototyp/Backe_alt_trimetrisch.png}
 \caption{Klemmbacke Prototyp I}
 \label{fig:jaw_old_trimetric}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.95\textwidth]{assets/greifer-prototyp/Backe_neu_trimetrisch.png}
 \caption{Klemmbacke Prototyp II}
 \label{fig:jaw_new_trimetric}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.8\textwidth]{assets/greifer-prototyp/Backe_alt_schnitt.png}
 \caption{Anschlagwinkel Prototyp I}
 \label{fig:jaw_old_section}
 \end{subfigure}
 \begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.8\textwidth]{assets/greifer-prototyp/Backe_neu_schnitt.png}
 \caption{Anschlagwinkel Prototyp II}
 \label{fig:jaw_new_section}
@@ -165,7 +173,7 @@ Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und
 \begin{tabularx}{\textwidth}{|c|X|X|X|l|}
         \hline
         \textbf{Index} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Messergebnisse} & \textbf{Bewertung} \\
-        \hline \hline
+        \hline
         1 & Anhebe- und Absetztdauer & Vorgang dauert jeweils \(\leq 2.5\) Sekunden & 1.0 \pm0.1 Sekunden & Test erfüllt \\
         \hline
         2 & Zuverlässiges Anheben & 50 Testzyklen erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\
