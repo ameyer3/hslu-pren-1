@@ -55,7 +55,7 @@ Um alle ausgehenden Kanten und deren Winkel zu erkennen, wird der folgende Ablau
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
-Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so entzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln.
+Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so entzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 40, 68, 127]| erstellt werden.
 
 \begin{figure}[H]
 \centering
@@ -78,7 +78,10 @@ Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der K
 
 Die erhaltene Liste mit Winkeln wird nun verwendet, um mögliche fehlende Linien zu erkennen und die Winkel intern zu speichern. Die internen Winkel werden verwendet, um den Roboter richtig auszurichten, wenn dieser auf die nächste Linie fährt.
 
-Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph.
+Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die einzelne Knoten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0 \textdegree, eine Linie nach 3 Uhr ist 90 \textdegree, 6 Uhr ist 180 \textdegree und 9 Uhr ist 270 \textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurde zu übersetzen, damit er sich in echt richtig ausrichten kann. 
+
+TODO GRAFIK THAT SHOWS THIS OFFSET KIND OF BILD VON E, D, F MIT UHREN, DANN VON F NACH D MIT OFFSET 90 UM NACH E ZU GELANGEN INKLUSIVE YAML DIESER 3 KNOTEN MIT WINKELN
+
 Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden Bereiche definiert, in denen sich die Winkel befinden sollten.
 
 Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert ist, ist hier eingefügt.
@@ -87,8 +90,8 @@ Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert is
 C: [{D: [0, [30, 120]}, {B: [240, [120, 30]}, {H: 300, [30, 30]}]
 \end{verbatim}
 
-Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. 
-Wenn der Roboter sich von Knoten C zu Knoten D bewegen möchte, dann wäre diese Kante im Idealfall 0\textdegree. Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
+Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0 \textdegree.
+Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ befinden. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
 \centering
@@ -248,7 +251,7 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
 
  \newpage
  
-Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \textbf{(REF AUSLEGUNG GREIFER)} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.
+Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \ref{subsubsection:gripper-calculations} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \ref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.
 
 Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Ultraschallsensor der das Hindernis erkannt hat und den Prozess einleitet. 
 
