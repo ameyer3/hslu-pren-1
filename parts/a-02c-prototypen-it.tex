@@ -32,7 +32,7 @@ This calculation took about 0.128ms
 \label{fig:djikstra-test-output}
 \end{figure}
 
-Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen Dijkstra-Algorithmus zu verwenden, da es wichtig ist, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
+Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen Dijkstra-Algorithmus zu verwenden. Und ist wichtig, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
 
 Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
@@ -191,7 +191,7 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
 
 
-Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
+Als Basis für die Bilderkennung, wurde in der Mensa ein Graph aufgeklebt (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
 \begin{figure}[H]
     \centering
@@ -203,10 +203,10 @@ Als Basis für die Bilderkennung, wurde ein Graph aufgeklebt in der Mensa (Abb. 
 Die Methode, die gewählt wird, muss in der Lage sein folgende Elemente zu erkennen.
 
 \begin{itemize}
-    \item Rote Barriere erkennen
-    \item Weisse Barriere erkennen
-    \item Pylonen erkennen
-    \item Knoten erkennen
+    \item Rote Barriere
+    \item Weisse Barriere
+    \item Pylonen
+    \item Knoten
 \end{itemize}
 
 \textbf{OpenCV SIFT, FAST, ORB Algorithmen}
@@ -269,16 +269,7 @@ Aus diesem Test können wir entscheiden, dass die OpenCV Merkmalsdetektionsalgor
 
 \textbf{Objekterkennung mit Farberkennung}
 
-Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig.
-Wir haben grundsätzlich 3 oder 4 verschieden Objekte zu Detektieren:
-\begin{itemize}
-    \item Pylone (Orange)
-    \item Barriere (Rot)
-    \item Barriere (Weiss)
-    \item Knoten (Weiss)
-\end{itemize}
-
-Orange und rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung, wo der Roboter schlussendlich operiert, sehr eindeutig sind:
+Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig. Orange und rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung, wo der Roboter schlussendlich operiert, sehr eindeutig sind:
 
 \begin{figure}[H]
     \centering
@@ -349,8 +340,8 @@ Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wi
 \label{fig:recognition-with-lines}
 \end{figure}
 
-Aus diesem Experiment war klar, sowohl aus dem Bild mit den 'erkannten' Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
-Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet ('background').
+Aus diesem Experiment war klar, sowohl aus dem Bild mit den ``erkannten'' Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
+Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet (``background'').
 
 Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
 
@@ -409,17 +400,19 @@ Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barri
 Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt, wie erwartet die Unsicherheit der Knoten weg. Das Problem ist es nun, dass aus den erkannten Elementen auf dem dargestellten Bild geschlossen werden würde, dass sich auf dem nächsten Knoten ein Pylon befindet, da der vorherige Knoten nicht mehr erkannt wird.
 
 \begin{figure}[H]
-\begin{subfigure}{0.5\textwidth}
+\centering
+\begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/cone-obst-recognition.png} 
 \caption{Erkanntes Bild mit Hindernissen}
 \label{fig:image-recognition-with-cone-obst}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.49\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/yolo/cone-obst-conf-matrix.png} 
 \caption{Confusion Matrix mit Hindernissen}
 \label{fig:conf-matrix-cone-obst}
 \end{subfigure}
-
 \caption{Bilderkennung mit Hindernissen}
 \label{fig:recognition-with-cone-obst}
 \end{figure}
@@ -437,13 +430,13 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
 \begin{tabularx}{\textwidth}{|c|X|X|X|l|}
         \hline
         \textbf{Algorithmus} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Testergebnis} & \textbf{Bewertung} \\
-        \hline \hline
-        SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline \hline
-        ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline \hline
+        \hline
+        SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
+        ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
         OpenCV HSV & rote Barriere erkennen & Barriere wird erkannt & Barriere wird erkannt & Test erfüllt \\ \hline
         OpenCV HSV & orange Pylone erkennen & Pylone wird erkannt & Pylone wird erkannt & Test erfüllt \\ \hline
         OpenCV HSV & weisser Knoten erkennen & Knoten wird erkannt & Falsche Knoten werden erkannt, Knoten werden nicht erkannt & Test nicht erfüllt \\ \hline
-        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline \hline
+        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline
         YOLOv11 & Barriere erkennen & Barrier wird erkannt & Barrieren werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Pylone erkennen & Pylone wird erkannt & Pylone werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Knoten erkennen & Knoten wird erkannt & Knoten werden meist erkannt & Test meist erfüllt \\ \hline
@@ -473,6 +466,7 @@ Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
 \end{itemize}
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.35\textwidth}
 \centering
 \includegraphics[height=30mm]{assets/informatik-prototyp/opencv/target_node_detection/a.png} 
@@ -496,7 +490,6 @@ Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
 \label{fig:muster-zielknoten}
 \end{figure}
 
-
 \textbf{Tesseract OCR}
 
 Tesseract ist ein bekannter Algorithmus, um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textblöcke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden können. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
@@ -509,18 +502,19 @@ tessedit_char_whitelist=ABC')
 Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden:
 
 \begin{figure}[H]
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/tesseract.png} 
+\centering
+\includegraphics[width=\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/tesseract.png} 
 \caption{Zielknotenerkennung mit Tesseract}
 \label{fig:zielknoten-tesseract}
 \end{figure}
-
 
 \textbf{EasyOCR}
 
 EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der OpenCV Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
 
 \begin{figure}[H]
-\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/easyocr.png} 
+\centering
+\includegraphics[width=\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/easyocr.png} 
 \caption{Zielknotenerkennung mit EasyOCR}
 \label{fig:zielknoten-easyocr}
 \end{figure}
@@ -532,17 +526,21 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Al
 \gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild welches Objekt gefunden wurde. Alle gefundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu prüfen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind wie auf dem Muster Bild.
 
 \begin{figure}[H]
+\centering
 \begin{subfigure}{0.3\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-a.png} 
 \caption{ORB A}
 \label{fig:orb-a}
 \end{subfigure}
 \begin{subfigure}{0.3\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-b.png} 
 \caption{ORB B}
 \label{fig:orb-b}
 \end{subfigure}
 \begin{subfigure}{0.3\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/opencv/target_node_detection/orb-c.png} 
 \caption{ORB C}
 \label{fig:orb-c}
@@ -562,13 +560,13 @@ Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \r
 \begin{tabularx}{\textwidth}{|c|X|X|X|l|}
         \hline
         \textbf{Algorithmus} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Testergebnis} & \textbf{Bewertung} \\
-        \hline \hline
+        \hline
         Tesseract OCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         Tesseract OCR & Buchstabe B erkennen & B wird erkannt & nichts erkannt & Test nicht erfüllt \\ \hline
-        Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline \hline
+        Tesseract OCR & Buchstabe C erkennen & C wird erkannt &  C erkannt & Test erfüllt \\ \hline 
         EasyOCR & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         EasyOCR & Buchstabe B erkennen & B wird erkannt & B erkannt &  Test erfüllt \\ \hline
-        EasyOCR & Buchstabe C erkennen & C wird erkannt & ( ``Klammer auf'' erkannt & Test nicht erfüllt \\ \hline \hline
+        EasyOCR & Buchstabe C erkennen & C wird erkannt & ( ``Klammer auf'' erkannt & Test nicht erfüllt \\ \hline
         ORB & Buchstabe A erkennen & A wird erkannt & A erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe B erkennen & B wird erkannt & B erkannt & Test erfüllt \\ \hline
         ORB & Buchstabe C erkennen & C wird erkannt & C erkannt & Test erfüllt \\ \hline
@@ -581,7 +579,7 @@ Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \r
 \label{tab:test-target-node}
 \end{table}
 
-Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel 'C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens nötig, da ORB die Buchstaben auch rotiert erkennt.
+Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel `C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens nötig, da ORB die Buchstaben auch rotiert erkennt.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -599,9 +597,11 @@ Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, wel
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/camer_tower_1.png} 
 \end{subfigure}
 \begin{subfigure}{0.4\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/camer_tower_2.png} 
 \end{subfigure}
 \caption{Prototyp Kamera Turm}
@@ -621,12 +621,15 @@ Es wurde ein Greifer gebaut, der an einen Motor angeschlossen ist. Dieser wird v
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.32\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_offen.jpeg} 
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_Greifer_2_klemmen.jpeg} 
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
+\centering
 \includegraphics[width=0.95\linewidth]{assets/greifer-prototyp/Bild_greifer_2_anheben.jpeg} 
 \end{subfigure}
 \caption{Prototyp Greifer}
