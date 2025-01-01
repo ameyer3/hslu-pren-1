@@ -55,7 +55,7 @@ Um alle ausgehenden Kanten und deren Winkel zu erkennen, wird der folgende Ablau
 \label{fig:ablaufdiagramm-kanten-erkennen}
 \end{figure}
 
-Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so entzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 40, 68, 127]| erstellt werden.
+Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so entzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \ref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 41, 68, 127]| erstellt werden.
 
 \begin{figure}[H]
 \centering
@@ -78,11 +78,24 @@ Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der K
 
 Die erhaltene Liste mit Winkeln wird nun verwendet, um mögliche fehlende Linien zu erkennen und die Winkel intern zu speichern. Die internen Winkel werden verwendet, um den Roboter richtig auszurichten, wenn dieser auf die nächste Linie fährt.
 
-Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die einzelne Knoten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0\textdegree, eine Linie nach 3 Uhr ist 90\textdegree, 6 Uhr ist 180\textdegree und 9 Uhr ist 270\textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurde zu übersetzen, damit er sich in echt richtig ausrichten kann. 
+Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die einzelne Knoten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0\textdegree, eine Linie nach 3 Uhr ist 90\textdegree, 6 Uhr ist 180\textdegree und 9 Uhr ist 270\textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurden, zu übersetzen. Mit dieser Information kann sich der Roboter dann richtig ausrichten.
 
 In Abbildung \ref{fig:angle-graphs-internal} sind die drei Knoten D, E und G aufgezeigt. Auf jedem Knoten befindet sich eine Uhr, die aufzeigen soll, wie die Winkel mit den einzelnen Uhrzeiten korrespondieren.
 
-Angenommen der Roboter fährt von links auf Knoten G zu, dann weiss er, dass er nach in einem rechten Winkel nach rechts ausgerichtet ist, sprich er hat einen Offset von +90\textdegree. Er fotographiert die ausgehenden Kanten von Knoten G und erhält die Liste \verb|[30, 90, 150, 210, 170]|. Der erste Listeneintrag, beschreibt die Linie von G nach E. Wenn der Roboter sich in diese Richtung drehen möchte, dann addiert er den Offset mit dem ersten Listeneintrag und erhält 120\textdegree, wobei es sich um den Winkel handelt, der zwischen der Linie, von der er herkommt, und der Linie zu Knoten E ist.
+Angenommen der Roboter fährt von links auf Knoten G zu, dann weiss er, dass er in einem rechten Winkel von links  kommt, sprich er kommt von 270\textdegree\ her. Er fotografiert die ausgehenden Kanten von Knoten G und erhält die Liste \verb|[0, 120, 180, 240, 300]|. Der erste Listeneintrag ist der Winkel woher er herkommt. Der zweite Winkel beschreibt dann hier im Beispiel die Linie von G nach E. 
+Dies kann er berechnen, indem er weiss wie seine aktuelle Ausrichtung ist, und mit den Winkeln welche im internen Graphen gepseichert sind.
+
+Wenn der Roboter sich in diese Richtung drehen möchte, dann addiert er den Offset (Woher er kommt + 180\textdegree) mit dem zweiten Listeneintrag. Falls die Zahl über 180\textdegree\ liegt dann wird diese noch -360\textdegree\ gerechnet, Falls weniger, ist dies schon der zu drehende Winkel.
+
+
+\[DrehwinkelZuE=AktuelleAusrichtung+WinkelZuE=180^{\circ}+120^{\circ}=300^{\circ}\]
+
+Da dieser Winkel über 180\textdegree\ liegt, wird dieser noch -360\textdegree\ gerechnet:
+
+\[EffizienterDrehwinkelZuE=DrehwinkelZuE-360^{\circ}=-60^{\circ}\]
+
+Somit muss sich der Roboter -60\textdegree\ drehen. Das heisst, 60\textdegree\ im Gegenuhrzeigersinn, nach links.
+
 
 \begin{figure}[H]
 \centering
@@ -118,7 +131,7 @@ Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert is
 C: [{D: [0, [30, 120]}, {B: [240, [120, 30]}, {H: 300, [30, 30]}]
 \end{verbatim}
 
-Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0\textdegree.
+Auf Grafik \ref{fig:angled-graph} sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik \ref{fig:excerpt-angled-graph} ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0\textdegree.
 Das der Idealfall nicht eintreten wird, da der Graph nicht perfekt aufgeklebt sein wird und die Linie nicht perfekt in Richtung 12 Uhr gehen wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ liegen. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
