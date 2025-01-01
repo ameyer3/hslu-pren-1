@@ -36,7 +36,7 @@ Die folgenden Spezifikationen soll der Simulator erfüllen.
   \hline
    11   &   Es lassen sich zufällige Graphen mit zufällig platzierten Hindernissen erstellen. & 2\\
   \hline
-   12   &   Die Geschwindikeit des Roboters lässt sich einstellen. & 1\\
+   12   &   Die Geschwindigkeit des Roboters lässt sich einstellen. & 1\\
   \hline
    13   &   Die Traversierung des Graphen durch den Roboter kann simuliert werden. & 2\\
   \hline
@@ -95,7 +95,7 @@ Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt,
 
 \subsubsection{Entwicklung}
 
-Der erste Schritt ist es einen Graph zu definieren. Dazu wird ein YAML File mit dem konfigurierten Graph erstellt. 
+Der erste Schritt ist es einen Graph zu definieren. Dazu wird in YAML der konfigurierten Graph erstellt. 
 Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie folgt in einem YAML File beschrieben (Siehe Abb \ref{fig:graph-yaml})
 
 \begin{figure}[H]
@@ -152,9 +152,9 @@ Der Programmablauf besteht aus folgenden Teilen:
 \end{enumerate}
 
 Bevor der Roboter eine Knoten befährt, welcher er noch nicht kennt, überprüft dieser die Winkel der ausgehenden Kanten dieses Knoten. Im Simulator wird dies statt durch Kamerabilder, durch eine Dictionary Abfrage realisiert.
-Wie beim echten Roboter detektieren wir so auch nur Kanten, die vorhanden sind. Und können durch die Winkel die fehlenden Kanten aus dem internen Graphen löschen.
+Wie beim echten Roboter detektieren wir so auch nur Kanten, die vorhanden sind. Und können durch die Winkel die fehlenden Kanten aus dem internen Graphen löschen. Die Verarbeitung der vorhandenen Winkeln wird gleich umgesetzt, wie im Gesamtkonzept Kapitel \ref{outgoing-angles} beschrieben.
 
-Nach dem befahren des Knoten werden nun alle ausgehende Kanten überprüft. Dies durch die Drehung um die eigene Achse. Durch die Winkelmessung im vorherigen Schritt können wir eine optimale Drehrichtung und Reihenfolge der zu überprüfenden Nachbarsknoten berechnen. Dieser dreht sich also nun im effizientesten weg im Kreis und prüft alle anliegenden Kanten und Nachbarsknoten. 
+Nach dem befahren des Knoten werden nun alle ausgehende Kanten überprüft. Dies geschieht durch die Drehung um die eigene Achse. Durch die Winkelmessung im vorherigen Schritt können wir eine optimale Drehrichtung und Reihenfolge der zu überprüfenden Nachbarsknoten berechnen. Der Roboter dreht sich also im effizientesten Weg im Kreis und prüft alle ausgehenden Kanten und Nachbarsknoten. 
 In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprüft. Falls ein Hindernis detektiert wird, reagiert er wie folgt:
 
 \begin{itemize}
