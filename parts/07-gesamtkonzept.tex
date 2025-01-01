@@ -80,7 +80,35 @@ Die erhaltene Liste mit Winkeln wird nun verwendet, um mögliche fehlende Linien
 
 Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die einzelne Knoten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0\textdegree, eine Linie nach 3 Uhr ist 90\textdegree, 6 Uhr ist 180\textdegree und 9 Uhr ist 270\textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurde zu übersetzen, damit er sich in echt richtig ausrichten kann. 
 
-TODO GRAFIK THAT SHOWS THIS OFFSET KIND OF BILD VON E, D, F MIT UHREN, DANN VON F NACH D MIT OFFSET 90 UM NACH E ZU GELANGEN INKLUSIVE YAML DIESER 3 KNOTEN MIT WINKELN
+In Abbildung \ref{fig:angle-graphs-internal} sind die drei Knoten D, E und G aufgezeigt. Auf jedem Knoten befindet sich eine Uhr, die aufzeigen soll, wie die Winkel mit den einzelnen Uhrzeiten korrespondieren.
+
+Angenommen der Roboter fährt von links auf Knoten G zu, dann weiss er, dass er nach in einem rechten Winkel nach rechts ausgerichtet ist, sprich er hat einen Offset von +90\textdegree. Er fotographiert die ausgehenden Kanten von Knoten G und erhält die Liste \verb|[30, 90, 150, 210, 170]|. Der erste Listeneintrag, beschreibt die Linie von G nach E. Wenn der Roboter sich in diese Richtung drehen möchte, dann addiert er den Offset mit dem ersten Listeneintrag und erhält 120\textdegree, wobei es sich um den Winkel handelt, der zwischen der Linie, von der er herkommt, und der Linie zu Knoten E ist.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.98\textwidth}
+\centering
+\includegraphics[width=0.95\linewidth]{assets/informatik-prototyp/simulator/internal-angles.png} 
+\caption{Winkel im Graph}
+\label{fig:labeled-graph-angles}
+\end{subfigure}
+\begin{subfigure}{0.8\textwidth}
+\begin{footnotesize}
+\begin{verbatim}
+
+angles = {
+    [...],
+    'G': {'E': 30, 'D': 90, 'H': 150, 'A': 210, 'F': 270},
+    [...],
+    }
+\end{verbatim}
+\end{footnotesize}
+\caption{Graph mit Winkeln in YAML Knoten G}
+\label{fig:graph-yaml-angle}
+\end{subfigure}
+\caption{Graph mit Winkeln}
+\label{fig:angle-graphs-internal}
+\end{figure}
 
 Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden Bereiche definiert, in denen sich die Winkel befinden sollten.
 
@@ -91,7 +119,7 @@ C: [{D: [0, [30, 120]}, {B: [240, [120, 30]}, {H: 300, [30, 30]}]
 \end{verbatim}
 
 Auf Grafik a) sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik b) ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0\textdegree.
-Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ liegen. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
+Das der Idealfall nicht eintreten wird, da der Graph nicht perfekt aufgeklebt sein wird und die Linie nicht perfekt in Richtung 12 Uhr gehen wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ liegen. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]
 \centering
@@ -107,7 +135,7 @@ Das der Idealfall nicht eintreten wird, sind die Halbwinkel eingezeichnet, hier 
 \caption{C zu D Winkel}
 \label{fig:excerpt-angled-graph}
 \end{subfigure}
-\caption{Winkel im Graphen}
+\caption{Winkel und Halbwinkel im Graphen}
 \label{fig:angles}
 \end{figure}
 
@@ -286,7 +314,7 @@ Zusätzlich zum zukünftigen Pfad, wird der bereits befahrene Pfad gespeichert. 
 
 \subsection{Kameraposition}
 
-Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textdegree\ montiert. Die Position ist fix, das heisst, wir benötigen keine schwenkbare Kamera. In der folgenden Grafik \ref{fig:camera-position-concept} ist die Kameraposition ersichtlich. Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat, Somit haben wir im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild. Aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
+Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textdegree\ montiert. Die Position ist fix, das heisst, wir benötigen keine schwenkbare Kamera. In der folgenden Grafik \ref{fig:camera-position-concept} ist die Kameraposition ersichtlich. Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat. Dadurch sind im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild, aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
 
 \begin{figure}[H]
     \centering
@@ -301,7 +329,7 @@ Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textde
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
-Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \acrshort{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
+Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \ref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \acrshort{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet und die Navigation implementiert,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
 
 
 
