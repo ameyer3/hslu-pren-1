@@ -1,11 +1,15 @@
 \subsection{Prototyping}\label{prototyping}
+\addcontentsline{toc}{subsection}{Prototyping}
 
-Nachdem mithilfe der Nutzwertanalyse im Kapitel \ref{nutzwertanalyse} ein grundlegendes Gesamtkonzept festgelegt wurde, wird nun an Prototypen der einzelen Teilfunktionen gearbeitet. Das Ziel ist es, die einzelnen Teilfunktionen zu Testen und möglichst viele Fehler frühzeitig zu erkennen. Detaillierte Prototypen helfen die bereits bekannten Risiken besser einzuschätzen und neue Risiken frühzeitig zu erkennen.
+
+Nachdem mithilfe der Nutzwertanalyse im Kapitel \nameref{nutzwertanalyse} ein grundlegendes Gesamtkonzept festgelegt wurde, wird nun an Prototypen der einzelen Teilfunktionen gearbeitet. Das Ziel ist es, die einzelnen Teilfunktionen zu Testen und möglichst viele Fehler frühzeitig zu erkennen. Detaillierte Prototypen helfen die bereits bekannten Risiken besser einzuschätzen und neue Risiken frühzeitig zu erkennen.
 
 Das Prototyping soll mehrere Endprodukte hervorbringen. Es werden physische Prototypen von verschiedenen Teilbereichen erstellt. Damit in \acrshort{pren2} parallel an unterschiedlichen Teilfunktionen gearbeitet werden kann. Alle physischen Endprodukte sind am Ende der Prototyping Kapitels in Kapitel \ref{prototyp-products} aufgelistet.
 
-\subsubsection{Greifer Prototyp I}
+\subsubsection*{Greifer Prototyp I}
 \label{subsubsection:gripper-prototype-1}
+\addcontentsline{toc}{subsubsection}{Greifer Prototyp I}
+
 
 
 Der Aufbau und die Funktionsweise des Greifers werden in Kapitel \ref{subsubsection:Hindernisse bewegen} erläutert. Um die Auslegung des Greifers (Kapitel \ref{subsubsection:gripper-calculations}) zu validieren und sein Funktionsprinzip zu überprüfen wurde ein Prototyp gebaut. Nachfolgend wurden die Ergebnisse aus den Tests am Protoyp I dokumentiert\\
@@ -101,10 +105,12 @@ Da das ausgelegte Motordrehmoment mit dem Prototyp I validiert werden konnte, wi
 Bei den Tests am Prototyp II sollen die Geschwindigkeit des Anhebevorgangs und die Erkennung des Hindernisses durch die Endschalter im Fokus stehen.
 
 
-\subsubsection{Greifer Prototyp II}
+\subsubsection*{Greifer Prototyp II}
 \label{subsubsection:gripper-prototype-2}
+\addcontentsline{toc}{subsubsection}{Greifer Prototyp II}
 
-Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \ref{subsubsection:gripper-prototype-1}). Folgende Anpassungen wurden vorgenommen: Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Kapitel \ref{subsubsection:gripper-calculations} vorausgelegt und durch den Greifer Prototyp I validiert wurde. An den Klemmbacken wurden zwei Endschaltern montiert. Sie sollen bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
+
+Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}). Folgende Anpassungen wurden vorgenommen: Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Kapitel \ref{subsubsection:gripper-calculations} vorausgelegt und durch den Greifer Prototyp I validiert wurde. An den Klemmbacken wurden zwei Endschaltern montiert. Sie sollen bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
 
 \textbf{Aufbau}
 
@@ -115,7 +121,7 @@ Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \
 \label{fig:gripper-prototype-2-trimetric}
 \end{figure}
 
-Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses, derselbe (Abb. \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \ref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde (Abb. \ref{fig:jaw_iteration}).
+Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses, derselbe (Abb. \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \nameref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde (Abb. \ref{fig:jaw_iteration}).
 
 \begin{figure}[H]
 \centering
@@ -195,7 +201,7 @@ Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und
 
 Bis auf die Anforderungen Bezüglich der Hindernisserkennug mittels Endschalter (Anforderungen 5\&6) wurden alle Testbedingungen erfüllt. Die Endschalter, welche bei Berührung mit dem Hindernis den Hebevorgang auslösen sollen, müssen mit einer gewissen Kraft gedruckt werden um betätigt zu werden. Diese Kraft kann je nach Anfahrwinkel und Geschwindigkeit des Greifers bezüglich dem Hindernis nicht überwunden werden. Das Hindernis wird dann über den relativ glatten Fliesenboden geschoben, bevor die Schalter auslösen. Dabei wird das Hindernis zwar angehoben, würde aber beim Absetzten nicht mehr in seiner Ursprünglichen Position landen.
 
-Die kleineren Probleme welche im Fazit zum Prototyp I (Kapitel \ref{subsubsection:gripper-prototype-1}) aufgeführt wurden, konnten erfolgreich behoben werden.
+Die kleineren Probleme welche im Fazit zum Prototyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}) aufgeführt wurden, konnten erfolgreich behoben werden.
 
 \textbf{Weiteres Vorgehen}\\
 

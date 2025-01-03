@@ -1,12 +1,16 @@
-\subsection{Evaluation Lösungsprinzipien}\label{mk}
+\subsection*{Evaluation Lösungsprinzipien}\label{mk}
+\addcontentsline{toc}{subsection}{Evaluation Lösungsprinzipien}
 
-Aus der vorhergehenden Technologierecherche (siehe Anhang \ref{techrecherche}) wird pro Teilbereich ein morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Nachfolgend sind alle morphologischen Kästen aufgezeigt.
+
+Aus der vorhergehenden Technologierecherche (siehe Anhang \nameref{techrecherche}) wird pro Teilbereich ein morphologischer Kasten erstellt. Dieser wird befüllt mit den Teilfunktionen und den recherchierten Technologien. Damit werden die Lösungsprinzipien evaluiert und verschiedene Varianten werden ausarbeitet. Nachfolgend sind alle morphologischen Kästen aufgezeigt.
 
 Anhand der Muss-Kriterien wurden die Lösungsvarianten gewählt , die erreicht werden sollen: Simpel, nicht zu teuer, nicht die 30cmx30cmx80cm ausnutzen, Robustheit. Zusätzlich wurde in Betracht gezogen, wie stimmig die einzelnen Technologien miteinander sind.
 
-\subsubsection{Mechanik Morphologischer Kasten}
+\subsubsection*{Mechanik Morphologischer Kasten}
+\addcontentsline{toc}{subsubsection}{Mechanik Morphologischer Kasten}
 
-Auf Basis der Technologierecherche (siehe Anhang \ref{techrecherche}) wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und in den morphologischen Kasten aufgenommen.  Diese Lösungsansätze wurden nach folgenden Kriterien erstellt.
+
+Auf Basis der Technologierecherche (siehe Anhang \nameref{techrecherche}) wurden verschiedene Lösungsansätze für die einzelnen Teilfunktionen ausgewählt und in den morphologischen Kasten aufgenommen.  Diese Lösungsansätze wurden nach folgenden Kriterien erstellt.
 
 \begin{itemize}
     \item Variante Gelb: Effizient
@@ -22,9 +26,11 @@ Auf Basis der Technologierecherche (siehe Anhang \ref{techrecherche}) wurden ver
 \end{table}
 
 
-\subsubsection{Steuerung Morphologischer Kasten}
+\subsubsection*{Steuerung Morphologischer Kasten}
+\addcontentsline{toc}{subsubsection}{Steuerung Morphologischer Kasten}
 
-Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik und die Steuerung im Roboter bilden. Diese wurden jeweils nach folgenden Kriterien zusammengestellt.
+
+Aus der Technologierecherche (siehe Anhang \nameref{techrecherche}) entstand folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Elektronik und die Steuerung im Roboter bilden. Diese wurden jeweils nach folgenden Kriterien zusammengestellt.
 
 \begin{itemize}
     \item Variante Gelb: Simpel
@@ -43,9 +49,11 @@ Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) entstand folgend
 In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Komponenten, wie etwa Buzzer und Lautsprecher oder Drehschalter und Tasten, sind grösstenteils austauschbar. Spezifische Schaltungselemente wie Strombegrenzer und Spannungsregler wurden hingegen nicht im morphologischen Kasten berücksichtigt, da solche Entscheidungen erst während des Layoutprozesses getroffen werden.
 
 
-\subsubsection{Navigation Morphologischer Kasten}
+\subsubsection*{Navigation Morphologischer Kasten}
+\addcontentsline{toc}{subsubsection}{Navigation Morphologischer Kasten}
 
-Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) wurde folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Navigation bilden, erstellt.  Diese Kriterien wurden jeweils aufgrund folgender Kriterien erstellt.
+
+Aus der Technologierecherche (siehe Anhang \nameref{techrecherche}) wurde folgender morphologischer Kasten mit drei Varianten für die Teilfunktionen, die die Navigation bilden, erstellt.  Diese Kriterien wurden jeweils aufgrund folgender Kriterien erstellt.
 
 \begin{itemize}
     \item Variante Gelb: Flexibel
@@ -63,10 +71,12 @@ Aus der Technologierecherche (siehe Anhang \ref{techrecherche}) wurde folgender 
 
 Bei den drei Varianten fällt auf, dass alle Python und den Wegfindealgorithmus Dijkstra verwenden. Python wurde immer gewählt, da Bilderkennung und Machine Learning sehr gut mit Python harmonisieren. Viele Libraries, inklusive dieser, die hier ersichtlich sind, sind kompatibel mit Python. Dijkstra wurde immer gewählt, weil dieser Algorithmus simpel und robust ist und die Geschwindigkeit vernachlässigbar ist. Da es im Graphen nur 8 Knoten gib, wird die Berechnung bei jedem Algorithmus schnell sein.
 
-\subsubsection{Simulator Morphologischer Kasten}\label{mk-simulator}
+\subsubsection*{Simulator Morphologischer Kasten}\label{mk-simulator}
+\addcontentsline{toc}{subsubsection}{Simulator Morphologischer Kasten}
 
 
-Aus der Technologierecherche\ref{techrecherche} wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen. Diese wurden jeweils nach folgenden Kriterien zusammengestellt.
+
+Aus der Technologierecherche\nameref{techrecherche} wurde folgender Morphologischer Kasten für die Teilfunktonen des Simulators erstellt. Es gibt drei Varianten, die in Frage kommen. Diese wurden jeweils nach folgenden Kriterien zusammengestellt.
 
 \begin{itemize}
     \item Variante Gelb: Schnell
@@ -90,11 +100,15 @@ Ebenfalls wird ein Knoten immer entfernt falls ein Pylon darauf steht. Er wird n
 
 
 \newpage
-\subsection{Auswahl Lösungskombinationen}\label{nutzwertanalyse}
+\subsection*{Auswahl Lösungskombinationen}\label{nutzwertanalyse}
+\addcontentsline{toc}{subsection}{Auswahl Lösungskombinationen}
+
 
 Zur Auswahl der passendsten Lösungskombination wird pro Teilbereich eine Nutzwertanalyse durchgeführt. Die Kriterien und deren Gewichtung sind individuell pro Teilbereich, damit sie ideal passen. Die Variante mit der höchsten Punktezahl ist die Variante, die am besten passt.
 
-\subsubsection{Mechanik Nutzwertanalyse}
+\subsubsection*{Mechanik Nutzwertanalyse}
+\addcontentsline{toc}{subsubsection}{Mechanik Nutzwertanalyse}
+
 
 Für die  drei Lösungskombinationen aus dem morphologischen Kasten wird eine Nutzwertanalyse gemacht.    
 
@@ -121,7 +135,9 @@ Die Analyse der drei genannten Varianten hat ergeben, dass die Variante A sich a
     \item Chassis: Freies Polygon
 \end{itemize}
 
-\subsubsection{Steuerung Nutzwertanalyse}
+\subsubsection*{Steuerung Nutzwertanalyse}
+\addcontentsline{toc}{subsubsection}{Steuerung Nutzwertanalyse}
+
 
 Mithilfe des morphologischen Kastens wurden verschiedene Lösungsvarianten aufgezeigt. Die Varianten bestehen aus diversen Komponenten. 
 Nun werden drei Varianten in der Nutzwertanalyse evaluiert.
@@ -155,7 +171,8 @@ Aus den Bewertungen aus der Nutzwertanalyse zeigt sich die Variante A als höchs
     \item Inputoption: Schalter
 \end{itemize}
 
-\subsubsection{Navigation Nutzwertanalyse}
+\subsubsection*{Navigation Nutzwertanalyse}
+\addcontentsline{toc}{subsubsection}{Navigation Nutzwertanalyse}
 
 Die drei ermittelten Varianten aus dem vorherigen Kapitel werden analysiert und bewertet mithilfe einer Nutzwertanalyse.
 
@@ -183,7 +200,9 @@ Aus der Nutzwertanalyse kann abgelesen werden, dass die Variante A mit Python, P
     \item Kamera: Raspberry Camera Modul
 \end{itemize}
 
-\subsubsection{Simulator Nutzwertanalyse}
+\subsubsection*{Simulator Nutzwertanalyse}
+\addcontentsline{toc}{subsubsection}{Simulator Nutzwertanalyse}
+
 
 Die drei Varianten wie der Simulator umgesetzt werden könnte, werden bewertet in folgender Nutzwertanalyse. Die Kriterien und deren Gewichtung sind dieselben, wie bei der Nutzwertanalyse für die Informatik im Roboter. Das Ziel des Simulators ist es, diesen möglichst realistisch und wiederverwendbar für \acrshort{pren2} umzusetzen.
 
