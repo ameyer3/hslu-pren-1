@@ -37,6 +37,8 @@ Die Bildverarbeitung und Navigation werden in Python programmiert und laufen auf
 Der Ablauf einer Durchfahrt ist im Ablaufdiagramm \ref{fig:ablaufdiagramm} aufgezeigt.
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
 
+Um den Graph zu traversieren wird eine iterative Herangehensweise umgesetzt. Durch die Spiegelung des Bodens, die Grösse des Graphes und die Einschränkung der Höhe des Roboters, ist es nicht möglich am Start ein Bild des gesamten Graphen zu machen und dabei die Hindernisse und die fehlenden Linien zu erkennen. Deshalb werden iterativ bei jedem Knoten die ausgehenden Linien geprüft.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{assets/gesamtkonzept/ablaufdiagramm.png}

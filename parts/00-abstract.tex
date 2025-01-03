@@ -2,7 +2,7 @@
 
 Diese Arbeit präsentiert das Design eines Roboters, der autonom ein Wegentz durchqueren kann und dabei zufällig platzierte Hindernisse erkennt. Dazu wurden die Teilfunktionen der Roboters definiert und durch Prototyping entwickelt.
 
-Es wurde ein Roboter designed, der den Linien auf einem Wegenetz folgen kann, sich darauf um die eigene Achse drehen kann und Hindernisse selbständig erkennt und einordnet. Bewegliche Hindernisse auf dem Wegenetz können sicher angehoben und wieder zurückgestellt werden.
+Es wurde ein Roboter designed, der den Linien auf einem Wegenetz folgen kann, sich darauf um die eigene Achse drehen kann und Hindernisse selbständig erkennt und einordnet. Bewegliche Hindernisse auf dem Wegenetz können sicher angehoben und wieder zurückgestellt werden.  Das finale Gesamtkonzept ist auf Abbildung \ref{fig:robot_concept-scetch_labeld-abstract} ersichtlich.
 
 \begin{figure}[H]
 \centering
@@ -15,9 +15,9 @@ Der Roboter wird das Wegenetz auf drei Rädern durchfahren, wobei zwei davon mit
 
 Die Hebervorrichtung, die der Roboter braucht, um bewegliche Hindernisse zu beseitigen, wird mit einem Greifer mit flexiblen Backen umgesetzt. Ein Ultraschallsensor detektiert, sobald sich eine Barriere in der Nähe befindet, damit sich der Greifer langsam darauf zu bewegen kann. Sobald die Endschalter am Greifer betätigt werden, greift dieser zu. Durch die doppelte Hindernisdetektierung ist der Roboter zuverlässig und durch die Konstruktion des Greifers, kann das Hindernis sicher gefasst werden, auch falls sich dieses schräg auf der Linie befindet.
 
-Hindernisse werden mit einer Kamera und Bilderkennung erkannt, damit der Roboter weiss, welche Wege befahrbar sind. Es kann Zeit eingespart werden, da die Hindernisse aus der Distanz detektiert werden.
+Hindernisse werden mit einer Kamera und \acrfull{ai} Bilderkennung erkannt, damit der Roboter weiss, welche Wege befahrbar sind. Zeit wird eingespart, da Hindernisse aus der Distanz detektiert werden.
 
-Um die Machbarkeit zu simulieren wurde ein Simulator programmiert. Dieser stellt dar, wie der Roboter sich durch das Wegenetz fortbewegt und misst die Zeit. Zusätzlich dient er als Grundlage zur Navigation im richtigen Roboter.
+Um den Ablauf zu simulieren wurde ein Simulator programmiert. Dieser stellt dar, wie der Roboter sich durch das Wegenetz fortbewegt und misst die Zeit. Zusätzlich dient er als Grundlage zur Navigation im richtigen Roboter.
 
-Das finale Design des autonomen Roboters bietet eine effiziente und sichere Lösung, um das Wegenetz zu durchqueren. Es ist eine zuverlässige Grundlage für die Umsetzung in Produktentwicklung 2.
+Das finale Design des autonomen Roboters bietet eine effiziente und sichere Lösung, um das Wegenetz zu durchqueren. Es ist eine zuverlässige Grundlage für die Umsetzung in PREN 2.
 
