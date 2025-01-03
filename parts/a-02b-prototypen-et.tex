@@ -1,4 +1,6 @@
-\subsubsection{Motoren}
+\subsubsection*{Motoren}
+\addcontentsline{toc}{subsubsection}{Motoren}
+
 
 Nach ersten Berechnungen für die Motoren wurde ein passender Motor ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung.
 
@@ -29,7 +31,8 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 \label{tab:dutycycle}
 \end{table}
 
-\subsubsection{Tiny K22 Pinout} \label{Blockdiagramm: Schnittstellen zwischen den Komponenten}
+\subsubsection*{Tiny K22 Pinout} \label{Blockdiagramm: Schnittstellen zwischen den Komponenten}
+\addcontentsline{toc}{subsubsection}{Tiny K22 Pinout}
 
 Für die hardwarenahe Steuerung und Regelung wurde ein \acrshort{tinyk22} Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
 
@@ -59,11 +62,15 @@ Zusätzlich wird ein \acrshort{iic}-Bus für zeitunkritische Funktionen verwende
 
 Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effizient verarbeitet werden, während gleichzeitig Flexibilität für zusätzliche Funktionen über den \acrshort{iic}-Bus gewährleistet bleibt.
 
-\subsubsection{Software}
+\subsubsection*{Software Steuerung}
+\addcontentsline{toc}{subsubsection}{Software Steuerung}
+
 
 Das Programm welches man auf das \acrshort{tinyk22} laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger beinhaltet ist. Es können vom Modul ``Mikrocontroller Fundamentals'' bestehende Libraries verwendet werden. Einige Anpassungen wie zum Beispiel die \acrshort{uart} wurden bereits vorgenommen.
 
-\subsubsection{Liniensensor}
+\subsubsection*{Liniensensor}
+\addcontentsline{toc}{subsubsection}{Liniensensor}
+
 
 Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Es sind 7 Pins auf dem \acrshort{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die bei Entladung fallende Flanke detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
 
@@ -74,19 +81,27 @@ Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebenei
     \label{fig:Liniensensor_Schaltung}
 \end{figure}
 
-\subsubsection{Ultraschall}
+\subsubsection*{Ultraschall}
+\addcontentsline{toc}{subsubsection}{Ultraschall}
+
 
 Damit man die Hindernisse detektieren kann wird ein Ultraschallsensor verwendet. In dem man die Laufzeit der zurück empfangenen Ultraschallwellen auswertet, wird der Abstand zwischen Hindernis und Fahrzeug berechnet. Der Ultraschallsensor wird sich im vorderen Teil des Fahrzeugs befinden, damit eine freie Sicht gewährleistet ist und keine Störungen durch das Fahrzeug selbst auftreten.
 
-\subsubsection{Akku}
+\subsubsection*{Akku}
+\addcontentsline{toc}{subsubsection}{Akku}
+
 
 Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet. Dieser liefert in einer Stunde 3000mA. Bei einer geschätzten maximalen Leistung von 30W und einer Spannung von 12V reicht diese Kapazität für ca. 1.2 Stunden. 
 
-\subsubsection{PCB Design}
+\subsubsection*{PCB Design}
+\addcontentsline{toc}{subsubsection}{PCB Design}
+
 
 Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das \acrshort{tinyk22} steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen \acrshort{pcb} als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
 
-\subsubsection{Servomotor}
+\subsubsection*{Servomotor}
+\addcontentsline{toc}{subsubsection}{Servomotor}
+
 
 Der Servomotor wurde direkt am Greifer Prototyp getestet. In der folgenden Tabelle \ref{tab:testpunkte Servomotor} sind die Messergebnisse eingetragen, welche positiv ausgefallen sind. Man hat den Servomotor bei zwei unterschiedlichen Frequenzen, mit der Betriebsspannung von 5V und ob das Hindernis auf die geforderten 7.5mm angehoben werden kann, getestet. Das \acrshort{pwm} Signal hat man mit einem Tektronix AFG1022 generiert, bei dem man mit dem Drehregler den Duty Cycle verstellen konnte.
 
@@ -110,7 +125,7 @@ Der Servomotor wurde direkt am Greifer Prototyp getestet. In der folgenden Tabel
 
 \newpage
 
-Der Startpunkt des Tests hat man bei einem Duty Cycle von 86\% festgelegt. Wie in der Abbildung \ref{fig: Greiferposition offen: Duty Cycle 86} ersichtlich wird, war das die Position bei welchem der Greifer offen ist.
+Der Startpunkt des Tests wurd bei einem Duty Cycle von 86\% festgelegt. Wie in der Abbildung \ref{fig: Greiferposition offen: Duty Cycle 86} ersichtlich wird, war das die Position, bei welcher der Greifer offen ist.
 
 \begin{figure}[H]
     \centering

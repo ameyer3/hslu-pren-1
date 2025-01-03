@@ -1,4 +1,5 @@
-\subsubsection{Kürzester Weg finden}
+\subsubsection*{Kürzester Weg finden}
+\addcontentsline{toc}{subsubsection}{Kürzester Weg finden}
 
 Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlässigt werden kann.
 
@@ -36,7 +37,9 @@ Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was
 
 Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
-\subsubsection{Kamera Position}\label{camera-position}
+\subsubsection*{Kamera Position}\label{camera-position}
+\addcontentsline{toc}{subsubsection}{Kamera Position}
+
 
 Die Platzierung der Kamera ist ein entscheidender Faktor, um sicherzustellen, dass sie die gewünschten Objekte und Bereiche korrekt erfassen kann. Im Folgenden werden die relevanten Parameter erläutert:
 
@@ -86,9 +89,11 @@ Zusätzlich haben wir dies mit unserem Raspberry Pi und Kamera getestet:
 \end{figure}
 
 
-\subsubsection{Winkelerkennung}\label{winkelerkennung}
+\subsubsection*{Winkelerkennung}\label{winkelerkennung}
+\addcontentsline{toc}{subsubsection}{Winkelerkennung}
 
-Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \ref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
+
+Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \nameref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
 Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreie Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels OpenCV berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
@@ -197,7 +202,8 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \end{figure}
 \end{enumerate}
 
-\subsubsection{Graph-, Pylonen- und Barriere-Erkennung}
+\subsubsection*{Graph-, Pylonen- und Barriere-Erkennung}
+\addcontentsline{toc}{subsubsection}{Graph-, Pylonen- und Barriere-Erkennung}
 
 
 
@@ -472,7 +478,8 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
 Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
 
 
-\subsubsection{Zielknoten erkennen}
+\subsubsection*{Zielknoten erkennen}
+\addcontentsline{toc}{subsubsection}{Zielknoten erkennen}
 
 Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen, um sicherzustellen, dass er sich wirklich im Ziel befindet. Dazu wurden drei verschiedene Varianten evaluiert: Tesseract OCR Algorithmus\footnote{\url{https://tesseract-ocr.github.io/}}, EasyOCR \footnote{\url{https://github.com/jaidedai/easyocr}} und \acrfull{orb}\footnote{\url{https://docs.opencv.org/4.x/d1/d89/tutorial_py_orb.html}}.
 
@@ -608,11 +615,14 @@ Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werde
 %%%%%%%% PROTOTYPE PRODUKTE ALLG %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Physische Prototypen}\label{prototyp-products}
+\subsection*{Physische Prototypen}\label{prototyp-products}
+\addcontentsline{toc}{subsection}{Physische Prototypen}
 
 In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des Roboters in \acrshort{pren2} parallelisieren werden. Die Prototypen können entweder einzeln verwendet werden oder schnell zusammengefügt werden und in Kombination miteinander genutzt werden.
 
-\subsubsection{Navigation}
+\subsubsection*{Navigation}
+\addcontentsline{toc}{subsubsection}{Navigation}
+
 
 Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, welche die Kamera stabil in der definierten Position befestigt. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Risikominderung, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
 
@@ -630,16 +640,18 @@ Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, wel
 \label{fig:prototype-camera-tower}
 \end{figure}
 
-\subsubsection{Fortbewegung}
+\subsubsection*{Fortbewegung}
+\addcontentsline{toc}{subsubsection}{Fortbewegung}
 
 Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benötigt es vor allem die Räder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusätzlichen Sensoren und Rechner anzubringen, die für die Steuerung benötigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
 
 BILD
 
-\subsubsection{Greifer}
-\label{subsubsection:gripper}
+\subsubsection*{Greifer}
+\addcontentsline{toc}{subsubsection}{Greifer}
 
-Um ein Hindernis anzuheben, wurde ein Greifer welcher über ein Gelenkgestänge funktioniert ausgelegt. Um dieses Konzept zu Testen wurden zwei Prototypen gebaut (Kapitel \ref{subsubsection:gripper-prototype-1} und Kapitel \ref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der Finale Greifer später auch, mit einem Servomotor betrieben. 
+
+Um ein Hindernis anzuheben, wurde ein Greifer welcher über ein Gelenkgestänge funktioniert ausgelegt. Um dieses Konzept zu Testen wurden zwei Prototypen gebaut (Kapitel \nameref{subsubsection:gripper-prototype-1} und Kapitel \nameref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der Finale Greifer später auch, mit einem Servomotor betrieben. 
 
 \begin{figure}[H]
 \centering
