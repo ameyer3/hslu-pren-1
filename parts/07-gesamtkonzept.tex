@@ -6,7 +6,7 @@ Das Konzept wurde mithilfe des Prototypings getestet. Dies ist im Anhang in Kapi
 
 \subsection{Visualisierung}
 
-Die Einzelteile sollen auf dem Roboter wie auf Abbildung \ref{fig:robot_concept-scetch_labeld} gezeigt zusammengesetzt werden.
+Die Einzelteile des Roboters sollen wie auf Abbildung \ref{fig:robot_concept-scetch_labeld} gezeigt zusammengesetzt werden.
 
 \begin{figure}[H]
 \centering
@@ -16,7 +16,7 @@ Die Einzelteile sollen auf dem Roboter wie auf Abbildung \ref{fig:robot_concept-
 \end{figure}
 
 \subsection{Komponenten}
-Für das Konzept wurden folgende Komponenten mithilfe der Technologierecherche (siehe Anhang \nameref{techrecherche}) und anschliessenden morphologische Kästen (siehe Anhang \nameref{mk}) und Nutzwertanalysen (siehe Anhang \nameref{nutzwertanalyse}) ermittelt. 
+Für das Konzept wurden die auf Abbildung \ref{table:mk-all} ersichtlichen Komponenten mithilfe der Technologierecherche (siehe Anhang \nameref{techrecherche}) und anschliessenden morphologische Kästen (siehe Anhang \nameref{mk}) und Nutzwertanalysen (siehe Anhang \nameref{nutzwertanalyse}) ermittelt. 
 
 \begin{table}[H]
 \centering
@@ -25,19 +25,19 @@ Für das Konzept wurden folgende Komponenten mithilfe der Technologierecherche (
 \label{table:mk-all}
 \end{table}
 
-Es ist geplant einen Roboter in Form eines freien Ploygons zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter dank einem Greifer mit flexiblen Backen anheben. Dies ist in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld} ersichtlich .
+Es ist geplant einen Roboter in Form eines freien Polygons zu bauen, der sich mit drei Rädern fortbewegt und eine Motorlenkung besitzt. Hindernisse kann der Roboter dank einem Greifer mit flexiblen Backen anheben. Dies ist in der vorherigen Abbildung \ref{fig:robot_concept-scetch_labeld} ersichtlich .
 
-Die Steuerung wird auf einem \acrshort{tinyk22} betrieben. Die Distanz zu den Objekten wird mittels einem Ultraschallsensor erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden durch \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Drehschalter vom Benutzer ausgewählt.
+Die Steuerung wird auf einem \gls{tinyk22} betrieben. Die Distanz zu den Objekten wird mittels einem Ultraschallsensor erkannt. Die bürstenbehafteten Motoren werden mit einem gekauften Treiber angesteuert. Die Stromversorgung läuft über einen Akku. Der Akkustand und der Status des Roboters werden durch \acrfull{led} angezeigt. Damit der Roboter die Linien erkennt, wird ein Liniensensor mit Fototransistoren verwendet. Das Ziel wird über einen Drehschalter vom Benutzer ausgewählt.
 Wenn der Roboter das Ziel erreicht, verkündet er dies über einen Lautsprecher. Im Notfall wird der Roboter über einen Taster ausgeschaltet.
 
-Die Bildverarbeitung und Navigation werden in Python programmiert und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von PyTorch und OpenCV verwendet. Die Bilder werden mit einer Raspberry Pi Camera aufgenommen. Der kürzeste Weg wird mit einem Dijkstra Algorithmus berechnet.
+Die Bildverarbeitung und Navigation werden in Python programmiert und laufen auf einem Raspberry Pi. Zur Bilderkennung wird eine Kombination von \gls{pytorch} und \gls{opencv} verwendet. Die Bilder werden mit einer Raspberry Pi Camera aufgenommen. Der kürzeste Weg zum Ziel wird mit einem \gls{dijkstra} Algorithmus berechnet.
 
 \subsection{Ablauf}
 
 Der Ablauf einer Durchfahrt ist im Ablaufdiagramm \ref{fig:ablaufdiagramm} aufgezeigt.
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
 
-Um den Graph zu traversieren wird eine iterative Herangehensweise umgesetzt. Durch die Spiegelung des Bodens, die Grösse des Graphes und die Einschränkung der Höhe des Roboters, ist es nicht möglich am Start ein Bild des gesamten Graphen zu machen und dabei die Hindernisse und die fehlenden Linien zu erkennen. Deshalb werden iterativ bei jedem Knoten die ausgehenden Linien geprüft.
+Um den Graph zu traversieren, wird eine iterative Herangehensweise umgesetzt. Durch die Spiegelung des Bodens, die Grösse des Graphes und die Einschränkung der Höhe des Roboters, ist es nicht möglich, am Start ein Bild des gesamten Graphens zu machen und dabei die Hindernisse und die fehlenden Linien zu erkennen. Deshalb werden iterativ bei jedem Knoten die ausgehenden Linien geprüft.
 
 \begin{figure}[H]
 \centering
@@ -48,9 +48,9 @@ Um den Graph zu traversieren wird eine iterative Herangehensweise umgesetzt. Dur
 
 \subsubsection{Ausgehende Kanten erkennen}\label{outgoing-angles}
 
-Um alle ausgehenden Kanten und deren Winkel zu erkennen, wird der folgende Ablauf in Abbildung \ref{fig:ablaufdiagramm} durchlaufen. Dies ist nötig, damit der Roboter weiss, in welche Richtung er sich drehen muss, um auf die nächste Kante zu gelangen. Ebenfalls können so fehlende Linien erkannt werden.
+Um alle ausgehenden Kanten und deren Winkel zu erkennen, wird der folgende Ablauf in Abbildung \ref{fig:ablaufdiagramm-kanten-erkennen} durchlaufen. Dies ist nötig, damit der Roboter weiss, in welche Richtung er sich drehen muss, um auf die nächste Kante zu gelangen. Ebenfalls können so fehlende Linien erkannt werden.
 
-Falls es weniger Kanten gibt als erwartet, werden die erhaltenen Winkel zu den einzelnen möglichen Bereichen zugeordnet. In dem Bereich, in welchem kein Winkel zugeordnet wurde, fehlt eine Linie. Folglich aktualisiert der Roboter seine internen Informationen: eine Linie wird aus dem Grundgraphen entfernt und die anderen Winkel werden mit den gemessenen Werten ersetzt.
+Falls es weniger Kanten gibt als erwartet, werden die erhaltenen Winkel zu den einzelnen möglichen Bereichen zugeordnet. In dem Bereich, in welchem kein Winkel zugeordnet wurde, fehlt eine Linie. Folglich aktualisiert der Roboter seine internen Informationen: Eine Linie wird aus dem Grundgraphen entfernt und die Basiswerte der Winkel werden mit den gemessenen Werten ersetzt.
 
 Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur richtigen ausgehenden Kante an die Steuerung gesendet. Der Roboter dreht sich, um auf dieser Linie weiterzufahren.
 
@@ -63,7 +63,7 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 \textbf{Ablauf detailliert erklärt}
 
-Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird rotiertet und mit OpenCV zuerst so entzerrt, sodass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \nameref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 41, 68, 127]| erstellt werden.
+Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird mit \gls{opencv} zuerst so entzerrt, dass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \nameref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 41, 68, 127]| erstellt werden.
 
 \begin{figure}[H]
 \centering
@@ -86,22 +86,20 @@ Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der K
 
 Die erhaltene Liste mit Winkeln wird nun verwendet, um mögliche fehlende Linien zu erkennen und die Winkel intern zu speichern. Die internen Winkel werden verwendet, um den Roboter richtig auszurichten, wenn dieser auf die nächste Linie fährt.
 
-Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die einzelne Knoten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0\textdegree, eine Linie nach 3 Uhr ist 90\textdegree, 6 Uhr ist 180\textdegree und 9 Uhr ist 270\textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurden, zu übersetzen. Mit dieser Information kann sich der Roboter dann richtig ausrichten.
+Der Roboter selber hat einen Grundgraphen mit Winkeln gespeichert. Diese Winkel ergeben sich aus dem zur Verfügung gestellten Graph. Dabei werden die Winkel der Kanten im Graphen im Uhrzeigersinn gelesen. Dabei ist eine Linie, die nach 12 Uhr ausgeht, 0\textdegree, eine Linie nach 3 Uhr ist 90\textdegree, 6 Uhr ist 180\textdegree und 9 Uhr ist 270\textdegree. Der Roboter merkt sich, in welche Richtung er gerade schaut. Damit ergibt sich ein Offset, der verwendet wird, um die Winkel, die wie eine Uhr gelesen wurden, zu übersetzen. Mit dieser Information kann sich der Roboter dann richtig ausrichten.
 
-Die Abbildung \ref{fig:angle-graphs-internal} soll visualisieren wie die Winkel von jedem Knoten intern gespeichert werden. Auf jedem Knoten befindet sich eine Uhr, die aufzeigen soll, wie die Winkel mit den einzelnen Uhrzeiten korrespondieren. Also intern wird 12Uhr (oben) immer als 0\textdegree\ festgehalten. Das ist unser Ausgangspunkt für Berechnungen von Drehwinkeln.
+Die Abbildung \ref{fig:angle-graphs-internal} soll visualisieren, wie die Winkel von jedem Knoten intern gespeichert werden. Auf jedem Knoten befindet sich eine Uhr, die aufzeigen soll, wie die Winkel mit den einzelnen Uhrzeiten korrespondieren. Intern wird 12Uhr (oben) immer als 0\textdegree\ festgehalten. Das ist der Ausgangspunkt für die Berechnungen von Drehwinkeln.
 
-Angenommen der Roboter fährt von links auf den Knoten G zu, dann weiss er durch das speichern der internen Ausrichtung, dass er von 270\textdegree\ herkommt. Wenn er nun den Knoten mit den ausgehenden Kanten fotografiert, erhält er die Liste \verb|[0, 120, 180, 240, 300]|.  Wenn jeder Wert in der Liste mit dem Herkunftswinkel des Roboters addiert und modulo 360 gerechnet wird, erhält er eine normalisierte Winkelliste \verb|[30, 90, 150, 210, 270]|. Mit der normalisierten Winkelliste kann nun die Zuordnung der Kanten mit den intern gespeicherten Winkeln durchgeführt werden. Und Falls nötig diese korrigieren.
+Angenommen der Roboter fährt von links auf den Knoten G zu, dann weiss er durch die intern gespeicherte Ausrichtung, dass er von 270\textdegree\ herkommt. Wenn er nun den Knoten mit den ausgehenden Kanten fotografiert, erhält er die Liste \verb|[0, 120, 180, 240, 300]|.  Jeder Wert in der Liste wird mit dem Herkunftswinkel des Roboters addiert. Diese Resultate werden modulo 360 gerechnet und es ergibt sich eine Winkelliste \verb|[30, 90, 150, 210, 270]| im Format einer Uhr. Mit dieser kann nun die Zuordnung der Kanten mit den intern gespeicherten Winkeln durchgeführt werden.
 
-Falls der Roboter sich nun in Richtung zum Knoten E ausrichten will rechnen wir den gewünschten Winkel minus seinen Herkunftswinkel + 180\textdegree\ und das Resultat mod 360
+Falls der Roboter sich nun in Richtung zum Knoten E ausrichten will, wird der gewünschte Winkel minus dem Herkunftswinkel der Roboters + 180\textdegree\ und gerechnet und das Resultat modulo 360:
 
-Formel:
 \[Drehwinkel = (GewuenschterAusgangswinkel - Herkunftswinkel + 180^\circ) \mod 360\]
 
 Mit obigen Beispiel:
 \[Drehwinkel = (30^\circ - 270^\circ + 180^\circ) \mod 360 = -60^\circ\]
 
-Wenn der Drehwinkel >180 ist, kann nochmals minus 360\textdegree\ gerechnet werden, damit wir gegen den Uhrzeigersinn drehen und so einen kürzeren Weg zu drehen haben als im Uhrzeigersinn.
-
+Wenn der Drehwinkel >180 ist, kann nochmals minus 360\textdegree\ gerechnet werden, damit gegen den Uhrzeigersinn gedreht wird und so der Weg kürzer ist.
 
 
 \begin{figure}[H]
@@ -130,7 +128,7 @@ angles = {
 \label{fig:angle-graphs-internal}
 \end{figure}
 
-Da der Graph nicht genau so aufgeklebt sein wird, wie auf der Skizze, wurden zusätzliche Bereiche definiert, in denen sich die Winkel befinden sollten.
+Da der Graph nicht genau so aufgeklebt sein wird wie auf der Skizze, wurden zusätzliche Bereiche definiert, in denen sich die Winkel befinden sollten.
 
 Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert ist, ist hier eingefügt.
 
@@ -162,7 +160,7 @@ Das der Idealfall nicht eintreten wird, da der Graph nicht perfekt aufgeklebt se
 
 \subsubsection{Zielknoten erkennen}
 
-Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der OpenCV Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
+Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der \gls{opencv} Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
 
 Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt \acrshort{orb} um welchen es sich handelt.
 
@@ -311,7 +309,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung}
 
-Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Die DC-Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden.  Dadurch kann genau festgestellt werden welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \acrshort{tinyk22}, der die Motoren ansteuert,  werden Distanz und Drehwinkel mitgeteilt.
+Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Die DC-Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden.  Dadurch kann genau festgestellt werden welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert,  werden Distanz und Drehwinkel mitgeteilt.
 
 \subsection{Linienerkennung}
 
@@ -323,7 +321,7 @@ Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein 
 
 \subsection{Wegfindung}
 
-Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem Dijkstra Algorithmus\footnote{\url{https://www.w3schools.com/dsa/dsa\_algo\_graphs\_dijkstra.php}} berechnet. Dieser wird zu Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, aktualisiert. 
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem \gls{dijkstra} Algorithmus berechnet. Dieser wird zu Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, aktualisiert. 
 
 Zusätzlich zum zukünftigen Pfad, wird der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird, im Fehlerzustand, auf den letzten Knoten zurückzufahren und dabei die Orientierung beibehält.
 
@@ -344,7 +342,7 @@ Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textde
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
-Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \nameref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \acrshort{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet und die Navigation implementiert,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
+Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \nameref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \gls{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet und die Navigation implementiert,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
 
 
 

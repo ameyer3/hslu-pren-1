@@ -73,7 +73,7 @@ Das Klassendiagramm des Simulators wurde zum Verständnis in zwei Diagramme aufg
 
 Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-Klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und Fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung des Motors gesendet werden würden.
 
-in Abbildung \ref{fig:simulator-classdia-robot} sind die Roboterklassen dargestellt. Der GraphHandler wird verwendet, um den Graph intern zu speichern und auszulesen. Der Path Calculator berechnet den kürzesten Weg zum Zielknoten mit einem Dijkstra Algorithmus.
+in Abbildung \ref{fig:simulator-classdia-robot} sind die Roboterklassen dargestellt. Der GraphHandler wird verwendet, um den Graph intern zu speichern und auszulesen. Der Path Calculator berechnet den kürzesten Weg zum Zielknoten mit einem \gls{dijkstra} Algorithmus.
 
 Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls dieser nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt ``Trial and Error'' noch weiter erklärt. Im Klassendiagramm sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der öffentlichen \verb|run| Methoden ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
 
@@ -162,7 +162,7 @@ In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten
     \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary höher gewichtet. Die Höhe der neuen Gewichtung widerspiegelt sich im Verhältnis zur Zeit die das zusätzliche Abhandeln des Objektes entspricht.
 \end{itemize}
 
-Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels Dijkstra durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
+Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels \gls{dijkstra} durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
 
 Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll.
 
@@ -338,9 +338,10 @@ Dies wurde nun mit nachfolgenden Optionen durchgeführt:
 \end{itemize}
 
 Mit allen möglichen Optionen wurden so 4'215'593 verschiedene Graphen erstellt und die Traversierung dieser simuliert.
-Dabei ist wichtig, dass wir unter einer Laufzeit von ca. 2 Minuten stehen, egal welcher Graph mit welchen Hindernissen traversiert wrd.
+Dabei ist wichtig, dass wir unter einer Laufzeit von ca. 2 Minuten stehen, egal welcher Graph mit welchen Hindernissen traversiert wird.
 
-Nachfolgend dazu die Auswertung dieser Durchläufe:
+Nachfolgend in Abbildung \ref{fig:simulation-run-chart} sind diese Durchläufe und deren Laufzeiten in einer Grafik Dargestellt. Die Simulationen sind nach Anzahl Hindernissen gruppiert. Also beginnend mit 0 Pylonen, 0 Barrieren und 0 fehlende Kanten. Und enden mit der maximalen Anzahl Pylonen, Barrieren und fehlenden Kanten. Also 5 Pylonen, 15 Barrieren und 13 fehlende Kanten.
+Die Anzahl Hindernissen ist dabei im unteren Liniendiagramm ersichtlich. Das darüberliegende Liniendiagramm zeigt dann die dazu erreichten maximalen, minimalen und durchschnittlichen Laufzeit.
 
 \begin{figure}[H]
   \centering\includegraphics[width=\linewidth]{assets/informatik-prototyp/simulator/simulations_chart_sm.png}
@@ -348,6 +349,6 @@ Nachfolgend dazu die Auswertung dieser Durchläufe:
   \label{fig:simulation-run-chart}
 \end{figure}
 
-Wie zu sehen ist, braucht der Roboter im Worst Case ungefähr 200 Sekunden für das Traversieren. Welches immer noch unter der geforderten Muss-Anforderung von 240 Sekunden ist. 
+Wie zu sehen ist, braucht der Roboter im ungünstigsten Fall ungefähr 200 Sekunden für das Traversieren. Welches immer noch unter der geforderten Muss-Anforderung von 240 Sekunden ist. 
 Viel interessanter ist jedoch die durchschnittliche Zeit. Diese fällt konstant unter 60 Sekunden aus.
 Somit kann davon ausgegangen werden, dass der Roboter mit der aktuellen Strategie den Graphen problemlos in der geforderten Zeit erfolgreich traversieren kann.

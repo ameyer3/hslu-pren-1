@@ -3,7 +3,7 @@
 
 Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlässigt werden kann.
 
-Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller Dijkstra Algorithmus in Python implementiert. Dabei wurde von einem Knoten den kürzesten Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. währenddessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auch auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt, und einige male wiederholt. Was uns zu nachfolgender Ausgabe und Kenntnissen bringt:
+Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller \gls{dijkstra} Algorithmus in Python implementiert. Dabei wurde von einem Knoten den kürzesten Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. währenddessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auch auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt, und einige male wiederholt. Was uns zu nachfolgender Ausgabe und Kenntnissen bringt:
 
 \begin{figure}[H]
 \begin{subfigure}{0.275\textwidth}
@@ -33,7 +33,7 @@ This calculation took about 0.128ms
 \label{fig:djikstra-test-output}
 \end{figure}
 
-Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen Dijkstra-Algorithmus zu verwenden. Und ist wichtig, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
+Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen \gls{dijkstra} Algorithmus zu verwenden. Und ist wichtig, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
 
 Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
@@ -94,7 +94,7 @@ Zusätzlich haben wir dies mit unserem Raspberry Pi und Kamera getestet:
 
 
 Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \nameref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
-Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreie Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels OpenCV berechnet werden.
+Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreie Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels \gls{opencv} berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
 
@@ -227,7 +227,7 @@ Die Methode, die gewählt wird, muss in der Lage sein folgende Elemente zu erken
 
 \textbf{OpenCV SIFT, FAST, ORB Algorithmen}
 
-OpenCV bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zu Objekterkennung und -tracking eingesetzt werden:
+\gls{opencv} bietet verschiedene Algorithmen zur Merkmalsdetektion und -beschreibung, die in der Bildverarbeitung und Computer Vision zu Objekterkennung und -tracking eingesetzt werden:
 
 \begin{enumerate}
     \item SIFT (Scale-Invariant Feature Transform)
@@ -281,7 +281,7 @@ Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Positi
 \end{figure}
 
 
-Aus diesem Test können wir entscheiden, dass die OpenCV Merkmalsdetektionsalgorithmen nicht ausreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Deshalb wird dieser Ansatz nicht mehr weiter verfolgt.
+Aus diesem Test können wir entscheiden, dass die \gls{opencv} Merkmalsdetektionsalgorithmen nicht ausreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Deshalb wird dieser Ansatz nicht mehr weiter verfolgt.
 
 \textbf{Objekterkennung mit Farberkennung}
 
@@ -539,7 +539,7 @@ Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte
 
 \textbf{EasyOCR}
 
-EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der OpenCV Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
+EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der \gls{opencv} Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
 
 \begin{figure}[H]
 \centering

@@ -34,7 +34,7 @@ Um dennoch eine geringe Anfangsdrehzahl zu gewährleisten, wird der Motor initia
 \subsubsection*{Tiny K22 Pinout} \label{Blockdiagramm: Schnittstellen zwischen den Komponenten}
 \addcontentsline{toc}{subsubsection}{Tiny K22 Pinout}
 
-Für die hardwarenahe Steuerung und Regelung wurde ein \acrshort{tinyk22} Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
+Für die hardwarenahe Steuerung und Regelung wurde ein \gls{tinyk22} Version 1.4 ausgewählt, basierend auf der Methode des Morphologischen Kastens (Tab. \ref{table:mk-elektrotechnik}). Um die Software- und Hardwareauslegung des Projekts optimal zu gestalten, ist eine präzise Funktionszuweisung der einzelnen Pins erforderlich.
 
 \begin{figure}[H]
     \centering
@@ -44,9 +44,9 @@ Für die hardwarenahe Steuerung und Regelung wurde ein \acrshort{tinyk22} Versio
 \end{figure}
 
 
-Das \acrshort{tinyk22} \acrshort{pcb} bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als \acrfull{ftm}, \acrfull{adc}, \acrfull{iic}, \acrfull{spi}, \acrshort{uart}, Input- oder Output-Pins konfiguriert werden.
+Das \gls{tinyk22} \acrshort{pcb} bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als \acrfull{ftm}, \acrfull{adc}, \acrfull{iic}, \acrfull{spi}, \acrshort{uart}, Input- oder Output-Pins konfiguriert werden.
 
-Im Rahmen des Projekts wurden 25 Pins verwendet (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die zeitkritischen Funktionen werden direkt auf dem \acrshort{tinyk22} verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
+Im Rahmen des Projekts wurden 25 Pins verwendet (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die zeitkritischen Funktionen werden direkt auf dem \gls{tinyk22} verarbeitet. Dabei werden folgende Zuweisungen vorgenommen:
 
 \begin{figure}[H]
     \centering
@@ -66,13 +66,13 @@ Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effi
 \addcontentsline{toc}{subsubsection}{Software Steuerung}
 
 
-Das Programm welches man auf das \acrshort{tinyk22} laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger beinhaltet ist. Es können vom Modul ``Mikrocontroller Fundamentals'' bestehende Libraries verwendet werden. Einige Anpassungen wie zum Beispiel die \acrshort{uart} wurden bereits vorgenommen.
+Das Programm welches man auf das \gls{tinyk22} laden wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Debuggen kann man das Programm ebenfalls, da auf dem Tiny K22 ein Debugger beinhaltet ist. Es können vom Modul ``Mikrocontroller Fundamentals'' bestehende Libraries verwendet werden. Einige Anpassungen wie zum Beispiel die \acrshort{uart} wurden bereits vorgenommen.
 
 \subsubsection*{Liniensensor}
 \addcontentsline{toc}{subsubsection}{Liniensensor}
 
 
-Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Es sind 7 Pins auf dem \acrshort{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die bei Entladung fallende Flanke detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
+Der Liniensensor wird als Array verwendet, das heisst es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Es sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die bei Entladung fallende Flanke detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt bei dem der Kondensator sich anfängt zu entladen bis die Spannung 0V ist.
 
 \begin{figure}[H]
     \centering
@@ -97,7 +97,7 @@ Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet. Die
 \addcontentsline{toc}{subsubsection}{PCB Design}
 
 
-Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das \acrshort{tinyk22} steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen \acrshort{pcb} als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
+Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut da es der Knotenpunkt ist und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine seperate Platine für die Spannungsversorgun benötigt, welches sich ebenfall zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard erschlossen. Aufgrund der Wiederverwendung wird man die einzelnen Komponenten wie auch das \gls{tinyk22} steckbar verbinden. Das die Produktionskosten und der Abfall auf ein minimum reduziert werden wird man die verschiedenen \acrshort{pcb} als Einzelstück produzieren lassen und die Stücke mit brechen von einander lösen.
 
 \subsubsection*{Servomotor}
 \addcontentsline{toc}{subsubsection}{Servomotor}
