@@ -196,8 +196,7 @@ Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\foot
 \textbf{Graphical User Interface}\label{gui}
 
 Das GUI wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. In diesem wird der Graph mit beschrifteten Knoten visualisiert. Der Roboter wird als Kreis dargestellt, an dem sich ein Dreieck befindet, dessen Spitze die Blickrichtung des Roboters angibt. Pylonen werden als orangefarbene Dreiecke, Barrieren als rote Rechtecke, und fehlende Kanten durch gestrichelte Linien visualisiert. Der Zielknoten ist mit einer roten Fahne markiert.
-
-Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht kennt, respektive noch nicht erforscht hat.
+Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht kennt, respektive noch nicht erforscht hat. Dies ist auf Abbildung \ref{fig:sim-gui} gezeigt.
 
 \begin{figure}[H]
 \centering
@@ -206,7 +205,7 @@ Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht kennt, r
 \label{fig:sim-gui}
 \end{figure}
 
-Das Aufheben der Barrieren, und absetzen ist mittels Farbwechsel des Roboters dargestellt.
+Das Aufheben und Absetzen der Barrieren sind mittels Farbwechsel des Roboters dargestellt.
 In Abbildung \ref{fig:sim-gui-barrier-flow} ist veranschaulicht, wie eine Barriere durch den Roboter abgehandelt wird.
 
 \begin{figure}[H]
@@ -220,22 +219,13 @@ In Abbildung \ref{fig:sim-gui-barrier-flow} ist veranschaulicht, wie eine Barrie
 
 \subsubsection{Simulation}
 
-In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie man diesen verwendet. Zusätzlich haben wir automatisierte Testdurchläufe durchgeführt, welche Ergebnisse anschliessend Dokumentiert sind.
+In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie dieser verwendet wird. Zusätzlich wurden automatisierte Testdurchläufe durchgeführt. Deren Ergebnisse sind anschliessend dokumentiert.
 
 \textbf{Voraussetzungen und Installation}
 
-Wie in Kapitel \ref{technical-aspect-simulator} erwähnt, wird unser Simulator in einer virtuellen Python Umgebung ausgeführt. Um diese Virtuelle Python Umgebung zu nutzen müssen vorerst nachfolgende Software installiert sein:
+Wie in Kapitel \ref{technical-aspect-simulator} erwähnt, wird unser Simulator in einer virtuellen Python Umgebung ausgeführt. Um diese Virtuelle Python Umgebung zu nutzen müssen Python Version 3.9 oder neuer und Poetry Version 1.8 oder neuer installiert sein.
 
-\begin{itemize}
-    \item Python Version 3.9 oder neuer
-    
-    \url{https://www.python.org/}
-    \item Poetry Version 1.8 oder neuer
-    
-    \url{https://python-poetry.org/}
-\end{itemize}
-
-Sofern dies installiert ist, kann im Grundverzeichnis des Simulators der nachfolgende Befehl ausgeführt werden, um die Abhängigkeiten zu installieren
+Sofern dies installiert ist, kann im Grundverzeichnis des Simulators der nachfolgende Befehl ausgeführt werden, um die Abhängigkeiten zu installieren.
 
 \begin{verbatim}
 poetry install
@@ -243,14 +233,13 @@ poetry install
 
 \textbf{Simulator ausführen}
 
-Danach wird mit folgendem Befehl  eine einfache Simulation gestartet:
+Danach wird mit folgendem Befehl eine einfache Simulation gestartet:
 
 \begin{verbatim}
 poetry run python -m simulator
 \end{verbatim}
 
-Um die Hilfe anzuzeigen kann das Argument \verb|--help| angegeben werden. Somit werden alle Optionen welche der Simulator bietet angezeigt.:
-
+Alle Optionen welche der Simulator bietet, können mit dem Argument \verb|--help| angezeigt werden:
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -280,10 +269,10 @@ options:
 Die wichtigsten dieser Aktionen sind nachfolgend erklärt:
 
 \begin{itemize}
-    \item \verb|--random| ermöglicht das automatisch generieren von Hindernissen.
-    \item \verb|--cones|, \verb|--barriers|, \verb|--missing-lines| bestimmt, wie viele Hindernisse im generierten Graph platziert werden. Standardmässig werden jeweils 2 Stück platziert.
-    \item \verb|--no-gui| und \verb|--simulate-time| wird verwendet um den Simulator ohne grafisches User Interface durchlaufen zu lassen. Die Simulation wird in dem Verfahren so schnell wie möglich ausgeführt. Dies ist äussert hilfreich wenn hunderte, oder tausende Simulationen durchgeführt werden sollen.
-    \item \verb|--verbose| ermöglicht Debugging-Ausgaben des Simulators in der Konsole.
+    \item \verb|--random|: Ermöglicht das automatische Generieren von Hindernissen.
+    \item \verb|--cones|, \verb|--barriers|, \verb|--missing-lines|: Bestimmen, wie viele Hindernisse im generierten Graph platziert werden. Standardmässig werden jeweils 2 Stück platziert.
+    \item \verb|--no-gui| und \verb|--simulate-time|: Werden verwendet, um den Simulator ohne grafisches User Interface zu starten. Die Simulation wird in diesem Modus so schnell wie möglich ausgeführt. Dies ist äusserst hilfreich, wenn eine sehr grosse Anzahl an Simulationen durchgeführt werden soll.
+    \item \verb|--verbose|: Ermöglicht Debugging-Ausgaben des Simulators in der Konsole.
 \end{itemize}
 
 Jede Ausführung gibt jeweils auch Informationen über den Verlauf der Simulation. Nachfolgend ein Ausschnitt einer Ausgabe:
@@ -311,10 +300,11 @@ traversing the graph took 84.728 seconds
 \end{verbatim}
 \end{footnotesize}
 
-Bei erfolgreichem Traversieren des Graphen wird am Ende der gesamten Pfad sowie die benötigte Zeit dafür ausgegeben.
+Bei erfolgreichem Traversieren des Graphens wird am Ende der gesamte Pfad, der genommen wurde, sowie die benötigte Zeit dafür ausgegeben.
 
-Der Verlauf kann auch im grafischen User Interface verfolgt werden. Dabei sind die Hindernisse, welche bereits erkannt worden sind, eingefärbt. Sowie schwarz der Pfad, der bekannt ist. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind.
+Der Verlauf kann auch im grafischen User Interface verfolgt werden. Dabei sind die Hindernisse, welche bereits erkannt worden sind, eingefärbt. Der Pfad, der bereits bekannt ist, ist schwarz, grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind. Dies ist ersichtlich in Abbildung \ref{fig:simulation-run}.
 Die Anzeige aktualisiert sich laufend.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{assets//informatik-prototyp//simulator/simulator-run.png}
@@ -324,7 +314,7 @@ Die Anzeige aktualisiert sich laufend.
 
 \textbf{Benchmark}
 
-Durch das Setzen des \verb|--random| Arguments können auch zufällig generierte Graphen erstellt und traversiert werden.
+Durch das Setzen des \verb|--random| Arguments können zufällig generierte Graphen erstellt und traversiert werden.
 Wenn zusätzlich \verb|--simulate-time| definiert wird, wird die Ausführungszeit ebenfalls simuliert.
 Somit können fast unbegrenzt mögliche Graphen erstellt und die Traversierung mit dem Roboter in der selben Sekunde simuliert werden.
 
@@ -338,10 +328,10 @@ Dies wurde nun mit nachfolgenden Optionen durchgeführt:
 \end{itemize}
 
 Mit allen möglichen Optionen wurden so 4'215'593 verschiedene Graphen erstellt und die Traversierung dieser simuliert.
-Dabei ist wichtig, dass wir unter einer Laufzeit von ca. 2 Minuten stehen, egal welcher Graph mit welchen Hindernissen traversiert wird.
+Dabei ist wichtig, dass die Traversierung des Roboters ca. 2 Minuten oder weniger dauert, egal welcher Graph mit welchen Hindernissen traversiert wird, damit die Effizienz der Roboters sichergestellt werden kann.
 
-Nachfolgend in Abbildung \ref{fig:simulation-run-chart} sind diese Durchläufe und deren Laufzeiten in einer Grafik Dargestellt. Die Simulationen sind nach Anzahl Hindernissen gruppiert. Also beginnend mit 0 Pylonen, 0 Barrieren und 0 fehlende Kanten. Und enden mit der maximalen Anzahl Pylonen, Barrieren und fehlenden Kanten. Also 5 Pylonen, 15 Barrieren und 13 fehlende Kanten.
-Die Anzahl Hindernissen ist dabei im unteren Liniendiagramm ersichtlich. Das darüberliegende Liniendiagramm zeigt dann die dazu erreichten maximalen, minimalen und durchschnittlichen Laufzeit.
+Nachfolgend in Abbildung \ref{fig:simulation-run-chart} sind diese Durchläufe und deren Laufzeiten in einer Grafik dargestellt. Die Simulationen sind nach Anzahl Hindernissen gruppiert. Der erste Block hatte 0 Pylonen und iterierte dabei über alle möglichen Anzahlen von Barrieren und fehlenden Linien. Der letzte Block hatte die maximale Anzahl an 5 Pylonen und iterierte ebenfalls über alle möglichen Anzahlen von Barrieren und fehlenden Linien.
+Die Zahlen der Hindernisse sind im unteren Liniendiagramm ersichtlich. Das darüberliegende Liniendiagramm zeigt die dazu erreichten maximalen, minimalen und durchschnittlichen Laufzeiten.
 
 \begin{figure}[H]
   \centering\includegraphics[width=\linewidth]{assets/informatik-prototyp/simulator/simulations_chart_sm.png}
@@ -349,6 +339,6 @@ Die Anzahl Hindernissen ist dabei im unteren Liniendiagramm ersichtlich. Das dar
   \label{fig:simulation-run-chart}
 \end{figure}
 
-Wie zu sehen ist, braucht der Roboter im ungünstigsten Fall ungefähr 200 Sekunden für das Traversieren. Welches immer noch unter der geforderten Muss-Anforderung von 240 Sekunden ist. 
+Wie zu sehen ist, braucht der Roboter im ungünstigsten Fall ungefähr 200 Sekunden für das Traversieren. Dies ist immer noch unter der geforderten Anforderung von 240 Sekunden. 
 Viel interessanter ist jedoch die durchschnittliche Zeit. Diese fällt konstant unter 60 Sekunden aus.
 Somit kann davon ausgegangen werden, dass der Roboter mit der aktuellen Strategie den Graphen problemlos in der geforderten Zeit erfolgreich traversieren kann.
