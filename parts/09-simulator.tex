@@ -189,6 +189,8 @@ Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass 
 
 Ein Modus \verb|BLIND_TESTING| wurde implementiert, der aktiviert wird, wenn der Roboter nicht mehr weiss, wo er sich befindet. Dieser Modus dient im realen Roboter als Risikominderung. Dabei wird der Roboter die Hindernisse und Knoten gleich erkennen, wie im normalen Modus, jedoch wird nicht der schnellste Weg berechnet. Der Roboter kennt alle ausgehenden Kanten des nächsten Knotens und die Hindernisse, die sich darauf befinden. Er wird nun jeweils ohne Berechnung die erste Kante, die nicht zu einem Pylonen führt, von links aus nehmen und so blind den Graphen traversieren, bis mit der Kamera der richtige Zielknoten erkannt wird.
 
+Momentan ist noch nicht fest definiert, unter welchen Bedingungen zu diesem Modus gewechselt wird. Dies wird in \acrshort{pren2} festgelegt wenn Tests mit Roboterprototypen durchgeführt werden.
+
 \textbf{Technische Aspekte}\label{technical-aspect-simulator}
 
 Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\footnote{\url{https://python-poetry.org/}} verwendet. Dabei werden die Bibliotheken in eine virtuelle Umgebung installiert, worin der Simulator ausgeführt wird.
