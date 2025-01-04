@@ -341,7 +341,7 @@ Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Kno
 \end{figure}
 
 
-Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein YOLO Model mit 10 Epochs\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/epoch}} trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{\url{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.}} erstellt, die zeigt, welche Elemente als was erkannt wurde.
+Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein \gls{yolo} Model mit 10 Epochs\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/epoch}} trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{\url{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.}} erstellt, die zeigt, welche Elemente als was erkannt wurde.
 
 \begin{figure}[H]
 \centering
@@ -475,7 +475,7 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
 \label{tab:test-obst-detection}
 \end{table}
 
-Zur Erkennung der Hindernisse und des Graphens funktionierte YOLO am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
+Zur Erkennung der Hindernisse und des Graphens funktionierte \gls{yolo} am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
 
 
 \subsubsection*{Zielknoten erkennen}

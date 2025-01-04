@@ -160,7 +160,7 @@ Das der Idealfall nicht eintreten wird, da der Graph nicht perfekt aufgeklebt se
 
 \subsubsection{Zielknoten erkennen}
 
-Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob der Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der \gls{opencv} Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
+Damit der Roboter überprüfen kann, ob er wirklich das Ziel erreicht hat, muss erkannt werden können, ob ein Knoten der richtige Zielknoten ist. Dazu wird der \acrfull{orb} Algorithmus verwendet, der Teil der \gls{opencv} Bibliothek ist.\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde.
 
 Der Algorithmus wird so eingesetzt werden, dass der Roboter bevor er den Lauf beginnt die Merkmal der drei Buchstaben lernt. Jedes Mal, wenn ein Knoten fotografiert wird, um die ausgehenden Kanten zu prüfen, wird ebenfalls geprüft, ob sich ein Buchstaben darauf befindet. Falls ein Buchstaben detektiert wird, bestimmt \acrshort{orb} um welchen es sich handelt.
 
@@ -219,10 +219,10 @@ Damit der Roboter weiss, ob sich eine Pylone auf einem Nachbarsknoten oder eine 
 \label{fig:image-detection-obstacles}
 \end{figure}
 
-Aus dem vorherigen Schritt der Kanten erkennen, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras sieht er weit und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
+Aus dem vorherigen Schritt des Winkelerkennens, kennt der Roboter alle ausgehenden Linien und deren Position. Er dreht sich nun im Uhrzeigersinn zu jeder Kante und fotografiert diese. Durch das Hochformat der Kameras sieht er weit in die Ferne und kann auch nur die wichtigen Elemente sehen, sprich, diese, die sich auf der Linie befinden.
 
-Die Bilder werden mit einem YOLO Objekterkennungsalgorithmus ausgewertet. Dabei werden sowohl Knoten, als auch Pylonen und Barrieren erkannt. Das erhaltene Resultat beschreibt anhand der definierten Klassen welche Elemente erkannt wurden und mithilfe der Koordinaten wo sich diese auf dem Bild befinden.
-Alle Hindernisse werden intern gespeichert indem die jeweiligen Kanten höher gewichtet werden.
+Die Bilder werden mit dem \gls{yolo} Objekterkennungsalgorithmus ausgewertet. Dabei werden sowohl Knoten, als auch Pylonen und Barrieren erkannt. Das erhaltene Resultat beschreibt anhand der definierten Klassen, welche Elemente erkannt wurden und mithilfe der Koordinaten, wo sich diese auf dem Bild befinden.
+Alle Hindernisse werden intern gespeichert indem die jeweiligen Kanten höher gewichtet oder Knoten entfernt werden.
 
 
 \newpage
@@ -230,7 +230,7 @@ Alle Hindernisse werden intern gespeichert indem die jeweiligen Kanten höher ge
 \subsubsection{Hindernisse bewegen}
 \label{subsubsection:Hindernisse bewegen}
 
-Um ein vorhandenes Hindernis zu bewegen wird ein Mechanismus zum Anheben, nachfolgend Greifer genannt, verwendet. Nach dem Anheben bewegt sich der Roboter und setzt das Hindernis an der alten Position ab.
+Um ein vorhandenes Hindernis zu bewegen, wird ein Mechanismus zum Anheben, nachfolgend Greifer genannt, verwendet. Nach dem Anheben bewegt sich der Roboter und setzt das Hindernis an der alten Position ab.
 Mit nur einem Motor wird das Hindernis eingeklemmt, zentriert und angehoben. Dieser Vorgang und der Aufbau des Greifers wird in folgendem Kapitel erläutert.
 
 Die gezeigten Abbildungen des Greifers stammen von einem Prototyp und stellen nicht das finale Design dar. Sie dienen lediglich zur Veranschaulichung der Funktionsweise. Die Dimensionen des Gestänges sowie die Positionen der Lagerstellen sollen für die finale Variante beibehalten werden.
@@ -247,7 +247,7 @@ In der Nutzwertanalyse (Anhang \nameref{nutzwertanalyse}) hat man sich zum Anheb
 
 \newpage
 
-Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen Servomotor zu realisieren, wurde der Mechanismus als ein Gestänge realisiert (Abb. \ref{fig:gripper_components}).
+Um sowohl das Klemmen, als auch das Anheben des Hindernisses mit einem einzelnen Servomotor zu realisieren, wurde der Mechanismus als ein Gestänge realisiert (Abb. \ref{fig:gripper_components}).
 
 \begin{figure}[H]
 \centering
@@ -256,15 +256,15 @@ Um sowohl das Klemmen als auch das Anheben des Hindernisses mit einem einzelnen 
 \label{fig:gripper_components}
 \end{figure}
 
-Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt. Der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp anfangs von Hand bedient wird. Die zwei Spannbacken sind am Spannarm befestigt, welcher drehbar am Chassis des Fahrzeugs gelagert ist und durch eine Zugfeder vorgespannt wird. Abgebildet sind nur die Montagepunkte der Feder.
+Die Greifbacke ist gelenkig mit dem Greifarm verbunden, welcher von der Pendelstütze geführt wird. Am Ende des Greifarms wird der Arm des Servomotors befestigt. Der Servomotor ist in der Abbildung durch einen Hebel ersetzt, da der Prototyp zu Beginn des Prototypings von Hand bedient wird. Die zwei Spannbacken sind am Spannarm befestigt. Dieser Spannarm ist drehbar am Chassis des Fahrzeugs gelagert und wird durch eine Zugfeder vorgespannt. Abgebildet sind nur die Montagepunkte der Feder.
 
 \newpage
 
-Dreht der Servomotor im Uhrzeigersinn, so schwingen Greifarm und Greifbacke nach oben weg. Der Greifer ist geöffnet (Abb. \ref{fig:gripper_opening_side}). So kann der Roboter auf das Hindernis zu fahren, bis dieses die zwei Spannbacken berührt. An den Spannbacken wird je ein Endschalter montiert, welcher erkennt, wann das Hindernis nahe genug ist und anschliessend den Hebeprozess startet. Dieser Endschlater ist auf der Abbildung \ref{fig:gripper_opening_side} nicht ersichtlich.
+Dreht der Servomotor im Uhrzeigersinn, so schwingen Greifarm und Greifbacke nach oben weg. Der Greifer ist geöffnet (Abb. \ref{fig:gripper_opening_side}). So kann der Roboter auf das Hindernis zu fahren, bis dieses die zwei Spannbacken berührt. An beiden Spannbacken wird jeweils ein Endschalter montiert, welcher erkennt, wann das Hindernis nahe genug ist und anschliessend den Hebeprozess startet. Dieser Endschalter ist auf der Abbildung \ref{fig:gripper_opening_side} nicht ersichtlich.
 
-Dreht der der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt die Greifbacke zurück, bis sie in Berührung mit dem Hindernis kommt. Dadurch wird das Hindernis gegen die zwei Spannbacken gedrückt, welche wiederum durch die Vorspannung der Feder gegen das Hindernis drücken. Das Hindernis wird eingeklemmt (Abb. \ref{fig:gripper_gripping_side}).
+Dreht der Servomotor aus dieser Position im Gegenuhrzeigersinn, so schwingt die Greifbacke zurück, bis sie in Berührung mit dem Hindernis kommt. Dadurch wird das Hindernis gegen die zwei Spannbacken gedrückt, welche wiederum durch die Vorspannung der Feder gegen das Hindernis drücken. Das Hindernis wird eingeklemmt (Abb. \ref{fig:gripper_gripping_side}).
 
-Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannarm im Gegenuhrzeigersinn mit, da er über das Hindernis vom Greifarm bewegt wird. Die Rotation des Spannarms führt dazu, dass das Hinderniss angehoben wird (Abb. \ref{fig:gripper_lifting_side}). Gleichzeitig wird durch die Rotation des Spannarms die Zugfeder leicht verlängert. Somit wird die Klemmkraft auf das Hindernis erhöht und sichergestellt, dass dieses nicht aus dem Greifer rutscht.
+Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannarm im Gegenuhrzeigersinn mit, da er über das Hindernis vom Greifarm bewegt wird. Die Rotation des Spannarms führt dazu, dass das Hindernis angehoben wird (Abb. \ref{fig:gripper_lifting_side}). Gleichzeitig wird durch die Rotation des Spannarms die Zugfeder leicht verlängert. Somit wird die Klemmkraft auf das Hindernis erhöht und sichergestellt, dass dieses nicht aus dem Greifer rutscht.
 
 \begin{figure}[H]
 \centering
@@ -292,9 +292,9 @@ Dreht der Servomotor weiter im Gegenuhrzeigersinn, so dreht nun auch der Spannar
 
  \newpage
  
-Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \nameref{subsubsection:gripper-calculations} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \nameref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.
+Als Basis zur Auslegung des Greifers dient eine Berechnung der nötigen Klemmkraft, um das Hindernis anzuheben. Dazu wurden ein Haftreibwert von 0.3 zwischen Hindernis und Klemmbacken und eine Sicherheit gegen das Rutschen von 1.5 angenommen. Mit der Klemmkraft konnte anhand der Geometrie des Greifers eine Feder mit ausreichend hoher Federkonstante ausgewählt werden. Schliesslich wurde zur Auswahl des Servomotors das nötige Drehmoment berechnet, um sowohl die Zugfeder zu verlängern, als auch das Hindernis anzuheben. Die detaillierten Berechnungen sind im Kapitel \nameref{subsubsection:gripper-calculations} zu finden. Die Ergebnisse aus den Berechnungen wurden im Kapitel \nameref{subsubsection:gripper-prototype-1} anhand eines Prototyps validiert.
 
-Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Ultraschallsensor der das Hindernis erkannt hat und den Prozess einleitet. 
+Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernisses. Nachfolgend wird der gesamte Ablauf erläutert. Ausgangslage bildet der Ultraschallsensor, der das Hindernis erkannt hat und den Prozess einleitet. 
 
 \begin{figure}[H]
 \centering
@@ -304,30 +304,32 @@ Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernis
 \end{figure}
 
  Mit einem Ultraschall-Sensor soll das Vorhandensein eines Hindernisses und die ungefähre Distanz dazu bestimmt werden. Zur genauen Bestimmung der Distanz vor dem Greifer wird der Endschalter am Greifmechanismus verwendet.
-Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug, nachdem ein Hindernis mittels Ultraschall entdeckt wurde, 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurück zu setzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
+Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug, nachdem ein Hindernis mittels Ultraschall entdeckt wurde, 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurückzusetzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 
 \subsection{Fortbewegung}
 
-Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Die DC-Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden.  Dadurch kann genau festgestellt werden welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert,  werden Distanz und Drehwinkel mitgeteilt.
+Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Dabei wird sowohl das Forwärtsfahren, als auch das Drehen von den Rädern durchgeführt. Die \acrfull{dc} Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt.
 
 \subsection{Linienerkennung}
 
-Mit einem Array von Phototransistoren,  Kondensatoren und Widerständen misst man die Entladezeit von Kondensatoren mittels Mikrocontroller und der Input Capture Funktion. Der Liniensensor dient als Unterstützung damit man die Linie nicht verlässt während dem Fahren. Jedoch ist das Ziel den Robotor gerade vor der Linie zu positionieren, so dass der Liniensensor theoretisch nicht gebraucht wird während des Fahrens. Ein weiterer Nutzen benötigt man, um zu prüfen ob man auf einem Knoten steht oder nicht.
+Mit einem Array von Phototransistoren, Kondensatoren und Widerständen, wird die Entladezeit von Kondensatoren mittels Mikrocontroller und der Input Capture Funktion gemessen. Der Liniensensor dient als Unterstützung, damit der Roboter die Linie nicht verlässt während dem Fahren. Zusätzlich soll der Roboter bevor er losfährt, gerade vor der Linie positioniert werden, so dass er sich zumindest zu Beginn der Fahrt bereits auf der Linie befindet. Ebenfalls wird der Liniensensor gebraucht, um zu prüfen ob der Roboter auf einem Knoten steht.
 
 \subsection{Distanzsensor}
 
-Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann man erkennen an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurde.
+Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann erkannt werden, an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurden.
 
 \subsection{Wegfindung}
 
-Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten wird mit dem \gls{dijkstra} Algorithmus berechnet. Dieser wird zu Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, aktualisiert. 
+Der kürzeste Weg im Graphen vom momentanen Knoten zum Zielknoten, wird mit dem \gls{dijkstra} Algorithmus berechnet. Dieser wird zu Beginn berechnet und jedes Mal, wenn der Roboter neue Erkenntnisse zum Graph gesammelt hat, aktualisiert. 
 
-Zusätzlich zum zukünftigen Pfad, wird der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird, im Fehlerzustand, auf den letzten Knoten zurückzufahren und dabei die Orientierung beibehält.
+Zusätzlich zum zukünftigen Pfad, wird der bereits befahrene Pfad gespeichert. Dies dient dazu, dass der Roboter immer in der Lage sein wird, im Fehlerzustand, auf den letzten Knoten zurück zu fahren und dabei die Orientierung behält.
 
 \subsection{Kameraposition}
 
-Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textdegree\ montiert. Die Position ist fix, das heisst, wir benötigen keine schwenkbare Kamera. In der folgenden Grafik \ref{fig:camera-position-concept} ist die Kameraposition ersichtlich. Die Kamera selbst verfügt über ein Horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Wir verwenden die Kamera im Hochformat. Dadurch sind im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild, aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
+Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textdegree\ montiert. Die Position ist fix, das heisst, es wird keine schwenkbare Kamera benötigt. In der folgenden Grafik \ref{fig:camera-position-concept} ist die Kameraposition ersichtlich. Die Kamera selbst verfügt über ein horizontales Field of View\footnote{\url{https://en.wikipedia.org/wiki/Field_of_view}} von 66\textdegree. Die Kamera wird im Hochformat verwendet. Dadurch sind im Field of View von 66\textdegree\ sowohl sehr nahe Knoten und Objekte bis zu 10cm im Bild, aber auch weit entfernte Pylonen, welche 200cm entfernt stehen.
+
+Sowohl die Montage, als auch das Fiel of View ist in Abbildung \ref{fig:camera-position-concept} ersichtlich.
 
 \begin{figure}[H]
     \centering
@@ -342,9 +344,8 @@ Die Kamera wird in einer Höhe von ca. 22.5cm und einem Winkel von ca. 56\textde
 
 \subsection{Schnittstellen zwischen den Kompontenten}
 
-Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \nameref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \gls{tinyk22}.  Er steuert und verarbeitet die Signale der verschiedenen Komponenenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet und die Navigation implementiert,  wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
-
-
+Im Blockschaltdiagramm in Abbildung \ref{Blockdiagramm Steuerung} wird die Hardware der Steuerung aufgezeigt. Die genauen Funktionen des Mikrocontroller sind im Prototyping Kapitel \nameref{Blockdiagramm: Schnittstellen zwischen den Komponenten} beschrieben. Im Zentrum steht der Mikrocontroller \gls{tinyk22}.
+Er steuert und verarbeitet die Signale der verschiedenen Komponenten wie Motoren, Ultraschallsensor, Liniensensor oder Motortreiber. Die Verbindung zum Raspbberry Pi, der die Bilder auswertet und die Navigation implementiert, wird über \acrfull{uart} aufgebaut. Die Stromüberwachung sorgt dafür, dass keine elektrischen Komponenten durch Überlast beschädigt werden.
 
 
 \begin{figure}[H]

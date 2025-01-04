@@ -1,11 +1,11 @@
 \subsection{Simulator}
 
-In diesem Kapitel wird das Erarbeiten des Konzeptes des Simulators, der Implementierung und der Resultate festgehalten.
+In diesem Kapitel wird das Erarbeiten des Konzeptes des Simulators, der Implementierung und der Resultate festgehalten. Das Ziel des Simulators ist es, die Navigation und denn Ablauf des Roboters bei der Traversierung des Graphes zu simulieren.
 
 
 \subsubsection{Spezifikationen}
 
-Die folgenden Spezifikationen soll der Simulator erfüllen.
+Die Spezifikationen aufgelistet in Tabelle \ref{table:spezifikation-simulator} soll der Simulator erfüllen.
 
 \begin{table}[H]
 \centering
@@ -30,15 +30,15 @@ Die folgenden Spezifikationen soll der Simulator erfüllen.
   \hline
      8  &   Der Weg des Roboters wird im GUI angezeigt. & 1\\
   \hline
-      9   &   Die Reaktionen auf die Hindernisse werden im GUI angezeigt. & 2\\
+      9   &   Die Reaktionen auf die Hindernisse werden im GUI angezeigt. & 3\\
   \hline
  10   &   Die Hindernisse werden im GUI angezeigt. & 2\\
   \hline
    11   &   Es lassen sich zufällige Graphen mit zufällig platzierten Hindernissen erstellen. & 2\\
   \hline
-   12   &   Die Geschwindigkeit des Roboters lässt sich einstellen. & 1\\
+   12   &   Die Geschwindigkeit des Roboters lässt sich einstellen. & 2\\
   \hline
-   13   &   Die Traversierung des Graphen durch den Roboter kann simuliert werden. & 2\\
+   13   &   Die Traversierung des Graphens durch den Roboter kann automatisiert simuliert werden. & 2\\
   \hline
 
 \end{tabularx}
@@ -48,7 +48,7 @@ Die folgenden Spezifikationen soll der Simulator erfüllen.
 
 \subsubsection{Konzeption}
 
-Mit einem morphologischen Kasten (siehe Anhang \nameref{mk-simulator}) wurden mehrere Varianten ermittelt, die alle die Spezifikationen erfüllen können. Mit einer Nutzwertanalyse(siehe Anhang \nameref{nutzwertanalyse}) wurde die beste Variante bestimmt.
+Mit einem morphologischen Kasten (siehe Anhang \nameref{mk-simulator}) wurden mehrere Varianten ermittelt, die alle die Spezifikationen erfüllen können. Mit einer Nutzwertanalyse (siehe Anhang \nameref{nutzwertanalyse}) wurde die beste Variante bestimmt:
 
 \begin{itemize}
     \item Programmiersprache: Python
@@ -60,7 +60,7 @@ Mit einem morphologischen Kasten (siehe Anhang \nameref{mk-simulator}) wurden me
     \item Clientseitige Kommunikation \acrshort{i/o}: GUI
 \end{itemize}
 
-Die einzelnen Tätigkeiten wurden in GitHub Issues festgehalten. Die einzelnen Features wurden unter den Entwickelnden aufgeteilt und via GitHub Issues assigned. So ist sichtbar, wer woran arbeitet.
+Die einzelnen Tätigkeiten werden in GitHub Issues festgehalten. Die einzelnen Features wurden unter den Entwickelnden aufgeteilt und via GitHub Issues assigned. So ist sichtbar, wer woran arbeitet.
 
 \begin{figure}[H]
 \centering
@@ -73,7 +73,7 @@ Das Klassendiagramm des Simulators wurde zum Verständnis in zwei Diagramme aufg
 
 Es wurde ein objektorientierter Ansatz gewählt, um den Simulator umzusetzen. Die Roboter-Klasse soll dabei den physischen Roboter darstellen, der die einzelnen Bauteile besitzt. So soll zum Beispiel die Wheels-Klasse als Simulation für das Drehen und Fortbewegen dienen. An diese Klasse werden die Nachrichten gesendet, welche im echten Roboter an die elektrische Steuerung des Motors gesendet werden würden.
 
-in Abbildung \ref{fig:simulator-classdia-robot} sind die Roboterklassen dargestellt. Der GraphHandler wird verwendet, um den Graph intern zu speichern und auszulesen. Der Path Calculator berechnet den kürzesten Weg zum Zielknoten mit einem \gls{dijkstra} Algorithmus.
+In Abbildung \ref{fig:simulator-classdia-robot} sind die Roboterklassen dargestellt. Der GraphHandler wird verwendet, um den Graph intern zu speichern und auszulesen. Der Path Calculator berechnet den kürzesten Weg zum Zielknoten mit einem \gls{dijkstra} Algorithmus.
 
 Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus, in dem der Roboter sich blind durch den Graphen bewegt, falls dieser nicht mehr weiss, wo er sich befindet (\verb|run_blind_testing_mode|). Dieser wird im folgenden Abschnitt ``Trial and Error'' noch weiter erklärt. Im Klassendiagramm sind die Methoden im Roboter so dargestellt, dass diese Methoden, die nur für einen bestimmten Modus verwendet werden, direkt unterhalb der öffentlichen \verb|run| Methoden ist. Diese Methoden, die sich zuunterst befinden, werden von allen Modi verwendet. 
 
@@ -84,7 +84,7 @@ Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus
 \label{fig:simulator-classdia-robot}
 \end{figure}
 
-Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt, die nur für den Simulator benötigt werden und nicht für den Roboter. Das GUI zeigt den Graphen und die Fahrt des Roboters, dies ist im Abschnitt \ref{gui} gezeigt. Die Clock Klasse zählt die Zeit, die der Roboter für einzelne Aktivitäten benötigt. Das NullGUI hat kein User Interface, zählt jedoch die Zeit, die der Roboter für die einzelnen Fahrten benötigt. So können viele Fahrten schnell simuliert werden. Dies ermöglicht ein akkurate Zeitmessung, obwohl die Traversierung und die Simulation beschleunigt ist. Der ObstacleGenerator erstellt automatisch mögliche Graphenkonfigurationen. Damit können verschiedene Graphen simuliert und nachfolgend befahren werden, um das Konzept zu testen.
+Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt, die nur für den Simulator benötigt werden und nicht für den Roboter. Das GUI zeigt den Graphen und die Fahrt des Roboters, dies ist im Abschnitt \ref{gui} gezeigt. Die Clock Klasse zählt die Zeit, die der Roboter für einzelne Aktivitäten benötigt. Das NullGUI hat kein User Interface, zählt jedoch die Zeit, die der Roboter für die einzelnen Fahrten benötigt. Mit dem NullGUI können viele Fahrten schnell simuliert werden. Dies ermöglicht eine akkurate Zeitmessung, obwohl die Traversierung und die Simulation beschleunigt sind. Der ObstacleGenerator erstellt automatisch mögliche Graphenkonfigurationen. Damit können verschiedene Graphen simuliert und nachfolgend befahren werden, um das Konzept zu testen.
 
 \begin{figure}[H]
 \centering
@@ -95,8 +95,8 @@ Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt,
 
 \subsubsection{Entwicklung}
 
-Der erste Schritt ist es einen Graph zu definieren. Dazu wird in YAML der konfigurierten Graph erstellt. 
-Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie folgt in einem YAML File beschrieben (Siehe Abb \ref{fig:graph-yaml})
+Der erste Schritt ist, es einen Graph zu definieren. Dabei wird in YAML der konfigurierte Graph erstellt. 
+Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie in Abbildung \ref{fig:graph-yaml} gezeigt in einem YAML File beschrieben.
 
 \begin{figure}[H]
 \centering
@@ -127,7 +127,7 @@ H: { G: 1000, D: 1732, C: 1732, B: 1732, A: 1732 }
 \label{fig:labeled-graph-and-yaml}
 \end{figure}
 
-Die Hindernisse und die fehlenden Linien sind ebenfalls in einem YAML File definiert. So können diese einfach angepasst werden:
+Die Hindernisse und die fehlenden Linien sind in einem weiteren YAML File definiert. So können diese einfach angepasst werden:
 
 \begin{verbatim}
 cone:
@@ -138,11 +138,11 @@ missing_line:
   - [E, D]
 \end{verbatim}
 
-Der Simulator liest die beiden Dateien ein und speichert sie intern als Python Dictionaries.
+Der Simulator liest die beiden Dateien ein und speichert sie intern als Python Dictionaries. Ein Dictionary ist ein Datentyp, der Daten als Key-Value Paare speichert.
 
 \textbf{Ablauf des Simulators}
 
-Das Ziel ist es, dass der Ablauf möglichst nah an dem Ablauf des Gesamtkonzeptes herankommt.
+Das Ziel ist es, dass der Ablauf möglichst nah an den Ablauf des Gesamtkonzeptes herankommt.
 Der Programmablauf besteht aus folgenden Teilen:
 \begin{enumerate}
     \item Winkel der ausgehenden Kanten vom aktuelle Knoten detektieren
@@ -152,17 +152,17 @@ Der Programmablauf besteht aus folgenden Teilen:
 \end{enumerate}
 
 Bevor der Roboter eine Knoten befährt, welcher er noch nicht kennt, überprüft dieser die Winkel der ausgehenden Kanten dieses Knoten. Im Simulator wird dies statt durch Kamerabilder, durch eine Dictionary Abfrage realisiert.
-Wie beim echten Roboter detektieren wir so auch nur Kanten, die vorhanden sind. Und können durch die Winkel die fehlenden Kanten aus dem internen Graphen löschen. Die Verarbeitung der vorhandenen Winkeln wird gleich umgesetzt, wie im Gesamtkonzept Kapitel \ref{outgoing-angles} beschrieben.
+Wie beim echten Roboter detektieren wir so auch nur Kanten, die vorhanden sind und können so die fehlenden Kanten aus dem internen Graphen löschen. Die Verarbeitung der vorhandenen Winkeln wird gleich umgesetzt, wie im Gesamtkonzept Kapitel \ref{outgoing-angles} beschrieben.
 
-Nach dem befahren des Knoten werden nun alle ausgehende Kanten überprüft. Dies geschieht durch die Drehung um die eigene Achse. Durch die Winkelmessung im vorherigen Schritt können wir eine optimale Drehrichtung und Reihenfolge der zu überprüfenden Nachbarsknoten berechnen. Der Roboter dreht sich also im effizientesten Weg im Kreis und prüft alle ausgehenden Kanten und Nachbarsknoten. 
-In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprüft. Falls ein Hindernis detektiert wird, reagiert er wie folgt:
+Nach dem Befahren des Knotens werden alle ausgehenden Kanten überprüft. Dies geschieht durch die Drehung um die eigene Achse. Durch die Winkelmessung im vorherigen Schritt kann die optimale Drehrichtung und Reihenfolge der zu überprüfenden Nachbarsknoten berechnet werden. Der Roboter dreht sich im effizientesten Weg im Kreis und prüft alle ausgehenden Kanten und Nachbarsknoten. 
+In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprüft. Falls ein Hindernis detektiert wird, reagiert der Roboter wie folgt:
 
 \begin{itemize}
     \item Ein Pylon steht auf dem Nachbarsknoten: Dieser Knoten und alle Kanten, die dahin führen, werden im intern gespeicherten Graph-Dictionary entfernt.
-    \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary höher gewichtet. Die Höhe der neuen Gewichtung widerspiegelt sich im Verhältnis zur Zeit die das zusätzliche Abhandeln des Objektes entspricht.
+    \item Eine Barriere wird auf einer ausgehenden Strecke erkannt: Die Strecke wird im intern gespeicherten Graph-Dictionary höher gewichtet. Die Höhe der neuen Gewichtung widerspiegelt sich im Verhältnis zur Zeit, der das zusätzliche Abhandeln des Objektes entspricht.
 \end{itemize}
 
-Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels \gls{dijkstra} durchgeführt. Der geplante Pfad sowie der nächste Knoten werden dabei gespeichert.
+Falls noch nie eine Berechnung des kürzesten Weges durchgeführt wurde oder sich der intern gespeicherte Graph verändert hat, wird die Berechnung des kürzesten Pfades mittels \gls{dijkstra} durchgeführt. Der geplante Pfad wird gespeichert.
 
 Danach bewegt sich der Roboter zum nächsten Knoten. Dabei wird simuliert, dass sich der Roboter zur nächsten Linie drehen soll und die Distanz zum nächsten Knoten fahren soll.
 
@@ -195,9 +195,9 @@ Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\foot
 
 \textbf{Graphical User Interface}\label{gui}
 
-Das GUI wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. In diesem wird der Graph mit beschrifteten Knoten visualisiert. Der Roboter wird als Kreis dargestellt, an dem sich ein Dreieck befindet, dessen Spitze die Blickrichtung des Roboters angibt. Pylonen werden als orangefarbene Dreiecke visualisiert, Barrieren als rote Rechtecke, und fehlende Kanten durch gestrichelte Linien dargestellt. Der Zielknoten ist mit einer roten Fahne markiert.
+Das GUI wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. In diesem wird der Graph mit beschrifteten Knoten visualisiert. Der Roboter wird als Kreis dargestellt, an dem sich ein Dreieck befindet, dessen Spitze die Blickrichtung des Roboters angibt. Pylonen werden als orangefarbene Dreiecke, Barrieren als rote Rechtecke, und fehlende Kanten durch gestrichelte Linien visualisiert. Der Zielknoten ist mit einer roten Fahne markiert.
 
-Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht weiss, respektive noch nicht erforscht hat.
+Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht kennt, respektive noch nicht erforscht hat.
 
 \begin{figure}[H]
 \centering
