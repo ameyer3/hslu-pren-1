@@ -130,13 +130,13 @@ angles = {
 
 Da der Graph nicht genau so aufgeklebt sein wird wie auf der Skizze, wurden zusätzliche Bereiche definiert, in denen sich die Winkel befinden sollten.
 
-Ein Ausschnitt, der zeigt, wie der interne Graph in einem YAML File definiert ist, ist hier eingefügt.
+Ein Ausschnitt, der zeigt, wie der interne Graph in einem \gls{yaml} File definiert ist, ist hier eingefügt.
 
 \begin{verbatim}
 C: [{D: [0, [30, 120]}, {B: [240, [120, 30]}, {H: 300, [30, 30]}],
 \end{verbatim}
 
-Auf Grafik \ref{fig:angled-graph} sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik \ref{fig:excerpt-angled-graph} ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im YAML File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0\textdegree.
+Auf Grafik \ref{fig:angled-graph} sind alle Winkel eingezeichnet inklusive der Halbwinkel zwischen allen Kanten. In Grafik \ref{fig:excerpt-angled-graph} ist die Kante zwischen C und D gezeigt, dies entspricht \verb|'C: [{D: [0, [30, 120]}'| im \gls{yaml} File. Da die Linie von C nach D gerade nach oben (nach 12 Uhr) weggeht, ist dies im Idealfall 0\textdegree.
 Das der Idealfall nicht eintreten wird, da der Graph nicht perfekt aufgeklebt sein wird und die Linie nicht perfekt in Richtung 12 Uhr gehen wird, sind die Halbwinkel eingezeichnet, hier 30\textdegree\ und 120\textdegree. Die Kante zu Knoten D kann also im Bereich von 0\textdegree-30\textdegree\ und 0\textdegree+120\textdegree, sprich -30\textdegree\ und 180\textdegree\ liegen. Befindet sich eine gemessene Kante in diesem Bereich, wird es die Kante C zu D sein.
 
 \begin{figure}[H]

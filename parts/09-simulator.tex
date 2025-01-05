@@ -52,12 +52,12 @@ Mit einem morphologischen Kasten (siehe Anhang \nameref{mk-simulator}) wurden me
 
 \begin{itemize}
     \item Programmiersprache: Python
-    \item Wegnetz einlesen: YAML
+    \item Wegnetz einlesen: \gls{yaml}
     \item Wegnetz intern speichern: Key-Values
     \item Bewegliche Hindernisse erfassen: Gewichtung
     \item Blockierte Knoten erfassen: Knoten entfernen
     \item Wegfindung: eigene Implementation
-    \item Clientseitige Kommunikation \acrshort{i/o}: GUI
+    \item Clientseitige Kommunikation \acrshort{i/o}: \acrshort{gui}
 \end{itemize}
 
 Die einzelnen Tätigkeiten werden in GitHub Issues festgehalten. Die einzelnen Features wurden unter den Entwickelnden aufgeteilt und via GitHub Issues assigned. So ist sichtbar, wer woran arbeitet.
@@ -84,7 +84,7 @@ Es gibt zusätzlich zum normalen Modus (\verb|run_normal_mode|) auch einen Modus
 \label{fig:simulator-classdia-robot}
 \end{figure}
 
-Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt, die nur für den Simulator benötigt werden und nicht für den Roboter. Das GUI zeigt den Graphen und die Fahrt des Roboters, dies ist im Abschnitt \ref{gui} gezeigt. Die Clock Klasse zählt die Zeit, die der Roboter für einzelne Aktivitäten benötigt. Das NullGUI hat kein User Interface, zählt jedoch die Zeit, die der Roboter für die einzelnen Fahrten benötigt. Mit dem NullGUI können viele Fahrten schnell simuliert werden. Dies ermöglicht eine akkurate Zeitmessung, obwohl die Traversierung und die Simulation beschleunigt sind. Der ObstacleGenerator erstellt automatisch mögliche Graphenkonfigurationen. Damit können verschiedene Graphen simuliert und nachfolgend befahren werden, um das Konzept zu testen.
+Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt, die nur für den Simulator benötigt werden und nicht für den Roboter. Das \acrshort{gui} zeigt den Graphen und die Fahrt des Roboters, dies ist im Abschnitt \ref{gui} gezeigt. Die Clock Klasse zählt die Zeit, die der Roboter für einzelne Aktivitäten benötigt. Das NullGUI hat kein User Interface, zählt jedoch die Zeit, die der Roboter für die einzelnen Fahrten benötigt. Mit dem NullGUI können viele Fahrten schnell simuliert werden. Dies ermöglicht eine akkurate Zeitmessung, obwohl die Traversierung und die Simulation beschleunigt sind. Der ObstacleGenerator erstellt automatisch mögliche Graphenkonfigurationen. Damit können verschiedene Graphen simuliert und nachfolgend befahren werden, um das Konzept zu testen.
 
 \begin{figure}[H]
 \centering
@@ -95,8 +95,8 @@ Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt,
 
 \subsubsection{Entwicklung}
 
-Der erste Schritt ist, es einen Graph zu definieren. Dabei wird in YAML der konfigurierte Graph erstellt. 
-Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie in Abbildung \ref{fig:graph-yaml} gezeigt in einem YAML File beschrieben.
+Der erste Schritt ist, es einen Graph zu definieren. Dabei wird in \gls{yaml} der konfigurierte Graph erstellt. 
+Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie in Abbildung \ref{fig:graph-yaml} gezeigt in einem \gls{yaml} File beschrieben.
 
 \begin{figure}[H]
 \centering
@@ -127,7 +127,7 @@ H: { G: 1000, D: 1732, C: 1732, B: 1732, A: 1732 }
 \label{fig:labeled-graph-and-yaml}
 \end{figure}
 
-Die Hindernisse und die fehlenden Linien sind in einem weiteren YAML File definiert. So können diese einfach angepasst werden:
+Die Hindernisse und die fehlenden Linien sind in einem weiteren \gls{yaml} File definiert. So können diese einfach angepasst werden:
 
 \begin{verbatim}
 cone:
@@ -197,7 +197,7 @@ Um die Abhängigkeiten zu externen Bibliotheken zu organisieren wird Poetry\foot
 
 \textbf{Graphical User Interface}\label{gui}
 
-Das GUI wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. In diesem wird der Graph mit beschrifteten Knoten visualisiert. Der Roboter wird als Kreis dargestellt, an dem sich ein Dreieck befindet, dessen Spitze die Blickrichtung des Roboters angibt. Pylonen werden als orangefarbene Dreiecke, Barrieren als rote Rechtecke, und fehlende Kanten durch gestrichelte Linien visualisiert. Der Zielknoten ist mit einer roten Fahne markiert.
+Das \acrshort{gui} wurde mit PyGame\footnote{\url{https://www.pygame.org/news}} umgesetzt. In diesem wird der Graph mit beschrifteten Knoten visualisiert. Der Roboter wird als Kreis dargestellt, an dem sich ein Dreieck befindet, dessen Spitze die Blickrichtung des Roboters angibt. Pylonen werden als orangefarbene Dreiecke, Barrieren als rote Rechtecke, und fehlende Kanten durch gestrichelte Linien visualisiert. Der Zielknoten ist mit einer roten Fahne markiert.
 Ausgegraut ist alles, was der Roboter zum aktuelle Zeitpunkt noch nicht kennt, respektive noch nicht erforscht hat. Dies ist auf Abbildung \ref{fig:sim-gui} gezeigt.
 
 \begin{figure}[H]

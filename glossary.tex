@@ -113,11 +113,27 @@
   {I/O}                % display name
   {Inputs und Outputs}  % full acronym name
 
+\newacronym
+  {gui}                 % id
+  {GUI}                % display name
+  {Graphical User Interface}  % full acronym name
+  \newacronym
+  {tui}                 % id
+  {TUI}                % display name
+  {Text-Based User Interface}  % full acronym name
+
+\newacronym
+  {cli}
+  {CLI}
+  {Command Line Interface} 
 
 \newacronym
   {lidar}             % id
   {Lidar}                      % display name
-  {Lichterkennungs und Entfernungsmessung}             % full acronym name
+  {Light Detection and Ranging}             % full acronym name
+
+
+\newacronym{ptfe}{PTFE}{Polytetrafluorethylen}
 
 \newglossaryentry{orb-gloss}
 {
@@ -152,12 +168,26 @@
 \newglossaryentry{dijkstra}{
     name = Dijkstra,
     description = {
-    Der Dijkstra-Algorithmus ist ein Algorithmus zur Ermittlung kürzester Wege in einem Graphen mit Kantengewichten >=0
+    Der Dijkstra-Algorithmus ist ein Algorithmus zur Ermittlung kürzester Wege in einem Graphen mit Kantengewichten >0
     }
 }
 \newglossaryentry{yolo}{
     name = YOLO,
     description = {
-    YOLO (You Only Look Once) ist ein schneller Bilderkennungsalgorithmus. Die Objekte in Bildern werden in Echtzeit erkennt, indem YOLO das gesamte Bild in einem einzigen Durchlauf analysiert.
+    YOLO (You Only Look Once) ist ein schneller Bilderkennungsalgorithmus. Die Objekte in Bildern werden in Echtzeit erkennt, indem YOLO das gesamte Bild in einem einzigen Durchlauf analysiert
     }
+}
+
+\newglossaryentry{yaml}{
+    name = YAML,
+    description = {
+        YAML (Yet Another Markup Language, später "YAML Ain’t Markup Language") ist ein leicht lesbares Datenserialisierungsformat, das häufig zur Konfiguration von Software und zum Datenaustausch verwendet wird
+    }
+}
+
+\newglossaryentry{json}{
+name = JSON,
+description = {
+JSON (JavaScript Object Notation) ist ein leichtgewichtiges Datenformat zur strukturierten Datenübertragung, das auf einer einfach lesbaren Textdarstellung von Schlüssel-Wert-Paaren basiert und häufig in Webanwendungen eingesetzt wird
+}
 }
