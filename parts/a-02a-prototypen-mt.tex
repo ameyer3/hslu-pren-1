@@ -80,7 +80,7 @@ Mit dem Prototyp sollen folgende Anforderungen getestet werden (Ergebnisse in Ta
         4 & Zuverlässiges Anheben & 50 Zyklen erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\ \hline
         5 & Anheben bei Schrägstellung & 50 Zyklen bei bis zu 15\textdegree\ erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\ \hline
         6 & Rücksetzen des Hindernisses & Rücksetzgenauigkeit $\pm$ 2 mm in 50 Zyklen& $\pm$1 mm in 50 Zyklen & Test erfüllt \\ \hline
-        7 & Kein Rutschen bei Vibrationen & Hindernis bleibt fixiert & Hindernis verrutsch auch bei starkem Schütteln nicht & Test erfüllt \\ \hline
+        7 & Kein Rutschen bei Vibrationen & Hindernis bleibt fixiert & Hindernis verrutscht auch bei starkem Schütteln nicht & Test erfüllt \\ \hline
         8 & Max. Drehmoment  & Gemessenes Drehmoment $\leq$ 20 Ncm & 17 Ncm & Test erfüllt \\ \hline
         9 & Greifbacke über Hindernis & Abstand $\geq$ 5 mm in geöffnetem Zustand & 12 mm & Test erfüllt \\ \hline
 \end{tabularx}
@@ -93,7 +93,7 @@ Mit dem Prototyp sollen folgende Anforderungen getestet werden (Ergebnisse in Ta
 
 Alle Anforderungen sind erfüllt. Somit wurde entschieden am Greifer Design festzuhalten. Optimierungsbedarf besteht in folgenden Punkten: 
 \begin{itemize}
-    \item Die Backen, welche das Hindernis klemmen sind manchmal nicht korrekt ausgerichtet, da sie drehbar gelagert sein müssen. Dies führt dazu dass das Hindernis nicht immer gleich angehoben wird. Die gestellten Anforderungen betreffend dem Anheben wurden zwar erfüllt, ein Risiko, dass nicht korrekt angehoben wird besteht dennoch.
+    \item Die Backen, welche das Hindernis klemmen, sind manchmal nicht korrekt ausgerichtet, da sie drehbar gelagert sein müssen. Dies führt dazu dass das Hindernis nicht immer gleich angehoben wird. Die gestellten Anforderungen betreffend dem Anheben wurden zwar erfüllt, ein Risiko, dass nicht korrekt angehoben wird, besteht dennoch.
     \item  Die Vorspannfeder berührt das Gestell und wird deswegen nicht korrekt gespannt. Auch hier sind die Anforderungen trotzdem erfüllt, das Problem ist jedoch leicht durch eine Aussparung zu beheben.
 \end{itemize}
 
@@ -110,7 +110,7 @@ Bei den Tests am Prototyp II sollen die Geschwindigkeit des Anhebevorgangs und d
 \addcontentsline{toc}{subsubsection}{Greifer Prototyp II}
 
 
-Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}). Folgende Anpassungen wurden vorgenommen: Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Kapitel \nameref{subsubsection:gripper-calculations} vorausgelegt und durch den Greifer Prototyp I validiert wurde. An den Klemmbacken wurden zwei Endschaltern montiert. Sie sollen bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des weiteren wurden die bei den Tests am Prototyp I erkannten Probleme behandelt.
+Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}). Folgende Anpassungen wurden vorgenommen: Der Greifer wurde mit einem Servomotor ausgestattet, welcher in Kapitel \nameref{subsubsection:gripper-calculations} vorausgelegt und durch den Greifer Prototyp I validiert wurde. An den Klemmbacken wurden zwei Endschalter montiert. Sie sollen bei Berührung mit dem Hindernis den Hebevorgang automatisch auslösen. Des Weiteren wurden die, bei den Tests am Prototyp I erkannten, Probleme behandelt.
 
 \textbf{Aufbau}
 
@@ -121,7 +121,7 @@ Der Prototyp II des Greifers ist eine umgebaute Version vom Protoyp I (Kapitel \
 \label{fig:gripper-prototype-2-trimetric}
 \end{figure}
 
-Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses, derselbe (Abb. \ref{fig:gripper-prototype-2-trimetric}). Alle Im Kapitel \nameref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde (Abb. \ref{fig:jaw_iteration}).
+Der grundlegende Aufbau des Prototyps bleibt, bis auf den Servomotor und die Endschalter zur Erkennung des Hindernisses, derselbe (Abb. \ref{fig:gripper-prototype-2-trimetric}). Alle im Kapitel \nameref{subsubsection:gripper-prototype-1} aufgeführten Dimensionen wurden beibehalten. Bei den Tests am Prototyp I wurde festgestellt, dass die Vorspannfeder am Rahmen verkantet. Dieses Problem wurde mit einer entsprechenden Aussparung am Rahmen gelöst. Weiter wurden die Klemmbacken überarbeitet, damit die Endschalter montiert werden können. Die drehbar gelagerten Klemmbacken verfügen über Anschläge, welche verhindern sollten, dass sie sich zu weit nach unten drehen. Der Winkel dieser Anschläge wurde für den Prototyp II verkleinert, da die alten Klemmbacken sich beim Prototyp I manchmal zu weit drehten und das Hindernis nicht mehr richtig angehoben wurde (Abb. \ref{fig:jaw_iteration}).
 
 \begin{figure}[H]
 \centering
@@ -153,8 +153,8 @@ Der grundlegende Aufbau des Prototyps bleibt bis auf den Servomotor und die Ends
 \label{fig:jaw_iteration}
 \end{figure}
 
-Der Servomotor des Greifers wird mit einem Arduino Nano Mikrokontroller gesteuert. Wenn einer der beiden Endschalter an den Backen durch Berührung mit dem Hindernis betätigt wird, wird der Anhebevorang ausgelöst. Der Servomotor dreht um ca. 90\textdegree,  
-um Das Hindernis anzuheben. Wird ein am Mikrokontroller angeschlossener Taster gedrückt, wird das Hindernis wieder abgesetzt. Alle Tests werden auf dem Fliesenboden der Mensa durchgeführt, wo in PREN2 der Wettkampf stattfinden wird.\\
+Der Servomotor des Greiferprototyps wird mit einem Arduino Nano Mikrokontroller gesteuert. Wenn einer der beiden Endschalter an den Backen durch Berührung mit dem Hindernis betätigt wird, wird der Anhebevorgang ausgelöst. Der Servomotor dreht um ca. 90\textdegree,  
+um sas Hindernis anzuheben. Wird ein am Mikrokontroller angeschlossener Taster gedrückt, wird das Hindernis wieder abgesetzt. Alle Tests werden auf dem Fliesenboden der Mensa durchgeführt, wo in PREN 2 der Wettkampf stattfinden wird.
 
 \textbf{Ziele}
 
@@ -162,14 +162,14 @@ Mit dem Prototyp II sollen folgende Anforderungen getestet werden (Ergebnisse in
 
 \begin{enumerate}
     \item Der Anhebe- und Absetztvorgang dauert jeweils nicht länger als 2.5 Sekunden.
-    \item Der Servomotor kann das Hinderniss zuverlässig anheben (50 Testzyklen)
-    \item Der Servomotor fährt die Vorgegebenen Winkel zuverlässig an ($\pm$ 2\textdegree unter Last in 50 Testzyklen)
-    \item Das Haltemoment des Servomotors ist ausreichend (Servomotor muss Hinderniss min. 2min in Angehobenem Zustand halten)
-    \item Das Hindernis löst die Endschalter aus ohne dabei verschoben zu werden (50 Testzyklen)
-    \item Das Hindernis löst die Endschalter bei bis zu 15\textdegree  Schrägstellung aus, ohne dabei verschoben zu werden (50 Testzyklen unter verschiedenen Winkeln)
+    \item Der Servomotor kann das Hinderniss zuverlässig anheben (50 Testzyklen).
+    \item Der Servomotor fährt die Vorgegebenen Winkel zuverlässig an ($\pm$ 2\textdegree unter Last in 50 Testzyklen).
+    \item Das Haltemoment des Servomotors ist ausreichend (Servomotor muss Hindernis min. 2 Minuten in angehobenem Zustand halten).
+    \item Das Hindernis löst die Endschalter aus, ohne dabei verschoben zu werden (50 Testzyklen).
+    \item Das Hindernis löst die Endschalter bei bis zu 15\textdegree\ Schrägstellung aus, ohne dabei verschoben zu werden (50 Testzyklen unter verschiedenen Winkeln).
 \end{enumerate}
 
-Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und erfüllt wurden, hier nicht mehr aufgeführt sind.\\
+Es ist zu beachten, dass Anforderungen, welche bereits am Prototyp I geprüft und erfüllt wurden, hier nicht mehr aufgeführt sind.
 
 \textbf{Messungen und Beobachtungen}
 
@@ -180,11 +180,11 @@ Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und
         \hline
         \textbf{Index} & \textbf{Kurzbeschreibung} & \textbf{Kriterium zur Erfüllung} & \textbf{Messergebnisse} & \textbf{Bewertung} \\
         \hline
-        1 & Anhebe- und Absetztdauer & Vorgang dauert jeweils \(\leq 2.5\) Sekunden & 1.0 \pm0.1 Sekunden & Test erfüllt \\
+        1 & Anhebe- und Absetzdauer & Vorgang dauert jeweils \(\leq 2.5\) Sekunden & 1.0 \pm0.1 Sekunden & Test erfüllt \\
         \hline
         2 & Zuverlässiges Anheben & 50 Testzyklen erfolgreich & 50/50 Zyklen erfolgreich & Test erfüllt \\
         \hline
-        3 & Zuverlässige Winkelansteuerung & max. \pm 2\textdegree\  unter Last in 50 Testzyklen & \pm 0.5\textdegree & Test erfüllt \\
+        3 & Zuverlässige Winkelansteuerung & max. \pm 2\textdegree\ unter Last in 50 Testzyklen & \pm 0.5\textdegree & Test erfüllt \\
         \hline
         4 & Ausreichendes Haltemoment & Hindernis bleibt min. 2min angehoben & \geq 15min & Test erfüllt \\
         \hline
@@ -199,21 +199,21 @@ Es ist zu beachten, dass Anforderungen welche bereits am Prototyp I geprüft und
 
 \textbf{Fazit}\\
 
-Bis auf die Anforderungen Bezüglich der Hindernisserkennug mittels Endschalter (Anforderungen 5\&6) wurden alle Testbedingungen erfüllt. Die Endschalter, welche bei Berührung mit dem Hindernis den Hebevorgang auslösen sollen, müssen mit einer gewissen Kraft gedruckt werden um betätigt zu werden. Diese Kraft kann je nach Anfahrwinkel und Geschwindigkeit des Greifers bezüglich dem Hindernis nicht überwunden werden. Das Hindernis wird dann über den relativ glatten Fliesenboden geschoben, bevor die Schalter auslösen. Dabei wird das Hindernis zwar angehoben, würde aber beim Absetzten nicht mehr in seiner Ursprünglichen Position landen.
+Bis auf die Anforderungen bezüglich der Hindernisserkennung mittels Endschalter (Anforderungen 5 \& 6) wurden alle Testbedingungen erfüllt. Die Endschalter, welche bei Berührung mit dem Hindernis den Hebevorgang auslösen sollen, müssen mit einer gewissen Kraft gedrückt werden, um betätigt zu werden. Diese Kraft kann je nach Anfahrwinkel und Geschwindigkeit des Greifers bezüglich dem Hindernis nicht überwunden werden. Das Hindernis wird dann über den relativ glatten Fliesenboden geschoben, bevor die Schalter ausgelöst werden. Dabei wird das Hindernis zwar angehoben, würde aber beim Absetzten nicht mehr in seiner ursprünglichen Position landen.
 
-Die kleineren Probleme welche im Fazit zum Prototyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}) aufgeführt wurden, konnten erfolgreich behoben werden.
+Die kleineren Probleme, welche im Fazit zum Prototyp I (Kapitel \nameref{subsubsection:gripper-prototype-1}) aufgeführt wurden, konnten erfolgreich behoben werden.
 
-\textbf{Weiteres Vorgehen}\\
+\textbf{Weiteres Vorgehen}
 
 Als nächstes müssen die oben aufgeführten Probleme mit den Endschaltern behoben werden. Folgende Ansätze sollen in Betracht gezogen werden:
 \begin{itemize}
-    \item Kleinere bzw. Endschalter mit geringerem Auslösegewicht verbauen
-    \item Die Hebel an den Endschaltern verlängeren, um die nötige Kraft zur Auslösung zu reduzieren
-    \item Einen Zusätlichen Ultraschallsensor am Heck des Fahrzeugs verbauen um die Distanz des Hindernisses festzustellen
-    \item Auf Erkennung des Hindernisses am Heck des Fahrzeugs verzichten und stattdessen durch die Encoder der Antriebsmotoren die Korrekte Ausrichtung ab Erkennung des Hindernisses an der Vorderseite des Fahrzeuges Hardcoden.
+    \item Kleinere Endschalter bzw. Endschalter mit geringerem Auslösegewicht verbauen.
+    \item Die Hebel an den Endschaltern verlängeren, um die nötige Kraft zur Auslösung zu reduzieren.
+    \item Einen zusätzlichen Ultraschallsensor am Heck des Fahrzeugs verbauen, um die Distanz des Hindernisses festzustellen.
+    \item Auf Erkennung des Hindernisses am Heck des Fahrzeugs verzichten und stattdessen durch die Encoder der Antriebsmotoren die korrekte Ausrichtung ab Erkennung des Hindernisses an der Vorderseite des Fahrzeuges hardcoden.
 \end{itemize}
 
-Wenn die Probleme mit den Endschaltern behoben sind, soll der Greifer in das Fahrzeug implementiert werden. Hierbei können alle Komponenten des Prototyp II, abgesehen vom Gestell an welchem dieser montiert ist, übernommen werden. Das spart Zeit, Ressourcen und ist nachhaltiger als die Teile neu zu Fertigen.
+Wenn die Probleme mit den Endschaltern behoben sind, soll der Greifer in das Fahrzeug implementiert werden. Hierbei können alle Komponenten des Prototyps II, abgesehen vom Gestell an welchem dieser montiert ist, übernommen werden. Das spart Zeit, Ressourcen und ist nachhaltiger als die Teile neu zu fertigen.
 
 
 \subsubsection*{Auslegung Greifer}
@@ -229,6 +229,16 @@ Nachfolgend sind die ausführlichen Berechnungen aufgeführt, nach welchen der G
 \addcontentsline{toc}{subsubsection}{Fahrwerk}
 
 
-Auf Basis des Gesamtkonzepts wurde anschliessend ein Prototyp für das Fahrwerk konstruiert. Die Baugruppe Prototyp Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten.  Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet das verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibeler Prototyp ist Ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
+Auf Basis des Gesamtkonzepts, wurde anschliessend ein Prototyp für das Fahrwerk konstruiert. Die Baugruppe Prototyp Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
 
-In progress...
+Die Abbildung \ref{fig:sectionview-wheelmount} zeigt eine Schnittansicht des Antriebs. Die Räder werden mit einer Antriebswelle formschlüssig durch den Motor angetrieben. Die Welle hat radseitig ein 6-Kant angefrässt, dass direkt in die Radnabe eingepasst wird und durch eine Schraube gesichert werden kann. Die Welle wird durch je ein Fest- und ein Los-Lager gelagert. Auf der andern Seite wird der Motor mit Hilfe des in Abbildung \ref{fig:sectionview-wheelmount} ersichtlichen Motorflansches fixiert. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{img/Antrieb.png}
+\caption{Schnittansicht Antrieb}
+\label{fig:sectionview-wheelmount}
+\end{figure}
+
+
+
