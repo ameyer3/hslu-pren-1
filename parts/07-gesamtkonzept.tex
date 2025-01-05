@@ -309,16 +309,33 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung/ Fahrwerk}
 
-Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen von den Rädern durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein freidrehendes Abstützrad. An Die \acrfull{dc} Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt.
+Das Fahrwerk wird nach Abb.  \ref{fig:Prototype_Fahrwerk_CAD}  Prototyp Fahrwerk aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. ( \ref{subsection:Distanzsensor} Distanzsensor) Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{assets/prototyp-fahrwerk/Prototyp_Fahrwerk_CAD.png}
+\caption{Prototyp Fahrwerk}
+\label{fig:Prototype_Fahrwerk_CAD}
+\end{figure}
+
 
 \subsection{Linienerkennung}
 
 Mit einem Array von Phototransistoren, Kondensatoren und Widerständen, wird die Entladezeit von Kondensatoren mittels Mikrocontroller und der Input Capture Funktion gemessen. Der Liniensensor dient als Unterstützung, damit der Roboter die Linie nicht verlässt während dem Fahren. Zusätzlich soll der Roboter bevor er losfährt, gerade vor der Linie positioniert werden, so dass er sich zumindest zu Beginn der Fahrt bereits auf der Linie befindet. Ebenfalls wird der Liniensensor gebraucht, um zu prüfen ob der Roboter auf einem Knoten steht.
 
 \subsection{Distanzsensor}
-\lable{subsection:Distanzsensor}
+\label{subsection:Distanzsensor}
 
-Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Somit kann erkannt werden, an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurden.
+Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Der Sensor wird wie auf Abb \ref{fig:Prototype_Sensorhalter} Prototyp Sensorhalter oberhalb des Abstützrades montiert. Der Sensor erkennt die Distanz zum Hindernis und kann bestimmen, an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurden.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{assets/prototyp-fahrwerk/Prototyp_Sensorhalter.png}
+\caption{Prototype Sensorhalter}
+\label{fig:Prototype_Sensorhalter}
+\end{figure}
+
+
 
 \subsection{Wegfindung}
 
