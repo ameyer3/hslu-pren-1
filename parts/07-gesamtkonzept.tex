@@ -309,13 +309,24 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fortbewegung/ Fahrwerk}
 
-Das Fahrwerk wird nach Abb.  \ref{fig:Prototype_Fahrwerk_CAD}  Prototyp Fahrwerk aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. ( \ref{subsection:Distanzsensor} Distanzsensor) Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
+Auf Basis der Nutzwertanalyse, wurde anschliessend ein Konzept für das Fahrwerk konstruiert. Die Baugruppe Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten. Zu dieser Baugruppe wurde ein Prototyp erstellt. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
+
+Das Fahrwerk wird nach Abb.  \ref{fig:Prototype_Fahrwerk_CAD}  Prototyp Fahrwerk aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. (Kap. \ref{subsection:Distanzsensor} Distanzsensor) Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden. (Abb. \ref{fig:sectionview-wheelmount}) Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{assets/prototyp-fahrwerk/Prototyp_Fahrwerk_CAD.png}
-\caption{Prototyp Fahrwerk}
+\includegraphics[width=0.9\textwidth]{assets/prototyp-fahrwerk/Prototyp_Fahrwerk_CAD.png}
+\caption{Fahrwerk}
 \label{fig:Prototype_Fahrwerk_CAD}
+\end{figure}
+
+Die Abbildung \ref{fig:sectionview-wheelmount} zeigt eine Schnittansicht des Antriebs. Die Räder werden mit einer Antriebswelle formschlüssig durch den Motor angetrieben. Die Welle hat radseitig ein 6-Kant angefrässt, dass direkt in die Radnabe eingepasst wird und durch eine Schraube gesichert werden kann. Die Welle wird durch je ein Fest- und ein Los-Lager gelagert. Auf der andern Seite wird der Motor mit Hilfe des in Abbildung \ref{fig:sectionview-wheelmount} ersichtlichen Motorflansches fixiert. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{img/Antrieb.png}
+\caption{Schnittansicht Antrieb}
+\label{fig:sectionview-wheelmount}
 \end{figure}
 
 
@@ -331,7 +342,7 @@ Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{assets/prototyp-fahrwerk/Prototyp_Sensorhalter.png}
-\caption{Prototype Sensorhalter}
+\caption{Sensorhalter}
 \label{fig:Prototype_Sensorhalter}
 \end{figure}
 
