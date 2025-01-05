@@ -2,7 +2,14 @@
 \addcontentsline{toc}{subsubsection}{Motoren}
 
 
-Nach den Berechnungen in Abblidung für die Motoren wurde ein passender Motor ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung. Die Befestigung der Moteren an dem gebauten Fahrwerk Prototyp sind auf Abbildung \ref{fig:Motorenaufbau} ersichtlich.
+Nach den Berechnungen in Abbildung \ref{fig:Auslegung_Antrieb}  wurden zwei passende Motoren ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung. Die Drehzahl des ausgewählten Motors ist tiefer als die anfangs vorgesehene Drehzahl. Dadurch ist die maximale Geschwindigkeit des Roboters tiefer als gewünscht. Dies wird für den Prototyp jedoch in kauf genommen. Die Befestigung der Motoren an dem gebauten Fahrwerk Prototyp sind auf Abbildung \ref{fig:Motorenaufbau} ersichtlich.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Auslegung_Antrieb.PNG}
+    \caption{Auslegung Antrieb}
+    \label{fig:Auslegung_Antrieb}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -65,11 +72,6 @@ Folgende Zuweisungen wurden vorgenommen:
 
 Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effizient verarbeitet werden, während gleichzeitig Flexibilität für zusätzliche Funktionen über den \acrshort{iic}-Bus gewährleistet bleibt.
 
-\subsubsection*{Software Steuerung}
-\addcontentsline{toc}{subsubsection}{Software Steuerung}
-
-
-Das Programm, welches auf das \gls{tinyk22} geladen wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Das Programm kann debugged werden, da auf dem Tiny K22 ein Debugger beinhaltet ist. Es können vom Modul ``Mikrocontroller Fundamentals'' bestehende Libraries verwendet werden. Einige Anpassungen, wie zum Beispiel die \acrshort{uart}, wurden bereits vorgenommen.
 
 \subsubsection*{Liniensensor}
 \addcontentsline{toc}{subsubsection}{Liniensensor}
@@ -90,17 +92,6 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 
 Damit Hindernisse detektieren werden können, wird ein Ultraschallsensor verwendet. Indem die Laufzeit der zurück empfangenen Ultraschallwellen ausgewertet werden, wird der Abstand zwischen Hindernis und Fahrzeug berechnet. Der Ultraschallsensor wird sich im vorderen Teil des Fahrzeugs befinden, damit eine freie Sicht gewährleistet ist und keine Störungen durch das Fahrzeug selbst auftreten.
 
-\subsubsection*{Akku}
-\addcontentsline{toc}{subsubsection}{Akku}
-
-
-Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet. Dieser liefert in einer Stunde 3000mA. Bei einer geschätzten maximalen Leistung von 30W und einer Spannung von 12V reicht diese Kapazität für ca. 1.2 Stunden.  QUELLE
-
-\subsubsection*{PCB Design}
-\addcontentsline{toc}{subsubsection}{PCB Design}
-
-
-Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut, da es der Knotenpunkt und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine separate Platine für die Spannungsversorgung benötigt, welche sich ebenfalls zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard angeschlossen. Aufgrund der Wiederverwendung werden die einzelnen Komponenten, wie auch das \gls{tinyk22}, steckbar verbunden werden.
 
 \subsubsection*{Servomotor}
 \addcontentsline{toc}{subsubsection}{Servomotor}
@@ -150,7 +141,7 @@ Der nächste Messpunkt ist nachdem der \gls{duty-cycle} so minimiert wurde, bis 
 
 \newpage
 
-Damit die Anforderung von Tabelle \ref{tab:test-gripper-prototype-1} mit der Hubhöhe erfüllt wird, musste der \gls{duty-cycle} auf 32\% reduziert werden. Somit ist auf der Abbildung \ref{fig: Greiferposition angehoben: Duty Cycle 32} das um 7.5mm angehobene Hindernis erkennen.
+Damit die Anforderung von Tabelle \ref{tab:test-gripper-prototype-1} mit der Hubhöhe erfüllt wird, musste der \gls{duty-cycle} auf 32\% reduziert werden. Somit ist auf der Abbildung \ref{fig: Greiferposition angehoben: Duty Cycle 32} das um 7.5mm angehobene Hindernis zu sehen.
 
 \begin{figure}[H]
     \centering

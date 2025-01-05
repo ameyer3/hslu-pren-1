@@ -1,9 +1,11 @@
 \subsubsection*{Kürzester Weg finden}
 \addcontentsline{toc}{subsubsection}{Kürzester Weg finden}
 
+Damit der Roboter den Graph möglichst schnell traversieren kann, soll berechnet werden, welcher Weg am schnellsten zum Zielknoten führt.
+
 Da es nur 8 Knoten im Graph gibt, wurde von Anfang an vermutet, dass die Geschwindigkeit des Algorithmus vernachlässigt werden kann.
 
-Um zu überprüfen, dass diese These stimmt, wurde ein traditioneller \gls{dijkstra} Algorithmus in Python implementiert. Dabei wurde von einem Knoten den kürzesten Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. währenddessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auch auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt, und einige male wiederholt. Was uns zu nachfolgender Ausgabe und Kenntnissen bringt:
+Um zu überprüfen, ob diese These stimmt, wurde ein traditioneller \gls{dijkstra} Algorithmus in Python implementiert. Dabei wurde von einem Knoten der kürzeste Weg zu allen anderen Knoten im vorgegebenen Graphen berechnet. Währenddessen wurde die Zeit für die Berechnungen gestoppt. Um Hardware Einflüsse zu minimieren, wurde dieses Skript auf einem Single-Board Computer, namentlich einem Raspberry Pi 4 (4GB) ausgeführt und mehrmals wiederholt. Dies führt zu folgenden Ausgaben auf Grafik \ref{fig:dijkstra-test-skript-output}:
 
 \begin{figure}[H]
 \begin{subfigure}{0.275\textwidth}
@@ -26,31 +28,30 @@ This calculation took about 0.128ms
 \end{verbatim}
 \end{footnotesize}
 \caption{Skript Ausgabe}
-\label{fig:djikstra-test-skript-output}
+\label{fig:dijkstra-test-skript-output}
 \end{subfigure}
 
 \caption{Djikstra Algorithmus Test mit Python}
-\label{fig:djikstra-test-output}
+\label{fig:dijkstra-test-output}
 \end{figure}
 
-Um den kürzesten Pfad achtmal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen \gls{dijkstra} Algorithmus zu verwenden. Und ist wichtig, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
+Um den kürzesten Pfad acht Mal zu berechnen, wurden etwa 0,128 ms benötigt, was ausreichend schnell ist. Aufgrund dieses Tests wurde entschieden, einen selbst implementierten, einfachen \gls{dijkstra} Algorithmus zu verwenden. Es ist wichtig, dass der Algorithmus möglichst leichtgewichtig ist, da nur begrenzte Rechenleistung und Speicher zur Verfügung stehen.
 
-Das Skript wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
+Das Skript des Testes wurde in einem Github Gist veröffentlicht und ist unter folgendem Link aufrufbar: \url{https://gist.github.com/dimschlukas/2632116f913b1e10eea9be40e62b2630}
 
 \subsubsection*{Kamera Position}\label{camera-position}
 \addcontentsline{toc}{subsubsection}{Kamera Position}
 
-
-Die Platzierung der Kamera ist ein entscheidender Faktor, um sicherzustellen, dass sie die gewünschten Objekte und Bereiche korrekt erfassen kann. Im Folgenden werden die relevanten Parameter erläutert:
+Eine Kamera wird benötigt, um die aktuelle Situation des Graphens zu fotografieren und erkennen zu können, ob Hindernisse platziert sind und wo sich Linien und Knoten befinden. Die Platzierung der Kamera ist ein entscheidender Faktor, um sicherzustellen, dass sie die gewünschten Objekte und Bereiche korrekt erfassen kann. Im Folgenden werden die relevanten Parameter erläutert:
 
 \begin{itemize}
     \item Kamera wird auf einer Höhe von 22.5cm montiert.
     \item Field of View der Kamera beträgt 66\textdegree.
-    \item Kamera soll Knoten in einer nähe bis zu 15cm vor dem Roboter aufzeichnen.
+    \item Kamera soll Knoten in einer Nähe bis zu 15cm vor dem Roboter aufzeichnen.
     \item Kamera soll Objekte bis zu 2 Meter Entfernung aufzeichnen.
 \end{itemize}
 
-Nachfolgend skizziert wie diese Parameter die Position und Neigung der Kamera definieren:
+Auf Abbildung \ref{fig:camera-position} ist gezeigt, wie dese Parameter die Position und Neigung der Kamera definieren:
 
 \begin{figure}[H]
     \centering
@@ -59,9 +60,9 @@ Nachfolgend skizziert wie diese Parameter die Position und Neigung der Kamera de
     \label{fig:camera-position}
 \end{figure}
 
-Aus den Parametern kann also berechnet werden, dass die Kamera in einem Winkel von ca. 56\textdegree\ eingebaut werden muss. Um die Knoten in der nähe sowie die Pylonen in der Distanz zu erfassen.
+Aus den Parametern kann also berechnet werden, dass die Kamera in einen Winkel von ca. 56\textdegree\ gerichtet werden muss. Auf diese Weise können die Knoten in der Nähe sowie die Pylonen in der Distanz erfasst werden.
 
-Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
+Auf Abbildung \ref{fig:camera-position-exact} ist dies dargestellt in einem Graphen mit korrekten Proportionen:
 
 \begin{figure}[H]
     \centering
@@ -72,7 +73,7 @@ Nachfolgend dies dargestellt in einem Graphen mit korrekten Proportionen:
 
 Mit diesem Winkel können nun Knoten bis zu einer horizontalen Distanz von 10cm erkannt werden.
 
-Zusätzlich haben wir dies mit unserem Raspberry Pi und Kamera getestet:
+Zusätzlich wurde dies mit dem Raspberry Pi und der Raspberry Pi Kamera getestet. Die Resultate sind auf Abbildung \ref{fig:camera-position-prototype} ersichtlich.
 
 \begin{figure}[H]
 \centering
@@ -92,11 +93,12 @@ Zusätzlich haben wir dies mit unserem Raspberry Pi und Kamera getestet:
 \subsubsection*{Winkelerkennung}\label{winkelerkennung}
 \addcontentsline{toc}{subsubsection}{Winkelerkennung}
 
+Damit der Roboter weiss, in welche Richtung er sich bewegen soll, muss er in der Lage sein, die ausgehenden Linien eines Knotens zu erkennen, damit er diesen folgen kann.
 
-Um die Winkel der abgehenden Kanten eines Knoten zu detektieren, macht unser Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, wie in Kapitel \nameref{camera-position} beschrieben, wird unsere Kamera in einem Winkel von 56\textdegree\ montiert. So können wir naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkennen, ohne die Kamera schwenken zu müssen.
-Da wir dadurch nun aber verzerrte Bilder aufzeichnen, muss an dem Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass wir schlussendlich ein verzerrungsfreie Ansicht auf den Knoten haben. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels \gls{opencv} berechnet werden.
+Um die Winkel der ausgehenden Kanten eines Knoten zu detektieren, macht der Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, dass, wie in Kapitel \nameref{camera-position} beschrieben, unsere Kamera in einem Winkel von 56\textdegree\ montiert wird. So können naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkannt werden, ohne dass die Kamera geschwenkt werden muss.
+Da dadurch nun die Knoten nicht direkt von oben fotografiert werden, muss an dem aufgenommenen Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass schlussendlich eine Ansicht auf Vogelperspektive auf den Knoten vorliegt. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels \gls{opencv} berechnet werden.
 
-Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
+Nachfolgend wird dies Schritt für Schritt mithilfe der Abbildungen \ref{fig:image-before-node} - \ref{fig:node-with-edge-angles} dargestellt.
 
 \begin{enumerate}
     \item Vor dem Knoten anhalten und Bild aufnehmen
@@ -202,12 +204,13 @@ Nachfolgend wird dies Schritt für Schritt nachvollziehbar dargestellt:
         \end{figure}
 \end{enumerate}
 
-\subsubsection*{Graph-, Pylonen- und Barriere-Erkennung}
-\addcontentsline{toc}{subsubsection}{Graph-, Pylonen- und Barriere-Erkennung}
+\subsubsection*{Graph-, Pylonen- und Barrieren-Erkennung}
+\addcontentsline{toc}{subsubsection}{Graph-, Pylonen- und Barrieren-Erkennung}
 
 
+In diesem Teil wird vorgestellt, wie das Prototyping fuer die Erkennung von Barrieren und Elementen im Graphen durchgefuehrt wurde. Es wurden mehrere Varianten ausprobiert: SIFT, \gls{orb-gloss}, Farberkennung und \gls{yolo}v11. Am Ende des Kapitels gibt es Tabelle \ref{tab:test-obst-detection}, die die Resultate der Tests mit den einzelnen Methoden auflistet.
 
-Als Basis für die Bilderkennung, wurde in der Mensa ein Graph aufgeklebt (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
+Als Basis für die Bilderkennung wurde in der Mensa ein Graph aufgeklebt (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
 \begin{figure}[H]
     \centering
@@ -236,7 +239,7 @@ Die Methode, die gewählt wird, muss in der Lage sein folgende Elemente zu erken
 
     \item FAST (Features from Accelerated Segment Test)
     
-    FAST ist ein sehr schneller Eckendetektor, der besonders für Echtzeitanwendungen geeignet ist. Er überprüft, ob ein Pixel ein Merkmal (Ecke) ist, indem es die Intensitäten der Pixel in einem kreisförmigen Muster um es herum vergleicht. Es ist jedoch nicht robust gegenüber Skalierung oder Rotation.
+    FAST ist ein sehr schneller Eckendetektor, der besonders für Echtzeitanwendungen geeignet ist. Er überprüft, ob ein Pixel ein Merkmal (Ecke) ist, indem es die Intensitäten der Pixel in einem kreisförmigen Muster um dieses herum vergleicht. Es ist jedoch nicht robust gegenüber Skalierung oder Rotation.
 
     \item ORB (Oriented FAST and Rotated BRIEF)
     
@@ -253,7 +256,7 @@ Zusammenfassend:
 
 FAST wurde nicht getestet, da es wichtig ist, dass unser Roboter eine robuste Bilderkennung implementiert hat. Es wurden lediglich SIFT und ORB getestet.
 
-Aus unseren Test funktionieren beide Algorithmen sehr gut um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
+Beide Algorithmen funktionieren sehr gut, um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen ist (siehe Abbildung \ref{fig:good-sift-example}. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
 
 \begin{figure}[H]
     \centering
@@ -262,7 +265,7 @@ Aus unseren Test funktionieren beide Algorithmen sehr gut um zweidimensionale Ob
     \label{fig:good-sift-example}
 \end{figure}
 
-Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dreidimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren:
+Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dreidimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren, wie in Abbildung \ref{fig:sift-orb-in-our-usecase} zu sehen ist:
 
 \begin{figure}[H]
     \centering
@@ -281,11 +284,11 @@ Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Positi
 \end{figure}
 
 
-Aus diesem Test können wir entscheiden, dass die \gls{opencv} Merkmalsdetektionsalgorithmen nicht ausreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Deshalb wird dieser Ansatz nicht mehr weiter verfolgt.
+Aus diesem Test wird entschieden, dass diese \gls{opencv} Merkmalsdetektionsalgorithmen nicht ausreichen, um Objekte in der 3D Umgebung sauber zu detektieren. Deshalb wird dieser Ansatz nicht mehr weiter verfolgt.
 
 \textbf{Objekterkennung mit Farberkennung}
 
-Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig. Orange und rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung, wo der Roboter schlussendlich operiert, sehr eindeutig sind:
+Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden. Jedoch sind die Resultate stark von Umgebungsbedingungen abhängig. Orange und rote Objekte können grundsätzlich sehr einfach detektiert werden. Da diese Farben in der Umgebung, wo der Roboter schlussendlich operiert, sehr eindeutig sind. Das Resultat eines Tests mit einer Pylone und einem Hindernis ist auf Abbildung \ref{fig:opencv_hsv_object_detection_good} zu sehen.
 
 \begin{figure}[H]
     \centering
@@ -295,7 +298,7 @@ Grundsätzlich können Objekte auch nur rein durch ihre Farbe detektiert werden.
 \end{figure}
 
 
-Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn einerseits haben sie die gleiche Farbe, was das unterscheiden dieser schwierig macht, und unter anderem haben wir, unter verschiedenen Lichtverhältnissen, Spiegelungen, welche sich im Bild auch als weisse Flecken darstellen und somit als Objekte erkennt werden:
+Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger. Einerseits haben sie die gleiche Farbe, was das Unterscheiden dieser schwierig macht. Ebenfalls gibt es unter verschiedenen Lichtverhältnissen Spiegelungen, welche sich im Bild auch als weisse Flecken darstellen und somit als Objekte erkennt werden. Die ist ersichtlich in Abbildung \ref{fig:opencv_hsv_object_detection_bad}
 
 \begin{figure}[H]
     \centering
@@ -304,14 +307,15 @@ Die weisse Barriere und der weisse Knoten macht es jedoch schwieriger, denn eine
     \label{fig:opencv_hsv_object_detection_bad}
 \end{figure}
 
-Mit vielen Feineinstellungen ist es eventuell auch möglich, die weissen Objekte zu detektieren. Jedoch ist es nicht eine sichere Lösung, da die Lichtverhältnisse in dieser Umgebung stark variieren und wir keine Kontrolle darüber haben.
+Mit vielen Feineinstellungen ist es eventuell auch möglich, die weissen Objekte zu detektieren. Jedoch ist es nicht eine sichere Lösung, da die Lichtverhältnisse in dieser Umgebung stark variieren.
 
 \textbf{YOLOv11}
 
 Auf Roboflow\footnote{https://roboflow.com/} wurden die insgesamt 58 erstellten Bilder gelabelt.
-Das bedeutet, dass manuell die zu erkennenden Objekte ausgewählt und zu bestimmten Klassen hinzugefügt wurden.
+Das bedeutet, dass manuell, die zu erkennenden Objekte auf einem Bild ausgewählt und zu bestimmten Klassen hinzugefügt wurden.
 
-Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benötigt, um während dem Trainingsprozess zu prüfen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Das Testset ist erforderlich, da die Daten, die zur Bewertung der Modellleistung verwendet werden, dem Modell vollständig unbekannt sein müssen.
+Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, Test. Die Training Daten werden verwendet mit den Markierungen, damit das Model davon lernen kann. Das Validierungsset wird benötigt, um während dem Trainingsprozess zu prüfen, wie gut das Model ist und wie es angepasst werden soll. Das Testset wird schlussendlich verwendet, um zu testen, wie gut das angepasste Model die einzelnen Elemente erkennt. Das Testset ist erforderlich, da die Daten, die zur Bewertung der Modelleistung verwendet werden, dem Model vollständig unbekannt sein müssen. Der Datensplit ist gezeigt auf Abbildung \ref{fig:data-split}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{assets/informatik-prototyp/yolo/dataset-split.png}
@@ -319,7 +323,7 @@ Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, 
     \label{fig:data-split}
 \end{figure}
 
-Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und Hindernisse erkennt:
+Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und alle Hindernisse erkennt mit den Klassen auf Abbildung \ref{fig:labeling-with-lines} gezeigt:
 
 \begin{figure}[H]
 \centering
@@ -341,7 +345,7 @@ Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Kno
 \end{figure}
 
 
-Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein \gls{yolo} Model mit 10 Epochs\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/epoch}} trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine Confusion Matrix\footnote{\url{https://www.sciencedirect.com/topics/engineering/confusion-matrix\#:\~:text=A\%20confusion\%20matrix\%20represents\%20the,by\%20model\%20as\%20other\%20class.}} erstellt, die zeigt, welche Elemente als was erkannt wurde.
+Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wird, wurde ein \gls{yolo} Model mit 10 \gls{epoch}s trainiert. Danach wurden Bilder aus dem Testset genutzt, in welchem das Model versucht die einzelnen Elemente zu erkennen. Zusätzlich wurde eine \gls{confusion-matrix} erstellt, die zeigt, welche Elemente als was erkannt wurden, diese ist zu sehen auf Abbildung \ref{fig:recognition-with-lines}.
 
 \begin{figure}[H]
 \centering
@@ -362,10 +366,10 @@ Mihilfe eines Jupyter Notebooks, welches von Roboflow zur Verfügung gestellt wi
 \label{fig:recognition-with-lines}
 \end{figure}
 
-Aus diesem Experiment war klar, sowohl aus dem Bild mit den ``erkannten'' Linien, als auch von der Confusion Matrix, dass Linien nicht korrekt erkannt werden können.
-Aus der Confusion Matrix kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet (``background'').
+Aus diesem Experiment war klar, sowohl aus dem Bild mit den ``erkannten'' Linien, als auch von der \gls{confusion-matrix}, dass Linien nicht korrekt erkannt werden können.
+Aus der \gls{confusion-matrix} kann gelesen werden, dass von allen erkannten Linien in 4 Bildern, 30 Linien erkannt wurden an Stellen, an denen sich gar nichts befindet (``background'').
 
-Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert.
+Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die Line-Klasse entfernt und es wurden nur noch Knoten, Pylonen und Barrieren markiert. Die Klassen bei diesem Test sind erkenntlich auf Abbildung \ref{fig:labeled-with-lines}.
 
 \begin{figure}[H]
 \centering
@@ -386,7 +390,7 @@ Als nächstes wurde das gleiche noch einmal durchgeführt. Dieses Mal wurde die 
 \label{fig:labeled-with-lines}
 \end{figure}
 
-Die Bilderkennung des selben Jupyter Notebooks mit den reduzierten Klassen sah wie folgt aus:
+Die Resultate der Bilderkennung des selben Jupyter Notebooks mit den reduzierten Klassen sind erkenntlich auf Abbildung \ref{fig:conf-matrix-yolo} und die \gls{confusion-matrix} ist abgebildet auf Abbildung \ref{fig:conf-matrix-yolo}.
 
 \begin{figure}[H]
 \centering
@@ -402,9 +406,9 @@ Die Bilderkennung des selben Jupyter Notebooks mit den reduzierten Klassen sah w
 \label{fig:conf-matrix-yolo}
 \end{figure}
 
-Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren richtig erkannt werden. Einmal wird eine Pylone erkannt, obwohl es keine gibt. Die meisten vorausgesagten Knoten, sind wirklich Knoten, jedoch werden viele Knoten nicht erkannt. Dabei muss jedoch bedacht werden, dass es einfacher ist für das Model Knoten zu erkennen, die nahe und dadurch deutlicher sind und dass das Trainingsdatenset sehr klein ist. Trotzdem besteht ein sehr wahrscheinliches Risiko, dass ein Knoten nicht erkannt werden könnte.
+Aus dieser Matrix kann gelesen werden, dass alle Pylonen und alle Barrieren richtig erkannt werden. Einmal wird eine Pylone erkannt, obwohl es keine gibt. Die meisten vorausgesagten Knoten sind wirklich Knoten, jedoch werden viele Knoten nicht erkannt. Dabei muss jedoch bedacht werden, dass es einfacher ist, für das Model Knoten zu erkennen, die nahe und dadurch deutlicher sind und dass das Trainingsdatenset sehr klein ist. Trotzdem besteht ein sehr wahrscheinliches Risiko, dass ein Knoten nicht erkannt werden könnte.
 
-Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barrieren:
+Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barrieren, die markierten Klassen sind auf Abbildung \ref{fig:labeling-with-cone-obst} gezeigt.
 
 \begin{figure}[H]
 \centering
@@ -425,7 +429,7 @@ Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barri
 \end{figure}
 
 
-Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt, wie erwartet die Unsicherheit der Knoten weg. Das Problem ist es nun, dass aus den erkannten Elementen auf dem dargestellten Bild geschlossen werden würde, dass sich auf dem nächsten Knoten ein Pylon befindet, da der vorherige Knoten nicht mehr erkannt wird.
+Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt die Unsicherheit der Knoten weg. Das Problem ist es nun, dass gedeutet werden würde, dass der erkannte Pylon sich auf dem Nachbarsknoten befindet, was nicht der Fall ist. Der vorherige Knoten musst also erkannt werden können, damit dieser nicht fälschlicherweise als blockiert erkannt wird. Diese Situation ist auf Abbildung \ref{fig:recognition-with-cone-obst} gezeigt.
 
 \begin{figure}[H]
 \centering
@@ -461,10 +465,10 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
         \hline
         SIFT & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
         ORB & Barriere erlernen und erkennen & Barriere wird erkannt & Barriere wird nicht erkannt & Test nicht erfüllt \\ \hline
-        OpenCV HSV & rote Barriere erkennen & Barriere wird erkannt & Barriere wird erkannt & Test erfüllt \\ \hline
-        OpenCV HSV & orange Pylone erkennen & Pylone wird erkannt & Pylone wird erkannt & Test erfüllt \\ \hline
-        OpenCV HSV & weisser Knoten erkennen & Knoten wird erkannt & Falsche Knoten werden erkannt, Knoten werden nicht erkannt & Test nicht erfüllt \\ \hline
-        OpenCV HSV & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline
+        OpenCV Farberkennung & rote Barriere erkennen & Barriere wird erkannt & Barriere wird erkannt & Test erfüllt \\ \hline
+        OpenCV Farberkennung & orange Pylone erkennen & Pylone wird erkannt & Pylone wird erkannt & Test erfüllt \\ \hline
+        OpenCV Farberkennung & weisser Knoten erkennen & Knoten wird erkannt & Falsche Knoten werden erkannt, Knoten werden nicht erkannt & Test nicht erfüllt \\ \hline
+        OpenCV Farberkennung & weisse Barriere erkennen & Barrier wird erkannt & Falsche Barrieren werden erkannt & Test nicht erfüllt \\ \hline
         YOLOv11 & Barriere erkennen & Barrier wird erkannt & Barrieren werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Pylone erkennen & Pylone wird erkannt & Pylone werden erkannt & Test erfüllt \\ \hline
         YOLOv11 & Knoten erkennen & Knoten wird erkannt & Knoten werden meist erkannt & Test meist erfüllt \\ \hline
@@ -475,15 +479,15 @@ In folgender Tabelle \ref{tab:test-target-node} sind die Testresultate der einze
 \label{tab:test-obst-detection}
 \end{table}
 
-Zur Erkennung der Hindernisse und des Graphens funktionierte \gls{yolo} am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur mit den anliegenden Knoten arbeitet.
+Zur Erkennung der Hindernisse und des Graphens funktionierte \gls{yolo}v11 am besten. Dabei wird versucht die Hindernisse und die Graphenknoten zu erkennen. Die Unsicherheit der Knotenerkennung ist jedoch ein grosses Risiko. Deshalb wird eine Strategie verfolgt, die mit den ausgehenden Linien vom Knoten arbeitet und nur die Nachbarsknoten erkennen will.
 
 
 \subsubsection*{Zielknoten erkennen}
 \addcontentsline{toc}{subsubsection}{Zielknoten erkennen}
 
-Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen, um sicherzustellen, dass er sich wirklich im Ziel befindet. Dazu wurden drei verschiedene Varianten evaluiert: Tesseract OCR Algorithmus\footnote{\url{https://tesseract-ocr.github.io/}}, EasyOCR \footnote{\url{https://github.com/jaidedai/easyocr}} und \acrfull{orb}\footnote{\url{https://docs.opencv.org/4.x/d1/d89/tutorial_py_orb.html}}.
+Der Roboter muss in der Lage sein, die Buchstaben auf den Zielknoten zu erkennen, um sicherzustellen, dass er sich wirklich im Ziel befindet. Dazu wurden drei verschiedene Varianten evaluiert: \gls{tesseract} Algorithmus, \gls{easyocr} und \acrfull{orb}.
 
-Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern durchgeführt. Diese sind unveränderte Aussschnitte aus dem zur Verfügung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualität sind.
+Die Tests wurden bei allen drei Varianten mit den folgenden drei Bildern (Abbildung \ref{fig:muster-zielknoten}) durchgeführt. Diese sind unveränderte Aussschnitte aus dem zur Verfügung gestellten Muster der Zielknoten. Die Bilder wurden nicht pre-processed, da sie bereits in perfekter Qualität sind.
 
 Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
 
@@ -521,14 +525,14 @@ Die Methode, die gewählt wird muss in der Lage sein folgendes zu tun:
 
 \textbf{Tesseract OCR}
 
-Tesseract ist ein bekannter Algorithmus, um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textblöcke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden können. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
+\gls{tesseract} ist ein bekannter Algorithmus um Text zu lesen. Es gibt einen Modus, der sich darauf spezialisiert nur einzelne Buchstaben anstatt Textblöcke zu lesen. Dieser wurde bei dem Prototyping verwendet mit der Option \verb|--psm 10|. Ausserdem wurde festgelegt, dass nur die Buchstaben A, B und C erkannt werden können. Dies wurde wie folgt mit der Python Tesseract Bibliothek\footnote{\url{https://pypi.org/project/pytesseract/}} implementiert. 
 
 \begin{verbatim}
 text = pytesseract.image_to_string(image, config='--psm 10 -c
 tessedit_char_whitelist=ABC')
 \end{verbatim}
 
-Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden:
+Dabei konnte \gls{tesseract} ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden, die Resultate sind gezeigt in Abbildung \ref{fig:zielknoten-tesseract}:
 
 \begin{figure}[H]
 \centering
@@ -539,7 +543,7 @@ Dabei konnte Tesseract ohne Probleme die Buchstaben A und C lesen, jedoch konnte
 
 \textbf{EasyOCR}
 
-EasyOCR wird zur Extrahierung von Text verwendet. Da AI verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der \gls{opencv} Bibliothek. EasyOCR hat die Buchstaben wie folgt erkannt:
+\gls{easyocr} wird zur Extrahierung von Text verwendet. Da \acrshort{ai} verwendet wird dazu, benötigt dieser sowohl mehr Rechenpower, als auch mehr Zeit, die Bilder zu verarbeiten. Dieser Algorithmus ist Teil von der \gls{opencv} Bibliothek. EasyOCR hat die Buchstaben wie auf Abbildung \ref{fig:zielknoten-easyocr} gezeigt erkannt:
 
 \begin{figure}[H]
 \centering
@@ -552,7 +556,7 @@ Bei EasyOCR sind zwei Probleme aufgetreten. Zum einen ist die Ausführung des Al
 
 \textbf{\acrfull{orb}}
 
-\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild welches Objekt gefunden wurde. Alle gefundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu prüfen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind wie auf dem Muster Bild.
+\gls{orb-gloss} lernt die Merkmale von Objekten und erkennt auf einem Bild, welches Objekt gefunden wurde. Alle gefundenen Matches wurden in diesem Experiment nach Wahrscheinlichkeit sortiert. Mit diesem Verfahren konnten alle Knoten erkannt werden. Die Musterknoten wurden um 35 Grad gedreht, um zu prüfen, ob ORB auch Buchstaben erkennt, wenn sie nicht gleich rotiert sind wie auf dem Muster Bild. Die Detektierung der Buchstaben ist auf Abbildung \ref{fig:orb-zielknoten} gezeigt.
 
 \begin{figure}[H]
 \centering
@@ -608,7 +612,7 @@ Die Resultate aus den Tests der vorherigen Kapiteln sind in folgender Tabelle \r
 \label{tab:test-target-node}
 \end{table}
 
-Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel `C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bild des Zielknotens nötig, da ORB die Buchstaben auch rotiert erkennt.
+Zur Erkennung der Buchstaben wird der \acrshort{orb} Algorithmus verwendet werden. Dieser hatte keine Probleme damit die Buchstaben klar zu erkennen und es werden sicher nur A, B oder C erkannt, da der Algorithmus nur diese Buchstaben kennt. Auf diese Weise kann verhindert werden, dass zum Beispiel `C' als ein Klammer-auf \verb|(| gelesen wird. Ebenfalls ist keine Rotation des Bildes des Zielknotens nötig, da \gls{orb} die Buchstaben auch rotiert erkennt.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -624,7 +628,7 @@ In diesem Kapitel werden die einzelnen Prototypen vorgestellt, die das Bauen des
 \addcontentsline{toc}{subsubsection}{Navigation}
 
 
-Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, welche die Kamera stabil in der definierten Position befestigt. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn man sich direkt davor befindet. Dies ist eine Risikominderung, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
+Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, welche die Kamera stabil in der definierten Position befestigt. Ebenfalls soll es die Möglichkeit geben, bei Bedarf einen Ultraschallsensor daran zu befestigen, um Hindernisse zu erkennen, wenn der Roboter sich direkt davor befindet. Dies ist eine Risikominderung, falls die Kamera Hindernisse nicht richtig erkennt. Dazu wurde eine Turmvorrichtung gebaut, an der die Kamera befestigt werden kann. Sie befindet sich auf einem Sockel, der verwendet werden kann, um bei Bedarf Sensoren, die nach vorne zeigen, anzubringen.
 
 \begin{figure}[H]
 \centering
@@ -643,15 +647,31 @@ Damit die Navigation implementiert werden kann, braucht es eine Vorrichtung, wel
 \subsubsection*{Fortbewegung}
 \addcontentsline{toc}{subsubsection}{Fortbewegung}
 
-Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benötigt es vor allem die Räder und die Motoren. Diese wurden an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusätzlichen Sensoren und Rechner anzubringen, die für die Steuerung benötigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
+Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, benötigt es vor allem die Räder und die Motoren. Diese wurden zusammen mit einem Stützrad an einem Holzbrett befestigt, das ebenfalls verwendet werden kann, um die zusätzlichen Sensoren und Rechner anzubringen, die für die Steuerung benötigt werden. Am Ende von \acrshort{pren1} wurde bereits ein Ultraschallsensor an der Vorderseite befestigt.
 
-BILD
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.95\linewidth]{assets/prototyp-fahrwerk/fahrwerk-motoren.jpeg} 
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.95\linewidth]{assets/prototyp-fahrwerk/fahrwerk-oben.jpeg} 
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=0.95\linewidth]{assets/prototyp-fahrwerk/fahrwerk-unten.jpeg} 
+\end{subfigure}
+\caption{Fahrwerk Prototyp}
+\label{fig:prototype-fahrwerk}
+\end{figure}
 
 \subsubsection*{Greifer}
 \addcontentsline{toc}{subsubsection}{Greifer}
 
 
-Um ein Hindernis anzuheben, wurde ein Greifer welcher über ein Gelenkgestänge funktioniert ausgelegt. Um dieses Konzept zu Testen wurden zwei Prototypen gebaut (Kapitel \nameref{subsubsection:gripper-prototype-1} und Kapitel \nameref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der Finale Greifer später auch, mit einem Servomotor betrieben. 
+Um ein Hindernis anzuheben, wurde ein Greifer, welcher über ein Gelenkgestänge funktioniert, ausgelegt. Um dieses Konzept zu Testen wurden zwei Prototypen gebaut (Kapitel \nameref{subsubsection:gripper-prototype-1} und Kapitel \nameref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der finale Greifer später auch, mit einem Servomotor betrieben. 
 
 \begin{figure}[H]
 \centering

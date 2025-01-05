@@ -307,9 +307,9 @@ Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernis
 Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug, nachdem ein Hindernis mittels Ultraschall entdeckt wurde, 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurückzusetzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 
-\subsection{Fortbewegung}
+\subsection{Fortbewegung/ Fahrwerk}
 
-Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Dabei wird sowohl das Forwärtsfahren, als auch das Drehen von den Rädern durchgeführt. Die \acrfull{dc} Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt.
+Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit Dabei wird sowohl das Forwärtsfahren, als auch das Drehen von den Rädern durchgeführt. Die \acrfull{dc} Motoren besitzen Encoder und sind direkt mit den Antriebsrädern verbunden. Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt.
 
 \subsection{Linienerkennung}
 
@@ -339,6 +339,19 @@ Sowohl die Montage, als auch das Fiel of View ist in Abbildung \ref{fig:camera-p
 \end{figure}
 
 
+
+\subsection{Software Steuerung}
+
+
+Das Programm, welches auf das \gls{tinyk22} geladen wird, wird in C geschrieben. Mit der Entwicklungsumgebung MCUXpressoIDE kann der Code geschrieben und kompiliert werden. Das Programm kann debugged werden, da auf dem Tiny K22 ein Debugger beinhaltet ist. Es können vom Modul ``Mikrocontroller Fundamentals'' bestehende Libraries verwendet werden. Einige Anpassungen, wie zum Beispiel die \acrshort{uart}, wurden bereits vorgenommen.
+
+\subsection{Akku}
+
+Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet, der in einer Stunde 3000mA liefert. Daraus kann berechnet werden, dass bei einer geschätzten maximalen Leistung von 30W und einer Spannung von 12V, diese Kapazität für ca. 1.2 Stunden reicht.  
+
+\subsection{PCB Design}
+
+Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut, da es der Knotenpunkt und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine separate Platine für die Spannungsversorgung benötigt, welche sich ebenfalls zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard angeschlossen. Aufgrund der Wiederverwendung werden die einzelnen Komponenten, wie auch das \gls{tinyk22}, steckbar verbunden werden.
 
 \newpage
 
