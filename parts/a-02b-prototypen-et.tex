@@ -77,7 +77,28 @@ Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effi
 \addcontentsline{toc}{subsubsection}{Liniensensor}
 
 
-Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren die lichtabhängig sind. Das Array ist dafür da die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit man den Wegpunkt erkennen kann werden vor und nach dem Array je ein Sensor verbaut. Es sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}) für den Liniensensor. Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die fallende Flanke, die bei der Entladung auftritt, detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt, bei dem der Kondensator sich anfängt zu entladen, bis zu dem Zeitpunkt, bei welchem die Spannung 0V ist.
+Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren die lichtabhängig sind. Das Array ist dafür da die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit man den Wegpunkt erkennen kann werden vor und nach dem Array je ein Sensor verbaut. Im ersten Fall (Abb. \ref{fig: Liniensensor auf Linie}) steht das Array über der Linie und der vordere und hintere stehen jeweils neben der Linie. Im zweiten Fall (Abb. \ref{fig: Liniensensor auf Wegpunkt}) stehen alle Sensoren auf der gleichen Fläche, somit hat man einen Unterschied woran man erkennt ob man auf einer Linie oder auf dem Wegpunkt steht.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Liniensensor_Linie.jpeg}
+    \caption{Liniensensor auf Linie}
+    \label{fig: Liniensensor auf Linie}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Liniensensor_Wegpunkt.jpeg}
+    \caption{Liniensensor auf Wegpunkt}
+    \label{fig: Liniensensor auf Wegpunkt}
+\end{figure}
+
+
+
+
+Es sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}) für den Liniensensor. Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die fallende Flanke, die bei der Entladung auftritt, detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt, bei dem der Kondensator sich anfängt zu entladen, bis zu dem Zeitpunkt, bei welchem die Spannung 0V ist.
 
 \begin{figure}[H]
     \centering
@@ -89,27 +110,26 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 \subsubsection*{Ultraschall}
 \addcontentsline{toc}{subsubsection}{Ultraschall}
 
-Es ist noetig, dass der Roboter weiss, wenn er sich vor einem Hindernis befindet. Dafuer soll ein Arduino Ultraschallsensor verwendet werden. Der Abstand wird gemessen, indem Ultraschallwellen ausgesendet werden und ausgewertet wird, wie lange es dauerte bis die Wellen wieder zurück empfangenen werden. Daraus kann die Distanz berechnet werden.
+Es ist nötig, dass der Roboter weiss, wenn er sich vor einem Hindernis befindet. Dafür soll ein Arduino Ultraschallsensor verwendet werden. Der Abstand wird gemessen, indem Ultraschallwellen ausgesendet werden und das Echo dieser wieder empfangt wird. Die Distanz ergibt sich aus der Dauer welche die Schallwellen benötigen, um vom Ausstrahlen zurück zum Echo-Empfänger zu gelangen.
 
-Mit dem Arduino Ultraschall wurden Tests durchgefuehrt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davorgehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, wie der Sensor bemerkt, dass die Objekte naeher kommen.
+Mit dem Arduino Ultraschall wurden Tests durchgeführt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (\url{https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1}). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davor gehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, wie der Sensor bemerkt, dass die Objekte näher kommen.
 
-Damit Barrieren angehoben werden koennen, muss der Abstand dazu erkannt werden koennen. Dazu wurden Tests durchgefuehrt. Der Ultraschallsensor war in der Lage auf einige Zentimeter genau die Distanz korrekt zu messen.
+Damit Barrieren angehoben werden können, muss der Abstand dazu erkannt werden können. Dazu wurden Tests durchgeführt. Der Ultraschallsensor war in der Lage auf einige Zentimeter genau die Distanz korrekt zu messen.
 
-Ebenfalls soll der Roboter erkennen koennen, wenn er sich vor einer Pylone befindet, damit er nicht in diese reinfaehrt. Dazu wurden ebenfalls Tests durchgefuehrt. Trotz der Kegelform der Pylonen ist es moeglich, die Distanz gut zu messen.
+Ebenfalls soll der Roboter erkennen können, wenn er sich vor einer Pylone befindet, damit er nicht in diese reinfährt. Dazu wurden ebenfalls Tests durchgeführt. Trotz der Kegelform der Pylonen ist es möglich, die Distanz gut zu messen.
 
-Nun muss der Roboter wissen, vor welchem Hindernis er sich befindet, da die naechsten Schritte des Roboters unterschiedlich sind, je nach Hindernis. Es wurden zwei Moeglichkeiten untersucht, um diese Unterscheidung durchzufuehren:
+Nun muss der Roboter wissen, vor welchem Hindernis er sich befindet, da je nach Hindernis, die nächsten Schritte des Roboters unterschiedlich sind. Es wurden zwei Möglichkeiten untersucht, um diese Unterscheidung durchzuführen:
 
 \begin{itemize}
-    \item Zwei Sensoren werden am Roboter angebracht: Der eine davon ist hoeher als die Barriere, damit dieser Barrieren nicht erkennt.
+    \item Zwei Sensoren werden am Roboter angebracht: Der eine davon ist höher als die Barriere, damit dieser Barrieren nicht erkennt.
     \item Bei Erkennung eines unerwarteten Hindernisses wird ein Foto gemacht und das Hindernis wird mit Bilderkennung erkannt.
 \end{itemize}
 
-Die erste Methode wuerde zwei Ultraschallsensoren benoetigen, die auf unterschiedlichen Hoehen angebracht waeren. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode wuerde funktionieren, wie aus den vorhin erwaehnten Ultraschalltests erkannt wurde.
+Die erste Methode würde zwei Ultraschallsensoren benötigen, die auf unterschiedlichen Höhen angebracht wären. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode würde funktionieren, wie aus den vorhin erwähnten Ultraschalltests erkannt wurde.
 
-Die zweite Methode verwendet die selbe Kamera und die selbe Art Objekte auf Bildern zu erkennen, wie in Kapitel \ref{subsubsection:bilderkennung} beschrieben. Dies wuerde ebenfalls funktionieren. Die Tests zu der Bilderkennung sind im Kapitel \nameref{bilderkennung-protoype} zu finden.
+Die zweite Methode verwendet die selbe Kamera und die selbe Art Objekte auf Bildern zu erkennen, wie in Kapitel \ref{subsubsection:bilderkennung} beschrieben. Dies würde ebenfalls funktionieren. Die Tests zu der Bilderkennung sind im Kapitel \nameref{bilderkennung-prototype} zu finden.
 
-In der folgenden Tabelle sind Vor- und Nachteile beider Methoden aufgelistet.
-
+In der folgenden Tabelle \ref{tab:obstacle-sensor} sind Vor- und Nachteile beider Methoden aufgelistet.
 
 
 \begin{table}[H]
@@ -119,22 +139,18 @@ In der folgenden Tabelle sind Vor- und Nachteile beider Methoden aufgelistet.
         \hline
         \textbf{2 Sensoren} & \textbf{Kamera und Bilderkennung}\\
         \hline
-        + Weniger Rechenpower noetig. & + Keine zusaetzliche Hardware noetig.  \\ \hline
-        + Erkennung und Unterscheidung der Hinderniss wird auf einem Rechner durchgefuehrt.  & + Navigation berechnet naechste Schritte und liest ebenfalls die Hindernisart aus.  \\ \hline
-        + Simpel. & Buchstabe C erkennen\\ \hline 
-        EasyOCR & Buchstabe A erkennen\\ \hline
-        EasyOCR & Buchstabe B erkennen  \\ \hline
-        EasyOCR & Buchstabe C erkennen & C wird erkannt \\ \hline
-        ORB & Buchstabe A erkennen & A wird erkannt \\ \hline
-        ORB & Buchstabe B erkennen & B wird erkannt \\ \hline
+        + Weniger Rechenpower nötig. & + Keine zusätzliche Hardware nötig.  \\ \hline
+        + Erkennung und Unterscheidung der Hindernisse wird auf nur einem Rechner durchgeführt.  & + Navigation berechnet nächste Schritte und liest ebenfalls selber die Hindernisart aus.  \\ \hline
+        + Simpel. & + Logik der Bilderkennung und Auslesung davon bereits vorhanden. \\ \hline 
+        - Zusätzliche Hardware nötig. & - Rechenintensiver.\\ \hline
+        - Keine Logik bereits vorhanden. & - Komplexere Bilderkennung.  \\ \hline
 
 \end{tabularx}
     \caption{Hindernisse erkennen: 2 Methoden}
 \label{tab:obstacle-sensor}
 \end{table}
 
-
-Aus der Tabelle geht hervor, dass es mehr Vorteile fuer die Methode mit der Kamera gibt. Diese wird in PREN 2 vertieft erarbeitet werden.
+Obwohl die Variante mit der Kamera komplexer ist, ist die Logik dazu bereits vorhanden. Es muss weder neue Hardware, noch neue Logik hinzugefügt werden, was im Allgemeinen dabei hilft, den Roboter simpel zu halten. Aus der Tabelle geht also hervor, dass es die Vorteile für die Methode mit der Kamera relevanter sind. Diese wird in PREN 2 vertieft erarbeitet werden.
 
 \subsubsection*{Servomotor}
 \addcontentsline{toc}{subsubsection}{Servomotor}
@@ -158,7 +174,6 @@ Der Servomotor wurde direkt am Greifer Prototyp getestet. In der folgenden Tabel
 \label{tab:testpunkte Servomotor}
 \end{table}
 
-\newpage
 
 Der Startpunkt des Tests wurde bei einem \gls{duty-cycle} von 86\% festgelegt. Wie in der Abbildung \ref{fig: Greiferposition offen: Duty Cycle 86} ersichtlich wird, war das die Position, bei welcher der Greifer offen ist.
 
