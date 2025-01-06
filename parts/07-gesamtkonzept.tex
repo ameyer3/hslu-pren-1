@@ -197,7 +197,7 @@ Auf der folgenden Grafik \ref{fig:orb-zielknoten-konzept} wird mit den farbigen 
 Mit \acrshort{orb} werden nur die Buchstaben A, B oder C erkannt, da der trainierte Algorithmus nur diese drei Zeichen kennt. So kann ausgeschlossen werden, dass ein C beispielsweise als das Klammer Zeichen \verb|(| erkannt werden würde.
 
 
-\subsubsection{Pylonen und Hindernisse erkennen}
+\subsubsection{Pylonen und Hindernisse erkennen}\label{subsubsection:bilderkennung}
 
 Damit der Roboter weiss, ob sich eine Pylone auf einem Nachbarsknoten oder eine Barriere auf einer ausgehenden Linie befindet, wird der Ablauf auf Abbildung \ref{fig:image-detection-obstacles} durchgeführt.
 
@@ -307,11 +307,11 @@ Das Klemmen und Anheben ist nur ein Teilschritt  zur Beseitigung eines Hindernis
 Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, der Ultraschallsensor vorne (siehe Abb. \ref{fig:robot_concept-scetch_labeld}). Dadurch muss sich das Fahrzeug, nachdem ein Hindernis mittels Ultraschall entdeckt wurde, 180\textdegree\ drehen und langsam rückwärts fahren, bis der Endschalter am Greifer betätigt wird, um das Hindernis anzuheben. Sobald das Hindernis angehoben ist, dreht sich das Fahrzeug 180\textdegree\ und fährt 30mm vorwärts, um das Hindernis an dieselbe Stelle zurückzusetzen. Das Fahrzeug steht nach dem Absetzen wieder nach vorne ausgerichtet und kann geradeaus weiter fahren (siehe  Abb. \ref{fig:ablaufdiagramm-hindernis-bewegen}).
 
 
-\subsection{Fortbewegung/ Fahrwerk}
+\subsection{Fahrwerk}
 
-Auf Basis der Nutzwertanalyse, wurde anschliessend ein Konzept für das Fahrwerk konstruiert. Die Baugruppe Fahrwerk beinhaltet alle für die selbständige Fortbewegung notwendigen Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten. Zu dieser Baugruppe wurde ein Prototyp erstellt. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
+Auf Basis der Nutzwertanalyse, wurde anschliessend ein Konzept für das Fahrwerk konstruiert. Dies beinhaltet alle Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten, die für selbständige Fortbewegung notwendig sind. Dafür wurde ein Prototyp erstellt. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
 
-Das Fahrwerk wird nach Abb.  \ref{fig:Prototype_Fahrwerk_CAD}  Prototyp Fahrwerk aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. (Kap. \ref{subsection:Distanzsensor} Distanzsensor) Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden. (Abb. \ref{fig:sectionview-wheelmount}) Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
+Das Fahrwerk wird wie in Abbildung  \ref{fig:Prototype_Fahrwerk_CAD} gezeigt aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. (Kap. \ref{subsection:Distanzsensor} Distanzsensor). Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden (Abb. \ref{fig:sectionview-wheelmount}). Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
 
 \begin{figure}[H]
 \centering
@@ -320,7 +320,7 @@ Das Fahrwerk wird nach Abb.  \ref{fig:Prototype_Fahrwerk_CAD}  Prototyp Fahrwerk
 \label{fig:Prototype_Fahrwerk_CAD}
 \end{figure}
 
-Die Abbildung \ref{fig:sectionview-wheelmount} zeigt eine Schnittansicht des Antriebs. Die Räder werden mit einer Antriebswelle formschlüssig durch den Motor angetrieben. Die Welle hat radseitig ein 6-Kant angefrässt, dass direkt in die Radnabe eingepasst wird und durch eine Schraube gesichert werden kann. Die Welle wird durch je ein Fest- und ein Los-Lager gelagert. Auf der andern Seite wird der Motor mit Hilfe des in Abbildung \ref{fig:sectionview-wheelmount} ersichtlichen Motorflansches fixiert. 
+Die Abbildung \ref{fig:sectionview-wheelmount} zeigt eine Schnittansicht des Antriebs. Die Räder werden mit einer Antriebswelle formschlüssig durch den Motor angetrieben. Die Welle hat radseitig ein 6-Kant angefrässt, das direkt in die Radnabe eingepasst wird und durch eine Schraube gesichert werden kann. Die Welle wird durch je ein Fest- und ein Loslager gelagert. Auf der andern Seite wird der Motor mit Hilfe des in Abbildung \ref{fig:sectionview-wheelmount} ersichtlichen Motorflansches fixiert. 
 
 \begin{figure}[H]
 \centering
@@ -337,11 +337,11 @@ Mit einem Array von Phototransistoren, Kondensatoren und Widerständen, wird die
 \subsection{Distanzsensor}
 \label{subsection:Distanzsensor}
 
-Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Ultraschallsensor verwendet. Der Sensor wird wie auf Abb \ref{fig:Prototype_Sensorhalter} Prototyp Sensorhalter oberhalb des Abstützrades montiert. Der Sensor erkennt die Distanz zum Hindernis und kann bestimmen, an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurden.
+Um die Distanz zwischen dem Roboter und einem Hindernis zu detektieren wird ein Arduino Ultraschallsensor verwendet. Der Ultraschallsensor wird sich vorne am Fahrzeug befinden, damit eine freie Sicht gewährleistet ist und keine Störungen durch das Fahrzeug selbst auftreten. Er wird, wie auf Abbildung \ref{fig:Prototype_Sensorhalter} gezeigt, oberhalb des Abstützrades montiert. Der Sensor erkennt die Distanz zum Hindernis und kann bestimmen, an welchem Punkt das Fahrzeug eine 180-Grad-Drehung durchführen muss, um sich auf den Hubvorgang vorzubereiten. Ebenfalls wird so ein Zusammenstossen mit Hindernissen verhindert, falls diese bei der Bilderkennung zuvor nicht erkannt wurden. Wird ein unerwartetes Hindernis erkannt, hält der Roboter an und macht ein Foto. Darauf soll mit Bilderkennung erkannt werden, um welche Art von Hindernis es sich handelt und was die nächsten Aktionen des Roboters sein sollen.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{assets/prototyp-fahrwerk/Prototyp_Sensorhalter.png}
+\includegraphics[width=0.5\textwidth]{assets/prototyp-fahrwerk/Prototyp_Sensorhalter.png}
 \caption{Sensorhalter}
 \label{fig:Prototype_Sensorhalter}
 \end{figure}

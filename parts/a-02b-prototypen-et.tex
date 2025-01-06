@@ -89,17 +89,58 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 \subsubsection*{Ultraschall}
 \addcontentsline{toc}{subsubsection}{Ultraschall}
 
+Es ist noetig, dass der Roboter weiss, wenn er sich vor einem Hindernis befindet. Dafuer soll ein Arduino Ultraschallsensor verwendet werden. Der Abstand wird gemessen, indem Ultraschallwellen ausgesendet werden und ausgewertet wird, wie lange es dauerte bis die Wellen wieder zurück empfangenen werden. Daraus kann die Distanz berechnet werden.
 
-Damit Hindernisse detektieren werden können, wird ein Ultraschallsensor verwendet. Indem die Laufzeit der zurück empfangenen Ultraschallwellen ausgewertet werden, wird der Abstand zwischen Hindernis und Fahrzeug berechnet. Der Ultraschallsensor wird sich im vorderen Teil des Fahrzeugs befinden, damit eine freie Sicht gewährleistet ist und keine Störungen durch das Fahrzeug selbst auftreten.
+Mit dem Arduino Ultraschall wurden Tests durchgefuehrt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davorgehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, wie der Sensor bemerkt, dass die Objekte naeher kommen.
 
+Damit Barrieren angehoben werden koennen, muss der Abstand dazu erkannt werden koennen. Dazu wurden Tests durchgefuehrt. Der Ultraschallsensor war in der Lage auf einige Zentimeter genau die Distanz korrekt zu messen.
+
+Ebenfalls soll der Roboter erkennen koennen, wenn er sich vor einer Pylone befindet, damit er nicht in diese reinfaehrt. Dazu wurden ebenfalls Tests durchgefuehrt. Trotz der Kegelform der Pylonen ist es moeglich, die Distanz gut zu messen.
+
+Nun muss der Roboter wissen, vor welchem Hindernis er sich befindet, da die naechsten Schritte des Roboters unterschiedlich sind, je nach Hindernis. Es wurden zwei Moeglichkeiten untersucht, um diese Unterscheidung durchzufuehren:
+
+\begin{itemize}
+    \item Zwei Sensoren werden am Roboter angebracht: Der eine davon ist hoeher als die Barriere, damit dieser Barrieren nicht erkennt.
+    \item Bei Erkennung eines unerwarteten Hindernisses wird ein Foto gemacht und das Hindernis wird mit Bilderkennung erkannt.
+\end{itemize}
+
+Die erste Methode wuerde zwei Ultraschallsensoren benoetigen, die auf unterschiedlichen Hoehen angebracht waeren. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode wuerde funktionieren, wie aus den vorhin erwaehnten Ultraschalltests erkannt wurde.
+
+Die zweite Methode verwendet die selbe Kamera und die selbe Art Objekte auf Bildern zu erkennen, wie in Kapitel \ref{subsubsection:bilderkennung} beschrieben. Dies wuerde ebenfalls funktionieren. Die Tests zu der Bilderkennung sind im Kapitel \nameref{bilderkennung-protoype} zu finden.
+
+In der folgenden Tabelle sind Vor- und Nachteile beider Methoden aufgelistet.
+
+
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \textbf{2 Sensoren} & \textbf{Kamera und Bilderkennung}\\
+        \hline
+        + Weniger Rechenpower noetig. & + Keine zusaetzliche Hardware noetig.  \\ \hline
+        + Erkennung und Unterscheidung der Hinderniss wird auf einem Rechner durchgefuehrt.  & + Navigation berechnet naechste Schritte und liest ebenfalls die Hindernisart aus.  \\ \hline
+        + Simpel. & Buchstabe C erkennen\\ \hline 
+        EasyOCR & Buchstabe A erkennen\\ \hline
+        EasyOCR & Buchstabe B erkennen  \\ \hline
+        EasyOCR & Buchstabe C erkennen & C wird erkannt \\ \hline
+        ORB & Buchstabe A erkennen & A wird erkannt \\ \hline
+        ORB & Buchstabe B erkennen & B wird erkannt \\ \hline
+
+\end{tabularx}
+    \caption{Hindernisse erkennen: 2 Methoden}
+\label{tab:obstacle-sensor}
+\end{table}
+
+
+Aus der Tabelle geht hervor, dass es mehr Vorteile fuer die Methode mit der Kamera gibt. Diese wird in PREN 2 vertieft erarbeitet werden.
 
 \subsubsection*{Servomotor}
 \addcontentsline{toc}{subsubsection}{Servomotor}
 
 
 Der Servomotor wurde direkt am Greifer Prototyp getestet. In der folgenden Tabelle \ref{tab:testpunkte Servomotor} sind die Messergebnisse eingetragen, welche positiv ausgefallen sind. Der Servomotor wurde bei zwei unterschiedlichen Frequenzen getestet. Dabei war die Betriebsspannung immer auf 5V. Es soll getestet werden, ob der Greifer das Hindernis auf die geforderten 7.5mm anheben kann. Das \acrshort{pwm} Signal wurde mit einem Tektronix AFG1022 generiert, bei welchem der \gls{duty-cycle} mit einem Drehregler verstellt werden kann.
-
-\textbf{Messungen und Beobachtungen}
 
 \begin{table}[H]
 \centering
