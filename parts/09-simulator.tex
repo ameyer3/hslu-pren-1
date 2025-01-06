@@ -95,7 +95,7 @@ Auf der Abbildung \ref{fig:simulator-classdia-sim} sind die Klassen ausgeführt,
 
 \subsubsection{Entwicklung}
 
-Der erste Schritt ist, es einen Graph zu definieren. Dabei wird in \gls{yaml} der konfigurierte Graph erstellt. 
+Der erste Schritt ist es, einen Graph zu definieren. Dabei wird in \gls{yaml} der konfigurierte Graph erstellt. 
 Dazu wird der vorgegebene Graph beschriftet: Jeder Knoten erhält einen Buchstaben und jede Kante ein Gewicht. Die Gewichtungen sind die Längen der Strecken in Millimeter. Diese Beschriftung wird wie in Abbildung \ref{fig:graph-yaml} gezeigt in einem \gls{yaml} File beschrieben.
 
 \begin{figure}[H]
@@ -304,7 +304,7 @@ traversing the graph took 84.728 seconds
 
 Bei erfolgreichem Traversieren des Graphens wird am Ende der gesamte Pfad, der genommen wurde, sowie die benötigte Zeit dafür ausgegeben.
 
-Der Verlauf kann auch im grafischen User Interface verfolgt werden. Dabei sind die Hindernisse, welche bereits erkannt worden sind, eingefärbt. Der Pfad, der bereits bekannt ist, ist schwarz, grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind. Dies ist ersichtlich in Abbildung \ref{fig:simulation-run}.
+Der Verlauf kann auch im grafischen User Interface verfolgt werden. Dabei sind die Hindernisse, welche bereits erkannt worden sind, eingefärbt. Der Pfad, der bereits bekannt ist, ist schwarz. Grau hingegen sind alle Pfade und Hindernisse welche zu dem Zeitpunkt noch unbekannt sind. Dies ist ersichtlich in Abbildung \ref{fig:simulation-run}.
 Die Anzeige aktualisiert sich laufend.
 
 \begin{figure}[H]
@@ -330,7 +330,7 @@ Dies wurde nun mit nachfolgenden Optionen durchgeführt:
 \end{itemize}
 
 Mit allen möglichen Optionen wurden so 4'215'593 verschiedene Graphen erstellt und die Traversierung dieser simuliert.
-Dabei ist wichtig, dass die Traversierung des Roboters ca. 2 Minuten oder weniger dauert, egal welcher Graph mit welchen Hindernissen traversiert wird, damit die Effizienz der Roboters sichergestellt werden kann.
+Dabei ist wichtig, dass die Traversierung des Roboters ca. 2 Minuten oder weniger dauert, egal welcher Graph mit welchen Hindernissen traversiert wird, damit die Effizienz des Roboters sichergestellt werden kann.
 
 Nachfolgend in Abbildung \ref{fig:simulation-run-chart} sind diese Durchläufe und deren Laufzeiten in einer Grafik dargestellt. Die Simulationen sind nach Anzahl Hindernissen gruppiert. Der erste Block hatte 0 Pylonen und iterierte dabei über alle möglichen Anzahlen von Barrieren und fehlenden Linien. Der letzte Block hatte die maximale Anzahl an 5 Pylonen und iterierte ebenfalls über alle möglichen Anzahlen von Barrieren und fehlenden Linien.
 Die Zahlen der Hindernisse sind im unteren Liniendiagramm ersichtlich. Das darüberliegende Liniendiagramm zeigt die dazu erreichten maximalen, minimalen und durchschnittlichen Laufzeiten.
