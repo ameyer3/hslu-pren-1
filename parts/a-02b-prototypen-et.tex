@@ -82,7 +82,7 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{img/Liniensensor_Linie.jpeg}
+    \includegraphics[width=0.8\linewidth]{img/linesensor_on_line.png}
     \caption{Liniensensor auf Linie}
     \label{fig: Liniensensor auf Linie}
 \end{figure}
@@ -90,7 +90,7 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{img/Liniensensor_Wegpunkt.jpeg}
+    \includegraphics[width=0.6\linewidth]{img/linesensor_on_node.png}
     \caption{Liniensensor auf Wegpunkt}
     \label{fig: Liniensensor auf Wegpunkt}
 \end{figure}
@@ -98,7 +98,7 @@ Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebene
 
 
 
-Es sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}) für den Liniensensor. Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung genutzt (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die fallende Flanke, die bei der Entladung auftritt, detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt, bei dem der Kondensator sich anfängt zu entladen, bis zu dem Zeitpunkt, bei welchem die Spannung 0V ist.
+Für den Liniensensor sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die 7 Pins werden die einzelnen Sensoren auslesen und die Werte verarbeiten. Mithilfe von Kondensatoren werden die Entladezeiten für die Auswertung reduziert (Abb. \ref{fig:Liniensensor_Schaltung}). Mit der Timerfunktion \verb|Input Capture| kann die fallende Flanke, die bei der Entladung auftritt, detektiert werden. \verb|Input Capture| gibt die Zeit zurück von dem Zeitpunkt, bei dem der Kondensator sich anfängt zu entladen, bis zu dem Zeitpunkt, bei welchem die Spannung 0V ist.
 
 \begin{figure}[H]
     \centering
