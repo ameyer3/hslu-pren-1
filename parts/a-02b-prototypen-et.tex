@@ -110,22 +110,22 @@ Es sind 7 Pins auf dem \gls{tinyk22} reserviert (Abb. \ref{fig:Tiny_K22_Pinout_d
 \subsubsection*{Ultraschall}
 \addcontentsline{toc}{subsubsection}{Ultraschall}
 
-Es ist nötig, dass der Roboter weiss, wenn er sich vor einem Hindernis befindet. Dafür soll ein Arduino Ultraschallsensor verwendet werden. Der Abstand wird gemessen, indem Ultraschallwellen ausgesendet werden und das Echo dieser wieder empfangt wird. Die Distanz ergibt sich aus der Dauer welche die Schallwellen benötigen, um vom Ausstrahlen zurück zum Echo-Empfänger zu gelangen.
+Es ist nötig, dass der Roboter weiss, ob und wie weit entfernt er sich vor einem Hindernis befindet. Dafür soll ein Arduino Ultraschallsensor verwendet werden. Der Abstand wird gemessen, indem Ultraschallwellen ausgesendet werden und das Echo dieser wieder empfangt wird. Die Distanz ergibt sich aus der Dauer welche die Schallwellen benötigen, um vom Ausstrahlen zurück zum Echo-Empfänger zu gelangen.
 
-Mit dem Arduino Ultraschall wurden Tests durchgeführt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (\url{https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1}). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davor gehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, wie der Sensor bemerkt, dass die Objekte näher kommen.
+Mit dem Arduino Ultraschallsensor wurden Tests durchgeführt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (\url{https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1}). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davor gehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, unter welchen Bedingungen der Sensor erkennt, dass Objekte näher kommen.
 
-Damit Barrieren angehoben werden können, muss der Abstand dazu erkannt werden können. Dazu wurden Tests durchgeführt. Der Ultraschallsensor war in der Lage auf einige Zentimeter genau die Distanz korrekt zu messen.
+Damit ein Hinderniss angehoben werden kann, muss seine Distanz zum Fahrzeug bekannt sein. Diese Bedingung wurde mit demselben Aufbau, der oben beschrieben ist getestet. Der Ultraschallsensor war in der Lage, die Distanz auf einige Zentimeter genau zu messen.
 
-Ebenfalls soll der Roboter erkennen können, wenn er sich vor einer Pylone befindet, damit er nicht in diese reinfährt. Dazu wurden ebenfalls Tests durchgeführt. Trotz der Kegelform der Pylonen ist es möglich, die Distanz gut zu messen.
+Ebenfalls soll der Roboter erkennen können, ob er sich vor einer Pylone befindet, um eine Kollision damit zu vermeiden. Dazu wurden ebenfalls Tests durchgeführt. Trotz der Kegelform der Pylonen ist es möglich, die Distanz ausreichend genau zu messen.
 
-Nun muss der Roboter wissen, vor welchem Hindernis er sich befindet, da je nach Hindernis, die nächsten Schritte des Roboters unterschiedlich sind. Es wurden zwei Möglichkeiten untersucht, um diese Unterscheidung durchzuführen:
+Zusätzlich muss unterschieden werden können, vor welcher Art Objekt sich das Fahrzeug befindet (Pylone oder Barriere), da je nach Hindernis, die nächsten Schritte des Roboters unterschiedlich sind. Es wurden zwei Möglichkeiten untersucht, um diese Unterscheidung durchzuführen:
 
 \begin{itemize}
-    \item Zwei Sensoren werden am Roboter angebracht: Der eine davon ist höher als die Barriere, damit dieser Barrieren nicht erkennt.
-    \item Bei Erkennung eines unerwarteten Hindernisses wird ein Foto gemacht und das Hindernis wird mit Bilderkennung erkannt.
+    \item Zwei Sensoren werden am Roboter angebracht: einer davon liegt höher als eine Barriere gross ist, damit dieser Barrieren nicht erkennt.
+    \item Bei Erkennung eines unerwarteten Hindernisses wird ein Foto gemacht und die Objekt Unterscheidung wird mit Bilderkennung durchgeführt.
 \end{itemize}
 
-Die erste Methode würde zwei Ultraschallsensoren benötigen, die auf unterschiedlichen Höhen angebracht wären. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode würde funktionieren, wie aus den vorhin erwähnten Ultraschalltests erkannt wurde.
+Die erste Methode würde zwei Ultraschallsensoren benötigen, die auf unterschiedlichen Höhen angebracht wären. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode ist realisierbar, wie aus den vorhin erwähnten Ultraschalltests hervorgeht.
 
 Die zweite Methode verwendet die selbe Kamera und die selbe Art Objekte auf Bildern zu erkennen, wie in Kapitel \ref{subsubsection:bilderkennung} beschrieben. Dies würde ebenfalls funktionieren. Die Tests zu der Bilderkennung sind im Kapitel \nameref{bilderkennung-prototype} zu finden.
 
@@ -139,7 +139,7 @@ In der folgenden Tabelle \ref{tab:obstacle-sensor} sind Vor- und Nachteile beide
         \hline
         \textbf{2 Sensoren} & \textbf{Kamera und Bilderkennung}\\
         \hline
-        + Weniger Rechenpower nötig. & + Keine zusätzliche Hardware nötig.  \\ \hline
+        + Weniger Rechenleistung nötig. & + Keine zusätzliche Hardware nötig.  \\ \hline
         + Erkennung und Unterscheidung der Hindernisse wird auf nur einem Rechner durchgeführt.  & + Navigation berechnet nächste Schritte und liest ebenfalls selber die Hindernisart aus.  \\ \hline
         + Simpel. & + Logik der Bilderkennung und Auslesung davon bereits vorhanden. \\ \hline 
         - Zusätzliche Hardware nötig. & - Rechenintensiver.\\ \hline
