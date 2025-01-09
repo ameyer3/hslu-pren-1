@@ -79,7 +79,7 @@ Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effi
 \addcontentsline{toc}{subsubsection}{Liniensensor}
 
 
-Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren, die lichtabhängig sind. Das Array ist dafür da, die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit der Wegpunkt erkannt wird, werden vor und nach dem Array je ein Sensor verbaut. Im ersten Fall (Abb. \ref{fig: Liniensensor auf Linie}) steht das Array über der Linie und einer Fuge. Die Transistoren haben somit alle entweder eine Messung der Fuge oder der Linie. Im zweiten Fall (Abb. \ref{fig: Liniensensor auf Wegpunkt}) stehen alle Sensoren auf der gleichen Fläche. Auf diese Weise kann erkannt werden, ob der Roboter sich auf einfam Knoten oder auf einer F somit hat man einen Unterschied woran man erkennt ob man auf einer Kreuzung oder auf dem Wegpunkt steht.
+Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren, die lichtabhängig sind. Das Array ist dafür da, die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit der Wegpunkt erkannt wird, werden vor und nach dem Array je ein Sensor verbaut. Im ersten Fall (Abb. \ref{fig: Liniensensor auf Linie}) steht das Array über der Linie und einer Fuge. Die Transistoren haben somit alle entweder eine Messung der Fuge oder der Linie. Im zweiten Fall (Abb. \ref{fig: Liniensensor auf Wegpunkt}) stehen alle Sensoren auf der gleichen Fläche. Auf diese Weise kann erkannt werden, ob der Roboter sich auf einem Knoten oder auf einer Fuge befindet. 
 
 
 \begin{figure}[H]
@@ -116,18 +116,18 @@ Es ist nötig, dass der Roboter weiss, ob und wie weit entfernt er sich vor eine
 
 Mit dem Arduino Ultraschallsensor wurden Tests durchgeführt. Dazu wurde ein kurzes Skript geschrieben, um die Messungen der Arduinos auszulesen (\url{https://gist.github.com/dimschlukas/cf343803080f90a1756911548723bcb1}). Der Arduino wurde auf einem Tisch platziert und die Hindernisse wurden davor gehalten und langsam auf den Sensor zu bewegt. So konnte beobachtet werden, unter welchen Bedingungen der Sensor erkennt, dass Objekte näher kommen.
 
-Damit ein Hinderniss angehoben werden kann, muss seine Distanz zum Fahrzeug bekannt sein. Diese Bedingung wurde mit demselben Aufbau, der oben beschrieben ist getestet. Der Ultraschallsensor war in der Lage, die Distanz auf einige Zentimeter genau zu messen.
+Damit ein Hinderniss angehoben werden kann, muss seine Distanz zum Fahrzeug bekannt sein. Diese Bedingung wurde mit demselben Aufbau, der oben beschrieben ist, getestet. Der Ultraschallsensor war in der Lage, die Distanz auf einige Zentimeter genau zu messen.
 
 Ebenfalls soll der Roboter erkennen können, ob er sich vor einer Pylone befindet, um eine Kollision damit zu vermeiden. Dazu wurden ebenfalls Tests durchgeführt. Trotz der Kegelform der Pylonen ist es möglich, die Distanz ausreichend genau zu messen.
 
 Zusätzlich muss unterschieden werden können, vor welcher Art Objekt sich das Fahrzeug befindet (Pylone oder Barriere), da je nach Hindernis, die nächsten Schritte des Roboters unterschiedlich sind. Es wurden zwei Möglichkeiten untersucht, um diese Unterscheidung durchzuführen:
 
 \begin{itemize}
-    \item Zwei Sensoren werden am Roboter angebracht: einer davon liegt höher als eine Barriere gross ist, damit dieser Barrieren nicht erkennt.
+    \item Zwei Sensoren werden am Roboter angebracht: Einer davon liegt höher als eine Barriere gross ist, damit dieser Barrieren nicht erkennt.
     \item Bei Erkennung eines unerwarteten Hindernisses wird ein Foto gemacht und die Objekt Unterscheidung wird mit Bilderkennung durchgeführt.
 \end{itemize}
 
-Die erste Methode würde zwei Ultraschallsensoren benötigen, die auf unterschiedlichen Höhen angebracht wären. Wenn beide ein Objekt vor sich erkennen handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode ist realisierbar, wie aus den vorhin erwähnten Ultraschalltests hervorgeht.
+Die erste Methode würde zwei Ultraschallsensoren benötigen, die auf unterschiedlichen Höhen angebracht wären. Wenn beide ein Objekt vor sich erkennen, handelt es sich um eine Pylone, erkennt nur der untere ein Objekt, ist es eine Barriere. Diese Methode ist realisierbar, wie aus den vorhin erwähnten Ultraschalltests hervorgeht.
 
 Die zweite Methode verwendet die selbe Kamera und die selbe Art Objekte auf Bildern zu erkennen, wie in Kapitel \ref{subsubsection:bilderkennung} beschrieben. Dies würde ebenfalls funktionieren. Die Tests zu der Bilderkennung sind im Kapitel \nameref{bilderkennung-prototype} zu finden.
 
@@ -152,7 +152,7 @@ In der folgenden Tabelle \ref{tab:obstacle-sensor} sind Vor- und Nachteile beide
 \label{tab:obstacle-sensor}
 \end{table}
 
-Obwohl die Variante mit der Kamera komplexer ist, ist die Logik dazu bereits vorhanden. Es muss weder neue Hardware, noch neue Logik hinzugefügt werden, was im Allgemeinen dabei hilft, den Roboter simpel zu halten. Aus der Tabelle geht also hervor, dass es die Vorteile für die Methode mit der Kamera relevanter sind. Diese wird in PREN 2 vertieft erarbeitet werden.
+Obwohl die Variante mit der Kamera komplexer ist, ist die Logik dazu bereits vorhanden. Es muss weder neue Hardware, noch neue Logik hinzugefügt werden, was im Allgemeinen dabei hilft, den Roboter simpel zu halten. Aus der Tabelle geht also hervor, dass die Vorteile für die Methode mit der Kamera relevanter sind. Diese wird in PREN 2 vertieft erarbeitet werden.
 
 \subsubsection*{Servomotor}
 \addcontentsline{toc}{subsubsection}{Servomotor}
