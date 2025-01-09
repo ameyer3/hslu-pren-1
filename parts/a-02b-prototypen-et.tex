@@ -2,7 +2,7 @@
 \addcontentsline{toc}{subsubsection}{Motoren}
 
 
-Nach den Berechnungen in Abbildung \ref{fig:Auslegung_Antrieb}  wurden zwei passende Motoren ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung. Die Drehzahl des ausgewählten Motors ist tiefer als die anfangs vorgesehene Drehzahl. Dadurch ist die maximale Geschwindigkeit des Roboters tiefer als gewünscht. Dies wird für den Prototyp jedoch in kauf genommen. Die Befestigung der Motoren an dem gebauten Fahrwerk Prototyp sind auf Abbildung \ref{fig:Motorenaufbau} ersichtlich.
+Nach den Berechnungen in Abbildung \ref{fig:Auslegung_Antrieb}  wurden zwei passende Motoren ausgewählt, bestellt und anschliessend getestet. Entscheidende Faktoren bei der Auswahl waren das Drehmoment und die Betriebsspannung. Die Drehzahl des ausgewählten Motors ist tiefer als die anfangs vorgesehene Drehzahl. Dadurch ist die maximale Geschwindigkeit des Roboters tiefer als gewünscht. Dies wird für den Prototyp jedoch akzeptiert.
 
 \begin{figure}[H]
     \centering
@@ -11,6 +11,8 @@ Nach den Berechnungen in Abbildung \ref{fig:Auslegung_Antrieb}  wurden zwei pass
     \label{fig:Auslegung_Antrieb}
 \end{figure}
 
+ Die Befestigung der Motoren an dem gebauten Fahrwerk Prototyp sind auf Abbildung \ref{fig:Motorenaufbau} ersichtlich.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{img/Motorenaufbau.jpg}
@@ -18,7 +20,7 @@ Nach den Berechnungen in Abbildung \ref{fig:Auslegung_Antrieb}  wurden zwei pass
     \label{fig:Motorenaufbau}
 \end{figure}
 
-Der Test bestand darin, den Motor mit einer \acrfull{pwm} bei zwei unterschiedlichen Spannungen zu betreiben. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der \gls{duty-cycle} schrittweise erhöht, bis der Motor bei 58\% des \gls{duty-cycle}s zu drehen begann. Nachdem der Motor gestartet war, konnte der \gls{duty-cycle} auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
+Es wurde getestet, inwiefern der Motor mit einer \acrfull{pwm} bei zwei unterschiedlichen Spannungen betrieben werden kann. Zunächst wurde der Motor mit einer Spannung von 5V getestet. Dabei wurde der \gls{duty-cycle} schrittweise erhöht, bis der Motor bei 58\% des \gls{duty-cycle}s zu drehen begann. Nachdem der Motor gestartet war, konnte der \gls{duty-cycle} auf bis zu 44\% reduziert werden, bevor der Motor wieder stoppte.
 
 In einer zweiten Testsequenz wurde die gleiche Vorgehensweise mit einer Spannung von 12V durchgeführt. Hier begann der Motor bei einem \gls{duty-cycle} von 33\% zu drehen. Beim schrittweisen Reduzieren der Einschaltzeit, drehte der Motor bis zu einem \gls{duty-cycle} von 12\% weiter.
 
@@ -53,7 +55,7 @@ Für die hardwarenahe Steuerung und Regelung wurde ein \gls{tinyk22} Version 1.4
 
 Das \gls{tinyk22} \acrshort{pcb} bietet insgesamt 28 Pins (Abb. \ref{fig:Tiny_K22_PCB}). Diese Pins können flexibel als \acrfull{ftm}, \acrfull{adc}, \acrfull{iic}, \acrfull{spi}, \acrshort{uart}, Input- oder Output-Pins konfiguriert werden.
 
-Im Rahmen des Projekts wurden 25 Pins verwendet (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die zeitkritischen Funktionen werden direkt auf dem \gls{tinyk22} verarbeitet.
+Im Rahmen des Projekts werden 25 Pins verwendet (Abb. \ref{fig:Tiny_K22_Pinout_definition}). Die zeitkritischen Funktionen werden direkt auf dem \gls{tinyk22} verarbeitet.
 
 \begin{figure}[H]
     \centering
@@ -77,7 +79,7 @@ Durch diese Zuweisung wird sichergestellt, dass die zeitkritischen Aufgaben effi
 \addcontentsline{toc}{subsubsection}{Liniensensor}
 
 
-Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren die lichtabhängig sind. Das Array ist dafür da die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit man den Wegpunkt erkennen kann werden vor und nach dem Array je ein Sensor verbaut. Im ersten Fall (Abb. \ref{fig: Liniensensor auf Linie}) steht das Array über der Linie und einer Fuge. Die Transistoren haben somit alle entweder eine Messung der Fuge oder der Linie. Im zweiten Fall (Abb. \ref{fig: Liniensensor auf Wegpunkt}) stehen alle Sensoren auf der gleichen Fläche, somit hat man einen Unterschied woran man erkennt ob man auf einer Kreuzung oder auf dem Wegpunkt steht.
+Der Liniensensor wird als Array verwendet, das heisst, es werden Sensoren nebeneinander auf dem \acrshort{pcb} angeordnet. Die Sensoren sind Phototransistoren, die lichtabhängig sind. Das Array ist dafür da, die Linie zu erfassen und allfällige Korrekturen einzuleiten. Damit der Wegpunkt erkannt wird, werden vor und nach dem Array je ein Sensor verbaut. Im ersten Fall (Abb. \ref{fig: Liniensensor auf Linie}) steht das Array über der Linie und einer Fuge. Die Transistoren haben somit alle entweder eine Messung der Fuge oder der Linie. Im zweiten Fall (Abb. \ref{fig: Liniensensor auf Wegpunkt}) stehen alle Sensoren auf der gleichen Fläche. Auf diese Weise kann erkannt werden, ob der Roboter sich auf einfam Knoten oder auf einer F somit hat man einen Unterschied woran man erkennt ob man auf einer Kreuzung oder auf dem Wegpunkt steht.
 
 
 \begin{figure}[H]

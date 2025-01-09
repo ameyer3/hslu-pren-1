@@ -309,7 +309,7 @@ Greifer und Endschalter werden sich an der Rückseite des Fahrzeugs befinden, de
 
 \subsection{Fahrwerk}
 
-Auf Basis der Nutzwertanalyse, wurde anschliessend ein Konzept für das Fahrwerk konstruiert. Dies beinhaltet alle Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten, die für selbständige Fortbewegung notwendig sind. Dafür wurde ein Prototyp erstellt. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
+Auf Basis der Nutzwertanalyse wurde ein Konzept für das Fahrwerk konstruiert. Dies beinhaltet alle Elemente wie Motoren, Akkus, Liniensensoren und Steuerungseinheiten, die für selbständige Fortbewegung notwendig sind. Dafür wurde ein Prototyp erstellt. Bei diesem Prototyp stand der einfache und zweckmässige Aufbau im Vordergrund. Bei der Grundplatte wurde darauf geachtet, dass verschiedene  Versionen von Systemen einfach aufgebaut und ausgetauscht werden können. Ein flexibler Prototyp ist ressourcenschonend. Mehr Informationen dazu gibt es im Kapitel \ref{section:Nachhaltigkeit} Nachhaltigkeit. 
 
 Das Fahrwerk wird wie in Abbildung  \ref{fig:Prototype_Fahrwerk_CAD} gezeigt aufgebaut. Das Fahrzeug wird mit zwei einzeln angesteuerten Räder angetrieben. Damit wird sowohl das Vorwärtsfahren, als auch das Drehen der Räder durchgeführt. Zusätzlich zu den beiden angetriebenen Rädern besitzt das Fahrzeug ein frei-drehendes Abstützrad. Direkt vor dem Abstützrad wird der Distanzsensor montiert. (Kap. \ref{subsection:Distanzsensor} Distanzsensor). Die \acrfull{dc} Motoren besitzen Encoder und sind über eine Welle direkt mit den Antriebsrädern verbunden (Abb. \ref{fig:sectionview-wheelmount}). Dadurch kann genau festgestellt werden, welche Distanz zurückgelegt wurde. Der Fahrbefehl entsteht aufgrund der Berechnungen der Bilderkennung. Dem Mikrocontroller \gls{tinyk22}, der die Motoren ansteuert, werden Distanz und Drehwinkel mitgeteilt. 
 
@@ -332,7 +332,14 @@ Die Abbildung \ref{fig:sectionview-wheelmount} zeigt eine Schnittansicht des Ant
 
 \subsection{Linienerkennung}
 
-Mit einem Array von Phototransistoren, Kondensatoren und Widerständen, wird die Entladezeit von Kondensatoren mittels Mikrocontroller und der Input Capture Funktion gemessen. Der Liniensensor dient als Unterstützung, damit der Roboter die Linie nicht verlässt während dem Fahren. Zusätzlich soll der Roboter bevor er losfährt, gerade vor der Linie positioniert werden, so dass er sich zumindest zu Beginn der Fahrt bereits auf der Linie befindet. Ebenfalls wird der Liniensensor gebraucht, um zu prüfen ob der Roboter auf einem Knoten steht.
+Mit einem Array von Phototransistoren, Kondensatoren und Widerständen, wird die Entladezeit von Kondensatoren mittels Mikrocontroller und der Input Capture Funktion gemessen. Der Liniensensor dient als Unterstützung, damit der Roboter die Linie nicht verlässt während dem Fahren. Zusätzlich soll der Roboter bevor er losfährt gerade vor der Linie positioniert werden, sodass er sich zumindest zu Beginn der Fahrt bereits auf der Linie befindet. Ebenfalls wird der Liniensensor gebraucht, um zu prüfen ob der Roboter auf einem Knoten steht.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/linesensor_on_line.png}
+\caption{Anordnung des Liniensensors}
+\label{fig:liniensensor-konzept}
+\end{figure}
 
 \subsection{Distanzsensor}
 \label{subsection:Distanzsensor}

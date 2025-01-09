@@ -3,13 +3,13 @@
 
 Das Thema der Nachhaltigkeit wird immer relevanter und wurde aus diesem Grund in diesem Projekt berücksichtigt. In den folgenden Kapiteln wird aufgezeigt auf welche Arten nachhaltig gearbeitet wurde.
 
-Ein wichtiger Aspekt um nachhaltig zu handeln, sind die 3 R: Reduce, Reuse und Recycle. Das Ziel dieser drei Rs ist es, weniger Abfall zu produzieren. Dabei wird ebenfalls dafür gesorgt, dass weniger Platz für Entsorgungsplätze benötigt wird.\cite{3-r}
+Ein wichtiger Aspekt, um nachhaltig zu handeln, sind die 3 R: Reduce, Reuse und Recycle. Das Ziel dieser drei Rs ist es, weniger Abfall zu produzieren. Dabei wird ebenfalls dafür gesorgt, dass weniger Platz für Entsorgungsplätze benötigt wird.\cite{3-r}
 
 In den folgenden Kapiteln sind die drei Rs erläutert. Ebenfalls ist aufgezeigt, welche Handlungen zu dem jeweiligen R im Verlauf des Semester umgesetzt wurden.
 
 \subsection{Reduce}
 
-Reduce handelt Abfall Verminderung. Einige Beispiele, um Reduce umzusetzen, sind, dass nur gekauft wird, was wirklich gebraucht wird oder dass Produkte mit weniger Verpackungsmaterialien gewählt werden. Ebenfalls hilft es wenn Produkte in grösseren Mengen eingekauft werden.
+Bei Reduce geht es um die Verminderung von Abfall. Dafür soll nur das gekauft werden, was wirklich gebraucht wird und Produkte mit weniger Verpackungsmaterialien sollen ausgewählt werden. Ebenfalls hilft es, wenn Produkte in grösseren Mengen eingekauft werden.
 
 Beim Prozess der Entwicklung des Designs wurde darauf geachtet, dass nicht von Anfang an Produkte bestellt werden, die eventuell nicht verwendet werden würden. Es wurde zuerst ein Grundkonzept ausgearbeitet und Bestellungen wurden im Team besprochen. Zusätzlich wurden bestimmte Dinge, wie beispielsweise \acrshort{pla} und die Endschalter in grösseren Mengen gekauft. Dies sind beides Dinge, die im privaten Gebrauch von Teammitgliedern ebenfalls verwendet werden. Es konnten jedoch Verpackung und Lieferwege gespart werden, indem nicht mehrere Bestellungen getätigt wurden. 
 
@@ -47,22 +47,22 @@ Die Grundplatte wurde gezielt aus einem leicht bearbeitbaren Material gefertigt.
 
 Leiterplatten und \acrfull{pcb} sind essentiell in der Elektronik. Jedoch sind viele der verwendeten Materialien, wie beispielsweise Blei, für die Umwelt giftig. Andere, wie der in der Fertigung eingesetzte Klebstoff, sind nicht biologisch abbaubar. Damit möglichst wenige Leiterplatten verwendet werden müssen und der Abfall minimiert werden kann, wird bereits in der Designphase auf Wiederverwendbarkeit geachtet. Auf diese Weise können Teile innerhalb dieses Projektes, wie auch nach dem Projekt im privaten Gebrauch, wiederverwendet werden. Ebenfalls sollen komplexe Formen und Aussparungen in den Leiterplatten vermieden werden, da diese zu erhöhtem Materialabfall führen.
 
-Dies wird erzielt indem nicht eine grosse, monolithische Leiterplatte entwickelt wird, sondern mehrere kleinere Platinen, die jeweils auf spezifische Teilaufgaben abgestimmt sind. Ein Beispiel dafür ist die Verwendung eines separaten Moduls für den Mikroprozessor, wie etwa beim Modell \gls{tinyk22} (siehe Abbildung \ref{fig:Tiny_K22_PCB}). Dieses modulare Design ermöglicht es, einzelne Komponenten dieses Projekts auch in zukünftigen Vorhaben wiederzuverwenden, wodurch Materialressourcen effizienter genutzt und Abfälle reduziert werden können.
+Dies wird erzielt indem nicht eine grosse, monolithische Leiterplatte entwickelt wird, sondern mehrere kleinere Platinen, die jeweils auf spezifische Teilaufgaben abgestimmt sind. Ein Beispiel dafür ist die Verwendung eines separaten Moduls für den Mikroprozessor, wie beim Modell \gls{tinyk22} (siehe Abbildung \ref{fig:Tiny_K22_PCB}). Dieses modulare Design ermöglicht es, einzelne Komponenten dieses Projekts auch in zukünftigen Vorhaben wiederzuverwenden, wodurch Materialressourcen effizienter genutzt und Abfälle reduziert werden können.
 
 
 \subsubsection{Bilderkennung}\label{nachhaltigkeit:bilderkennung}
 
 Die Bilder wurden bereits früh mit einem Raspberry Pi und einer Raspberry Pi Kamera aufgenommen. Bevor dafür etwas neues bestellt wurde, wurden ein Raspberry Board und eine Kamera verwendet, die ein Teammitglied bereits zu Hause hatte. Beide hatten ebenfalls je eine Hülle.
 Um die beiden Einzelteile miteinander zu verwenden, wurden sie lediglich zusammengeklebt, damit nicht eine neue Hülle gedruckt oder gekauft werden muss, die wahrscheinlich nicht im Roboter verwendet werden wird.
-Erst nachdem klar war, dass die Qualität der Bilder in Ordnung ist, wurden die neuste Version des Raspberry Pis, die mehr Rechenleistung liefert, bestellt. Die Bestellung wurde über den schweizer Webshop Digitec getätigt und die Hardware war bereits im lokalen Lager von Digitec. 
+Erst nachdem klar war, dass die Qualität der Bilder in Ordnung ist, wurde die neuste Version des Raspberry Pis, die mehr Rechenleistung liefert, bestellt. Die Bestellung wurde über den schweizer Webshop Digitec getätigt und die Hardware war bereits im lokalen Lager von Digitec. 
 
 \subsubsection{Dokumentation}
 
 Damit Overleaf produktiv für die LaTeX Dokumentation verwendet werden konnte, wurde eine Vollversion benötigt. Damit das Budget nicht dafür verwendet werden musste, wurde eine eigene Overleaf Instanz aufgesetzt. Damit diese möglichst nachhaltig läuft, wurde sie auf einem Server aufgesetzt, der einen anderen Hauptzweck hat und bereits vor \acrshort{pren1} immer eingeschaltet war. So wird kein zusätzlicher Strom benötigt.
 
-Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusätzlich wird das Backup auf einmal am Tag beschränkt, damit nicht bei jeder Änderung ein Backup gestartet wird. Das Backup wird auf GitHub gepusht und in einer GitHub Action wird die LaTeX Dokumentation zu einem PDF gebaut. Dadurch, dass dies maximal einmal am Tag geschieht, wird die Nutzung des geteilten Speichers von GitHub gesenkt.
+Das Backup der Dokumentation ist auf einem anderen Server eingerichtet. Auch dieser Server lief bereits vorher Non-Stop und hat eigentlich einen anderen Zweck. Zusätzlich wird das Backup auf einmal am Tag beschränkt, damit nicht bei jeder Änderung ein Backup gestartet wird. Das Backup wird auf GitHub gepusht und in einer GitHub Action wird die LaTeX Dokumentation zu einem PDF gebaut. Dadurch dass dies maximal einmal am Tag geschieht, wird die Nutzung des geteilten Speichers von GitHub gesenkt.
 
-Durch die Wiederverwendung existierender Server konnte Strom gespart werden. Es wäre möglich gewesen die Overleaf Instanz und das Ausführen des Backups auf dem selben Server zu implementieren, jedoch war es hier in Ordnung, da zwei Server bereits existieren. Aus diesem Grund sind jedoch die folgenden Berechnung nur mit einem Server gemacht.
+Durch die Wiederverwendung existierender Server konnte Strom gespart werden. Es wäre möglich gewesen, die Overleaf Instanz und das Ausführen des Backups auf dem selben Server zu implementieren, jedoch war es hier in Ordnung, da zwei Server bereits existieren. Aus diesem Grund sind jedoch die folgenden Berechnung nur mit einem Server gemacht.
 
 Der Server, auf dem das Backup eingerichtet ist, ist ein HP ProLiant MicroServer Gen8. Laut dessen Datenblatt verbraucht dieser im Leerlauf ca. 30-35 Watt und bei maximale Last ca. 50-60 Watt.\cite{proliant} Da sowohl die Overleaf Instanz, als auch das Backup keine Hochleistungsprogramme sind, wird sich der Server die meiste Zeit nahe am Leerlauf aufhalten.
 
@@ -77,7 +77,7 @@ Dies sind 2544 Stunden. Daraus ergibt sich folgende Berechnung:
  
 \subsubsection{Ausblick}
 
-Nachdem Ende von \acrshort{pren2} sollen die Einzelteile des Roboters aufgeteilt werden, damit sie in zukuenftigen privaten Projekten wiederverwendet werden und nicht entsorgt werden.
+Nachdem Ende von \acrshort{pren2} sollen die Einzelteile des Roboters aufgeteilt werden, damit sie in zukünftigen privaten Projekten wiederverwendet werden und nicht entsorgt werden.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,9 +85,9 @@ Nachdem Ende von \acrshort{pren2} sollen die Einzelteile des Roboters aufgeteilt
 
 \subsection{Recycle}
 
-Das dritte R steht für Recycle. Materialien, die nicht wiederverwendet werden können, sollten recycelt werden, damit sie in den Rohstoffkreislauf zurückgeführt werden. So wird weniger neuer Rohstoff benötigt und Müll reduziert.
+Das dritte R steht für Recycle. Materialien, die nicht wiederverwendet werden können, sollten recycelt werden, damit sie in den Rohstoffkreislauf zurückgeführt werden. So werden weniger neue Rohstoffe benötigt und Müll wird reduziert.
 
-Durch die modulare Bauweise ist unser Roboter nach Gebrauch auch wieder komplett zerlegbar. Materialien und Komponenten welche keine Wiederverwendung, wie dies im Abschnitt \ref{nachhaltigkeit:reuse} dokumentiert ist, können einzeln recycelt werden.
+Durch die modulare Bauweise ist unser Roboter nach Gebrauch auch wieder komplett zerlegbar. Materialien und Komponenten, welche nicht wiederverwendet werden können, wie dies im Abschnitt \ref{nachhaltigkeit:reuse} dokumentiert ist, können einzeln recycelt werden.
 
 % \subsection{Transport}
 
