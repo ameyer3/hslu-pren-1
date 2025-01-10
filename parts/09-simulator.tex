@@ -153,7 +153,7 @@ Der Programmablauf besteht aus folgenden Teilen:
 \end{enumerate}
 
 Bevor der Roboter eine Knoten befährt, welcher er noch nicht kennt, überprüft dieser die Winkel der ausgehenden Kanten dieses Knoten. Im Simulator wird dies statt durch Kamerabilder, durch eine Dictionary Abfrage realisiert.
-Wie beim echten Roboter detektieren wir so auch nur Kanten, die vorhanden sind und können so die fehlenden Kanten aus dem internen Graphen löschen. Die Verarbeitung der vorhandenen Winkeln wird gleich umgesetzt, wie im Gesamtkonzept Kapitel \ref{outgoing-angles} beschrieben.
+Wie beim echten Roboter werden nur Kanten detektiert, die vorhanden sind und es können so die fehlenden Kanten aus dem internen Graphen gelöscht werden. Die Verarbeitung der vorhandenen Winkeln wird gleich umgesetzt, wie im Gesamtkonzept Kapitel \ref{outgoing-angles} beschrieben.
 
 Nach dem Befahren des Knotens werden alle ausgehenden Kanten überprüft. Dies geschieht durch die Drehung um die eigene Achse. Durch die Winkelmessung im vorherigen Schritt kann die optimale Drehrichtung und Reihenfolge der zu überprüfenden Nachbarsknoten berechnet werden. Der Roboter dreht sich im effizientesten Weg im Kreis und prüft alle ausgehenden Kanten und Nachbarsknoten. 
 In der Simulation wird dafür das Hindernis-Dictionary auf die jeweiligen Knoten und Strecken geprüft. Falls ein Hindernis detektiert wird, reagiert der Roboter wie folgt:
@@ -226,7 +226,7 @@ In diesem Abschnitt wird erläutert wie der Simulator aufgesetzt wird, und wie d
 
 \textbf{Voraussetzungen und Installation}
 
-Wie in Kapitel \ref{technical-aspect-simulator} erwähnt, wird unser Simulator in einer virtuellen Python Umgebung ausgeführt. Um diese Virtuelle Python Umgebung zu nutzen müssen Python Version 3.9 oder neuer und Poetry Version 1.8 oder neuer installiert sein.
+Wie in Kapitel \ref{technical-aspect-simulator} erwähnt, wird der Simulator in einer virtuellen Python Umgebung ausgeführt. Um diese Virtuelle Python Umgebung zu nutzen müssen Python Version 3.9 oder neuer und Poetry Version 1.8 oder neuer installiert sein.
 
 Sofern dies installiert ist, kann im Grundverzeichnis des Simulators der nachfolgende Befehl ausgeführt werden, um die Abhängigkeiten zu installieren.
 

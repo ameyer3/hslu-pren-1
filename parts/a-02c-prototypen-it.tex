@@ -95,7 +95,7 @@ Zusätzlich wurde dies mit dem Raspberry Pi und der Raspberry Pi Kamera getestet
 
 Damit der Roboter weiss, in welche Richtung er sich bewegen soll, muss er in der Lage sein, die ausgehenden Linien eines Knotens zu erkennen, damit er diesen folgen kann.
 
-Um die Winkel der ausgehenden Kanten eines Knoten zu detektieren, macht der Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, dass, wie in Kapitel \nameref{camera-position} beschrieben, unsere Kamera in einem Winkel von 56\textdegree\ montiert wird. So können naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkannt werden, ohne dass die Kamera geschwenkt werden muss.
+Um die Winkel der ausgehenden Kanten eines Knoten zu detektieren, macht der Roboter vor dem Befahren eines Knotens ein Bild dessen. Dazu ist jedoch zu beachten, dass, wie in Kapitel \nameref{camera-position} beschrieben, die Kamera in einem Winkel von 56\textdegree\ montiert wird. So können naheliegende Knoten vor dem Roboter, wie auch weit entfernte Pylonen in einem Bild erkannt werden, ohne dass die Kamera geschwenkt werden muss.
 Da dadurch nun die Knoten nicht direkt von oben fotografiert werden, muss an dem aufgenommenen Bild zuerst eine geometrische Transformation durchgeführt werden. Sodass schlussendlich eine Ansicht auf Vogelperspektive auf den Knoten vorliegt. Anschliessend können die einzelnen Winkel ohne Probleme durch maskieren und detektieren von Formen mittels \gls{opencv} berechnet werden.
 
 Nachfolgend wird dies Schritt für Schritt mithilfe der Abbildungen \ref{fig:image-before-node} - \ref{fig:node-with-edge-angles} dargestellt.
@@ -254,7 +254,7 @@ Zusammenfassend:
     \item ORB ist ein guter Kompromiss zwischen Geschwindigkeit und Genauigkeit.
 \end{itemize}
 
-FAST wurde nicht getestet, da es wichtig ist, dass unser Roboter eine robuste Bilderkennung implementiert hat. Es wurden lediglich SIFT und ORB getestet.
+FAST wurde nicht getestet, da es wichtig ist, dass der Roboter eine robuste Bilderkennung implementiert hat. Es wurden lediglich SIFT und ORB getestet.
 
 Beide Algorithmen funktionieren sehr gut, um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen ist (siehe Abbildung \ref{fig:good-sift-example}). Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
 
@@ -265,7 +265,7 @@ Beide Algorithmen funktionieren sehr gut, um zweidimensionale Objekte zu detekti
     \label{fig:good-sift-example}
 \end{figure}
 
-Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dreidimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren, wie in Abbildung \ref{fig:sift-orb-in-our-usecase} zu sehen ist:
+Da die Objekte jedoch dreidimensional sind und eine freie Rotation und Position in einem dreidimensionalen Raum haben, ist es für den Algorithmus sehr schwierig Objektmerkmale festzulegen und diese in den verschiedenen Szenarien wieder zu detektieren, wie in Abbildung \ref{fig:sift-orb-in-our-usecase} zu sehen ist:
 
 \begin{figure}[H]
     \centering
@@ -279,7 +279,7 @@ Da unsere Objekte jedoch dreidimensional sind und eine freie Rotation und Positi
     \caption{ORB Algorithmus}
     \label{fig:bad-orb-example}
 \end{subfigure}
-    \caption{SIFT und ORB in unserem Usecase}
+    \caption{SIFT und ORB in diesem Usecase}
     \label{fig:sift-orb-in-our-usecase}
 \end{figure}
 
@@ -657,8 +657,6 @@ Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, ben�
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
 \centering
-￼
-Um ein Hindernis anzuheben, wurde ein Greifer, welcher über ein Gelenkgestänge funktioniert, ausgelegt. 
 \includegraphics[width=0.95\linewidth]{assets/prototyp-fahrwerk/fahrwerk-oben.jpeg} 
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
