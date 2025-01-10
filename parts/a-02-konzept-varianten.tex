@@ -50,7 +50,7 @@ In allen drei Varianten ist konsequent ein Mikrocontroller vorgesehen. Einige Ko
 \addcontentsline{toc}{subsubsection}{Navigation Morphologischer Kasten}
 
 
-Folgender morphologischer Kasten in Tabelle \ref{table:mk-informatik} mit drei Varianten wurde für die Navigation erstellt.  Diese Kriterien wurden jeweils aufgrund folgender Kriterien erstellt.
+Folgender morphologischer Kasten in Tabelle \ref{table:mk-informatik} mit drei Varianten wurde für die Navigation erstellt.  Diese Varianten wurden jeweils aufgrund folgender Kriterien erstellt.
 
 \begin{itemize}
     \item Variante Gelb: Flexibel
@@ -101,13 +101,12 @@ Ebenfalls wird ein Knoten immer entfernt falls, ein Pylon darauf steht. Er wird 
 \addcontentsline{toc}{subsection}{Auswahl Lösungskombinationen}
 
 
-Zur Auswahl der passendsten Lösungskombination wird pro Teilbereich eine Nutzwertanalyse für die drei erarbeiteten Varianten aus dem morphologischen Kasten durchgeführt. Die Kriterien und deren Gewichtung sind individuell pro Teilbereich, damit sie ideal passen. Die Variante mit der höchsten Punktezahl ist die Variante, die am besten passt.
+Zur Auswahl der passendsten Lösungskombination wird pro Teilbereich eine Nutzwertanalyse erstellt. Diese beinhaltet die drei erarbeiteten Varianten aus dem morphologischen Kasten. Die Kriterien und deren Gewichtung sind individuell pro Teilbereich, damit sie ideal passen. Die Variante mit der höchsten Punktzahl ist die Variante, die am besten passt.
 
 \subsubsection*{Mechanik Nutzwertanalyse}
 \addcontentsline{toc}{subsubsection}{Mechanik Nutzwertanalyse}
 
-
-Für die  drei Lösungskombinationen aus dem morphologischen Kasten wird die Nutzwertanalyse in Tabelle \ref{table:nutzwert-maschinentechnik} gemacht.    
+Tabelle \ref{table:nutzwert-maschinentechnik} zeigt die Nutzwertanalyse der drei Lösungskombinationen aus der Mechanik. 
 
 \begin{itemize}
     \item Variante A - Gelb: Zwei von drei Rädern werden direkt durch einen Motor angetrieben. Das dritte Rad ist frei drehend und dient als Stützrad. Das Hindernis wird mit einem Greifer angehoben, der zwei flexible Backen hat, die sich optimal an das Hindernis anpassen. Da Variante A nur drei Räder hat, hat das Chassis die Form eines freien Polygons. Diese Variante zeichnet sich durch ihre effiziente Bauweise aus. 
@@ -200,8 +199,7 @@ Aus der Nutzwertanalyse kann abgelesen werden, dass die Variante A mit Python, \
 \subsubsection*{Simulator Nutzwertanalyse}
 \addcontentsline{toc}{subsubsection}{Simulator Nutzwertanalyse}
 
-
-Die drei Varianten für den Simulator, werden bewertet in folgender Nutzwertanalyse in Tabelle \ref{table:nutzwert-Simulator}. Die Kriterien und deren Gewichtung sind dieselben, wie bei der Nutzwertanalyse für die Informatik im Roboter. Das Ziel des Simulators ist es, diesen möglichst realistisch und wiederverwendbar für \acrshort{pren2} umzusetzen.
+Tabelle \ref{table:nutzwert-Simulator} zeigt die Nutzwertanalyse des Simulators. Die Kriterien und deren Gewichtung sind dieselben, wie bei der Nutzwertanalyse für die Informatik im Roboter. Das Ziel des Simulators ist es, diesen möglichst realistisch und wiederverwendbar für \acrshort{pren2} umzusetzen.
 
 \begin{itemize}
     \item Variante A: Ein Java Simulator liest ein \gls{json} File mit dem Basegraph und den Hindernissen und speichert es in einem 2D Array. Durch die Verwendung von Java, wäre diese Variante sehr schnell. Bei einem beweglichen Hindernis wird die Gewichtung der Kante erhöht, bei einem Pylonen wird der Knoten entfernt. \gls{dijkstra} wird mit einer externen Library implementiert. Die Aktivitäten des Roboters werden in einem \acrfull{tui} dargestellt. Im richtigen Roboter wird wahrscheinlich nicht Java verwendet werden. Deswegen könnte der Code hier nicht wiederverwendet werden.

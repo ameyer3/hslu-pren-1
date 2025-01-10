@@ -37,7 +37,7 @@ Die Bildverarbeitung und Navigation werden in Python programmiert und laufen auf
 Der Ablauf einer Durchfahrt ist im Ablaufdiagramm \ref{fig:ablaufdiagramm} aufgezeigt.
 Die Schritte, die mit einem Plus markiert sind, sind in den folgenden Kapiteln als Subprozesse detailliert definiert.
 
-Um den Graph zu traversieren, wird eine iterative Herangehensweise umgesetzt. Durch die Spiegelung des Bodens, die Grösse des Graphes und die Einschränkung der Höhe des Roboters, ist es nicht möglich, am Start ein Bild des gesamten Graphens zu machen und dabei die Hindernisse und die fehlenden Linien zu erkennen. Deshalb werden iterativ bei jedem Knoten die ausgehenden Linien geprüft.
+Um den Graph zu traversieren, wird eine iterative Herangehensweise umgesetzt. Durch die Lichtspiegelung auf dem Bodens, die Grösse des Graphes und die Einschränkung der Höhe des Roboters, ist es nicht möglich, am Start ein Bild des gesamten Graphens zu machen und dabei die Hindernisse und die fehlenden Linien zu erkennen. Deshalb werden iterativ bei jedem Knoten die ausgehenden Linien geprüft.
 
 \begin{figure}[H]
 \centering
@@ -63,7 +63,7 @@ Nachdem der Roboter den nächsten Knoten berechnet hat, wird der Winkel zur rich
 
 \textbf{Ablauf detailliert erklärt}
 
-Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird mit \gls{opencv} zuerst so entzerrt, dass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \nameref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, der auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 41, 68, 127]| erstellt werden.
+Der Roboter bewegt sich auf einen Knoten zu und hält 15 cm vor diesem an. Der Knoten wird fotografiert und der Roboter fährt anschliessend auf den Knoten. Das Bild wird mit \gls{opencv} zuerst so entzerrt, dass der Knoten gerade von oben dargestellt wird. Danach werden die einzelnen Winkel gemessen. Dies ist im Prototyping Kapitel im Anhang \nameref{winkelerkennung} ausführlicher beschrieben. Das Resultat dieser Objekterkennung ist eine Liste mit Winkeln. Im Fall, welcher auf Abbildung \ref{fig:angle-recognition} gezeigt ist, würde die Liste \verb|[3, 41, 68, 127]| erstellt werden.
 
 \begin{figure}[H]
 \centering
@@ -92,7 +92,7 @@ Die Abbildung \ref{fig:angle-graphs-internal} soll visualisieren, wie die Winkel
 
 Angenommen der Roboter fährt von links auf den Knoten G zu, dann weiss er durch die intern gespeicherte Ausrichtung, dass er von 270\textdegree\ herkommt. Wenn er nun den Knoten mit den ausgehenden Kanten fotografiert, erhält er die Liste \verb|[0, 120, 180, 240, 300]|.  Jeder Wert in der Liste wird mit dem Herkunftswinkel des Roboters addiert. Diese Resultate werden modulo 360 gerechnet und es ergibt sich eine Winkelliste \verb|[30, 90, 150, 210, 270]| im Format einer Uhr. Mit dieser kann nun die Zuordnung der Kanten mit den intern gespeicherten Winkeln durchgeführt werden.
 
-Falls der Roboter sich nun in Richtung zum Knoten E ausrichten will, wird der gewünschte Winkel minus dem Herkunftswinkel der Roboters + 180\textdegree\ und gerechnet und das Resultat modulo 360:
+Falls der Roboter sich nun in Richtung zum Knoten E ausrichten will, wird der gewünschte Winkel minus dem Herkunftswinkel des Roboters und mit 180\textdegree\ addiert. Anschliessend wird das Resultat modulo 360 gerechnet:
 
 \[Drehwinkel = (GewuenschterAusgangswinkel - Herkunftswinkel + 180^\circ) \mod 360\]
 
@@ -387,7 +387,7 @@ Um das ganze System mit Spannung zu versorgen wird ein 14.8V Akku verwendet, der
 
 \subsection{PCB Design}
 
-Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut, da es der Knotenpunkt und der grösste \acrshort{pcb} Komponent ist. Ebenfalls wird eine separate Platine für die Spannungsversorgung benötigt, welche sich ebenfalls zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard angeschlossen. Aufgrund der Wiederverwendung werden die einzelnen Komponenten, wie auch das \gls{tinyk22}, steckbar verbunden werden.
+Das \acrshort{pcb} wird aus mehreren Teilen bestehen. Das Mainboard wird zentral eingebaut, da es der Knotenpunkt und die grösste \acrshort{pcb} Komponente ist. Ebenfalls wird eine separate Platine für die Spannungsversorgung benötigt, welche sich ebenfalls zentral befinden wird. Der Ultraschall- und Liniensensor befinden sich im vorderen Teil des Roboters und werden über eine Kabelverbindung mit dem Mainboard angeschlossen. Aufgrund der Wiederverwendung werden die einzelnen Komponenten, wie auch das \gls{tinyk22}, steckbar verbunden werden.
 
 \newpage
 

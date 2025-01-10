@@ -208,7 +208,7 @@ Nachfolgend wird dies Schritt für Schritt mithilfe der Abbildungen \ref{fig:ima
 \addcontentsline{toc}{subsubsection}{Graph-, Pylonen- und Barrieren-Erkennung}
 
 
-In diesem Teil wird vorgestellt, wie das Prototyping fuer die Erkennung von Barrieren und Elementen im Graphen durchgefuehrt wurde. Es wurden mehrere Varianten ausprobiert: SIFT, \gls{orb-gloss}, Farberkennung und \gls{yolo}v11. Am Ende des Kapitels gibt es Tabelle \ref{tab:test-obst-detection}, die die Resultate der Tests mit den einzelnen Methoden auflistet.
+In diesem Teil wird vorgestellt, wie das Prototyping fuer die Erkennung von Barrieren und Elementen im Graphen durchgefuehrt wurde. Es wurden mehrere Varianten ausprobiert: SIFT, \gls{orb-gloss}, Farberkennung und \gls{yolo}v11. Am Ende des Kapitels in Tabelle \ref{tab:test-obst-detection} sind die Resultate der Tests mit den einzelnen Methoden auflistet.
 
 Als Basis für die Bilderkennung wurde in der Mensa ein Graph aufgeklebt (Abb. \ref{fig:test-graph}). Es wurden mehrere Bilder gemacht, wobei Pylonen und Barrieren willkürlich auf Knoten und Kanten gestellt wurden und immer wieder verschoben wurden.
 
@@ -256,7 +256,7 @@ Zusammenfassend:
 
 FAST wurde nicht getestet, da es wichtig ist, dass unser Roboter eine robuste Bilderkennung implementiert hat. Es wurden lediglich SIFT und ORB getestet.
 
-Beide Algorithmen funktionieren sehr gut, um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen ist (siehe Abbildung \ref{fig:good-sift-example}. Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
+Beide Algorithmen funktionieren sehr gut, um zweidimensionale Objekte zu detektieren, wie nachfolgend an den Stickers auf der Notebook-Rückseite zu erkennen ist (siehe Abbildung \ref{fig:good-sift-example}). Die bunten Linien repräsentieren erkannte Merkmale. Eine Linie führt jeweils von einem gelernten Merkmal (links) zu einem erkannten Merkmal (rechtes Bild).
 
 \begin{figure}[H]
     \centering
@@ -323,7 +323,7 @@ Danach wird das Datenset unterteilt in verschiedene Gruppen: Train, Validation, 
     \label{fig:data-split}
 \end{figure}
 
-Als erstes wurde versucht ein Model zu trainieren, das alle Graphenelemente (Knoten und Kanten) und alle Hindernisse erkennt mit den Klassen auf Abbildung \ref{fig:labeling-with-lines} gezeigt:
+Abbildung \ref{fig:labeling-with-lines} zeigt den ersten Versuch ein Model zu trainieren, welches alle Graphenelemente (Knoten und Kanten) und alle Hindernisse beinhaltet. In Abbildung \ref{fig:line-classes-lines} sind diese Klassen aufgelistet.
 
 \begin{figure}[H]
 \centering
@@ -429,7 +429,7 @@ Das gleiche Experiment wurde noch einmal durchgeführt mit nur Pylonen und Barri
 \end{figure}
 
 
-Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt die Unsicherheit der Knoten weg. Das Problem ist es nun, dass gedeutet werden würde, dass der erkannte Pylon sich auf dem Nachbarsknoten befindet, was nicht der Fall ist. Der vorherige Knoten musst also erkannt werden können, damit dieser nicht fälschlicherweise als blockiert erkannt wird. Diese Situation ist auf Abbildung \ref{fig:recognition-with-cone-obst} gezeigt.
+Die Resultate für die Pylonen und die Barrieren ist dasselbe, wie im vorherigen Experiment, jedoch fällt die Unsicherheit der Knoten weg. Das Problem ist es nun, dass gedeutet werden würde, dass der erkannte Pylon sich auf dem Nachbarsknoten befindet, was nicht der Fall ist. Der vorherige Knoten muss also erkannt werden können, damit dieser nicht fälschlicherweise als blockiert erkannt wird. Diese Situation ist auf Abbildung \ref{fig:recognition-with-cone-obst} gezeigt.
 
 \begin{figure}[H]
 \centering
@@ -532,7 +532,7 @@ text = pytesseract.image_to_string(image, config='--psm 10 -c
 tessedit_char_whitelist=ABC')
 \end{verbatim}
 
-Dabei konnte \gls{tesseract} ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden, die Resultate sind gezeigt in Abbildung \ref{fig:zielknoten-tesseract}:
+Dabei konnte \gls{tesseract} ohne Probleme die Buchstaben A und C lesen, jedoch konnte der Buchstabe B nicht gelesen werden, die Resultate sind in Abbildung \ref{fig:zielknoten-tesseract} dargestellt:
 
 \begin{figure}[H]
 \centering
@@ -657,6 +657,8 @@ Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, ben�
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
 \centering
+￼
+Um ein Hindernis anzuheben, wurde ein Greifer, welcher über ein Gelenkgestänge funktioniert, ausgelegt. 
 \includegraphics[width=0.95\linewidth]{assets/prototyp-fahrwerk/fahrwerk-oben.jpeg} 
 \end{subfigure}
 \begin{subfigure}{0.32\textwidth}
@@ -670,8 +672,7 @@ Damit die Fortbewegung inklusive Linienerkennung implementiert werden kann, ben�
 \subsubsection*{Greifer}
 \addcontentsline{toc}{subsubsection}{Greifer}
 
-
-Um ein Hindernis anzuheben, wurde ein Greifer, welcher über ein Gelenkgestänge funktioniert, ausgelegt. Um dieses Konzept zu Testen wurden zwei Prototypen gebaut (Kapitel \nameref{subsubsection:gripper-prototype-1} und Kapitel \nameref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der finale Greifer später auch, mit einem Servomotor betrieben. 
+Um ein Hindernis anzuheben, wurde ein Greifer ausgelegt, welcher über ein Gelenkgestänge funktioniert. Um dieses Konzept zu testen wurden zwei Prototypen gebaut (Kapitel \nameref{subsubsection:gripper-prototype-1} und Kapitel \nameref{subsubsection:gripper-prototype-2}). Der zweite Prototyp wird, wie der finale Greifer später auch, mit einem Servomotor betrieben. 
 
 \begin{figure}[H]
 \centering
